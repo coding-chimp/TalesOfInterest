@@ -1,0 +1,14 @@
+<%- model_class = Episode.new.class -%>
+
+<% @episodes.each do |episode| %>
+	<div class="well">
+		<h2>
+			<%= link_to episode_path(episode.podcast, episode) do %>
+				<%= "#{episode.podcast.name} #{episode.number}: " if episode.number %>
+				<%= episode.title %>
+			<% end %>
+		</h2>
+		<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= " • #{episode.length} Minuten" if episode.length %></h4>
+		<%= markdown(episode.description) %>
+	</div>
+<% end %>
