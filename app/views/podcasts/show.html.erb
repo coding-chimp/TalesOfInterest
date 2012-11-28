@@ -4,7 +4,7 @@
 	<ul class="thumbnails">
 		<li class="span2">
 			<div class="thumbnail">
-				<%= image_tag("Tales of Interest.jpg") %>
+				<%= image_tag(@podcast.artwork) %>
 			</div>
 		</li>
 		<li class="span3">
@@ -18,10 +18,10 @@
 	<div class="well">
 		<h2>
 			<%= link_to(episode_path(@podcast, episode)) do %>
-				<%= "##{episode.number}: " if episode.number %><%= episode.title %>
+				<%= "##{episode.num}: " if episode.number %><%= episode.title %>
 			<% end %>
 		</h2>
-		<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= " • #{episode.length} Minuten" if episode.length %></h4>
+		<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= " • #{episode.playtime} Minuten" if episode.playtime %></h4>
 		<%= markdown(episode.description) %>
 	</div>
 <% end %>

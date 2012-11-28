@@ -1,14 +1,26 @@
 <%- model_class = Episode.new.class -%>
 
+<div id="artworks" class="hero-unit">
+	<ul class="thumbnails">
+	<% @podcasts.each do |podcast| %>
+		<li class="span2">
+			<div class="thumbnail">
+				<%= link_to image_tag(podcast.artwork), podcast %>
+			</div>
+		</li>
+	<% end %>
+	</ul>
+</div>
+
 <% @episodes.each do |episode| %>
 	<div class="well">
 		<h2>
 			<%= link_to episode_path(episode.podcast, episode) do %>
-				<%= "#{episode.podcast.name} #{episode.number}: " if episode.number %>
+				<%= "#{episode.podcast.name} #{episode.num}: " if episode.number %>
 				<%= episode.title %>
 			<% end %>
 		</h2>
-		<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= " • #{episode.length} Minuten" if episode.length %></h4>
+		<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= " • #{episode.playtime} Minuten" if episode.playtime %></h4>
 		<%= markdown(episode.description) %>
 	</div>
 <% end %>

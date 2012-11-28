@@ -1,18 +1,15 @@
 ActiveAdmin.register Episode do
   belongs_to :podcast
 	
-	filter :podcast
   filter :number
   filter :title
   filter :created_at
 
   form do |f|
     f.inputs do
-      f.input :number
       f.input :title
       f.input :description
-      f.input :length
-      f.input :episode_url
+      f.input :playtime
       f.input :created_at, :as => :datepicker
       f.input :slug
     end
@@ -32,24 +29,24 @@ ActiveAdmin.register Episode do
   end
 
   index do
-    column :podcast
     column :number
     column :title
-    column :length
+    column :playtime
     column :created_at
     column :updated_at
  
     default_actions
   end
 
-  show do
+  show do |ep|
     attributes_table do
-      row :podcast
       row :number
       row :title
       row :description
-      row :length
-      row :episode_url
+      row :playtime
+      row :file do
+        ep.file.url
+      end
       row :created_at
       row :updated_at
     end

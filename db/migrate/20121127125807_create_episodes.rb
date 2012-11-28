@@ -4,8 +4,8 @@ class CreateEpisodes < ActiveRecord::Migration
       t.integer :number
       t.string :title
       t.text :description
-      t.integer :length
-      t.string :episode_url
+      t.integer :playtime
+      t.attachment :file
       t.integer :podcast_id
       t.string :slug
 

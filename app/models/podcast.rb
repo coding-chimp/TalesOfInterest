@@ -1,6 +1,8 @@
 class Podcast < ActiveRecord::Base
 	has_many :episodes
-  attr_accessible :description, :name, :slug
+  attr_accessible :description, :name, :slug, :artwork
+
+  has_attached_file :artwork
 
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]

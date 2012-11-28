@@ -27,7 +27,12 @@ gem 'meta_search',  '>= 1.1.0.pre'
 # Pretty URLs
 gem 'friendly_id'
 
-#Markdown
+# Markdown formatting
 gem 'redcarpet'
 
+# Pretty Terminal output
 gem 'hirb'
+
+
+# Attach files
+gem "paperclip", "~> 3.0"

@@ -58,12 +58,15 @@ ActiveRecord::Schema.define(:version => 20121127171910) do
     t.integer  "number"
     t.string   "title"
     t.text     "description"
-    t.integer  "length"
-    t.string   "episode_url"
+    t.integer  "playtime"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
     t.integer  "podcast_id"
     t.string   "slug"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "friendly_id_slugs", :force => true do |t|
@@ -88,18 +91,21 @@ ActiveRecord::Schema.define(:version => 20121127171910) do
   create_table "podcasts", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "artwork_file_name"
+    t.string   "artwork_content_type"
+    t.integer  "artwork_file_size"
+    t.datetime "artwork_updated_at"
     t.string   "slug"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "show_notes", :force => true do |t|
     t.string   "name"
     t.string   "url"
-    t.text     "description"
     t.integer  "episode_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
