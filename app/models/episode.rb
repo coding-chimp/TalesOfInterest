@@ -11,7 +11,7 @@ class Episode < ActiveRecord::Base
   extend FriendlyId
   friendly_id :number, use: :slugged
 
-#  after_create :set_episode_number
+  after_create :set_episode_number
 
   def num
     if number < 10
@@ -26,7 +26,13 @@ class Episode < ActiveRecord::Base
   private
 
   def set_episode_number
-  	update_column(:number, podcast.episodes.order("number desc").offset(1).first.number + 1)
+    if number == nil
+      if podcast.episodes.size > 1
+        update_column(:number, podcast.episodes.order("number desc").offset(1).first.number + 1)
+      else
+        update_column(:number, 1)
+      end
+    end
   end
 
   def set_default_url_on_category

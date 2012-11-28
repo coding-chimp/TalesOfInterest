@@ -7,11 +7,11 @@ ActiveAdmin.register Episode do
 
   form do |f|
     f.inputs do
+      f.input :number
       f.input :title
       f.input :description
       f.input :playtime
       f.input :created_at, :as => :datepicker
-      f.input :slug
     end
 
     f.has_many :show_notes do |n|
