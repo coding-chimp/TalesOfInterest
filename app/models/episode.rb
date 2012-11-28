@@ -6,7 +6,7 @@ class Episode < ActiveRecord::Base
   accepts_nested_attributes_for :show_notes, :allow_destroy => true
 
   has_attached_file :file,
-                    :default_url => :set_default_url_on_category
+                    :default_url => :set_default_url
 
   extend FriendlyId
   friendly_id :number, use: :slugged
@@ -35,7 +35,7 @@ class Episode < ActiveRecord::Base
     end
   end
 
-  def set_default_url_on_category
-    "/podcasts/#{podcast.name.underscore}#{num}.m4a"
+  def set_default_url
+    "http://www.talesofinterest.de/podcasts/#{podcast.name.underscore}#{num}.m4a"
   end
 end
