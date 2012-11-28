@@ -1,4 +1,5 @@
 Inbox:
+	- deploy to heroku  @na
 	- add validations  @na
 	- add method to generate episode number  @na @done(2012-11-28)
 	- add show notes @done(2012-11-27)
@@ -10,3 +11,5 @@ Inbox:
 	- add layout  with bootstrap @done(2012-11-27)
 	- attach mp3 @na @done(2012-11-28)
 	- attach artwork @na @done(2012-11-28)
+	- add media-player @na
+	- add feeds @na
