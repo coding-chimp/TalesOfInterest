@@ -1,8 +1,10 @@
 Inbox:
+	- caching  @na
+	- push to github  @na
 	- add commit history in dashboard  @na @done(2012-11-29)
 	- add media-player @na
 	- add feeds @na
-	- add pagination @na
+	- add pagination @na @done(2012-11-29)
 	- suche implementieren  @na
 	- paperclip images disappearing after every new commit  @na
 	- deploy to heroku  @na @done(2012-11-28)

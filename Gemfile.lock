@@ -182,6 +182,7 @@ DEPENDENCIES
   grit
   hirb
   jquery-rails
+  kaminari
   meta_search (>= 1.1.0.pre)
   paperclip (~> 3.0)
   pg

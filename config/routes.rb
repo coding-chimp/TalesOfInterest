@@ -10,14 +10,17 @@ TalesOfInterest::Application.routes.draw do
                 :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? },
                 :as => :podcast
 
+  match "/:id(/page/:page)", :controller => 'podcasts', :action => 'show'
+
   match "/" => "episodes#index", :as => :episodes
+
+  match "/(page/:page)", :controller => 'episodes', :action => 'index'
 
   match ":podcast/:id" => "episodes#show", :as => :episode
 
   match "/:id" => "pages#show",
                 :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? },
                 :as => :page
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

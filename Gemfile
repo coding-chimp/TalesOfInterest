@@ -8,7 +8,6 @@ gem 'pg'
 # in production environments by default.
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
-
   gem 'uglifier', '>= 1.0.3'
 
   # Layout
@@ -37,4 +36,8 @@ gem 'hirb'
 # Attach files
 gem "paperclip", "~> 3.0"
 
+# Git history
 gem 'grit'
+
+# Pagination
+gem 'kaminari'
