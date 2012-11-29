@@ -34,6 +34,7 @@ gem 'redcarpet'
 # Pretty Terminal output
 gem 'hirb'
 
-
 # Attach files
 gem "paperclip", "~> 3.0"
+
+gem 'grit'

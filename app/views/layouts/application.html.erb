@@ -64,8 +64,8 @@
           <p>Flattr Button</p>
         </div>
         <% @blogs = Blogroll.order("name asc") %>
-        <div class="well">
-          <% unless @blogs.size == 0 %>
+        <% unless @blogs.size == 0 %>
+          <div class="well">
             <h3>Blogroll</h3>
             <dl>
               <% @blogs.each do |blog| %>
@@ -73,8 +73,8 @@
                 <dd><%= blog.description %></dd>
               <% end %>
             </dl>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
 			</div>
 		</div>
 	</div>
