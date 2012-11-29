@@ -1,12 +1,12 @@
 ActiveAdmin::Dashboards.build do
 
-  section "Recent Commits" do
-    ul do
-      Grit::Repo.new(Rails.root + '.git').commits.first(5).each do |commit|
-        li commit.message
-      end
-    end
-  end
+#  section "Recent Commits" do
+#    ul do
+#      Grit::Repo.new(Rails.root + '.git').commits.first(5).each do |commit|
+#        li commit.message
+#      end
+#    end
+#  end
 
   # Define your dashboard sections here. Each block will be
   # rendered on the dashboard in the context of the view. So just
