@@ -19,6 +19,21 @@
 	<h2><%= @episode.title %></h2>
 	<h4><%= @episode.created_at.strftime("%d. %B %Y") %><%= " • #{@episode.playtime} Minuten" if @episode.playtime %></h4>
 	<%= markdown(@episode.description) %>
+
+	<div class="player"><div id="myElement">Loading the player...</div></div>
+
+	<script type="text/javascript">
+    	jwplayer("myElement").setup({
+        	file: "<%= @episode.file.url %>",
+        	height: 20,
+        	controls: true
+    	});
+	</script>
+
+<!--	<ul>
+    	<li onclick='jwplayer().seek(3600)'><a href="#">Chapter</a></li>
+	</ul> -->
+
 	<p><%= link_to "Download Podcast", @episode.file.url %></p>
 
 	<% unless @episode.show_notes.size == 0 %>
