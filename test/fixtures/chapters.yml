@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  timestamp: 1
+  title: MyString
+  episode_id: 1
+
+two:
+  timestamp: 1
+  title: MyString
+  episode_id: 1

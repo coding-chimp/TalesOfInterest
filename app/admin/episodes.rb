@@ -14,6 +14,17 @@ ActiveAdmin.register Episode do
       f.input :created_at, :as => :datepicker
     end
 
+    f.has_many :chapters do |c|
+      c.inputs "Chapter" do
+        c.input :pretty_time, :label => "Timestamp"
+        c.input :title
+        if c.object.id
+          c.input :_destroy, :as => :boolean, :label => "delete"
+        end
+        c.form_buffers.last
+      end
+    end
+
     f.has_many :show_notes do |n|
     	n.inputs "Show Note" do
     		n.input :name
@@ -27,13 +38,15 @@ ActiveAdmin.register Episode do
 
     f.buttons
   end
+  sidebar :help, :only => :edit do
+    simple_format "The description can be formatted in HTML Syntax or " + 
+    link_to("Markdown", "http://daringfireball.net/projects/markdown/") + "."
+  end
 
   index do
     column :number
     column :title
-    column :playtime
     column :created_at
-    column :updated_at
  
     default_actions
   end
@@ -49,6 +62,18 @@ ActiveAdmin.register Episode do
       end
       row :created_at
       row :updated_at
+    end
+    panel "Chapters" do
+      table_for ep.chapters do
+        column "Timestamp", :pretty_time
+        column :title
+      end
+    end
+    panel "Show Notes" do
+      table_for ep.show_notes do
+        column :name
+        column :url
+      end
     end
   end
 

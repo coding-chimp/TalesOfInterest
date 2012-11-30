@@ -1,8 +1,12 @@
 Inbox:
+	- make the admin interface more pretty  @na @done(2012-12-01)
+	- back buttons  @na
+	- write readme  @na
+	- add chaptermarks  @na @done(2012-11-30)
 	- caching  @na
-	- push to github  @na
+	- push to github  @na @done(2012-11-30)
 	- add commit history in dashboard  @na @done(2012-11-29)
-	- add media-player @na
+	- add media-player @na @done(2012-11-30)
 	- add feeds @na
 	- add pagination @na @done(2012-11-29)
 	- suche implementieren  @na

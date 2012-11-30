@@ -18,7 +18,7 @@
 	<h4>Episode #<%= @episode.num %>
 	<h2><%= @episode.title %></h2>
 	<h4><%= @episode.created_at.strftime("%d. %B %Y") %><%= " • #{@episode.playtime} Minuten" if @episode.playtime %></h4>
-	<%= markdown(@episode.description) %>
+	<div class="description"><%= markdown(@episode.description) %></div>
 
 	<div class="player"><div id="myElement">Loading the player...</div></div>
 
@@ -30,11 +30,19 @@
     	});
 	</script>
 
-<!--	<ul>
-    	<li onclick='jwplayer().seek(3600)'><a href="#">Chapter</a></li>
-	</ul> -->
+	<% if @episode.chapters.size > 0 %>
+		<div class="chapters">
+			<a href="#" class="hide">[hide chapters]</a>
+			<a href="#" class="show">[show chapters]</a>
+			<ul class="chapterlist">
+				<% @episode.chapters.each do |chapter| %>
+					<li onclick='jwplayer().seek(<%= chapter.timestamp %>)'><a href="#"><%= "#{chapter.pretty_time} #{chapter.title}" %></a></li>
+				<% end %>
+			</ul>
+		</div>	
+	<% end %>
 
-	<p><%= link_to "Download Podcast", @episode.file.url %></p>
+	<p class="download"><%= link_to "Download Podcast", @episode.file.url %></p>
 
 	<% unless @episode.show_notes.size == 0 %>
 		<h3>Show Notes & Links</h3>
