@@ -55,5 +55,5 @@
 		</table>
 	<% end %>
 	
-	<p><%= link_to "Back", root_url %></p>
+	<p><%= link_to "Back", session[:last_page] if session[:last_page] %></p>
 </div>
