@@ -1,7 +1,7 @@
 Inbox:
 	- make the admin interface more pretty  @na @done(2012-12-01)
 	- back buttons  @na @done(2012-12-01)
-	- write readme  @na
+	- write readme  @na @done(2012-12-01)
 	- add chaptermarks  @na @done(2012-11-30)
 	- caching  @na
 	- push to github  @na @done(2012-11-30)
@@ -9,7 +9,7 @@ Inbox:
 	- add media-player @na @done(2012-11-30)
 	- add feeds @na
 	- add pagination @na @done(2012-11-29)
-	- suche implementieren  @na
+	- suche implementieren  @na @done(2012-12-01)
 	- paperclip images disappearing after every new commit  @na
 	- deploy to heroku  @na @done(2012-11-28)
 	- add validations  @na
