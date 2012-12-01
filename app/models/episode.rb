@@ -12,8 +12,6 @@ class Episode < ActiveRecord::Base
   extend FriendlyId
   friendly_id :number, use: :slugged
 
-  after_create :set_episode_number
-
   def num
     if number < 10
       return "00#{number}"
@@ -24,17 +22,17 @@ class Episode < ActiveRecord::Base
     end      
   end 
 
-  private
-
   def set_episode_number
     if number == nil
       if podcast.episodes.size > 1
-        update_column(:number, podcast.episodes.order("number desc").offset(1).first.number + 1)
+        podcast.episodes.order("number").last.number + 1
       else
-        update_column(:number, 1)
+        1
       end
     end
   end
+
+  private
 
   def set_default_url
     "http://www.talesofinterest.de/podcasts/#{podcast.name.underscore}#{num}.m4a"

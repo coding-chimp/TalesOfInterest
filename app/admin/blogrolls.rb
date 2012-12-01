@@ -9,6 +9,9 @@ ActiveAdmin.register Blogroll, :as => "Blog" do
 
     default_actions
   end
+  sidebar :help, :only => :index do
+    simple_format "Create links for your Blogroll."
+  end
 
   show do
     attributes_table do

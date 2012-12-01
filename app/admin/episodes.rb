@@ -7,7 +7,7 @@ ActiveAdmin.register Episode do
 
   form do |f|
     f.inputs do
-      f.input :number
+      f.input :number, :input_html => { :value => episode.set_episode_number }
       f.input :title
       f.input :description
       f.input :playtime
@@ -38,9 +38,10 @@ ActiveAdmin.register Episode do
 
     f.buttons
   end
-  sidebar :help, :only => :edit do
-    simple_format "The description can be formatted in HTML Syntax or " + 
-    link_to("Markdown", "http://daringfireball.net/projects/markdown/") + "."
+  sidebar :help, :only => [:edit, :new] do
+    simple_format(markdown("The description can be formatted in HTML Syntax or [Markdown](http://daringfireball.net/projects/markdown/).")) + 
+    simple_format(markdown("If you leave **created_at** empty, it will be filled automatically.")) +
+    simple_format(markdown("Fill the chapter **timestamp** with: **hh:mm:ss**."))
   end
 
   index do
