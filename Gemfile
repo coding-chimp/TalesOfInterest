@@ -41,3 +41,6 @@ gem 'grit'
 
 # Pagination
 gem 'kaminari'
+
+# XML Parser
+gem 'nokogiri'
