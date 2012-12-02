@@ -6,6 +6,17 @@ ActiveAdmin.register Page do
     column :titel
     default_actions
   end
+  sidebar "Import", :only => :index do
+    render "admin/import"
+  end
+  collection_action :import_xml, :method => :post do
+    items = Nokogiri::XML(params[:import][:file]).xpath("//channel//item")
+    items.each do |item|
+      Page.create!( :titel => item.at_xpath("title").text,
+                    :content => item.at_xpath("content:encoded").text )
+    end
+    redirect_to admin_pages_path, :notice => "Pages imported successfully!"
+  end
 
   show do
     h3 page.titel

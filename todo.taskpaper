@@ -4,7 +4,7 @@ Inbox:
 	- caching  @na
 	- add feeds @na
 	- add validations  @na
-	- add importer @na
+	- add importer @na @done(2012-12-02)
 	- add exporter @na
 Archive:
 	- prefill episode number  @na @done(2012-12-01) @project(Inbox)

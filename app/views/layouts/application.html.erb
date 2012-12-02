@@ -36,7 +36,7 @@
               <%= f.text_field :title_or_description_contains, :class => "search-query", :placeholder => "Search" %>
             <% end %>
           </form>
-          <% @pages = Page.all %>
+          <% @pages = Page.order("titel") %>
           <% unless @pages.size == 0 %>
           <ul class="nav pull-right">
             <% @pages.each do |page| %>

@@ -28,10 +28,10 @@ ActiveAdmin.register Podcast do
           Podcast.create!(:name => item.at_xpath("title").text.scan(/(.+) \d+/)[0][0])
         end
         Episode.create!(:podcast => Podcast.find_by_name(item.at_xpath("title").text.scan(/(.+) \d+/)[0][0]),
-                :number => item.at_xpath("title").text.scan(/\d+/)[0].to_i,
-                :title => item.at_xpath("title").text.scan(/:\D(.+)/)[0][0],
-                :description => item.at_xpath("content:encoded").text,
-                :created_at => item.at_xpath("pubDate").text  )
+                        :number => item.at_xpath("title").text.scan(/\d+/)[0].to_i,
+                        :title => item.at_xpath("title").text.scan(/:\D(.+)/)[0][0],
+                        :description => item.at_xpath("content:encoded").text,
+                        :created_at => item.at_xpath("pubDate").text  )
       end
     end
     redirect_to admin_podcasts_path, :notice => "Episodes imported successfully!"
