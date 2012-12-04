@@ -18,20 +18,39 @@ ActiveAdmin.register Podcast do
     default_actions
   end
   sidebar "Import", :only => :index do
-    render "admin/import"
+    simple_format("Import episodes from a XML file.") + 
+    render("admin/import")
   end
   collection_action :import_xml, :method => :post do
     items = Nokogiri::XML(params[:import][:file]).xpath("//channel//item")
     items.each do |item|
       unless item.at_xpath("title").text.scan(/(.+) \d+/)[0] == nil
-        if Podcast.find_by_name(item.at_xpath("title").text.scan(/(.+) \d+/)[0][0]) == nil
-          Podcast.create!(:name => item.at_xpath("title").text.scan(/(.+) \d+/)[0][0])
+        podcast_name = item.at_xpath("title").text.scan(/(.+) \d+/)[0][0]
+        episode_nr = item.at_xpath("title").text.scan(/\d+/)[0].to_i
+        content = ReverseMarkdown.parse item.at_xpath("content:encoded").text
+        linkless_content = content.gsub(/\[([^\]]+)\]\(([^)]+)\)/, '\1').squeeze(' ')
+        clean_content = linkless_content.gsub("Download #{podcast_name} #{(episode_nr).to_s.rjust(3, '0')}",'').gsub("Download Podcast (mp3)", '').rstrip
+        links = content.scan(/\[([^\]]+)\]\(([^)]+)\)/)
+        if Podcast.find_by_name(podcast_name) == nil
+          Podcast.create!(podcast_name)
         end
-        Episode.create!(:podcast => Podcast.find_by_name(item.at_xpath("title").text.scan(/(.+) \d+/)[0][0]),
-                        :number => item.at_xpath("title").text.scan(/\d+/)[0].to_i,
-                        :title => item.at_xpath("title").text.scan(/:\D(.+)/)[0][0],
-                        :description => item.at_xpath("content:encoded").text,
-                        :created_at => item.at_xpath("pubDate").text  )
+        @ep =  Episode.create!(:podcast => Podcast.find_by_name(podcast_name),
+                              :number => episode_nr,
+                              :title => item.at_xpath("title").text.scan(/:\D(.+)/)[0][0],
+                              :description => content1,
+                              :file => links.last[1].match(/^[^ ]+/)[0],
+                              :created_at => item.at_xpath("pubDate").text)
+        links[0..-2].each do |link|
+          if link[1].match(/\"(.+)\"/)
+            ShowNote.create!(:name => link[1].match(/\"(.+)\"/)[1],
+                             :url => link[1].match(/^[^ ]+/)[0],
+                             :episode => @ep )
+          else
+            ShowNote.create!(:name => link[0],
+                             :url => link[1],
+                             :episode => @ep )
+          end
+        end
       end
     end
     redirect_to admin_podcasts_path, :notice => "Episodes imported successfully!"

@@ -1,12 +1,13 @@
 Inbox:
 	- change db to mysql  @na
-	- change how episode url is set up  @na
+	- change how episode url is set up  @na @done(2012-12-04)
 	- caching  @na
 	- add feeds @na
 	- add validations  @na
-	- add importer @na @done(2012-12-02)
+	- improve importer @na @done(2012-12-04)
 	- add exporter @na
 Archive:
+	- add importer @na @done(2012-12-02) @project(Inbox)
 	- prefill episode number  @na @done(2012-12-01) @project(Inbox)
 	- make the admin interface more pretty  @na @done(2012-12-01) @project(Inbox)
 	- back buttons  @na @done(2012-12-01) @project(Inbox)

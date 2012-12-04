@@ -24,7 +24,7 @@
 
 	<script type="text/javascript">
     	jwplayer("myElement").setup({
-        	file: "<%= @episode.file.url %>",
+        	file: "<%= @episode.file %>",
         	height: 20,
         	controls: true
     	});
@@ -42,14 +42,14 @@
 		</div>	
 	<% end %>
 
-	<p class="download"><%= link_to "Download Podcast", @episode.file.url %></p>
+	<p class="download"><%= link_to "Download Podcast", @episode.file %></p>
 
 	<% unless @episode.show_notes.size == 0 %>
 		<h3>Show Notes & Links</h3>
 		<table class="table table-striped">
 			<% @episode.show_notes.each do |show_note| %>
 				<tr>
-					<td><%= link_to show_note.name, show_note.url %></td>
+					<td><%= link_to markdown(show_note.name), show_note.url %></td>
 	  			</tr>
 			<% end %>
 		</table>

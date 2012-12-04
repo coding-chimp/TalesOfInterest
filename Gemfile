@@ -29,6 +29,7 @@ gem 'friendly_id'
 
 # Markdown formatting
 gem 'redcarpet'
+gem 'reverse_markdown'
 
 # Pretty Terminal output
 gem 'hirb'

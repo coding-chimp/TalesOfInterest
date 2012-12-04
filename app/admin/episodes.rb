@@ -7,10 +7,15 @@ ActiveAdmin.register Episode do
 
   form do |f|
     f.inputs do
-      f.input :number, :input_html => { :value => episode.set_episode_number }
+      if f.object.new_record?
+        f.input :number, :input_html => { :value => episode.set_episode_number }
+      else
+        f.input :number
+      end
       f.input :title
       f.input :description
       f.input :playtime
+      f.input :file
       f.input :created_at, :as => :datepicker
     end
 
@@ -58,9 +63,7 @@ ActiveAdmin.register Episode do
       row :title
       row :description
       row :playtime
-      row :file do
-        ep.file.url
-      end
+      row :file
       row :created_at
       row :updated_at
     end

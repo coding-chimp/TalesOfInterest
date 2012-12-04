@@ -7,7 +7,8 @@ ActiveAdmin.register Page do
     default_actions
   end
   sidebar "Import", :only => :index do
-    render "admin/import"
+    simple_format("Import pages from a XML file.") + 
+    render("admin/import")
   end
   collection_action :import_xml, :method => :post do
     items = Nokogiri::XML(params[:import][:file]).xpath("//channel//item")

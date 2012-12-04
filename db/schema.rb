@@ -67,14 +67,11 @@ ActiveRecord::Schema.define(:version => 20121130131716) do
     t.string   "title"
     t.text     "description"
     t.integer  "playtime"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
+    t.string   "file"
     t.integer  "podcast_id"
     t.string   "slug"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "friendly_id_slugs", :force => true do |t|
