@@ -32,12 +32,12 @@ ActiveAdmin.register Podcast do
         clean_content = linkless_content.gsub("Download #{podcast_name} #{(episode_nr).to_s.rjust(3, '0')}",'').gsub("Download Podcast (mp3)", '').rstrip
         links = content.scan(/\[([^\]]+)\]\(([^)]+)\)/)
         if Podcast.find_by_name(podcast_name) == nil
-          Podcast.create!(podcast_name)
+          Podcast.create!(:name => podcast_name)
         end
         @ep =  Episode.create!(:podcast => Podcast.find_by_name(podcast_name),
                               :number => episode_nr,
                               :title => item.at_xpath("title").text.scan(/:\D(.+)/)[0][0],
-                              :description => content1,
+                              :description => clean_content,
                               :file => links.last[1].match(/^[^ ]+/)[0],
                               :created_at => item.at_xpath("pubDate").text)
         links[0..-2].each do |link|
