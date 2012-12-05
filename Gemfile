@@ -45,3 +45,5 @@ gem 'kaminari'
 
 # XML Parser
 gem 'nokogiri'
+
+gem 'rails-erd'

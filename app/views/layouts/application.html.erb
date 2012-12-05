@@ -59,7 +59,7 @@
           <ul class="unstyled">
             <li><a href=""><%= image_tag("rss.png") %> Master Audio RSS Feed</a></li>
             <% @podcasts.each do |podcast| %>
-              <li><a href=""><%= image_tag("itunes.png") %> <%= podcast.name %> in iTunes</a></li>
+              <li><a href=""><%= image_tag("itunes.png") %> <%= link_to "#{podcast.name} in iTunes", podcast_feed_path(podcast) %></a></li>
             <% end %> 
           </ul>
         </div>

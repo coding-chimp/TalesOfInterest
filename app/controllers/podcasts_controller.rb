@@ -7,4 +7,9 @@ class PodcastsController < ApplicationController
 			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
 		end
 	end
+
+	def feed
+		@podcast = Podcast.find(params[:id])
+		@episodes = @podcast.episodes.order("created_at desc")
+	end
 end

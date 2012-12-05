@@ -16,13 +16,13 @@ TalesOfInterest::Application.routes.draw do
 
   match "/:id(/page/:page)", :controller => 'podcasts', :action => 'show'
 
+  match "/:id/feed" => "podcasts#feed", :as => :podcast_feed, :defaults => { :format => 'rss' } 
+
   match "/" => "episodes#index", :as => :episodes
 
   match "/(page/:page)", :controller => 'episodes', :action => 'index'
 
   match ":podcast/:id" => "episodes#show", :as => :episode
-
-  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
