@@ -1,5 +1,5 @@
 class Podcast < ActiveRecord::Base
-	has_many :episodes
+	has_many :episodes, :dependent => :destroy
   attr_accessible :description, :name, :slug, :artwork
 
   has_attached_file :artwork

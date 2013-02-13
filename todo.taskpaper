@@ -7,9 +7,10 @@ Inbox:
 	- add exporter
 	- redirect /:podcast/latest zu der letzten episode @na @done(2013-02-13)
 	- add sitemap @na @done(2013-02-13)
-	- update episodes for feed @na
+	- update episodes for feed @na @done(2013-02-13)
 	- update podcasts for feed @na
-	- delete episodes on podcast delete @na
+	- delete episodes on podcast delete @na @done(2013-02-13)
+	- fix slugs for episodes @na @done(2013-02-13)
 Archive:
 	- add podcast feeds @na @done(2012-12-05) @project(Inbox)
 	- change how episode url is set up  @na @done(2012-12-04) @project(Inbox)

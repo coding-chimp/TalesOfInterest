@@ -8,6 +8,7 @@ ActiveAdmin.register Podcast do
     end
     column :name
     column :description
+    column :slug
     column "# Episodes" do |podcast|
       podcast.episodes.count
     end
@@ -76,6 +77,7 @@ ActiveAdmin.register Podcast do
       end
       row :name
       row :description
+      row :slug
     end
     link_to("New Episode", new_admin_podcast_episode_path(podcast), :class => "member_link")
   end
@@ -85,6 +87,7 @@ ActiveAdmin.register Podcast do
       f.input :name
       f.input :description
       f.input :artwork
+      f.input :slug
     end
 
     f.buttons
