@@ -13,4 +13,10 @@ class EpisodesController < ApplicationController
 			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
 		end
 	end
+
+	def latest
+		@podcast = Podcast.find(params[:podcast])
+		@episode = @podcast.episodes.last
+		redirect_to :controller => :episodes, :action => :show, :id => @episode.number
+	end
 end

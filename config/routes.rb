@@ -22,6 +22,8 @@ TalesOfInterest::Application.routes.draw do
 
   match "/(page/:page)", :controller => 'episodes', :action => 'index'
 
+  match ":podcast/latest" => "episodes#latest"
+
   match ":podcast/:id" => "episodes#show", :as => :episode
 
   # The priority is based upon order of creation:

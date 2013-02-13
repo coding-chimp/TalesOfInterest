@@ -1,13 +1,14 @@
 Inbox:
 	- change db to mysql  @na
-	- add podcast feeds @na @done(2012-12-05)
 	- add masterfeed @na
 	- add validations 
 	- add Flattr button
 	- caching
 	- add exporter
-	- redirect /:podcast/latest zu der letzten episode
+	- redirect /:podcast/latest zu der letzten episode @na @done(2013-02-13)
+	- add sitemap @na
 Archive:
+	- add podcast feeds @na @done(2012-12-05) @project(Inbox)
 	- change how episode url is set up  @na @done(2012-12-04) @project(Inbox)
 	- improve importer @na @done(2012-12-04) @project(Inbox)
 	- add importer @na @done(2012-12-02) @project(Inbox)
