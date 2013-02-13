@@ -16,6 +16,8 @@ ActiveAdmin.register Episode do
       f.input :description
       f.input :playtime
       f.input :file
+      f.input :file_size
+      f.input :explicit
       f.input :created_at, :as => :datepicker
     end
 

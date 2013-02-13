@@ -6,6 +6,8 @@ class CreateEpisodes < ActiveRecord::Migration
       t.text :description
       t.integer :playtime
       t.string :file
+      t.integer :file_size
+      t.boolean :explicit
       t.integer :podcast_id
       t.string :slug
 

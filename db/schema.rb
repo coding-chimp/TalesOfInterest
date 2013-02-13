@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20121130131716) do
     t.text     "description"
     t.integer  "playtime"
     t.string   "file"
+    t.integer  "file_size"
+    t.boolean  "explicit"
     t.integer  "podcast_id"
     t.string   "slug"
     t.datetime "created_at",  :null => false

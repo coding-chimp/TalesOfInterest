@@ -34,7 +34,7 @@ xml.rss version: "2.0" do
         xml.guid episode_url(@podcast, episode)
         xml.pubDate episode.created_at.to_s(:rfc822)
         xml.description episode.description
-        xml.enclosure :url => episode.file, :length => "123456", :type => 'audio/x-m4a'
+        xml.enclosure :url => episode.file, :length => episode.file_size, :type => 'audio/x-m4a'
         xml.content :encoded, raw("<p>#{episode.description}</p>
 " + episode.stringify_show_notes)
         xml.itunes :author, author
@@ -43,7 +43,11 @@ xml.rss version: "2.0" do
         xml.itunes :summary, episode.description
         xml.itunes :keywords, keywords
         xml.itunes :image, :href => @podcast.artwork
-        xml.itunes :explicit, 'no'
+        if episode.explicit
+            xml.itunes :explicit, 'yes'
+        else
+            xml.itunes :explicit, 'no'
+        end 
       end
     end
   end

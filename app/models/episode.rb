@@ -3,12 +3,14 @@ class Episode < ActiveRecord::Base
   has_many :show_notes
   has_many :chapters
 
-  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes
+  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes, :file_size, :explicit
   accepts_nested_attributes_for :show_notes, :allow_destroy => true
   accepts_nested_attributes_for :chapters, :allow_destroy => true
 
   extend FriendlyId
   friendly_id :number, use: :slugged
+
+  after_create :set_slug
 
   def num
     number.to_s.rjust(3, '0')
@@ -32,5 +34,11 @@ class Episode < ActiveRecord::Base
 "
     end
     string << "</ul>"
+  end
+
+  private
+
+  def set_slug
+    update_attribute :slug, number
   end
 end
