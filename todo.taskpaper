@@ -6,7 +6,7 @@ Inbox:
 	- caching
 	- add exporter
 	- redirect /:podcast/latest zu der letzten episode @na @done(2013-02-13)
-	- add sitemap @na
+	- add sitemap @na @done(2013-02-13)
 Archive:
 	- add podcast feeds @na @done(2012-12-05) @project(Inbox)
 	- change how episode url is set up  @na @done(2012-12-04) @project(Inbox)

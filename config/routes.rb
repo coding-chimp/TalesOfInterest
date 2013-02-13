@@ -1,5 +1,8 @@
 TalesOfInterest::Application.routes.draw do
   break if ARGV.join.include? 'assets:precompile'
+  
+  match 'sitemap', to: 'sitemap#index', :via => [:get]
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -22,7 +25,7 @@ TalesOfInterest::Application.routes.draw do
 
   match "/(page/:page)", :controller => 'episodes', :action => 'index'
 
-  match ":podcast/latest" => "episodes#latest"
+  match ":podcast/latest" => "episodes#latest", :as => :latest
 
   match ":podcast/:id" => "episodes#show", :as => :episode
 
