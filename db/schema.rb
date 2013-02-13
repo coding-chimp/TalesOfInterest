@@ -102,6 +102,10 @@ ActiveRecord::Schema.define(:version => 20121130131716) do
     t.string   "artwork_content_type"
     t.integer  "artwork_file_size"
     t.datetime "artwork_updated_at"
+    t.string   "author"
+    t.string   "keywords"
+    t.boolean  "explicit"
+    t.string   "category"
     t.string   "slug"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false

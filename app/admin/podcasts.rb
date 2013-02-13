@@ -7,8 +7,6 @@ ActiveAdmin.register Podcast do
       image_tag(podcast.artwork, :height => '100')
     end
     column :name
-    column :description
-    column :slug
     column "# Episodes" do |podcast|
       podcast.episodes.count
     end
@@ -76,7 +74,11 @@ ActiveAdmin.register Podcast do
         image_tag(podcast.artwork, :height => '150')
       end
       row :name
+      row :author
       row :description
+      row :keywords
+      row :explicit
+      row :category
       row :slug
     end
     link_to("New Episode", new_admin_podcast_episode_path(podcast), :class => "member_link")
@@ -85,7 +87,11 @@ ActiveAdmin.register Podcast do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :author
       f.input :description
+      f.input :keywords
+      f.input :explicit
+      f.input :category
       f.input :artwork
       f.input :slug
     end
