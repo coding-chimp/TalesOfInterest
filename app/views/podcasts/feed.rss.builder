@@ -4,11 +4,12 @@ xml.rss version: "2.0" do
     xml.title @podcast.name
     xml.link podcast_url(@podcast)
     xml.description @podcast.description
-    xml.language "de"
-    xml.pubDate @episodes.first.created_at.to_s(:rfc822)
-    xml.lastBuildDate @episodes.first.created_at.to_s(:rfc822)
+    xml.language "de-DE"
+    xml.pubDate @episodes.count > 0 ? @episodes.first.created_at.to_s(:rfc822) : @podcast.created_at.to_s(:rfc822)
+    xml.lastBuildDate @episodes.count > 0 ? @episodes.first.created_at.to_s(:rfc822) : @podcast.created_at.to_s(:rfc822)
     xml.itunes :author, @podcast.author
     xml.itunes :summary, @podcast.description
+    xml.itunes :subtitle, @podcast.description
     xml.itunes :keywords, @podcast.keywords
     if @podcast.explicit
         xml.itunes :explicit, 'yes'
@@ -21,8 +22,9 @@ xml.rss version: "2.0" do
       xml.itunes :email, 'mail@talesofinterest.de'
     end
     xml.itunes :block, 'no'
-    xml.itunes :category, :text => @podcast.category.match(/(.*)\:/)[1] do
-      xml.itunes :category, :text => @podcast.category.match(/\:\s(.*)/)[1]
+
+    @podcast.tag_list_on(:categories).each do |category|
+      xml.itunes :category, :text => category
     end
 
     @episodes.each do |episode|
