@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20130221092228) do
     t.string   "author"
     t.string   "keywords"
     t.boolean  "explicit"
+    t.string   "itunes_link"
     t.string   "slug"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false

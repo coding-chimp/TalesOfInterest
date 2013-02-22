@@ -14,7 +14,7 @@ ActiveAdmin.register Episode do
       end
       f.input :title
       f.input :description
-      f.input :playtime
+      f.input :playtime, :hint => "Formatted as: HH:MM:SS, H:MM:SS, MM:SS, or M:SS"
       f.input :file
       f.input :file_size
       f.input :explicit

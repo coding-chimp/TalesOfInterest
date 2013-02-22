@@ -7,6 +7,7 @@ class CreatePodcasts < ActiveRecord::Migration
       t.string :author
       t.string :keywords
       t.boolean :explicit
+      t.string :itunes_link
       t.string :slug
 
       t.timestamps

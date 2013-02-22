@@ -79,6 +79,7 @@ ActiveAdmin.register Podcast do
       row :keywords
       row :explicit
       row :category_list
+      row :itunes_link
       row :slug
     end
     link_to("New Episode", new_admin_podcast_episode_path(podcast), :class => "member_link")
@@ -93,6 +94,7 @@ ActiveAdmin.register Podcast do
       f.input :explicit
       f.input :category_list, :hint => "Seperated by commas.", :label => "Categories"
       f.input :artwork
+      f.input :itunes_link
       f.input :slug
     end
 

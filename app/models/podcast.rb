@@ -1,6 +1,6 @@
 class Podcast < ActiveRecord::Base
 	has_many :episodes, :dependent => :destroy
-  attr_accessible :description, :name, :slug, :artwork, :author, :keywords, :explicit, :category_list
+  attr_accessible :description, :name, :slug, :artwork, :author, :keywords, :explicit, :category_list, :itunes_link
 
   acts_as_taggable_on :categories
 
