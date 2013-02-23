@@ -29,16 +29,16 @@ ActiveAdmin.register Podcast do
         podcast_name = item.at_xpath("title").text.scan(/(.+) \d+/)[0][0]
         episode_nr = item.at_xpath("title").text.scan(/\d+/)[0].to_i
         content = ReverseMarkdown.parse item.at_xpath("content:encoded").text
-        linkless_content = content.gsub(/\[([^\]]+)\]\(([^)]+)\)/, '\1').squeeze(' ')
-        clean_content = linkless_content.gsub("Download #{podcast_name} #{(episode_nr).to_s.rjust(3, '0')}",'').gsub("Download Podcast (mp3)", '').rstrip
         links = content.scan(/\[([^\]]+)\]\(([^)]+)\)/)
+        content = content.gsub(/\[([^\]]+)\]\(([^)]+)\)/, '\1').squeeze(' ')
+        content = content.gsub("Download #{podcast_name} #{(episode_nr).to_s.rjust(3, '0')}",'').gsub("Download Podcast (mp3)", '').rstrip   
         if Podcast.find_by_name(podcast_name) == nil
           Podcast.create!(:name => podcast_name, :author => author)
         end
         @ep =  Episode.create!(:podcast => Podcast.find_by_name(podcast_name),
                               :number => episode_nr,
                               :title => item.at_xpath("title").text.scan(/:\D(.+)/)[0][0],
-                              :description => clean_content,
+                              :description => content,
                               :file => links.last[1].match(/^[^ ]+/)[0],
                               :created_at => item.at_xpath("pubDate").text)
         links[0..-2].each do |link|

@@ -58,7 +58,7 @@
 				  <h3>Subscribe</h3>
           <ul class="unstyled">
             <% @podcasts.each do |podcast| %>
-              <% unless podcast.itunes_link.empty? %>
+              <% unless podcast.itunes_link == nil || podcast.itunes_link.empty?  %>
                 <li><%= image_tag("itunes.png") %> <%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %></li>
               <% else %>
                 <li><%= image_tag("rss.png") %> <%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
