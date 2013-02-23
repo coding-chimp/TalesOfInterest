@@ -21,7 +21,9 @@ ActiveAdmin.register Podcast do
     render("admin/import")
   end
   collection_action :import_xml, :method => :post do
-    items = Nokogiri::XML(params[:import][:file]).xpath("//channel//item")
+    xml = Nokogiri::XML(params[:import][:file])
+    items = xml.xpath("//channel//item")
+    author = xml.at_xpath("//channel//title").text
     items.each do |item|
       unless item.at_xpath("title").text.scan(/(.+) \d+/)[0] == nil
         podcast_name = item.at_xpath("title").text.scan(/(.+) \d+/)[0][0]
@@ -31,7 +33,7 @@ ActiveAdmin.register Podcast do
         clean_content = linkless_content.gsub("Download #{podcast_name} #{(episode_nr).to_s.rjust(3, '0')}",'').gsub("Download Podcast (mp3)", '').rstrip
         links = content.scan(/\[([^\]]+)\]\(([^)]+)\)/)
         if Podcast.find_by_name(podcast_name) == nil
-          Podcast.create!(:name => podcast_name)
+          Podcast.create!(:name => podcast_name, :author => author)
         end
         @ep =  Episode.create!(:podcast => Podcast.find_by_name(podcast_name),
                               :number => episode_nr,
