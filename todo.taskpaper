@@ -10,13 +10,14 @@ Inbox:
 	- add admin navbar @na @done(2013-04-11)
 	- add admin pages for settings @na
 	- add admin pages for users @na
-	- add admin pages for pages @na
+	- add admin pages for pages @na @done(2013-04-11)
 	- add admin pages for podcasts @na
 	- add admin pages for episodes @na
 	- remove active_admin @na
 Later:
 	- add exporter
 	- caching
+	- search parameter in den controllern auslagern
 Archive:
 	- import sets podcast author @na @done(2013-02-23) @project(Inbox)
 	- redirect /:podcast/latest zu der letzten episode @na @done(2013-02-13) @project(Inbox)

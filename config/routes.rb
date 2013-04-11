@@ -11,15 +11,22 @@ TalesOfInterest::Application.routes.draw do
   put    'admin/blogroll/:id',      to: 'blogrolls#update'
   delete 'admin/blogroll/:id',      to: 'blogrolls#destroy'
 
+  get    'admin/pages',             to: 'pages#index',      as: :pages
+  post   'admin/pages',             to: 'pages#create'
+  get    'admin/pages/new',         to: 'pages#new',        as: :new_page
+  get    'admin/pages/:id/edit',    to: 'pages#edit',       as: :edit_page
+  get    ':id',                     to: 'pages#show',       as: :page,
+         :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
+  put    ':id',                     to: 'pages#update',
+         :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
+  delete ':id',         to: 'pages#destroy',
+         :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   root :to => "episodes#index"
-
-  get "/:id" => "pages#show",
-                :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? },
-                :as => :page
 
   get "/:id" => "podcasts#show",
                 :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? },
