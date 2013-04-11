@@ -14,6 +14,7 @@ Inbox:
 	- add admin pages for episodes @na
 	- make the import work in the new admin pages @na
 	- remove active_admin @na
+	- change media player to podlove
 Later:
 	- add exporter
 	- caching

@@ -6,7 +6,8 @@ class EpisodesController < ApplicationController
 	end
 
 	def show
-		@episode = Episode.find(params[:id])
+		@podcast = Podcast.find(params[:podcast])
+		@episode = @podcast.episodes.find(params[:id])
 		session[:last_page] = request.env['HTTP_REFERER'] || podcast_path(@episode.podcast)
 		@search = Episode.search(params[:search])
 		if params[:search]
@@ -17,6 +18,6 @@ class EpisodesController < ApplicationController
 	def latest
 		@podcast = Podcast.find(params[:podcast])
 		@episode = @podcast.episodes.last
-		redirect_to :controller => :episodes, :action => :show, :id => @episode.number
+		redirect_to episode_url(@podcast, @episode)
 	end
 end
