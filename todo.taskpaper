@@ -6,6 +6,14 @@ Inbox:
 	- add settings
 	- add script to submit sitemap after episode posted?
 	- remove 'match' from routes @na @done
+	- add admin pages for blogroll @na @done(2013-04-11)
+	- add admin navbar @na @done(2013-04-11)
+	- add admin pages for settings @na
+	- add admin pages for users @na
+	- add admin pages for pages @na
+	- add admin pages for podcasts @na
+	- add admin pages for episodes @na
+	- remove active_admin @na
 Later:
 	- add exporter
 	- caching

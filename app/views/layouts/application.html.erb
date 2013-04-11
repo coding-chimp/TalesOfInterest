@@ -52,6 +52,19 @@
   </div>
   <div class="container">
 		<div class="row">
+      <div class="span11">
+      <% if current_admin_user %>
+        <ul class="nav nav-tabs">
+          <li class="<%= 'active' if params[:controller] == "blogrolls" %>"><%= link_to "Blogroll", blogrolls_path %></li>
+          <li class="<%= 'active' if params[:controller] == "pages" %>"><%= link_to "Pages" %></li>
+          <li class="<%= 'active' if params[:controller] == "podcasts" %>"><%= link_to "Podcasts" %></li>
+          <li class="<%= 'active' if params[:controller] == "settings" %>"><%= link_to "Settings" %></li>
+          <li class="<%= 'active' if params[:controller] == "users" %>"><%= link_to "Users" %></li>
+          <li class="pull-right"><%= link_to "Logout", destroy_admin_user_session_path %></li>
+          <li class="pull-right"><p><%= current_admin_user.email %></p></li>
+        </ul>
+      <% end %>
+      </div>
       <div class="span7">	<%= yield %></div>
 			<div class="span4">
         <div class="well">

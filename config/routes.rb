@@ -3,6 +3,14 @@ TalesOfInterest::Application.routes.draw do
   
   get 'sitemap', to: 'sitemap#index'
 
+  get    'admin/blogroll',          to: 'blogrolls#index',  as: :blogrolls
+  post   'admin/blogroll',          to: 'blogrolls#create'
+  get    'admin/blogroll/new',      to: 'blogrolls#new',    as: :new_blogroll_item
+  get    'admin/blogroll/:id/edit', to: 'blogrolls#edit',   as: :edit_blogroll_item
+  get    'admin/blogroll/:id',      to: 'blogrolls#show',   as: :blogroll
+  put    'admin/blogroll/:id',      to: 'blogrolls#update'
+  delete 'admin/blogroll/:id',      to: 'blogrolls#destroy'
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
