@@ -8,11 +8,11 @@ Inbox:
 	- remove 'match' from routes @na @done
 	- add admin pages for blogroll @na @done(2013-04-11)
 	- add admin navbar @na @done(2013-04-11)
-	- add admin pages for settings @na
 	- add admin pages for users @na
 	- add admin pages for pages @na @done(2013-04-11)
 	- add admin pages for podcasts @na @done(2013-04-11)
 	- add admin pages for episodes @na
+	- make the import work in the new admin pages @na
 	- remove active_admin @na
 Later:
 	- add exporter

@@ -1,7 +1,7 @@
 TalesOfInterest::Application.routes.draw do
   break if ARGV.join.include? 'assets:precompile'
   
-  get 'sitemap', to: 'sitemap#index'
+  get    'sitemap',                 to: 'sitemap#index'
 
   get    'admin/blogroll',          to: 'blogrolls#index',  as: :blogrolls
   post   'admin/blogroll',          to: 'blogrolls#create'
@@ -16,11 +16,11 @@ TalesOfInterest::Application.routes.draw do
   get    'admin/pages/new',         to: 'pages#new',        as: :new_page
   get    'admin/pages/:id/edit',    to: 'pages#edit',       as: :edit_page
   get    ':id',                     to: 'pages#show',       as: :page,
-         :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
+         constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
   put    ':id',                     to: 'pages#update',
-         :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
-  delete ':id',         to: 'pages#destroy',
-         :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
+         constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
+  delete ':id',                     to: 'pages#destroy',
+         constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
 
   get    'admin/podcasts',          to: 'podcasts#index',      as: :podcasts
   post   'admin/podcasts',          to: 'podcasts#create'
@@ -29,18 +29,16 @@ TalesOfInterest::Application.routes.draw do
   get    '/:id/feed',               to: 'podcasts#feed',       as: :podcast_feed,
          defaults: { format: 'rss' }
   get    ':id',                     to: 'podcasts#show',       as: :podcast,
-         :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
+         constraints: lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
   get    ':id(/page/:page)',        to: 'podcasts#show'
   put    ':id',                     to: 'podcasts#update',
-         :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
+         constraints: lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
   delete ':id',                     to: 'podcasts#destroy',
-         :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
+         constraints: lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
 
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-
-  root :to => "episodes#index"
 
   get "/" => "episodes#index", :as => :episodes
 
@@ -49,6 +47,8 @@ TalesOfInterest::Application.routes.draw do
   get ":podcast/latest" => "episodes#latest", :as => :latest
 
   get ":podcast/:id" => "episodes#show", :as => :episode
+
+  root to: 'episodes#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
