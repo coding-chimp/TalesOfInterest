@@ -31,7 +31,7 @@ xml.rss version: "2.0" do
       xml.item do
         xml.title episode.title
         xml.link episode_url(@podcast, episode)
-        xml.guid({:isPermalink => "false"}) episode_url(@podcast, episode)
+        xml.guid({:isPermalink => "false"}, episode_url(@podcast, episode))
         xml.pubDate episode.created_at.to_s(:rfc822)
         xml.description episode.description
         xml.enclosure :url => episode.file, :length => episode.file_size, :type => 'audio/x-m4a'
