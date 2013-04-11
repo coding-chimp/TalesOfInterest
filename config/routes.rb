@@ -1,7 +1,7 @@
 TalesOfInterest::Application.routes.draw do
   break if ARGV.join.include? 'assets:precompile'
   
-  match 'sitemap', to: 'sitemap#index', :via => [:get]
+  get 'sitemap', to: 'sitemap#index'
 
   ActiveAdmin.routes(self)
 
@@ -9,25 +9,25 @@ TalesOfInterest::Application.routes.draw do
 
   root :to => "episodes#index"
 
-  match "/:id" => "pages#show",
+  get "/:id" => "pages#show",
                 :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? },
                 :as => :page
 
-  match "/:id" => "podcasts#show",
+  get "/:id" => "podcasts#show",
                 :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? },
                 :as => :podcast
 
-  match "/:id(/page/:page)", :controller => 'podcasts', :action => 'show'
+  get "/:id(/page/:page)", :controller => 'podcasts', :action => 'show'
 
-  match "/:id/feed" => "podcasts#feed", :as => :podcast_feed, :defaults => { :format => 'rss' } 
+  get "/:id/feed" => "podcasts#feed", :as => :podcast_feed, :defaults => { :format => 'rss' } 
 
-  match "/" => "episodes#index", :as => :episodes
+  get "/" => "episodes#index", :as => :episodes
 
-  match "/(page/:page)", :controller => 'episodes', :action => 'index'
+  get "/(page/:page)", :controller => 'episodes', :action => 'index'
 
-  match ":podcast/latest" => "episodes#latest", :as => :latest
+  get ":podcast/latest" => "episodes#latest", :as => :latest
 
-  match ":podcast/:id" => "episodes#show", :as => :episode
+  get ":podcast/:id" => "episodes#show", :as => :episode
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

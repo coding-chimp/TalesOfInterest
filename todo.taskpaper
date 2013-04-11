@@ -1,16 +1,16 @@
 Inbox:
 	- change db to mysql
-	- add validations 
+	- add validations @na
 	- add Flattr button
 	- change podcast categories
 	- add settings
 	- add script to submit sitemap after episode posted?
-	- import sets podcast author @na @done(2013-02-23)
-	- let import pass through html @na
+	- remove 'match' from routes @na @done
 Later:
 	- add exporter
 	- caching
 Archive:
+	- import sets podcast author @na @done(2013-02-23) @project(Inbox)
 	- redirect /:podcast/latest zu der letzten episode @na @done(2013-02-13) @project(Inbox)
 	- add sitemap @na @done(2013-02-13) @project(Inbox)
 	- update episodes for feed @na @done(2013-02-13) @project(Inbox)
