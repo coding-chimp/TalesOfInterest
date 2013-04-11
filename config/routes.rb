@@ -22,19 +22,25 @@ TalesOfInterest::Application.routes.draw do
   delete ':id',         to: 'pages#destroy',
          :constraints => lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
 
+  get    'admin/podcasts',          to: 'podcasts#index',      as: :podcasts
+  post   'admin/podcasts',          to: 'podcasts#create'
+  get    'admin/podcasts/new',      to: 'podcasts#new',        as: :new_podcast
+  get    'admin/podcasts/:id/edit', to: 'podcasts#edit',       as: :edit_podcast
+  get    '/:id/feed',               to: 'podcasts#feed',       as: :podcast_feed,
+         defaults: { format: 'rss' }
+  get    ':id',                     to: 'podcasts#show',       as: :podcast,
+         :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
+  get    ':id(/page/:page)',        to: 'podcasts#show'
+  put    ':id',                     to: 'podcasts#update',
+         :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
+  delete ':id',                     to: 'podcasts#destroy',
+         :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   root :to => "episodes#index"
-
-  get "/:id" => "podcasts#show",
-                :constraints => lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? },
-                :as => :podcast
-
-  get "/:id(/page/:page)", :controller => 'podcasts', :action => 'show'
-
-  get "/:id/feed" => "podcasts#feed", :as => :podcast_feed, :defaults => { :format => 'rss' } 
 
   get "/" => "episodes#index", :as => :episodes
 

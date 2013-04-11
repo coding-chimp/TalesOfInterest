@@ -1,0 +1,41 @@
+<%- model_class = Podcast.new.class -%>
+
+<div class="well">
+	<h2>Podcasts</h2>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Artwork</th>
+				<th>Name</th>
+				<th># Episodes</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for podcast in @podcasts do %>
+				<tr>
+					<td><%= image_tag podcast.artwork, :height => '100' if podcast.artwork? %></td>
+					<td><%= podcast.name %></td>
+					<td><%= podcast.episodes.count %></td>
+					<td>
+						<%= link_to "Episodes", "#", :class => 'btn btn-mini' %>
+						<%= link_to "New Episode", "#", :class => 'btn btn-primary btn-mini' %>
+						<%= link_to "Edit", edit_podcast_path(podcast), :class => 'btn btn-info btn-mini' %>
+						<%= link_to t('.destroy', :default => t("helpers.links.delete")), podcast_path(podcast),
+  	                                	:method => :delete, :confirm => t('.confirm', 
+  	                                	:default => t("helpers.links.confirm", :default => 'Are you sure?')),
+  	                                	:class => 'btn btn-mini btn-danger' %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<p class="pull-right">
+  	<%= link_to t('.new', :default => t("helpers.links.new")), new_podcast_path, :class => 'btn btn-primary' %>
+	</p>
+
+	<div class="clearfix"></div>
+
+</div>

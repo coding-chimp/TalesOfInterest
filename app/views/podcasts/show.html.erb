@@ -3,9 +3,11 @@
 <div class="hero-unit">
 	<ul class="thumbnails">
 		<li class="span2">
-			<div class="thumbnail">
-				<%= image_tag(@podcast.artwork) %>
-			</div>
+			<% if @podcast.artwork? %>
+				<div class="thumbnail">
+					<%= image_tag @podcast.artwork %>
+				</div>
+			<% end %>
 		</li>
 		<li class="span3">
 			<h2><%= @podcast.name %></h2>
