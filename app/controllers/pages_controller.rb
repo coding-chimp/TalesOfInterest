@@ -1,26 +1,16 @@
 class PagesController < ApplicationController
+	before_filter :search, :only => [:index, :show, :new, :edit]
+
 	def index
 		@pages = Page.order("titel asc")
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def show
 		@page = Page.find(params[:id])
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def new
 		@page = Page.new
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def create
@@ -35,10 +25,6 @@ class PagesController < ApplicationController
 
 	def edit
 		@page = Page.find(params[:id])
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def update
@@ -55,5 +41,14 @@ class PagesController < ApplicationController
 		@page = Page.find(params[:id])
 		@page.destroy
 		redirect_to pages_path
+	end
+
+	private
+
+	def search
+		@search = Episode.search(params[:search])
+		if params[:search]
+			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
+		end
 	end
 end

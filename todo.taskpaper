@@ -10,6 +10,7 @@ Inbox:
 	- make the import work in the new admin pages @na
 	- remove active_admin @na
 	- add page_titles
+	- tidy up search params in controllers @na @done(2013-04-12)
 Later:
 	- add exporter
 	- caching

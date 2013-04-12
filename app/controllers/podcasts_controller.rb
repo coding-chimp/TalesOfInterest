@@ -1,27 +1,17 @@
 class PodcastsController < ApplicationController
+	before_filter :search, :only => [:index, :show, :new, :edit]
+
 	def index
 		@podcasts = Podcast.order("name asc")
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def show
 		@podcast = Podcast.find(params[:id])
 		@episodes = @podcast.episodes.order("created_at desc").page(params[:page]).per(5)
-		@search = @podcast.episodes.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def new
 		@podcast = Podcast.new
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def create
@@ -36,10 +26,6 @@ class PodcastsController < ApplicationController
 
 	def edit
 		@podcast = Podcast.find(params[:id])
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def update
@@ -61,5 +47,14 @@ class PodcastsController < ApplicationController
 	def feed
 		@podcast = Podcast.find(params[:id])
 		@episodes = @podcast.episodes.order("created_at desc")
+	end
+
+	private
+
+	def search
+		@search = Episode.search(params[:search])
+		if params[:search]
+			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
+		end
 	end
 end

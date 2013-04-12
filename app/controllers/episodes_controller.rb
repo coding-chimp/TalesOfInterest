@@ -1,4 +1,6 @@
 class EpisodesController < ApplicationController
+	before_filter :search, :only => [:edit, :show, :new]
+
 	def index
 		@search = Episode.search(params[:search])
 		@episodes = @search.order("created_at desc").page(params[:page]).per(5)
@@ -15,20 +17,12 @@ class EpisodesController < ApplicationController
 		@podcast = Podcast.find(params[:podcast])
 		@episode = @podcast.episodes.find(params[:id])
 		session[:last_page] = request.env['HTTP_REFERER'] || podcast_path(@episode.podcast)
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def new
 		@podcast = Podcast.find(params[:podcast])
 		@episode = Episode.new
 		@episode.podcast = @podcast
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def create
@@ -44,10 +38,6 @@ class EpisodesController < ApplicationController
 	def edit
 		@podcast = Podcast.find(params[:podcast])
 		@episode = @podcast.episodes.find(params[:id])
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def update
@@ -72,5 +62,14 @@ class EpisodesController < ApplicationController
 		@podcast = Podcast.find(params[:podcast])
 		@episode = @podcast.episodes.last
 		redirect_to episode_url(@podcast, @episode)
+	end
+
+	private
+
+	def search
+		@search = Episode.search(params[:search])
+		if params[:search]
+			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
+		end
 	end
 end

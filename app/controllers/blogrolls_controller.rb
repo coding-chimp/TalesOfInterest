@@ -1,18 +1,12 @@
 class BlogrollsController < ApplicationController
+	before_filter :search, :only => [:index, :new, :edit]
+
 	def index
 		@blogroll = Blogroll.order("name asc")
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def new
 		@item = Blogroll.new
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def create
@@ -27,10 +21,6 @@ class BlogrollsController < ApplicationController
 
 	def edit
 		@item = Blogroll.find(params[:id])
-		@search = Episode.search(params[:search])
-		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
-		end
 	end
 
 	def update
@@ -47,5 +37,14 @@ class BlogrollsController < ApplicationController
 		@item = Blogroll.find(params[:id])
 		@item.destroy
 		redirect_to blogrolls_path
+	end
+
+	private
+
+	def search
+		@search = Episode.search(params[:search])
+		if params[:search]
+			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
+		end
 	end
 end
