@@ -1,22 +1,22 @@
 Inbox:
-	- change db to mysql
-	- add validations @na
+	- add validations
 	- add Flattr button @done(2013-04-12)
 	- change podcast categories
 	- add settings
-	- add script to submit sitemap after episode posted?
 	- add admin pages for users @na
 	- add admin pages for episodes @na @done(2013-04-12)
 	- make episode import work in the new admin pages @na @done(2013-04-12)
-	- make page import work in the new admin pages @na
-	- remove active_admin @na
+	- make page import work in the new admin pages @na @done(2013-04-12)
+	- change from active admin to devise @na
 	- add page_titles
 	- tidy up search params in controllers @na @done(2013-04-12)
-	- change media player to podlove
 	- add notices to views
 Later:
 	- add exporter
 	- caching
+	- change media player to podlove
+	- add script to submit sitemap after episode posted?
+	- db calls im layout auf nötige parameter beschränken
 Archive:
 	- remove 'match' from routes @na @done @project(Inbox)
 	- add admin pages for blogroll @na @done(2013-04-11) @project(Inbox)
