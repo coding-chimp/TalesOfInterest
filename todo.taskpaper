@@ -1,7 +1,7 @@
 Inbox:
 	- change db to mysql
 	- add validations @na
-	- add Flattr button
+	- add Flattr button @done(2013-04-12)
 	- change podcast categories
 	- add settings
 	- add script to submit sitemap after episode posted?
