@@ -1,5 +1,6 @@
 class PodcastsController < ApplicationController
-	before_filter :search, :only => [:index, :show, :new, :edit]
+	include ImportHelper
+	before_filter :search, :only => [:index, :show, :new, :edit, :import_form, :import_xml]
 
 	def index
 		@podcasts = Podcast.order("name asc")
@@ -40,8 +41,24 @@ class PodcastsController < ApplicationController
 
 	def destroy
 		@podcast = Podcast.find(params[:id])
+		@slug = FriendlyId::Slug.find_by_slug(@podcast.slug)
+		@slug.destroy
 		@podcast.destroy
 		redirect_to podcasts_path
+	end
+
+	def import_form
+
+	end
+
+	def import_xml
+		if params[:import] == nil
+			flash[:error] = "Choose a xml file."
+			render 'import_form'
+		else
+			import_episodes(params[:import][:file])
+    	redirect_to podcasts_path, :notice => "Episodes imported successfully!"
+    end
 	end
 
 	def feed

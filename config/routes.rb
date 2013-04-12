@@ -25,6 +25,8 @@ TalesOfInterest::Application.routes.draw do
   get    'admin/podcasts',              to: 'podcasts#index',         as: :podcasts
   put    'admin/podcasts',              to: 'podcasts#create'
   get    'admin/podcasts/new',          to: 'podcasts#new',           as: :new_podcast
+  get    'admin/podcasts/import',       to: 'podcasts#import_form',   as: :import_podcast
+  post   'admin/podcasts/import',       to: 'podcasts#import_xml'
   get    'admin/podcasts/:id/edit',     to: 'podcasts#edit',          as: :edit_podcast
   get    '/:id/feed',                   to: 'podcasts#feed',          as: :podcast_feed,
          defaults: { format: 'rss' }
@@ -46,7 +48,6 @@ TalesOfInterest::Application.routes.draw do
   get    'admin/:podcast/episodes',     to: 'episodes#podcast_index', as: :podcast_episodes
   get    'admin/:podcast/episodes/new', to: 'episodes#new',           as: :new_podcast_episode
   get    'admin/:podcast/:id/edit',     to: 'episodes#edit',          as: :edit_episode
-
   
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config

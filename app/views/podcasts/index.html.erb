@@ -3,6 +3,13 @@
 <div class="well">
 	<h2>Podcasts</h2>
 
+	<% if notice %>
+		<br />
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+	<% end %>
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -31,6 +38,10 @@
 			<% end %>
 		</tbody>
 	</table>
+
+	<p class="pull-left">
+  	<%= link_to "Import", import_podcast_path, :class => 'btn btn-info' %>
+	</p>
 
 	<p class="pull-right">
   	<%= link_to t('.new', :default => t("helpers.links.new")), new_podcast_path, :class => 'btn btn-primary' %>
