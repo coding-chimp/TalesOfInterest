@@ -5,21 +5,21 @@ Inbox:
 	- change podcast categories
 	- add settings
 	- add script to submit sitemap after episode posted?
-	- remove 'match' from routes @na @done
-	- add admin pages for blogroll @na @done(2013-04-11)
-	- add admin navbar @na @done(2013-04-11)
 	- add admin pages for users @na
-	- add admin pages for pages @na @done(2013-04-11)
-	- add admin pages for podcasts @na @done(2013-04-11)
-	- add admin pages for episodes @na
+	- add admin pages for episodes @na @done(2013-04-12)
 	- make the import work in the new admin pages @na
 	- remove active_admin @na
-	- change media player to podlove
+	- add page_titles
 Later:
 	- add exporter
 	- caching
 	- search parameter in den controllern auslagern
 Archive:
+	- remove 'match' from routes @na @done @project(Inbox)
+	- add admin pages for blogroll @na @done(2013-04-11) @project(Inbox)
+	- add admin navbar @na @done(2013-04-11) @project(Inbox)
+	- add admin pages for pages @na @done(2013-04-11) @project(Inbox)
+	- add admin pages for podcasts @na @done(2013-04-11) @project(Inbox)
 	- import sets podcast author @na @done(2013-02-23) @project(Inbox)
 	- redirect /:podcast/latest zu der letzten episode @na @done(2013-02-13) @project(Inbox)
 	- add sitemap @na @done(2013-02-13) @project(Inbox)

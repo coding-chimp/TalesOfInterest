@@ -1,52 +1,55 @@
 TalesOfInterest::Application.routes.draw do
   break if ARGV.join.include? 'assets:precompile'
   
-  get    'sitemap',                 to: 'sitemap#index'
+  get    'sitemap',                     to: 'sitemap#index'
 
-  get    'admin/blogroll',          to: 'blogrolls#index',  as: :blogrolls
-  post   'admin/blogroll',          to: 'blogrolls#create'
-  get    'admin/blogroll/new',      to: 'blogrolls#new',    as: :new_blogroll_item
-  get    'admin/blogroll/:id/edit', to: 'blogrolls#edit',   as: :edit_blogroll_item
-  get    'admin/blogroll/:id',      to: 'blogrolls#show',   as: :blogroll
-  put    'admin/blogroll/:id',      to: 'blogrolls#update'
-  delete 'admin/blogroll/:id',      to: 'blogrolls#destroy'
+  get    'admin/blogroll',              to: 'blogrolls#index',        as: :blogrolls
+  put    'admin/blogroll',              to: 'blogrolls#create'
+  get    'admin/blogroll/new',          to: 'blogrolls#new',          as: :new_blogroll_item
+  get    'admin/blogroll/:id/edit',     to: 'blogrolls#edit',         as: :edit_blogroll_item
+  get    'admin/blogroll/:id',          to: 'blogrolls#show',         as: :blogroll
+  put    'admin/blogroll/:id',          to: 'blogrolls#update'
+  delete 'admin/blogroll/:id',          to: 'blogrolls#destroy'
 
-  get    'admin/pages',             to: 'pages#index',      as: :pages
-  post   'admin/pages',             to: 'pages#create'
-  get    'admin/pages/new',         to: 'pages#new',        as: :new_page
-  get    'admin/pages/:id/edit',    to: 'pages#edit',       as: :edit_page
-  get    ':id',                     to: 'pages#show',       as: :page,
+  get    'admin/pages',                 to: 'pages#index',            as: :pages
+  put    'admin/pages',                 to: 'pages#create'
+  get    'admin/pages/new',             to: 'pages#new',              as: :new_page
+  get    'admin/pages/:id/edit',        to: 'pages#edit',             as: :edit_page
+  get    ':id',                         to: 'pages#show',             as: :page,
          constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
-  put    ':id',                     to: 'pages#update',
+  put    ':id',                         to: 'pages#update',
          constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
-  delete ':id',                     to: 'pages#destroy',
+  delete ':id',                         to: 'pages#destroy',
          constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
 
-  get    'admin/podcasts',          to: 'podcasts#index',      as: :podcasts
-  post   'admin/podcasts',          to: 'podcasts#create'
-  get    'admin/podcasts/new',      to: 'podcasts#new',        as: :new_podcast
-  get    'admin/podcasts/:id/edit', to: 'podcasts#edit',       as: :edit_podcast
-  get    '/:id/feed',               to: 'podcasts#feed',       as: :podcast_feed,
+  get    'admin/podcasts',              to: 'podcasts#index',         as: :podcasts
+  put    'admin/podcasts',              to: 'podcasts#create'
+  get    'admin/podcasts/new',          to: 'podcasts#new',           as: :new_podcast
+  get    'admin/podcasts/:id/edit',     to: 'podcasts#edit',          as: :edit_podcast
+  get    '/:id/feed',                   to: 'podcasts#feed',          as: :podcast_feed,
          defaults: { format: 'rss' }
-  get    ':id',                     to: 'podcasts#show',       as: :podcast,
+  get    ':id',                         to: 'podcasts#show',          as: :podcast,
          constraints: lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
-  get    ':id(/page/:page)',        to: 'podcasts#show'
-  put    ':id',                     to: 'podcasts#update',
+  get    ':id(/page/:page)',            to: 'podcasts#show'
+  put    ':id',                         to: 'podcasts#update',
          constraints: lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
-  delete ':id',                     to: 'podcasts#destroy',
+  delete ':id',                         to: 'podcasts#destroy',
          constraints: lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
 
+  get    '/',                           to: 'episodes#index',         as: :episodes
+  put    '/',                           to: 'episodes#create'
+  get    '/(page/:page)',               to: 'episodes#index'
+  get    ':podcast/:id',                to: 'episodes#show',          as: :episode
+  put    'podcasts/:podcast/:id',       to: 'episodes#update'
+  delete ':podcast/:id',                to: 'episodes#destroy'
+  get    ':podcast/latest',             to: 'episodes#latest'
+  get    'admin/:podcast/episodes',     to: 'episodes#podcast_index', as: :podcast_episodes
+  get    'admin/:podcast/episodes/new', to: 'episodes#new',           as: :new_podcast_episode
+  get    'admin/:podcast/:id/edit',     to: 'episodes#edit',          as: :edit_episode
+
+  
   ActiveAdmin.routes(self)
-
   devise_for :admin_users, ActiveAdmin::Devise.config
-
-  get "/" => "episodes#index", :as => :episodes
-
-  get "/(page/:page)", :controller => 'episodes', :action => 'index'
-
-  get ":podcast/latest" => "episodes#latest", :as => :latest
-
-  get ":podcast/:id" => "episodes#show", :as => :episode
 
   root to: 'episodes#index'
 

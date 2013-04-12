@@ -1,0 +1,45 @@
+<%= simple_form_for [@podcast, @episode], :url => { :action => :update }, :html => { :class => 'form-horizontal' } do |f| %>
+  <% if notification = f.error_notification %>
+      <%= notification %>
+  <% end %>
+
+  <%= f.association :podcast, prompt: "Select Podcast" %>
+
+  <% if f.object.new_record? %>
+    <%= f.input :number, input_html: { value: @episode.set_episode_number } %>
+  <% else %>
+    <%= f.input :number %>
+  <% end %>
+
+  <%= f.input :title %>
+
+  <%= f.input :description %>
+
+  <%= f.input :playtime, :hint => "Formatted as: HH:MM:SS, H:MM:SS, MM:SS, or M:SS" %>
+
+  <% if f.object.new_record? %>
+    <%= f.input :file, input_html: { value: @episode.set_file_url } %>
+  <% else %>
+    <%= f.input :file %>
+  <% end %>
+
+  <%= f.input :file_size %>
+
+  <%= f.input :explicit %>
+
+  <%= f.input :chapter_marks, as: :text %>
+
+  <%= f.fields_for :show_notes do |builder| %>
+    <%= render "show_note_fields", f: builder %>
+  <% end %>
+
+  <div class="control-group">
+    <%= link_to_add_fields "Add Show Note", f, :show_notes %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                podcast_episodes_path(@podcast), :class => 'btn' %>
+  </div>
+<% end %>

@@ -15,12 +15,12 @@
 		<tbody>
 			<% for podcast in @podcasts do %>
 				<tr>
-					<td><%= image_tag podcast.artwork, :height => '100' if podcast.artwork? %></td>
+					<td><%= image_tag podcast.artwork, height: '80', width: '80' if podcast.artwork? %></td>
 					<td><%= podcast.name %></td>
 					<td><%= podcast.episodes.count %></td>
 					<td>
-						<%= link_to "Episodes", "#", :class => 'btn btn-mini' %>
-						<%= link_to "New Episode", "#", :class => 'btn btn-primary btn-mini' %>
+						<%= link_to "Episodes", podcast_episodes_path(podcast), :class => 'btn btn-mini' %>
+						<%= link_to "New Episode", new_podcast_episode_path(podcast), :class => 'btn btn-primary btn-mini' %>
 						<%= link_to "Edit", edit_podcast_path(podcast), :class => 'btn btn-info btn-mini' %>
 						<%= link_to t('.destroy', :default => t("helpers.links.delete")), podcast_path(podcast),
   	                                	:method => :delete, :confirm => t('.confirm', 
