@@ -47,10 +47,6 @@ class PodcastsController < ApplicationController
 		redirect_to podcasts_path
 	end
 
-	def import_form
-
-	end
-
 	def import_xml
 		if params[:import] == nil
 			flash[:error] = "Choose a xml file."

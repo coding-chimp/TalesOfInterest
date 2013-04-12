@@ -3,6 +3,13 @@
 <div class="well">
 	<h2>Pages</h2>
 
+	<% if notice %>
+		<br />
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+	<% end %>
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -27,6 +34,10 @@
 			<% end %>
 		</tbody>
 	</table>
+
+	<p class="pull-left">
+  	<%= link_to "Import", import_page_path, :class => 'btn btn-info' %>
+	</p>
 
 	<p class="pull-right">
   	<%= link_to t('.new', :default => t("helpers.links.new")), new_page_path, :class => 'btn btn-primary' %>

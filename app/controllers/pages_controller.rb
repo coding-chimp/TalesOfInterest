@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-	before_filter :search, :only => [:index, :show, :new, :edit]
+	include ImportHelper
+	before_filter :search, :only => [:index, :show, :new, :edit, :import_form, :import_xml]
 
 	def index
 		@pages = Page.order("titel asc")
@@ -39,8 +40,20 @@ class PagesController < ApplicationController
 
 	def destroy
 		@page = Page.find(params[:id])
+		@slug = FriendlyId::Slug.find_by_slug(@page.slug)
+		@slug.destroy
 		@page.destroy
 		redirect_to pages_path
+	end
+
+	def import_xml
+		if params[:import] == nil
+			flash[:error] = "Choose a xml file."
+			render 'import_form'
+		else
+			import_pages(params[:import][:file])
+    	redirect_to pages_path, :notice => "Pages imported successfully!"
+    end
 	end
 
 	private

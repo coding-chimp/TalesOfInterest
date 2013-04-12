@@ -14,6 +14,8 @@ TalesOfInterest::Application.routes.draw do
   get    'admin/pages',                 to: 'pages#index',            as: :pages
   put    'admin/pages',                 to: 'pages#create'
   get    'admin/pages/new',             to: 'pages#new',              as: :new_page
+  get    'admin/pages/import',          to: 'pages#import_form',      as: :import_page
+  post   'admin/pages/import',          to: 'pages#import_xml'
   get    'admin/pages/:id/edit',        to: 'pages#edit',             as: :edit_page
   get    ':id',                         to: 'pages#show',             as: :page,
          constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }

@@ -34,4 +34,12 @@ module ImportHelper
   	  end
   	end
 	end
+
+  def import_pages(file)
+    items = Nokogiri::XML(params[:import][:file]).xpath("//channel//item")
+    items.each do |item|
+      Page.create!( :titel => item.at_xpath("title").text,
+                    :content => item.at_xpath("content:encoded").text )
+    end
+  end
 end
