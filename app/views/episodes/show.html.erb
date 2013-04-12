@@ -35,7 +35,7 @@
 			<a href="#" class="hide">[hide chapters]</a>
 			<a href="#" class="show">[show chapters]</a>
 			<ul class="chapterlist">
-				<% @episode.chapters.each do |chapter| %>
+				<% @episode.chapters.order("timestamp asc").each do |chapter| %>
 					<li onclick='jwplayer().seek(<%= chapter.timestamp %>)'><a href="#"><%= "#{chapter.pretty_time} #{chapter.title}" %></a></li>
 				<% end %>
 			</ul>
