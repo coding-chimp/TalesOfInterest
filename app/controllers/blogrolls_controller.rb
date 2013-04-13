@@ -1,5 +1,6 @@
 class BlogrollsController < ApplicationController
-	before_filter :search, :only => [:index, :new, :edit]
+	before_filter :search, only: [:index, :new, :edit]
+	before_filter :authenticate_user!
 
 	def index
 		@blogroll = Blogroll.order("name asc")

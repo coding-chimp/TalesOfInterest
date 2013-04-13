@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 	include ImportHelper
-	before_filter :search, :only => [:index, :show, :new, :edit, :import_form, :import_xml]
+	before_filter :search, :only: [:index, :show, :new, :edit, :import_form, :import_xml]
+	before_filter :authenticate_user!, except: [:show]
 
 	def index
 		@pages = Page.order("titel asc")

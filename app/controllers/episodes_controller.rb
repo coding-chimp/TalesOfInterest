@@ -1,5 +1,6 @@
 class EpisodesController < ApplicationController
-	before_filter :search, :only => [:edit, :show, :new]
+	before_filter :search, only: [:edit, :show, :new]
+	before_filter :authenticate_user!, except: [:index, :show, :latest]
 
 	def index
 		@search = Episode.search(params[:search])
