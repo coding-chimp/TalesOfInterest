@@ -3,6 +3,10 @@ module ApplicationHelper
  		Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true), :space_after_headers => true, :autolink => true).render(text).html_safe
 	end
 
+	def title(page_title)
+		content_for :title, page_title.to_s
+	end
+
 	def link_to_add_fields(name, f, association)
 		new_object = f.object.send(association).klass.new
 		id = new_object.object_id

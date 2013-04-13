@@ -1,23 +1,24 @@
 Inbox:
 	- add validations
-	- add Flattr button @done(2013-04-12)
 	- change podcast categories
 	- add settings
 	- add admin pages for users @na
-	- add admin pages for episodes @na @done(2013-04-12)
-	- make episode import work in the new admin pages @na @done(2013-04-12)
-	- make page import work in the new admin pages @na @done(2013-04-12)
 	- change from active admin to devise @na
-	- add page_titles
-	- tidy up search params in controllers @na @done(2013-04-12)
 	- add notices to views
+	- add page_titles @done(2013-04-13)
 Later:
 	- add exporter
 	- caching
 	- change media player to podlove
 	- add script to submit sitemap after episode posted?
 	- db calls im layout auf nötige parameter beschränken
+	- episode scheduling
 Archive:
+	- add Flattr button @done(2013-04-12) @project(Inbox)
+	- add admin pages for episodes @na @done(2013-04-12) @project(Inbox)
+	- make episode import work in the new admin pages @na @done(2013-04-12) @project(Inbox)
+	- make page import work in the new admin pages @na @done(2013-04-12) @project(Inbox)
+	- tidy up search params in controllers @na @done(2013-04-12) @project(Inbox)
 	- remove 'match' from routes @na @done @project(Inbox)
 	- add admin pages for blogroll @na @done(2013-04-11) @project(Inbox)
 	- add admin navbar @na @done(2013-04-11) @project(Inbox)
