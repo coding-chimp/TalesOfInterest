@@ -20,10 +20,10 @@ end
 
 gem 'jquery-rails'
 
-# Gems used for ActiveAdmin implementation
-gem "formtastic", "~> 2.1.1"
-gem 'activeadmin'
-gem 'sass-rails',   '~> 3.2.3'
+# Users
+gem 'devise'
+
+# Search
 gem 'meta_search',  '>= 1.1.0.pre'
 
 # Pretty URLs

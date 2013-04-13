@@ -1,6 +1,13 @@
 TalesOfInterest::Application.routes.draw do
   break if ARGV.join.include? 'assets:precompile'
+
+  as :user do
+    get "/login" => "sessions#new"
+  end
   
+  devise_for :users, path_names: { sign_in: "login", sign_out: "logout" }, 
+             :controllers => { sessions: 'sessions' }
+
   get    'sitemap',                     to: 'sitemap#index'
 
   get    'admin/blogroll',              to: 'blogrolls#index',        as: :blogrolls
@@ -43,16 +50,15 @@ TalesOfInterest::Application.routes.draw do
   get    '/',                           to: 'episodes#index',         as: :episodes
   post   '/',                           to: 'episodes#create'
   get    '/(page/:page)',               to: 'episodes#index'
-  get    ':podcast/:id',                to: 'episodes#show',          as: :episode
+  get    ':podcast/:id',                to: 'episodes#show',          as: :episode,
+         constraints: lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
   put    'podcasts/:podcast/:id',       to: 'episodes#update'
-  delete ':podcast/:id',                to: 'episodes#destroy'
+  delete ':podcast/:id',                to: 'episodes#destroy',
+         constraints: lambda { |r| Podcast.find_by_name(r.params[:podcast].capitalize).present? }
   get    ':podcast/latest',             to: 'episodes#latest'
   get    'admin/:podcast/episodes',     to: 'episodes#podcast_index', as: :podcast_episodes
   get    'admin/:podcast/episodes/new', to: 'episodes#new',           as: :new_podcast_episode
   get    'admin/:podcast/:id/edit',     to: 'episodes#edit',          as: :edit_episode
-  
-  ActiveAdmin.routes(self)
-  devise_for :admin_users, ActiveAdmin::Devise.config
 
   root to: 'episodes#index'
 
