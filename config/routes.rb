@@ -4,7 +4,7 @@ TalesOfInterest::Application.routes.draw do
   get    'sitemap',                     to: 'sitemap#index'
 
   get    'admin/blogroll',              to: 'blogrolls#index',        as: :blogrolls
-  put    'admin/blogroll',              to: 'blogrolls#create'
+  post   'admin/blogroll',              to: 'blogrolls#create'
   get    'admin/blogroll/new',          to: 'blogrolls#new',          as: :new_blogroll_item
   get    'admin/blogroll/:id/edit',     to: 'blogrolls#edit',         as: :edit_blogroll_item
   get    'admin/blogroll/:id',          to: 'blogrolls#show',         as: :blogroll
@@ -12,7 +12,7 @@ TalesOfInterest::Application.routes.draw do
   delete 'admin/blogroll/:id',          to: 'blogrolls#destroy'
 
   get    'admin/pages',                 to: 'pages#index',            as: :pages
-  put    'admin/pages',                 to: 'pages#create'
+  post   'admin/pages',                 to: 'pages#create'
   get    'admin/pages/new',             to: 'pages#new',              as: :new_page
   get    'admin/pages/import',          to: 'pages#import_form',      as: :import_page
   post   'admin/pages/import',          to: 'pages#import_xml'
@@ -25,7 +25,7 @@ TalesOfInterest::Application.routes.draw do
          constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
 
   get    'admin/podcasts',              to: 'podcasts#index',         as: :podcasts
-  put    'admin/podcasts',              to: 'podcasts#create'
+  post   'admin/podcasts',              to: 'podcasts#create'
   get    'admin/podcasts/new',          to: 'podcasts#new',           as: :new_podcast
   get    'admin/podcasts/import',       to: 'podcasts#import_form',   as: :import_podcast
   post   'admin/podcasts/import',       to: 'podcasts#import_xml'
@@ -41,7 +41,7 @@ TalesOfInterest::Application.routes.draw do
          constraints: lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
 
   get    '/',                           to: 'episodes#index',         as: :episodes
-  put    '/',                           to: 'episodes#create'
+  post   '/',                           to: 'episodes#create'
   get    '/(page/:page)',               to: 'episodes#index'
   get    ':podcast/:id',                to: 'episodes#show',          as: :episode
   put    'podcasts/:podcast/:id',       to: 'episodes#update'
