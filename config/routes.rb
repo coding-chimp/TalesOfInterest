@@ -51,7 +51,7 @@ TalesOfInterest::Application.routes.draw do
   post   '/',                           to: 'episodes#create'
   get    '/(page/:page)',               to: 'episodes#index'
   get    ':podcast/:id',                to: 'episodes#show',          as: :episode,
-         constraints: lambda { |r| Podcast.find_by_name(r.params[:id].capitalize).present? }
+         constraints: lambda { |r| Podcast.find_by_name(r.params[:podcast].capitalize).present? }
   put    'podcasts/:podcast/:id',       to: 'episodes#update'
   delete ':podcast/:id',                to: 'episodes#destroy',
          constraints: lambda { |r| Podcast.find_by_name(r.params[:podcast].capitalize).present? }

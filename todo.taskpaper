@@ -3,7 +3,7 @@ Inbox:
 	- change podcast categories
 	- add settings
 	- add admin pages for users @na
-	- change from active admin to devise @na
+	- change from active admin to devise @na @done(2013-04-13)
 	- add notices to views
 	- add page_titles @done(2013-04-13)
 Later:
