@@ -1,4 +1,3 @@
-<%= simple_form_for [@podcast, @episode], :url => { :action => :update }, :html => { :class => 'form-horizontal' } do |f| %>
   <% if notification = f.error_notification %>
       <%= notification %>
   <% end %>
@@ -42,4 +41,3 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 podcast_episodes_path(@podcast), :class => 'btn' %>
   </div>
-<% end %>
