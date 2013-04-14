@@ -4,10 +4,18 @@ xml.rss version: "2.0" do
     xml.title @podcast.name
     xml.link podcast_url(@podcast)
     xml.description @podcast.description
-    xml.language "de-DE"
+    if @settings.feed_language.empty?
+        xml.language "en-us"
+    else
+        xml.language @settings.feed_language
+    end
     xml.pubDate @episodes.count > 0 ? @episodes.first.created_at.to_s(:rfc822) : @podcast.created_at.to_s(:rfc822)
     xml.lastBuildDate @episodes.count > 0 ? @episodes.first.created_at.to_s(:rfc822) : @podcast.created_at.to_s(:rfc822)
-    xml.itunes :author, @podcast.author
+    if @settings.feed_author.empty?
+        xml.itunes :author, @settings.site_name
+    else
+        xml.itunes :author, @settings.feed_author
+    end
     xml.itunes :summary, @podcast.description
     xml.itunes :subtitle, @podcast.description
     xml.itunes :keywords, @podcast.keywords
@@ -19,7 +27,7 @@ xml.rss version: "2.0" do
     xml.itunes :image, :href => @podcast.artwork
     xml.itunes :owner do
       xml.itunes :name, @podcast.author
-      xml.itunes :email, 'mail@talesofinterest.de'
+      xml.itunes :email, @settings.feed_email
     end
     xml.itunes :block, 'no'
 
@@ -29,7 +37,7 @@ xml.rss version: "2.0" do
 
     @episodes.each do |episode|
       xml.item do
-        xml.title episode.title
+        xml.title "#{@podcast.name} #{episode.num}: #{episode.title}"
         xml.link episode_url(@podcast, episode)
         xml.guid({:isPermalink => "false"}, episode_url(@podcast, episode))
         xml.pubDate episode.created_at.to_s(:rfc822)

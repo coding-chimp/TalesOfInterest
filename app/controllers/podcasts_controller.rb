@@ -8,8 +8,9 @@ class PodcastsController < ApplicationController
 	end
 
 	def show
+		ppp = Settings.first.posts_per_page
 		@podcast = Podcast.find(params[:id])
-		@episodes = @podcast.episodes.order("created_at desc").page(params[:page]).per(5)
+		@episodes = @podcast.episodes.order("created_at desc").page(params[:page]).per(ppp)
 	end
 
 	def new
@@ -59,6 +60,7 @@ class PodcastsController < ApplicationController
 	end
 
 	def feed
+		@settings = Settings.first
 		@podcast = Podcast.find(params[:id])
 		@episodes = @podcast.episodes.order("created_at desc")
 	end

@@ -1,9 +1,11 @@
 Inbox:
 	- add validations
 	- change podcast categories
-	- add settings @na
+	- add settings @na @done(2013-04-14)
 	- add admin pages for users @na @done(2013-04-14)
 	- add notices to views
+	- implement favicon from settings
+	- implement google analytics
 Later:
 	- add exporter
 	- caching
@@ -11,6 +13,7 @@ Later:
 	- add script to submit sitemap after episode posted?
 	- db calls im layout auf nötige parameter beschränken
 	- episode scheduling
+	- allow pages in footer
 Archive:
 	- change from active admin to devise @na @done(2013-04-13) @project(Inbox)
 	- add page_titles @done(2013-04-13) @project(Inbox)

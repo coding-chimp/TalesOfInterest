@@ -1,0 +1,46 @@
+<% title "Settings" %>
+
+<h2>Configuration</h2>
+	
+<%= simple_form_for @settings, :url => { :action => :update }, :html => { :class => 'form-horizontal' } do |f| %>
+	<% if alert %>
+    <div class="alert alert-error">
+      <%= alert %>
+    </div>
+  <% end %>
+  <% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+  <% end %>
+	
+	<%= f.input :site_name, label: 'Site Name' %>
+
+	<%= f.input :posts_per_page, hint: 'How many episodes should be shown per page?' %>
+	
+	<%= f.input :favicon %>
+	<% if Settings.first.favicon? %>
+		<div class="control-group">
+  		<div class="controls">
+				<%= image_tag Settings.first.favicon.url %>
+			</div>
+		</div>
+	<% end %>
+
+	<%= f.input :ga_code, label: 'Google Analytics Code' %>
+
+	<%= f.input :flattr_code, label: 'Flattr Code' %>
+
+	<h3>RSS/iTunes Feed</h3>
+
+	<%= f.input :feed_language, label: 'Language', hint: 'Will default to "en-us" if left empty.' %>
+
+	<%= f.input :feed_email, label: 'E-Mail' %>
+
+	<%= f.input :feed_author, label: 'Author', hint: 'Will default to site name if left empty.' %>
+	
+	<div class="form-actions">
+	  <%= f.submit nil, :class => 'btn btn-primary' %>
+	</div>
+
+<% end %>

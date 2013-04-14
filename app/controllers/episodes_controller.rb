@@ -3,8 +3,9 @@ class EpisodesController < ApplicationController
 	before_filter :authenticate_user!, except: [:index, :show, :latest]
 
 	def index
+		ppp = Settings.first.posts_per_page
 		@search = Episode.search(params[:search])
-		@episodes = @search.order("created_at desc").page(params[:page]).per(5)
+		@episodes = @search.order("created_at desc").page(params[:page]).per(ppp)
 		@podcasts = Podcast.order("name")
 	end
 

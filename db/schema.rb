@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413142852) do
+ActiveRecord::Schema.define(:version => 20130414111032) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -107,6 +107,22 @@ ActiveRecord::Schema.define(:version => 20130413142852) do
     t.boolean  "explicit"
     t.string   "itunes_link"
     t.string   "slug"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  create_table "settings", :force => true do |t|
+    t.string   "site_name"
+    t.integer  "posts_per_page"
+    t.string   "favicon_file_name"
+    t.string   "favicon_content_type"
+    t.integer  "favicon_file_size"
+    t.datetime "favicon_updated_at"
+    t.string   "ga_code"
+    t.string   "flattr_code"
+    t.string   "feed_language"
+    t.string   "feed_email"
+    t.string   "feed_author"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
   end
