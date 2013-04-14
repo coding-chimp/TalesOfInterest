@@ -59,7 +59,7 @@
           <li class="<%= 'active' if params[:controller] == "pages" %>"><%= link_to "Pages", pages_path %></li>
           <li class="<%= 'active' if params[:controller] == "podcasts" %>"><%= link_to "Podcasts", podcasts_path %></li>
           <li class="<%= 'active' if params[:controller] == "settings" %>"><%= link_to "Settings" %></li>
-          <li class="<%= 'active' if params[:controller] == "users" %>"><%= link_to "Users" %></li>
+          <li class="<%= 'active' if params[:controller] == "users" %>"><%= link_to "Users", users_path %></li>
           <li class="pull-right"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           <li class="pull-right"><p><%= current_user.email %></p></li>
         </ul>

@@ -6,7 +6,15 @@ TalesOfInterest::Application.routes.draw do
   end
   
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout" }, 
-             :controllers => { sessions: 'sessions' }
+             controllers: { sessions: 'sessions' }
+
+  get    'admin/users',                 to: 'users#index',            as: :users
+  post   'admin/users',                 to: 'users#create'
+  get    'admin/users/new',             to: 'users#new',              as: :new_user
+  get    'admin/users/:id/edit',        to: 'users#edit',             as: :edit_user
+  get    'admin/users/:id',             to: 'users#show',             as: :user
+  put    'admin/users/:id',             to: 'users#update'
+  delete 'admin/users/:id',             to: 'users#destroy'
 
   get    'sitemap',                     to: 'sitemap#index'
 

@@ -1,11 +1,9 @@
 Inbox:
 	- add validations
 	- change podcast categories
-	- add settings
-	- add admin pages for users @na
-	- change from active admin to devise @na @done(2013-04-13)
+	- add settings @na
+	- add admin pages for users @na @done(2013-04-14)
 	- add notices to views
-	- add page_titles @done(2013-04-13)
 Later:
 	- add exporter
 	- caching
@@ -14,6 +12,8 @@ Later:
 	- db calls im layout auf nötige parameter beschränken
 	- episode scheduling
 Archive:
+	- change from active admin to devise @na @done(2013-04-13) @project(Inbox)
+	- add page_titles @done(2013-04-13) @project(Inbox)
 	- add Flattr button @done(2013-04-12) @project(Inbox)
 	- add admin pages for episodes @na @done(2013-04-12) @project(Inbox)
 	- make episode import work in the new admin pages @na @done(2013-04-12) @project(Inbox)
