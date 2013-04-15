@@ -3,7 +3,7 @@ Inbox:
 	- change podcast categories
 	- add notices to views @na @done(2013-04-15)
 	- implement favicon from settings
-	- implement google analytics @na
+	- implement google analytics @na @done(2013-04-15)
 	- validation for chapter_marks @na
 Later:
 	- add exporter
