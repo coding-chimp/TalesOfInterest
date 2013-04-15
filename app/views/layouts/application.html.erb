@@ -6,6 +6,9 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <% if Settings.first.favicon %>
+    <%= favicon_link_tag Settings.first.favicon.url %>
+  <% end %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jwplayer" %>
   <%= javascript_include_tag "jwplayer.html5" %>

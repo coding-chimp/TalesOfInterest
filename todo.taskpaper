@@ -2,9 +2,9 @@ Inbox:
 	- add validations @na @done(2013-04-15)
 	- change podcast categories
 	- add notices to views @na @done(2013-04-15)
-	- implement favicon from settings
+	- implement favicon from settings @na @done(2013-04-15)
 	- implement google analytics @na @done(2013-04-15)
-	- validation for chapter_marks @na
+	- validation for chapter_marks
 Later:
 	- add exporter
 	- caching

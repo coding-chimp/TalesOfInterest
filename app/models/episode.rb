@@ -81,8 +81,6 @@ class Episode < ActiveRecord::Base
     self.save
   end
 
-
-
   def set_episode_number
     if podcast.episodes.size > 1
       podcast.episodes.order("number").last.number + 1
