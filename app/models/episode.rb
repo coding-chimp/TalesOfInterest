@@ -4,13 +4,51 @@ class Episode < ActiveRecord::Base
   has_many :chapters
 
   attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks
-  accepts_nested_attributes_for :show_notes, :allow_destroy => true
-  accepts_nested_attributes_for :chapters, :allow_destroy => true
+  accepts_nested_attributes_for :show_notes, allow_destroy: true
+  accepts_nested_attributes_for :chapters, allow_destroy: true
 
   extend FriendlyId
   friendly_id :number, use: :slugged
 
   after_create :set_slug
+
+#  validates_presence_of :podcast, :number, :title, :description, :playtime, :file, :file_size
+  validates_presence_of :podcast, :number, :title, :description, :file
+  validates_uniqueness_of :title, :description
+  validate :unique_number
+  validate :valid_playtime
+
+  def unique_number
+    resp = true
+    podcast.episodes.each do |ep|
+      unless ep == self
+        if ep.number == number
+          resp = false
+        end
+      end
+    end
+    unless resp == true
+      errors.add(:number, 'already exists')
+    end
+  end
+
+  def valid_playtime
+    resp = false
+    if /^\d\d:\d\d:\d\d$/ === playtime
+      resp = true
+    elsif /^\d:\d\d:\d\d$/ === playtime
+      resp = true
+    elsif /^\d\d:\d\d$/ === playtime
+      resp = true
+    elsif /^\d:\d\d$/ === playtime
+      resp = true
+    elsif playtime == nil || playtime.empty?
+      resp = true
+    end
+    unless resp == true
+      errors.add(:playtime, 'wrong format')
+    end
+  end
 
   def num
     number.to_s.rjust(3, '0')
@@ -42,6 +80,8 @@ class Episode < ActiveRecord::Base
     end
     self.save
   end
+
+
 
   def set_episode_number
     if podcast.episodes.size > 1

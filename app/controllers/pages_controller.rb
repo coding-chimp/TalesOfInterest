@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 	include ImportHelper
-	before_filter :search, only: [:index, :show, :new, :edit, :import_form, :import_xml]
+	before_filter :search
 	before_filter :authenticate_user!, except: [:show]
 
 	def index
@@ -19,9 +19,9 @@ class PagesController < ApplicationController
 		@page = Page.new(params[:page])
 
 		if @page.save
-			redirect_to(pages_path, :notice => 'Page was successfully created.')
+			redirect_to(pages_path, notice: 'Page was successfully created.')
 		else
-			render :action => "new"
+			render action: "new"
 		end
 	end
 
@@ -33,9 +33,9 @@ class PagesController < ApplicationController
 		@page = Page.find(params[:id])
 
 		if @page.update_attributes(params[:page])
-			redirect_to(pages_path, :notice => 'Page was successfully updated.')
+			redirect_to(pages_path, notice: 'Page was successfully updated.')
 		else
-			render :action => "edit"
+			render action: "edit"
 		end
 	end
 
@@ -53,7 +53,7 @@ class PagesController < ApplicationController
 			render 'import_form'
 		else
 			import_pages(params[:import][:file])
-    	redirect_to pages_path, :notice => "Pages imported successfully!"
+    	redirect_to pages_path, notice: "Pages imported successfully!"
     end
 	end
 
@@ -62,7 +62,7 @@ class PagesController < ApplicationController
 	def search
 		@search = Episode.search(params[:search])
 		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
+			redirect_to controller: :episodes, action: :index, search: params[:search]
 		end
 	end
 end

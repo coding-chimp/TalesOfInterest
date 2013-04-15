@@ -26,11 +26,11 @@
 					<td><%= page.titel %></td>
 					<td><%= page.updated_at %></td>
 					<td>
-						<%= link_to "Edit", edit_page_path(page), :class => 'btn btn-info btn-mini' %>
-						<%= link_to t('.destroy', :default => t("helpers.links.delete")), page_path(page),
-  	                                	:method => :delete, :confirm => t('.confirm', 
-  	                                	:default => t("helpers.links.confirm", :default => 'Are you sure?')),
-  	                                	:class => 'btn btn-mini btn-danger' %>
+						<%= link_to "Edit", edit_page_path(page), class: 'btn btn-info btn-mini' %>
+						<%= link_to t('.destroy', default: t("helpers.links.delete")), page_path(page),
+  	                                	method: :delete, confirm: t('.confirm', 
+  	                                	default: t("helpers.links.confirm", default: 'Are you sure?')),
+  	                                	class: 'btn btn-mini btn-danger' %>
 					</td>
 				</tr>
 			<% end %>
@@ -38,11 +38,11 @@
 	</table>
 
 	<p class="pull-left">
-  	<%= link_to "Import", import_page_path, :class => 'btn btn-info' %>
+  	<%= link_to "Import", import_page_path, class: 'btn btn-info' %>
 	</p>
 
 	<p class="pull-right">
-  	<%= link_to t('.new', :default => t("helpers.links.new")), new_page_path, :class => 'btn btn-primary' %>
+  	<%= link_to t('.new', default: t("helpers.links.new")), new_page_path, class: 'btn btn-primary' %>
 	</p>
 
 	<div class="clearfix"></div>

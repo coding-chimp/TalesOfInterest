@@ -1,6 +1,6 @@
 class PodcastsController < ApplicationController
 	include ImportHelper
-	before_filter :search, only: [:index, :show, :new, :edit, :import_form, :import_xml]
+	before_filter :search
 	before_filter :authenticate_user!, except: [:show, :feed]
 
 	def index
@@ -21,9 +21,9 @@ class PodcastsController < ApplicationController
 		@podcast = Podcast.new(params[:podcast])
 
 		if @podcast.save
-			redirect_to(podcasts_path, :notice => 'Podcast was successfully created.')
+			redirect_to(podcasts_path, notice: 'Podcast was successfully created.')
 		else
-			render :action => "new"
+			render action: "new"
 		end
 	end
 
@@ -35,9 +35,9 @@ class PodcastsController < ApplicationController
 		@podcast = Podcast.find(params[:id])
 
 		if @podcast.update_attributes(params[:podcast])
-			redirect_to(podcasts_path, :notice => 'Podcast was successfully updated.')
+			redirect_to(podcasts_path, notice: 'Podcast was successfully updated.')
 		else
-			render :action => "edit"
+			render action: "edit"
 		end
 	end
 
@@ -55,7 +55,7 @@ class PodcastsController < ApplicationController
 			render 'import_form'
 		else
 			import_episodes(params[:import][:file])
-    	redirect_to podcasts_path, :notice => "Episodes imported successfully!"
+    	redirect_to podcasts_path, notice: "Episodes imported successfully!"
     end
 	end
 
@@ -70,7 +70,7 @@ class PodcastsController < ApplicationController
 	def search
 		@search = Episode.search(params[:search])
 		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
+			redirect_to controller: :episodes, action: :index, search: params[:search]
 		end
 	end
 end

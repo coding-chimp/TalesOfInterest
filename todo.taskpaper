@@ -1,11 +1,10 @@
 Inbox:
-	- add validations
+	- add validations @na @done(2013-04-15)
 	- change podcast categories
-	- add settings @na @done(2013-04-14)
-	- add admin pages for users @na @done(2013-04-14)
-	- add notices to views
+	- add notices to views @na @done(2013-04-15)
 	- implement favicon from settings
-	- implement google analytics
+	- implement google analytics @na
+	- validation for chapter_marks @na
 Later:
 	- add exporter
 	- caching
@@ -15,6 +14,8 @@ Later:
 	- episode scheduling
 	- allow pages in footer
 Archive:
+	- add settings @na @done(2013-04-14) @project(Inbox)
+	- add admin pages for users @na @done(2013-04-14) @project(Inbox)
 	- change from active admin to devise @na @done(2013-04-13) @project(Inbox)
 	- add page_titles @done(2013-04-13) @project(Inbox)
 	- add Flattr button @done(2013-04-12) @project(Inbox)

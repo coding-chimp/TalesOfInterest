@@ -1,5 +1,5 @@
 class EpisodesController < ApplicationController
-	before_filter :search, only: [:edit, :show, :new]
+	before_filter :search
 	before_filter :authenticate_user!, except: [:index, :show, :latest]
 
 	def index
@@ -28,10 +28,11 @@ class EpisodesController < ApplicationController
 	end
 
 	def create
+		@podcast = Podcast.find(params[:podcast])
 		@episode = Episode.new(params[:episode])
 
 		if @episode.save
-			redirect_to(podcast_episodes_path(@episode.podcast), :notice => 'Episode was successfully created.')
+			redirect_to(podcast_episodes_path(@episode.podcast), notice: 'Episode was successfully created.')
 		else
 			render :action => "new"
 		end
@@ -47,7 +48,7 @@ class EpisodesController < ApplicationController
 		@episode = @podcast.episodes.find(params[:id])
 
 		if @episode.update_attributes(params[:episode])
-			redirect_to(podcast_episodes_path(@podcast), :notice => 'Episode was successfully updated.')
+			redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully updated.')
 		else
 			render :action => "edit"
 		end
@@ -71,7 +72,7 @@ class EpisodesController < ApplicationController
 	def search
 		@search = Episode.search(params[:search])
 		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
+			redirect_to controller: :episodes, action: :index, search: params[:search]
 		end
 	end
 end

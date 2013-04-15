@@ -1,8 +1,6 @@
 <%= simple_form_for @user, html: { class: 'form-horizontal' } do |f| %>
-  <% if alert %>
-    <div class="alert alert-error">
-      <%= alert %>
-    </div>
+  <% if notification = f.error_notification %>
+      <%= notification %>
   <% end %>
 
   <%= f.input :email %>
@@ -12,7 +10,7 @@
   <%= f.input :password_confirmation %>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit nil, class: 'btn btn-primary' %>
     <%= link_to t('.cancel', default: t("helpers.links.cancel")),
                 users_path, class: 'btn' %>
   </div>

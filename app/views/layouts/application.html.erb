@@ -92,7 +92,7 @@
             <% end %>
           </ul>
         </div>
-        <% unless Settings.first.flattr_code.empty? %>
+        <% unless Settings.first.flattr_code == nil || Settings.first.flattr_code.empty? %>
           <div class="well">
             <h3>Spenden</h3>
             <a href="http://flattr.com/thing/<%= Settings.first.flattr_code %>" target="_blank">

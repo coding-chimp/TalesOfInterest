@@ -3,4 +3,7 @@ class Page < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :titel, use: [:slugged, :history]
+
+  validates_presence_of :titel, :content
+  validates_uniqueness_of :titel
 end

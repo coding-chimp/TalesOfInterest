@@ -21,7 +21,7 @@ class SettingsController < ApplicationController
 	def search
 		@search = Episode.search(params[:search])
 		if params[:search]
-			redirect_to controller: :episodes, :action => :index, search: params[:search]
+			redirect_to controller: :episodes, action: :index, search: params[:search]
 		end
 	end
 end

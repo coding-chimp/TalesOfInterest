@@ -4,7 +4,7 @@ class CreateEpisodes < ActiveRecord::Migration
       t.integer :number
       t.string :title
       t.text :description
-      t.integer :playtime
+      t.string :playtime
       t.string :file
       t.integer :file_size
       t.boolean :explicit

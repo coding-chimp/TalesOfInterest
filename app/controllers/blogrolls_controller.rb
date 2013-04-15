@@ -1,5 +1,5 @@
 class BlogrollsController < ApplicationController
-	before_filter :search, only: [:index, :new, :edit]
+	before_filter :search
 	before_filter :authenticate_user!
 
 	def index
@@ -14,9 +14,9 @@ class BlogrollsController < ApplicationController
 		@item = Blogroll.new(params[:blogroll])
 
 		if @item.save
-			redirect_to(blogrolls_path, :notice => 'Blogroll item was successfully created.')
+			redirect_to(blogrolls_path, notice: 'Blogroll item was successfully created.')
 		else
-			render :action => "new"
+			render action: "new"
 		end
 	end
 
@@ -28,9 +28,9 @@ class BlogrollsController < ApplicationController
 		@item = Blogroll.find(params[:id])
 
 		if @item.update_attributes(params[:blogroll])
-			redirect_to(blogrolls_path, :notice => 'Blogroll item was successfully updated.')
+			redirect_to(blogrolls_path, notice: 'Blogroll item was successfully updated.')
 		else
-			render :action => "edit"
+			render action: "edit"
 		end
 	end
 
@@ -45,7 +45,7 @@ class BlogrollsController < ApplicationController
 	def search
 		@search = Episode.search(params[:search])
 		if params[:search]
-			redirect_to :controller => :episodes, :action => :index, :search => params[:search]
+			redirect_to controller: :episodes, action: :index, search: params[:search]
 		end
 	end
 end

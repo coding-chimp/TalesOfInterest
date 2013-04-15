@@ -1,4 +1,4 @@
-<%= simple_form_for @item, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @item, html: { class: 'form-horizontal' } do |f| %>
   <% if notification = f.error_notification %>
       <%= notification %>
   <% end %>
@@ -11,7 +11,7 @@
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                blogrolls_path, :class => 'btn' %>
+    <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                blogrolls_path, class: 'btn' %>
   </div>
 <% end %>
