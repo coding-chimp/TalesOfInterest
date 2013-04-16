@@ -13,7 +13,11 @@
 
   <%= f.input :explicit %>
 
-  <%= f.input :category_list, hint: "Seperated by commas.", label: "Categories" %>
+  <%= f.input :category1, label: 'Category', collection: Podcast::CATEGORIES, prompt: 'Select a category' %>
+
+  <%= f.input :category2, label: 'Category', collection: Podcast::CATEGORIES, prompt: 'Select a category' %>
+
+  <%= f.input :category3, label: 'Category', collection: Podcast::CATEGORIES, prompt: 'Select a category' %>
 
   <%= f.input :artwork %>
   <% if @podcast.artwork? %>

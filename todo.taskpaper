@@ -1,9 +1,6 @@
 Inbox:
-	- add validations @na @done(2013-04-15)
-	- change podcast categories
-	- add notices to views @na @done(2013-04-15)
-	- implement favicon from settings @na @done(2013-04-15)
-	- implement google analytics @na @done(2013-04-15)
+	- change podcast categories @na @done(2013-04-16)
+	- change feed_language input @na
 	- validation for chapter_marks
 Later:
 	- add exporter
@@ -14,6 +11,10 @@ Later:
 	- episode scheduling
 	- allow pages in footer
 Archive:
+	- add validations @na @done(2013-04-15) @project(Inbox)
+	- add notices to views @na @done(2013-04-15) @project(Inbox)
+	- implement favicon from settings @na @done(2013-04-15) @project(Inbox)
+	- implement google analytics @na @done(2013-04-15) @project(Inbox)
 	- add settings @na @done(2013-04-14) @project(Inbox)
 	- add admin pages for users @na @done(2013-04-14) @project(Inbox)
 	- change from active admin to devise @na @done(2013-04-13) @project(Inbox)

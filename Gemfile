@@ -50,6 +50,4 @@ gem 'nokogiri'
 
 gem 'rails-erd'
 
-gem 'acts-as-taggable-on', '~> 2.3.1'
-
 gem 'simple_form'
