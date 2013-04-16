@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Settings.create!(:site_name => "My Awesome Podcast Network", :posts_per_page => 5, :feed_email => "mail@example.com")
+Settings.create!(:site_name => "My Awesome Podcast Network", :posts_per_page => 5, :feed_email => "mail@example.com", :feed_language => "en-us")
 
 User.create!(:email => "user@example.com", :password => "password")

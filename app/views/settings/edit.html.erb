@@ -36,7 +36,7 @@
 
 	<h3>RSS/iTunes Feed</h3>
 
-	<%= f.input :feed_language, label: 'Language', hint: 'Will default to "en-us" if left empty.' %>
+	<%= f.input :feed_language, label: 'Language', collection: Settings::LANGUAGES.map {|l| [l.match(/(.*)\s\[/)[1] ,l.match(/\[(.*)\]/)[1]] } %>
 
 	<%= f.input :feed_email, label: 'E-Mail' %>
 
