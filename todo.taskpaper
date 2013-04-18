@@ -1,16 +1,18 @@
 Inbox:
-	- change podcast categories @na @done(2013-04-16)
-	- change feed_language input @na
 	- validation for chapter_marks
+	- episode scheduling
+	- get episode size automatically @na @done(2013-04-18)
 Later:
 	- add exporter
 	- caching
 	- change media player to podlove
 	- add script to submit sitemap after episode posted?
 	- db calls im layout auf nötige parameter beschränken
-	- episode scheduling
 	- allow pages in footer
+	- uri.lv einbauen
 Archive:
+	- change podcast categories @na @done(2013-04-16) @project(Inbox)
+	- change feed_language input @na @done(2013-04-16) @project(Inbox)
 	- add validations @na @done(2013-04-15) @project(Inbox)
 	- add notices to views @na @done(2013-04-15) @project(Inbox)
 	- implement favicon from settings @na @done(2013-04-15) @project(Inbox)

@@ -11,8 +11,9 @@ class Episode < ActiveRecord::Base
   friendly_id :number, use: :slugged
 
   after_create :set_slug
+  before_save :fetch_file_size
 
-#  validates_presence_of :podcast, :number, :title, :description, :playtime, :file, :file_size
+#  validates_presence_of :podcast, :number, :title, :description, :playtime, :file
   validates_presence_of :podcast, :number, :title, :description, :file
   validates_uniqueness_of :title, :description
   validate :unique_number
@@ -106,6 +107,16 @@ class Episode < ActiveRecord::Base
   end
 
   private
+
+  def fetch_file_size
+    url = URI.parse(self.file)
+    response = Net::HTTP.start(url.host, url.port) do |http|
+      http.request_head(url.path)
+    end
+    if response.code == "200"
+      self.file_size = response["content-length"].to_i
+    end
+  end
 
   def set_slug
     update_attribute :slug, number
