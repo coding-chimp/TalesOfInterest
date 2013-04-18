@@ -1,10 +1,7 @@
 Inbox:
 	- validation for chapter_marks
-	- episode scheduling @na @done(2013-04-18)
-	- get episode size automatically @na @done(2013-04-18)
-	- add admin sidebars @na
-	- db calls im layout auf nötige parameter beschränken @na @done(2013-04-18)
-	- search method in application_controller
+	- add admin sidebars @na @done(2013-04-19)
+	- search method in application_controller @na @done(2013-04-19)
 	- private or protected in controller?
 	- remove well from views and put in layout
 Later:
@@ -17,6 +14,9 @@ Later:
 	- js to change 'update podcast' button to 'schedule podcast'
 	- make more clear in table what is published and what not
 Archive:
+	- episode scheduling @na @done(2013-04-18) @project(Inbox)
+	- get episode size automatically @na @done(2013-04-18) @project(Inbox)
+	- db calls im layout auf nötige parameter beschränken @na @done(2013-04-18) @project(Inbox)
 	- change podcast categories @na @done(2013-04-16) @project(Inbox)
 	- change feed_language input @na @done(2013-04-16) @project(Inbox)
 	- add validations @na @done(2013-04-15) @project(Inbox)

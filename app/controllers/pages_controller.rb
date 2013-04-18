@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
 	include ImportHelper
-	before_filter :search
+	before_filter :search, :standard_sidebar
 	before_filter :authenticate_user!, except: [:show]
-	before_filter :standard_sidebar
 
 	def index
 		@pages = Page.order("titel asc")
@@ -56,14 +55,5 @@ class PagesController < ApplicationController
 			import_pages(params[:import][:file])
     	redirect_to pages_path, notice: "Pages imported successfully!"
     end
-	end
-
-	private
-
-	def search
-		@search = Episode.published.recent.search(params[:search])
-		if params[:search]
-			redirect_to controller: :episodes, action: :index, search: params[:search]
-		end
 	end
 end
