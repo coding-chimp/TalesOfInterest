@@ -1,9 +1,9 @@
 <%- model_class = Episode.new.class -%>
 
-<div id="artworks" class="hero-unit">
+<div class="hero-unit">
 	<ul class="thumbnails">
 	<% @podcasts.each do |podcast| %>
-		<li class="span2">
+		<li class="span1.5">
 			<div class="thumbnail">
 				<%= link_to image_tag(podcast.artwork), podcast %>
 			</div>

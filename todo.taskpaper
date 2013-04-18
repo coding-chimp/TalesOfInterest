@@ -5,6 +5,7 @@ Inbox:
 	- private or protected in controller?  @done(2013-04-19)
 	- add missing wells @done(2013-04-19)
 	- add comments to closing tags in views @done(2013-04-19)
+	- artwork fits properly in hero-unit  @done(2013-04-19)
 Later:
 	- add exporter
 	- caching
@@ -15,6 +16,7 @@ Later:
 	- js to change 'update podcast' button to 'schedule podcast'
 	- make more clear in table what is published and what not
 	- remove <br /> from views
+	- fix sidebar layout
 Archive:
 	- episode scheduling @na @done(2013-04-18) @project(Inbox)
 	- get episode size automatically @na @done(2013-04-18) @project(Inbox)
