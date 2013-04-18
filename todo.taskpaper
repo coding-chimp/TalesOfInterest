@@ -2,7 +2,7 @@ Inbox:
 	- validation for chapter_marks
 	- add admin sidebars @na @done(2013-04-19)
 	- search method in application_controller @na @done(2013-04-19)
-	- private or protected in controller?
+	- private or protected in controller?  @done(2013-04-19)
 	- remove well from views and put in layout
 Later:
 	- add exporter

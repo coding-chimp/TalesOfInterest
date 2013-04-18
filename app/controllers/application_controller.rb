@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  private
+  protected
 
   def search
 		@search = Episode.published.recent.search(params[:search])
