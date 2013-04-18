@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= content_for?(:title) ? "#{Settings.first.site_name} | #{yield(:title)}" : Settings.first.site_name %></title>
+  <title><%= content_for?(:title) ? "#{settings.site_name} | #{yield(:title)}" : settings.site_name %></title>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <% if Settings.first.favicon %>
-    <%= favicon_link_tag Settings.first.favicon.url %>
+  <% if settings.favicon %>
+    <%= favicon_link_tag settings.favicon.url %>
   <% end %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jwplayer" %>
   <%= javascript_include_tag "jwplayer.html5" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <% unless Settings.first.ga_code == nil || Settings.first.ga_code.empty? %>
-    <script>var _gaq=[['_setAccount','<%= Settings.first.ga_code %>'],['_trackPageview']];(function(d, t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g, s);}(document,'script'));</script>
+  <% unless settings.ga_code == nil || settings.ga_code.empty? %>
+    <script>var _gaq=[['_setAccount','<%= settings.ga_code %>'],['_trackPageview']];(function(d, t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g, s);}(document,'script'));</script>
   <% end %>
 </head>
 <body>
@@ -27,11 +27,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="/"><%= Settings.first.site_name %></a>
+        <a class="brand" href="/"><%= settings.site_name %></a>
         <div class="nav-collapse">
           <ul class="nav">
-            <% @podcasts = Podcast.order("name asc") %>
-          	<% @podcasts.each do |podcast| %>
+          	<% podcasts.each do |podcast| %>
           		<li class="divider-vertical"></li>
           		<li><%= link_to podcast.name, podcast %></li>
           	<% end %> 
@@ -42,10 +41,9 @@
               <%= f.text_field :title_or_description_contains, :class => "search-query", :placeholder => "Search" %>
             <% end %>
           </form>
-          <% @pages = Page.order("titel") %>
-          <% unless @pages.size == 0 %>
+          <% unless pages.size == 0 %>
           <ul class="nav pull-right">
-            <% @pages.each do |page| %>
+            <% pages.each do |page| %>
               <li class="divider-vertical"></li>
               <li><%= link_to page.titel, page %></li>
             <% end %>
@@ -90,7 +88,7 @@
         <div class="well">
 				  <h3>Subscribe</h3>
           <ul class="unstyled">
-            <% @podcasts.each do |podcast| %>
+            <% podcasts.each do |podcast| %>
               <li><%= image_tag("rss.png") %> <%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
               <% unless podcast.itunes_link == nil || podcast.itunes_link.empty?  %>
                 <li><%= image_tag("itunes.png") %> <%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %></li>
@@ -98,20 +96,19 @@
             <% end %>
           </ul>
         </div>
-        <% unless Settings.first.flattr_code == nil || Settings.first.flattr_code.empty? %>
+        <% unless settings.flattr_code == nil || settings.flattr_code.empty? %>
           <div class="well">
             <h3>Spenden</h3>
-            <a href="http://flattr.com/thing/<%= Settings.first.flattr_code %>" target="_blank">
+            <a href="http://flattr.com/thing/<%= settings.flattr_code %>" target="_blank">
               <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Podcast Flattrn" border="0">
             </a>
           </div>
         <% end %>
-        <% @blogs = Blogroll.order("name asc") %>
-        <% unless @blogs.size == 0 %>
+        <% unless blogroll.size == 0 %>
           <div class="well">
             <h3>Blogroll</h3>
             <dl>
-              <% @blogs.each do |blog| %>
+              <% blogroll.each do |blog| %>
                 <dt><%= link_to blog.name, blog.url %></dt>
                 <dd><%= blog.description %></dd>
               <% end %>
@@ -123,7 +120,7 @@
 	</div>
   <div class="footer">
     <div class="container">
-      <p>Copyright © <%= Date.today.strftime("%Y") %> <%= Settings.first.site_name %></p>
+      <p>Copyright © <%= Date.today.strftime("%Y") %> <%= settings.site_name %></p>
     </div>
   </div>
 </body>

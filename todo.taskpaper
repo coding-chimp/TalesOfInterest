@@ -2,14 +2,13 @@ Inbox:
 	- validation for chapter_marks
 	- episode scheduling @na @done(2013-04-18)
 	- get episode size automatically @na @done(2013-04-18)
-	- episode in partial
-	- add admin sidebars
+	- add admin sidebars @na
+	- db calls im layout auf nötige parameter beschränken @na @done(2013-04-18)
 Later:
 	- add exporter
 	- caching
 	- change media player to podlove
 	- add script to submit sitemap after episode posted?
-	- db calls im layout auf nötige parameter beschränken
 	- allow pages in footer
 	- uri.lv einbauen
 	- js to change 'update podcast' button to 'schedule podcast'

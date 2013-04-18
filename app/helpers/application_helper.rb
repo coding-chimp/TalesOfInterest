@@ -15,4 +15,21 @@ module ApplicationHelper
 		end
 		link_to(name, '#', id: "add_fields", class: 'btn btn-info', data: {id: id, fields: fields.gsub("\n", "")})
 	end
+
+	# Layout
+	def settings
+		Settings.first
+	end
+
+	def podcasts
+		Podcast.all(select: "name, slug, itunes_link", order: "name asc")
+	end
+
+	def pages
+		Page.all(select: "titel, slug", order: "titel asc")
+	end
+
+	def blogroll
+		Blogroll.all(select: "name, id", order: "name asc")
+	end
 end
