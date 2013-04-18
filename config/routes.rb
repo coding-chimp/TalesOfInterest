@@ -60,12 +60,12 @@ TalesOfInterest::Application.routes.draw do
 
   get    '/',                           to: 'episodes#index',         as: :episodes
   get    '/(page/:page)',               to: 'episodes#index'
+  get    ':podcast/latest',             to: 'episodes#latest'
   get    ':podcast/:id',                to: 'episodes#show',          as: :episode,
          constraints: lambda { |r| Podcast.find_by_name(r.params[:podcast].capitalize).present? }
   put    'podcasts/:podcast/:id',       to: 'episodes#update'
   delete ':podcast/:id',                to: 'episodes#destroy',
          constraints: lambda { |r| Podcast.find_by_name(r.params[:podcast].capitalize).present? }
-  get    ':podcast/latest',             to: 'episodes#latest'
   get    'admin/:podcast/episodes',     to: 'episodes#podcast_index', as: :podcast_episodes
   get    'admin/:podcast/episodes/new', to: 'episodes#new',           as: :new_podcast_episode
   post   'admin/:podcast/episodes/new', to: 'episodes#create',        as: :create_episdoe
