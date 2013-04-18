@@ -8,7 +8,7 @@
       <% end %>
     <% end %>
   </ul>
-</div>
+</div><!-- /well -->
 
 <% unless settings.flattr_code == nil || settings.flattr_code.empty? %>
   <div class="well">
@@ -16,7 +16,7 @@
     <a href="http://flattr.com/thing/<%= settings.flattr_code %>" target="_blank">
       <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Podcast Flattrn" border="0">
     </a>
-  </div>
+  </div><!-- /well -->
 <% end %>
 
 <% unless blogroll.size == 0 %>
@@ -28,5 +28,5 @@
         <dd><%= blog.description %></dd>
       <% end %>
     </dl>
-  </div>
+  </div><!-- /well -->
 <% end %>

@@ -14,7 +14,7 @@
 			<p><%= @episode.podcast.description %></p>
 		</li>
 	</ul>
-</div>
+</div><!-- /hero-unit -->
 
 <div class="well">
 	<h4>Episode #<%= @episode.num %>
@@ -41,7 +41,7 @@
 					<li onclick='jwplayer().seek(<%= chapter.timestamp %>)'><a href="#"><%= "#{chapter.pretty_time} #{chapter.title}" %></a></li>
 				<% end %>
 			</ul>
-		</div>	
+		</div><!-- /chapters -->
 	<% end %>
 
 	<p class="download"><%= link_to "Download Podcast", @episode.file %></p>
@@ -58,4 +58,4 @@
 	<% end %>
 	
 	<p><%= link_to "Back", session[:last_page] if session[:last_page] %></p>
-</div>
+</div><!-- /well -->

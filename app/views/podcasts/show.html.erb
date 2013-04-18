@@ -16,7 +16,7 @@
 			<p><%= @podcast.description %></p>
 		</li>
 	</ul>
-</div>
+</div><!-- /hero-unit -->
 
 <%= paginate @episodes %>
 
@@ -29,7 +29,7 @@
 		</h2>
 		<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= " • #{episode.playtime} Minuten" if episode.playtime.present? %></h4>
 		<%= markdown(episode.description) %>
-	</div>
+	</div><!-- /well -->
 <% end %>
 
 <%= paginate @episodes %>

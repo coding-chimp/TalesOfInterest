@@ -10,7 +10,7 @@
 		</li>
 	<% end %>
 	</ul>
-</div>
+</div><!-- /hero-unit -->
 
 <%= paginate @episodes %>
 
@@ -24,7 +24,7 @@
 		</h2>
 		<h4><%= episode.published_at.strftime("%d. %B %Y") %><%= " • #{episode.playtime} Minuten" if episode.playtime.present? %></h4>
 		<%= markdown(episode.description) %>
-	</div>
+	</div><!-- /well -->
 <% end %>
 
 <%= paginate @episodes %>
