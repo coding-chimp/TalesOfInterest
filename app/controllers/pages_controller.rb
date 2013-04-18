@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 	include ImportHelper
 	before_filter :search
 	before_filter :authenticate_user!, except: [:show]
+	before_filter :standard_sidebar
 
 	def index
 		@pages = Page.order("titel asc")

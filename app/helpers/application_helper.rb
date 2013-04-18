@@ -30,6 +30,6 @@ module ApplicationHelper
 	end
 
 	def blogroll
-		Blogroll.all(select: "name, id", order: "name asc")
+		Blogroll.all(select: "name, url, description", order: "name asc")
 	end
 end

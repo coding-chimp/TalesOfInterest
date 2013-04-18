@@ -4,6 +4,9 @@ Inbox:
 	- get episode size automatically @na @done(2013-04-18)
 	- add admin sidebars @na
 	- db calls im layout auf nötige parameter beschränken @na @done(2013-04-18)
+	- search method in application_controller
+	- private or protected in controller?
+	- remove well from views and put in layout
 Later:
 	- add exporter
 	- caching

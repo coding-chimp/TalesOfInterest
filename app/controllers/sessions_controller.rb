@@ -1,4 +1,6 @@
 class SessionsController < Devise::SessionsController
+	before_filter :standard_sidebar
+
 	def new
 		@search = Episode.published.recent.search(params[:search])
 		if params[:search]

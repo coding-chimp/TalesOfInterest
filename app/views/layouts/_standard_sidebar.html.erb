@@ -1,0 +1,32 @@
+<div class="well">
+	<h3>Subscribe</h3>
+  <ul class="unstyled">
+    <% podcasts.each do |podcast| %>
+      <li><%= image_tag("rss.png") %> <%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
+      <% unless podcast.itunes_link == nil || podcast.itunes_link.empty?  %>
+        <li><%= image_tag("itunes.png") %> <%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<% unless settings.flattr_code == nil || settings.flattr_code.empty? %>
+  <div class="well">
+    <h3>Spenden</h3>
+    <a href="http://flattr.com/thing/<%= settings.flattr_code %>" target="_blank">
+      <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Podcast Flattrn" border="0">
+    </a>
+  </div>
+<% end %>
+
+<% unless blogroll.size == 0 %>
+  <div class="well">
+    <h3>Blogroll</h3>
+    <dl>
+      <% blogroll.each do |blog| %>
+        <dt><%= link_to blog.name, blog.url %></dt>
+        <dd><%= blog.description %></dd>
+      <% end %>
+    </dl>
+  </div>
+<% end %>

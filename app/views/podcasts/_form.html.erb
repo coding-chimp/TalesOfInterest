@@ -1,40 +1,18 @@
-<%= simple_form_for @podcast, html: { class: 'form-horizontal' } do |f| %>
-  <% if notification = f.error_notification %>
-      <%= notification %>
-  <% end %>
+<% if notification = f.error_notification %>
+  <%= notification %>
+<% end %>
 
-  <%= f.input :name %>
+<%= f.input :name %>
 
-  <%= f.input :author %>
+<%= f.input :author %>
 
-  <%= f.input :description %>
+<%= f.input :description %>
 
-  <%= f.input :keywords %>
-
-  <%= f.input :explicit %>
-
-  <%= f.input :category1, label: 'Category', collection: Podcast::CATEGORIES, prompt: 'Select a category' %>
-
-  <%= f.input :category2, label: 'Category', collection: Podcast::CATEGORIES, prompt: 'Select a category' %>
-
-  <%= f.input :category3, label: 'Category', collection: Podcast::CATEGORIES, prompt: 'Select a category' %>
-
-  <%= f.input :artwork %>
-  <% if @podcast.artwork? %>
-    <div class="control-group">
-      <div class="controls">
-        <%= image_tag @podcast.artwork, :height => '100' %>
-      </div>
+<%= f.input :artwork %>
+<% if @podcast.artwork? %>
+  <div class="control-group">
+    <div class="controls">
+      <%= image_tag @podcast.artwork, :height => '100' %>
     </div>
-  <% end %>
-
-  <%= f.input :itunes_link %>
-
-  <%= f.input :slug %>
-
-  <div class="form-actions">
-    <%= f.submit nil, class: 'btn btn-primary' %>
-    <%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                podcasts_path, class: 'btn' %>
   </div>
 <% end %>

@@ -2,12 +2,35 @@
 
 <%- model_class = @episode.class -%>
 
-<div class="well">
-	<h2>New <%= @podcast.name %> Episode</h2>
+<div class="row">
+	
+	<div class="span7">
+		<div class="well">
+		<h2>New <%= @podcast.name %> Episode</h2>
 
-	<br />
+		<br />
 
-	<%= simple_form_for @episode, url: { action: :create }, method: 'post', html: { class: 'form-horizontal' } do |f| %>
-		<%= render 'form', f: f %>
-	<% end %>
-</div>
+<%= simple_form_for @episode, url: { action: :create }, method: 'post', html: { class: 'form-horizontal' } do |f| %>
+	<%= render 'form', f: f %>
+
+		</div><!-- /well -->
+	</div><!-- /span -->
+
+	<div class="span4">
+		<div class="well">
+			<%= f.input :draft %>
+	
+	  	<%= f.input :published_at, order: [:day, :month, :year, :hour, :minute], label: "Publish Date" %>
+	
+	  	<div class="form-actions">
+	    	<%= f.submit "Publish", name: 'publish', class: 'btn btn-primary' if f.object.draft %>
+	    	<%= f.submit nil, class: 'btn btn-primary' %>
+	    	<%= link_to t('.cancel', default: t("helpers.links.cancel")),
+	                podcast_episodes_path(@podcast), class: 'btn' %>
+	  	</div><!-- /form-actions -->
+		</div><!-- /well -->
+	</div><!-- /span -->
+
+</div><!-- /row -->
+
+<% end %>
