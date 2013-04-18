@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(:version => 20130414111032) do
     t.boolean  "explicit"
     t.integer  "podcast_id"
     t.string   "slug"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "published_at"
+    t.boolean  "draft",        :default => true
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "friendly_id_slugs", :force => true do |t|

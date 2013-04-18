@@ -3,7 +3,7 @@ class Episode < ActiveRecord::Base
   has_many :show_notes
   has_many :chapters
 
-  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks
+  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks, :published_at, :draft
   accepts_nested_attributes_for :show_notes, allow_destroy: true
   accepts_nested_attributes_for :chapters, allow_destroy: true
 
@@ -12,6 +12,11 @@ class Episode < ActiveRecord::Base
 
   after_create :set_slug
   before_save :fetch_file_size
+  before_save :ensure_published_at, unless: :draft?
+
+  scope :published, lambda { where(draft: false).where('published_at <= ?', Time.now.utc) }
+  scope :unpublished, lambda { where(draft: true).where('published_at > ?', Time.now.utc) }
+  scope :recent, order("published_at DESC")
 
 #  validates_presence_of :podcast, :number, :title, :description, :playtime, :file
   validates_presence_of :podcast, :number, :title, :description, :file
@@ -106,7 +111,16 @@ class Episode < ActiveRecord::Base
     string << "</ul>"
   end
 
+  def publish!
+    self.draft = false
+    self.save!
+  end
+
   private
+
+  def ensure_published_at
+    self.published_at ||= Time.zone.now
+  end
 
   def fetch_file_size
     url = URI.parse(self.file)

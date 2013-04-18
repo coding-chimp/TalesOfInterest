@@ -19,10 +19,14 @@
   <% if f.object.new_record? %>
     <%= f.input :file, input_html: { value: @episode.set_file_url } %>
   <% else %>
-    <%= f.input :file %>
+    <%= f.input :file, as: :url %>
   <% end %>
 
   <%= f.input :explicit %>
+
+  <%= f.input :published_at, order: [:day, :month, :year, :hour, :minute] %>
+
+  <%= f.input :draft %>
 
   <%= f.input :chapter_marks, as: :text %>
 
@@ -35,6 +39,7 @@
   </div>
 
   <div class="form-actions">
+    <%= f.submit "Publish", name: 'publish', class: 'btn btn-primary' if f.object.draft %>
     <%= f.submit nil, class: 'btn btn-primary' %>
     <%= link_to t('.cancel', default: t("helpers.links.cancel")),
                 podcast_episodes_path(@podcast), class: 'btn' %>

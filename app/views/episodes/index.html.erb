@@ -22,7 +22,7 @@
 				<%= episode.title %>
 			<% end %>
 		</h2>
-		<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= " • #{episode.playtime} Minuten" if episode.playtime.present? %></h4>
+		<h4><%= episode.published_at.strftime("%d. %B %Y") %><%= " • #{episode.playtime} Minuten" if episode.playtime.present? %></h4>
 		<%= markdown(episode.description) %>
 	</div>
 <% end %>

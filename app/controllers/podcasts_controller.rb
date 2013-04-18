@@ -10,7 +10,7 @@ class PodcastsController < ApplicationController
 	def show
 		ppp = Settings.first.posts_per_page
 		@podcast = Podcast.find(params[:id])
-		@episodes = @podcast.episodes.order("created_at desc").page(params[:page]).per(ppp)
+		@episodes = @podcast.episodes.published.recent.page(params[:page]).per(ppp)
 	end
 
 	def new
@@ -62,13 +62,13 @@ class PodcastsController < ApplicationController
 	def feed
 		@settings = Settings.first
 		@podcast = Podcast.find(params[:id])
-		@episodes = @podcast.episodes.order("created_at desc")
+		@episodes = @podcast.episodes.published.recent
 	end
 
 	private
 
 	def search
-		@search = Episode.search(params[:search])
+		@search = Episode.published.recent.search(params[:search])
 		if params[:search]
 			redirect_to controller: :episodes, action: :index, search: params[:search]
 		end

@@ -19,7 +19,9 @@ module ImportHelper
   	                           :title => item.at_xpath("title").text.scan(/:\D(.+)/)[0][0],
   	                           :description => content,
   	                           :file => links.last[1].match(/^[^ ]+/)[0],
-  	                           :created_at => item.at_xpath("pubDate").text)
+                               :draft => false,
+  	                           :created_at => item.at_xpath("pubDate").text,
+                               :published_at => item.at_xpath("pubDate").text)
   	    links[0..-2].each do |link|
   	      if link[1].match(/\"(.+)\"/)
   	        ShowNote.create!(:name => link[1].match(/\"(.+)\"/)[1],

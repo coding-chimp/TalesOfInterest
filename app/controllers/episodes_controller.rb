@@ -1,18 +1,18 @@
 class EpisodesController < ApplicationController
-	before_filter :search
+	before_filter :search, except: [:index, :podcast_index]
 	before_filter :authenticate_user!, except: [:index, :show, :latest]
 
 	def index
 		ppp = Settings.first.posts_per_page
-		@search = Episode.search(params[:search])
-		@episodes = @search.order("created_at desc").page(params[:page]).per(ppp)
+		@search = Episode.published.recent.search(params[:search])
+		@episodes = @search.page(params[:page]).per(ppp)
 		@podcasts = Podcast.order("name")
 	end
 
 	def podcast_index
 		@podcast = Podcast.find(params[:podcast])
-		@search = @podcast.episodes.search(params[:search])
-		@episodes = @search.order("created_at desc")
+		@search = @podcast.episodes.recent.search(params[:search])
+		@episodes = @search
 	end
 
 	def show
@@ -32,7 +32,12 @@ class EpisodesController < ApplicationController
 		@episode = Episode.new(params[:episode])
 
 		if @episode.save
-			redirect_to(podcast_episodes_path(@episode.podcast), notice: 'Episode was successfully created.')
+			if params[:publish]
+				@episode.publish!
+				redirect_to(podcast_episodes_path(@episode.podcast), notice: 'Episode was successfully published.')
+			else
+				redirect_to(podcast_episodes_path(@episode.podcast), notice: 'Episode was successfully created.')
+			end
 		else
 			render :action => "new"
 		end
@@ -48,7 +53,12 @@ class EpisodesController < ApplicationController
 		@episode = @podcast.episodes.find(params[:id])
 
 		if @episode.update_attributes(params[:episode])
-			redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully updated.')
+			if params[:publish]
+				@episode.publish!
+				redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully published.')
+			else
+				redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully updated.')
+			end
 		else
 			render :action => "edit"
 		end
@@ -63,14 +73,14 @@ class EpisodesController < ApplicationController
 
 	def latest
 		@podcast = Podcast.find(params[:podcast])
-		@episode = @podcast.episodes.last
+		@episode = @podcast.episodes.published.recent.last
 		redirect_to episode_url(@podcast, @episode)
 	end
 
 	private
 
 	def search
-		@search = Episode.search(params[:search])
+		@search = Episode.published.recent.search(params[:search])
 		if params[:search]
 			redirect_to controller: :episodes, action: :index, search: params[:search]
 		end

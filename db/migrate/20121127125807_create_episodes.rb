@@ -10,6 +10,8 @@ class CreateEpisodes < ActiveRecord::Migration
       t.boolean :explicit
       t.integer :podcast_id
       t.string :slug
+      t.datetime :published_at
+      t.boolean :draft, default: true
 
       t.timestamps
     end
