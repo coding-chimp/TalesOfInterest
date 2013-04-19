@@ -7,7 +7,8 @@ Inbox:
 	- add comments to closing tags in views @done(2013-04-19)
 	- artwork fits properly in hero-unit  @done(2013-04-19)
 	- Blank? in code einbauen
-	- let hero units span over whole page
+	- let hero units span over whole page @done(2013-04-19)
+	- add sizes to artwork  @done(2013-04-19)
 Later:
 	- add exporter
 	- caching

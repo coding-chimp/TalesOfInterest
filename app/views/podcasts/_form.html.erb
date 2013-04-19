@@ -12,7 +12,7 @@
 <% if @podcast.artwork? %>
   <div class="control-group">
     <div class="controls">
-      <%= image_tag @podcast.artwork, :height => '100' %>
+      <%= image_tag @podcast.artwork.url(:medium) %>
     </div>
   </div>
 <% end %>

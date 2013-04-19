@@ -24,7 +24,7 @@
 		<tbody>
 			<% for podcast in @podcasts do %>
 				<tr>
-					<td><%= image_tag podcast.artwork, height: '80', width: '80' if podcast.artwork? %></td>
+					<td><%= image_tag podcast.artwork.url(:thumb) if podcast.artwork? %></td>
 					<td><%= podcast.name %></td>
 					<td><%= podcast.episodes.count %></td>
 					<td>

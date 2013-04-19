@@ -2,21 +2,24 @@
 
 <%- model_class = @podcast.class -%>
 
-<div class="hero-unit">
-	<ul class="thumbnails">
-		<li class="span2">
-			<% if @podcast.artwork? %>
-				<div class="thumbnail">
-					<%= image_tag @podcast.artwork %>
-				</div>
-			<% end %>
-		</li>
-		<li class="span3">
-			<h2><%= @podcast.name %></h2>
-			<p><%= @podcast.description %></p>
-		</li>
-	</ul>
-</div><!-- /hero-unit -->
+<% content_for :banner do %>
+<ul class="thumbnails">
+
+	<li class="span3">
+		<% if @podcast.artwork? %>
+			<div class="thumbnail">
+				<%= image_tag @podcast.artwork.url(:medium) %>
+			</div><!-- /thumbnail -->
+		<% end %>
+	</li><!-- /span -->
+
+	<li class="span4">
+		<h2><%= @podcast.name %></h2>
+		<p><%= @podcast.description %></p>
+	</li><!-- /span -->
+
+</ul><!-- /thumbnails -->
+<% end %>
 
 <%= paginate @episodes %>
 
