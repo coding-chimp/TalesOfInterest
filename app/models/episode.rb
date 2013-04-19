@@ -48,7 +48,7 @@ class Episode < ActiveRecord::Base
       resp = true
     elsif /^\d:\d\d$/ === playtime
       resp = true
-    elsif playtime == nil || playtime.empty?
+    elsif playtime.blank?
       resp = true
     end
     unless resp == true

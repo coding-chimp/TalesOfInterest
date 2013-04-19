@@ -4,14 +4,14 @@ xml.rss version: "2.0" do
     xml.title @podcast.name
     xml.link podcast_url(@podcast)
     xml.description @podcast.description
-    if @settings.feed_language == nil || @settings.feed_language.empty?
+    if @settings.feed_language.blank?
       xml.language "en-us"
     else
       xml.language @settings.feed_language
     end
     xml.pubDate @episodes.count > 0 ? @episodes.first.created_at.to_s(:rfc822) : @podcast.created_at.to_s(:rfc822)
     xml.lastBuildDate @episodes.count > 0 ? @episodes.first.created_at.to_s(:rfc822) : @podcast.created_at.to_s(:rfc822)
-    if @settings.feed_author == nil || @settings.feed_author.empty?
+    if @settings.feed_author.blank?
       xml.itunes :author, @settings.site_name
     else
       xml.itunes :author, @settings.feed_author
@@ -31,7 +31,7 @@ xml.rss version: "2.0" do
     end
     xml.itunes :block, 'no'
 
-    unless @podcast.category1 == nil || @podcast.category1.empty?
+    unless @podcast.category1.blank?
       if @podcast.category1.include? ":"
         xml.itunes :category, text: @podcast.category1.match(/(.*):/)[1] do
           xml.itunes :category, text: @podcast.category1.match(/:(.*)/)[1].strip
@@ -51,7 +51,7 @@ xml.rss version: "2.0" do
       end
     end
 
-    unless @podcast.category2 == nil || @podcast.category2.empty?
+    unless @podcast.category2.blank?
       if @podcast.category2.include? ":"
         unless @podcast.category2.match(/(.*):/)[1] == @podcast.category1.match(/(.*):/)[1]    
           xml.itunes :category, text: @podcast.category2.match(/(.*):/)[1] do
@@ -68,7 +68,7 @@ xml.rss version: "2.0" do
       end
     end
 
-    unless @podcast.category3 == nil || @podcast.category3.empty?
+    unless @podcast.category3.blank?
       if @podcast.category3.include? ":"
         unless @podcast.category3.match(/(.*):/)[1] == (@podcast.category1.match(/(.*):/)[1] || @podcast.category2.match(/(.*):/)[1])
           xml.itunes :category, text: @podcast.category3.match(/(.*):/)[1] do

@@ -3,14 +3,14 @@
   <ul class="unstyled">
     <% podcasts.each do |podcast| %>
       <li><%= image_tag("rss.png") %> <%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
-      <% unless podcast.itunes_link == nil || podcast.itunes_link.empty?  %>
+      <% unless podcast.itunes_link.blank?  %>
         <li><%= image_tag("itunes.png") %> <%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %></li>
       <% end %>
     <% end %>
-  </ul>
+  </ul><!-- /unstyled -->
 </div><!-- /well -->
 
-<% unless settings.flattr_code == nil || settings.flattr_code.empty? %>
+<% unless settings.flattr_code.blank? %>
   <div class="well">
     <h3>Spenden</h3>
     <a href="http://flattr.com/thing/<%= settings.flattr_code %>" target="_blank">
