@@ -9,6 +9,7 @@ Inbox:
 	- Blank? in code einbauen
 	- let hero units span over whole page @done(2013-04-19)
 	- add sizes to artwork  @done(2013-04-19)
+	- fix sidebar width @done(2013-04-19)
 Later:
 	- add exporter
 	- caching
@@ -18,7 +19,6 @@ Later:
 	- js to change 'update podcast' button to 'schedule podcast'
 	- make more clear in table what is published and what not
 	- remove <br /> from views
-	- fix sidebar layout
 Archive:
 	- episode scheduling @na @done(2013-04-18) @project(Inbox)
 	- get episode size automatically @na @done(2013-04-18) @project(Inbox)
