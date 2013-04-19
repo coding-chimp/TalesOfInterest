@@ -5,12 +5,14 @@ body {
 }
 
 .hero-unit { 
-	padding: 40px 40px 30px;
+	padding: 60px 40px;
 	.thumbnails { 
-		margin-left: 0px;
-		.span1\.5 {
-			margin-left: 25px;
-			.thumbnail { width: 150px; }	
+		margin: 0;
+		li.span3 {
+			margin: 0 0 0 5%;
+			.thumbnail { 
+				width: 180px;
+				margin: 0 }	
 		}
 	}
 }

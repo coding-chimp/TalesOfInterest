@@ -87,6 +87,22 @@
         <% end %>
       </div><!-- /span11 -->
 
+      <% if params[:controller] == "episodes" && params[:action] == "index" %>
+        <div class="span11">
+        <div class="hero-unit" id="banner">
+          <ul class="thumbnails">
+            <% @podcasts.each do |podcast| %>
+              <li class="span3">
+                <div class="thumbnail">
+                  <%= link_to image_tag(podcast.artwork), podcast %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div><!-- /hero-unit -->
+        </div>
+      <% end %>
+
       <%= @sidebar ? raw("<div class=\"span7\">") : raw("<div class=\"span11\">") %>
         <%= yield %>
       </div>

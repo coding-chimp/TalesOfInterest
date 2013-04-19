@@ -1,16 +1,6 @@
 <%- model_class = Episode.new.class -%>
 
-<div class="hero-unit">
-	<ul class="thumbnails">
-	<% @podcasts.each do |podcast| %>
-		<li class="span1.5">
-			<div class="thumbnail">
-				<%= link_to image_tag(podcast.artwork), podcast %>
-			</div>
-		</li>
-	<% end %>
-	</ul>
-</div><!-- /hero-unit -->
+
 
 <%= paginate @episodes %>
 
