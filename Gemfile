@@ -51,3 +51,7 @@ gem 'nokogiri'
 gem 'rails-erd'
 
 gem 'simple_form'
+
+# Deployment
+gem 'capistrano'
+gem 'rvm-capistrano'
