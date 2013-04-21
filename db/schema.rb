@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20130414111032) do
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "pages", :force => true do |t|
-    t.string   "titel"
+    t.string   "title"
     t.text     "content"
     t.string   "slug"
     t.datetime "created_at", :null => false

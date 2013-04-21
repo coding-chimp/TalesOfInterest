@@ -36,11 +36,11 @@ TalesOfInterest::Application.routes.draw do
   post   'admin/pages/import',          to: 'pages#import_xml'
   get    'admin/pages/:id/edit',        to: 'pages#edit',             as: :edit_page
   get    ':id',                         to: 'pages#show',             as: :page,
-         constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
+         constraints: lambda { |r| Page.find_by_title(r.params[:id].capitalize).present? }
   put    ':id',                         to: 'pages#update',
-         constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
+         constraints: lambda { |r| Page.find_by_title(r.params[:id].capitalize).present? }
   delete ':id',                         to: 'pages#destroy',
-         constraints: lambda { |r| Page.find_by_titel(r.params[:id].capitalize).present? }
+         constraints: lambda { |r| Page.find_by_title(r.params[:id].capitalize).present? }
 
   get    'admin/podcasts',              to: 'podcasts#index',         as: :podcasts
   post   'admin/podcasts',              to: 'podcasts#create'

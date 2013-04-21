@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 	before_filter :authenticate_user!, except: [:show]
 
 	def index
-		@pages = Page.order("titel asc")
+		@pages = Page.order("title asc")
 	end
 
 	def show

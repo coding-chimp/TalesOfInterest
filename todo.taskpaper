@@ -1,6 +1,7 @@
 Inbox:
 	- validation for chapter_marks
-	- für deployment vorbereiten @done(2013-04-20)
+	- remove pagination on top
+	- fix pages titles @na @done(2013-04-21)
 Later:
 	- add exporter
 	- caching
@@ -11,6 +12,7 @@ Later:
 	- make more clear in table what is published and what not
 	- remove <br /> from views
 Archive:
+	- für deployment vorbereiten @done(2013-04-20) @project(Inbox)
 	- add admin sidebars @na @done(2013-04-19) @project(Inbox)
 	- search method in application_controller @na @done(2013-04-19) @project(Inbox)
 	- private or protected in controller?  @done(2013-04-19) @project(Inbox)

@@ -26,7 +26,7 @@ module ApplicationHelper
 	end
 
 	def pages
-		Page.all(select: "titel, slug", order: "titel asc")
+		Page.all(select: "title, slug", order: "title asc")
 	end
 
 	def blogroll

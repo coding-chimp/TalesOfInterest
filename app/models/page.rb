@@ -1,9 +1,9 @@
 class Page < ActiveRecord::Base
-  attr_accessible :content, :slug, :titel
+  attr_accessible :content, :slug, :title
 
   extend FriendlyId
-  friendly_id :titel, use: [:slugged, :history]
+  friendly_id :title, use: [:slugged, :history]
 
-  validates_presence_of :titel, :content
-  validates_uniqueness_of :titel
+  validates_presence_of :title, :content
+  validates_uniqueness_of :title
 end
