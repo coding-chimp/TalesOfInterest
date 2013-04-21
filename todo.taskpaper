@@ -1,7 +1,8 @@
 Inbox:
-	- validation for chapter_marks
-	- remove pagination on top
+	- remove pagination on top @na @done(2013-04-21)
+	- add pagination to episodes#show @na @done(2013-04-21)
 	- fix pages titles @na @done(2013-04-21)
+	- tidie up layout @na
 Later:
 	- add exporter
 	- caching
@@ -11,6 +12,7 @@ Later:
 	- js to change 'update podcast' button to 'schedule podcast'
 	- make more clear in table what is published and what not
 	- remove <br /> from views
+	- validation for chapter_marks
 Archive:
 	- für deployment vorbereiten @done(2013-04-20) @project(Inbox)
 	- add admin sidebars @na @done(2013-04-19) @project(Inbox)
