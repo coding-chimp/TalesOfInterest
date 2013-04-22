@@ -4,9 +4,9 @@ module ImportHelper
   	items = xml.xpath("//channel//item")
   	author = xml.at_xpath("//channel//title").text
   	items.each do |item|
-  	  unless item.at_xpath("title").text.scan(/(.+) \d+/)[0] == nil
-  	    podcast_name = item.at_xpath("title").text.scan(/(.+) \d+/)[0][0]
-  	    episode_nr = item.at_xpath("title").text.scan(/\d+/)[0].to_i
+  	  unless item.at_xpath("title").text.scan(/(.+) \d+:/)[0] == nil
+  	    podcast_name = item.at_xpath("title").text.scan(/(.+) \d+:/)[0][0]
+  	    episode_nr = item.at_xpath("title").text.scan(/(\d+):/)[0][0].to_i
   	    content = ReverseMarkdown.parse item.at_xpath("content:encoded").text
   	    links = content.scan(/\[([^\]]+)\]\(([^)]+)\)/)
   	    content = content.gsub(/\[([^\]]+)\]\(([^)]+)\)/, '\1').squeeze(' ')
