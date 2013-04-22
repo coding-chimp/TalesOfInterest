@@ -1,6 +1,7 @@
 Inbox:
-	- tidie up layout widths @na
+	- tidy up layout widths @na
 	- add robots.txt @na @done(2013-04-22)
+	- fix importer @na @done(2013-04-22)
 Later:
 	- add exporter
 	- caching
