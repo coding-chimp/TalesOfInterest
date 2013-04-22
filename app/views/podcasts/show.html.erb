@@ -21,6 +21,17 @@
 </ul><!-- /thumbnails -->
 <% end %>
 
+<% content_for :banner_alt do %>
+<ul class="thumbnails">
+
+	<li class="span4">
+		<h2><%= link_to @episode.podcast.name, podcast_path(@episode.podcast) %></h2>
+		<p><%= @episode.podcast.description %></p>
+	</li><!-- /span -->
+
+</ul><!-- /thumbnails -->
+<% end %>
+
 <% @episodes.each do |episode| %>
 	<div class="well">
 		<h2>

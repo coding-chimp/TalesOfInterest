@@ -94,6 +94,11 @@
             <div class="hero-unit" id="banner">
               <%= yield(:banner) %>
             </div><!-- /hero-unit -->
+            <% if content_for?(:banner_alt) %>
+              <div class="hero-unit" id="banner_alt">
+                <%= yield(:banner_alt) %>
+              </div><!-- /hero-unit -->
+            <% end %>
           </div><!-- /span -->
         <% end %>
 

@@ -24,6 +24,8 @@ html, body {
 	padding-top: 8px;
 }
 
+#banner_alt { display: none }
+
 .hero-unit { 
 	padding: 50px 40px;
 	.thumbnails { 
@@ -188,6 +190,25 @@ html, body {
 	}
 }
 
+@media only screen and (max-width: 980px) {
+	#holder .container .row { padding-top: 20px; }
+	.hero-unit .thumbnails {
+		li.span3 {
+			margin-left: 20px;
+			.thumbnail {
+				width: 160px;
+				height: 160px;
+				img {
+					width: 160px;
+				}
+			}
+		}
+		li.span4 {
+			margin-left: 20px;
+		}
+	}
+}
+
 @media only screen and (max-width: 768px) {
 	.hero-unit .thumbnails {
 		li.span3 {
@@ -206,7 +227,17 @@ html, body {
 	}
 }
 
-@media only screen and (max-width: 480px) {
+
+@media only screen and (max-width: 766px) {
+	body { padding: 0 }
+	#holder { padding: 0 20px }
+	.span11, .span7 {
+		margin-left: 0;
+	}
+	#sidebar { display: none; }
+}
+
+@media only screen and (max-width: 690px) {
 	#holder .container .row { padding-top: 0; }
 	#sidebar { display: none; }
 	.span11, .span7 {
@@ -216,7 +247,31 @@ html, body {
 		padding: 25px 8px;
 		.thumbnails {
 			li.span3 {
-				margin-left: 10px;
+				margin-left: 3%;
+				.thumbnail {
+					width: 140px;
+					height: 140px;
+					img {
+						width: 140px;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+@media only screen and (max-width: 560px) {
+	#holder .container .row { padding-top: 0; }
+	#sidebar { display: none; }
+	.span11, .span7 {
+		margin-left: 0;
+	}
+	.hero-unit {
+		padding: 25px 8px;
+		.thumbnails {
+			li.span3 {
+				margin-left: 4%;
 				.thumbnail {
 					width: 120px;
 					height: 120px;
@@ -227,8 +282,9 @@ html, body {
 			}
 		}
 	}
-	.footer { 
-		width: 480px;
-		margin-left: -20px;
-	}
+}
+
+@media only screen and (max-width: 480px) {
+	#banner { display: none }
+	#banner_alt { display: block }
 }
