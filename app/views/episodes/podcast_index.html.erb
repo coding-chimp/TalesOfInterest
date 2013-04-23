@@ -20,7 +20,7 @@
 					<td><%= episode.number %></td>
 					<td><%= episode.title %></td>
 					<% if episode.published_at.present? %>
-						<td><%= episode.published_at.strftime("%d.%m.%y %H:%m") %></td>
+						<td><%= episode.published_at.strftime("%d.%m.%y %H:%M") %></td>
 					<% else %>
 						<td>Draft</td>
 					<% end %>
