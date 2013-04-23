@@ -3,6 +3,9 @@ Inbox:
 	- remove form sidebars @na @done(2013-04-23)
 	- add responsive tables @na @done(2013-04-23)
 	- allow pages in footer @na  @done(2013-04-23)
+	- give responsive table less padding @done(2013-04-23)
+	- fix pagination on iPhone
+	- add Datepicker
 Later:
 	- add exporter
 	- caching
