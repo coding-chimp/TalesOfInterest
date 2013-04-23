@@ -26,17 +26,31 @@
 
 <%= f.input :chapter_marks, as: :text %>
 
-<%= f.input :draft %>
-	
-<%= f.input :published_at, order: [:day, :month, :year, :hour, :minute], label: "Publish Date" %>
-
 <%= f.fields_for :show_notes do |builder| %>
   <%= render "show_note_fields", f: builder %>
 <% end %>
 
 <div class="control-group">
-  <%= link_to_add_fields "Add Show Note", f, :show_notes %>
+  <div class="controls">
+    <%= link_to_add_fields "Add Show Note", f, :show_notes %>
+  </div>
 </div>
+
+<div class="control-group string optional">
+  <label class="string optional control-label" for="episode_published_at">Publish Date</label>
+  <div class="controls">
+    <div id="datetimepicker1" class="input-append date">
+      <input class="string optional" id="episode_published_at" name="episode[published_at]" type="text" 
+        value="<%= f.object.published_at.strftime("%d.%m.%Y %H:%M") %>"></input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+        </i>
+      </span>
+    </div>
+  </div>
+</div>
+
+<%= f.input :draft %>
 
 <div class="form-actions">
 	<%= f.submit "Publish", name: 'publish', class: 'btn btn-primary' if f.object.draft %>

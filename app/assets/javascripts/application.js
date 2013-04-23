@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require chaptertoggle
-//= reqiore episodes
+//= require episodes
+//= require bootstrap-datetimepicker.min
 //= require_tree .
