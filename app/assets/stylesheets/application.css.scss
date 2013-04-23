@@ -1,5 +1,42 @@
 @import "bootstrap_and_overrides";
 
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;;
+	font-weight: 300;
+	p {
+		font-size: 14px;
+		line-height: 24px;
+		color: rgb(102, 102, 102);
+	}
+	a:hover {
+		text-decoration: none;
+	}
+}
+
+h1{
+	font-size: 2em;
+}
+h2{
+	font-size: 1.8em;
+	font-weight: normal;
+	a {
+		color: rgb(102, 102, 102);
+	}
+	a:hover {
+		color: #258fb8;
+	}
+}
+h3{
+	font-weight: normal;
+	font-size: 1.4em;
+}
+a{
+	text-decoration: none;
+	outline-width: 0;
+	color: #258fb8;
+	font-weight: 400;
+}
+
 html, body {
 	text-align: justify;
 	height: 100%;
