@@ -2,10 +2,12 @@ class Episode < ActiveRecord::Base
   belongs_to :podcast
   has_many :show_notes
   has_many :chapters
+  has_many :introduced_titles
 
-  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks, :published_at, :draft
+  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks, :published_at, :draft, :introduced_titles_attributes
   accepts_nested_attributes_for :show_notes, allow_destroy: true
   accepts_nested_attributes_for :chapters, allow_destroy: true
+  accepts_nested_attributes_for :introduced_titles, allow_destroy: true
 
   extend FriendlyId
   friendly_id :number, use: :slugged
@@ -18,7 +20,6 @@ class Episode < ActiveRecord::Base
   scope :unpublished, lambda { where(draft: true).where('published_at > ?', Time.now.utc) }
   scope :recent, order("published_at DESC")
 
-#  validates_presence_of :podcast, :number, :title, :description, :playtime, :file
   validates_presence_of :podcast, :number, :title, :description, :file
   validates_uniqueness_of :title, :description
   validate :unique_number

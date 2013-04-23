@@ -9,8 +9,9 @@ Inbox:
 	- remove wells @done(2013-04-23)
 	- line spacing vergrößern @done(2013-04-23)
 	- remove <br /> from views @done(2013-04-23)
-	- add Vorgestellte Titel to episodes
-	- change subscribe to Abonnieren
+	- add Vorgestellte Titel to episodes @done(2013-04-23)
+	- remove link parsing from import?
+	- change subscribe to Abonnieren @done(2013-04-23)
 	- open show notes in new tab @done(2013-04-23)
 Later:
 	- add exporter

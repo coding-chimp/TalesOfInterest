@@ -63,9 +63,20 @@
 
 	<p class="download"><%= link_to "Download Podcast", @episode.file %></p>
 
+	<% unless @episode.introduced_titles.size == 0 %>
+		<h3>Vorgestellte Titel</h3>
+		<table class="table table-striped" id="links">
+			<% @episode.introduced_titles.each do |title| %>
+				<tr>
+					<td><%= link_to markdown(title.name), title.url, target: "_blank" %></td>
+	  			</tr>
+			<% end %>
+		</table>
+	<% end %>
+
 	<% unless @episode.show_notes.size == 0 %>
 		<h3>Show Notes & Links</h3>
-		<table class="table table-striped">
+		<table class="table table-striped" id="links">
 			<% @episode.show_notes.each do |show_note| %>
 				<tr>
 					<td><%= link_to markdown(show_note.name), show_note.url, target: "_blank" %></td>

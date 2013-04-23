@@ -26,14 +26,20 @@
 
 <%= f.input :chapter_marks, as: :text %>
 
+<%= f.fields_for :introduced_titles do |builder| %>
+  <%= render "introduced_title_fields", f: builder %>
+<% end %>
+
+<div class="control-group">
+    <%= link_to_add_fields "Add Introduced Title", f, :introduced_titles %>
+</div>
+
 <%= f.fields_for :show_notes do |builder| %>
   <%= render "show_note_fields", f: builder %>
 <% end %>
 
 <div class="control-group">
-  <div class="controls">
     <%= link_to_add_fields "Add Show Note", f, :show_notes %>
-  </div>
 </div>
 
 <div class="control-group string optional">
