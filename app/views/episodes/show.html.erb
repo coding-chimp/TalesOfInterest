@@ -74,14 +74,13 @@
 		</table>
 	<% end %>
 	
-	<p><%= link_to "Back", session[:last_page] if session[:last_page] %></p>
 </div><!-- /well -->
 
 <ul class="pager">
 	<% if @prev = Episode.published.where(podcast_id: @episode.podcast.id, number: @episode.number-1).first %>
-		<li><%= link_to "Previous Episode", episode_path(@episode.podcast, @prev) %></li>
+		<li class="previous"><%= link_to "Previous Episode", episode_path(@episode.podcast, @prev) %></li>
 	<% end %>
 	<% if @next = Episode.published.where(podcast_id: @episode.podcast.id, number: @episode.number+1).first %>
-		<li><%= link_to "Next Episode", episode_path(@episode.podcast, @next) %></li>
+		<li class="next"><%= link_to "Next Episode", episode_path(@episode.podcast, @next) %></li>
 	<% end %>
 </ul>

@@ -19,7 +19,6 @@ class EpisodesController < ApplicationController
 	def show
 		@podcast = Podcast.find(params[:podcast])
 		@episode = @podcast.episodes.find(params[:id])
-		session[:last_page] = request.env['HTTP_REFERER'] || podcast_path(@episode.podcast)
 	end
 
 	def new
