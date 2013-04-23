@@ -22,14 +22,18 @@ module ApplicationHelper
 	end
 
 	def podcasts
-		Podcast.all(select: "name, slug, itunes_link", order: "name asc")
+		Podcast.select("name, slug, itunes_link").order("name asc")
 	end
 
 	def pages
-		Page.all(select: "title, slug", order: "title asc")
+		Page.where(footer: false || nil).select("title, slug").order("title asc")
+	end
+
+	def footer_pages
+		Page.where(footer: true).select("title, slug").order("title asc")
 	end
 
 	def blogroll
-		Blogroll.all(select: "name, url, description", order: "name asc")
+		Blogroll.select("name, url, description").order("name asc")
 	end
 end

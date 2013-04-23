@@ -2,11 +2,11 @@ Inbox:
 	- tidy up layout widths @na @done(2013-04-23)
 	- remove form sidebars @na @done(2013-04-23)
 	- add responsive tables @na @done(2013-04-23)
+	- allow pages in footer @na  @done(2013-04-23)
 Later:
 	- add exporter
 	- caching
 	- change media player to podlove
-	- allow pages in footer
 	- uri.lv einbauen
 	- js to change 'update podcast' button to 'schedule podcast'
 	- make more clear in table what is published and what not
@@ -14,6 +14,7 @@ Later:
 	- validation for chapter_marks
 	- remove robots.txt when using right domain
 	- redirect non existing or unpublished episode routes
+	- line spacing vergrößern
 Archive:
 	- add robots.txt @na @done(2013-04-22) @project(Inbox)
 	- fix importer @na @done(2013-04-22) @project(Inbox)

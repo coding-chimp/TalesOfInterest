@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  attr_accessible :content, :slug, :title
+  attr_accessible :content, :slug, :title, :footer
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
