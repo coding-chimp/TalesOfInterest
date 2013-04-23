@@ -68,7 +68,7 @@
 		<table class="table table-striped">
 			<% @episode.show_notes.each do |show_note| %>
 				<tr>
-					<td><%= link_to markdown(show_note.name), show_note.url %></td>
+					<td><%= link_to markdown(show_note.name), show_note.url, target: "_blank" %></td>
 	  			</tr>
 			<% end %>
 		</table>
