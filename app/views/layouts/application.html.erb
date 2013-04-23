@@ -119,7 +119,7 @@
       <div class="container">
         <p>Copyright © <%= Date.today.strftime("%Y") %> <%= settings.site_name %>
           <% footer_pages.each do |page| %> 
-            | <%= link_to page.title, pages_path(page) %>
+            | <%= link_to page.title, page %>
           <% end %>
         </p>
       </div><!-- /container -->
