@@ -2,9 +2,7 @@
 
 <div class="well">
 	<h2>Settings</h2>
-	
-	<br />
-		
+			
 	<%= simple_form_for @settings, url: { action: :update }, html: { class: 'form-horizontal' } do |f| %>
 		<% if notification = f.error_notification %>
 	    <%= notification %>

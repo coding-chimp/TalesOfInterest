@@ -1,11 +1,7 @@
 <% title "Edit #{@podcast.name} #{@episode.num}: #{@episode.title}" %>
 
-<%- model_class = @episode.class -%>
-
 <div class="well">
 	<h2>Edit Episode</h2>
-
-	<br />
 
 	<%= simple_form_for [@podcast, @episode], url: { :action => :update }, html: { :class => 'form-horizontal' } do |f| %>
 		<%= render 'form', f: f %>

@@ -1,12 +1,8 @@
 <% title "Edit #{@item.name}" %>
 
-<%- model_class = @item.class -%>
-
 <div class="well">
-	<h2><%=t '.title', :default => t('helpers.titles.edit', model: model_class.model_name.human,
-                                 default: "Edit #{model_class.model_name.human}") %></h2>
-
-	<br />
+	<h2>Edit Blogroll Item</h2>
 
 	<%= render 'form' %>
+
 </div><!-- /well -->

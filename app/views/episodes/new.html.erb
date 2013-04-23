@@ -1,11 +1,7 @@
 <% title "New #{@podcast.name} Episode" %>
 
-<%- model_class = @episode.class -%>
-
 <div class="well">
 	<h2>New <%= @podcast.name %> Episode</h2>
-
-	<br />
 
 	<%= simple_form_for @episode, url: { action: :create }, method: 'post', html: { class: 'form-horizontal' } do |f| %>
 		<%= render 'form', f: f %>

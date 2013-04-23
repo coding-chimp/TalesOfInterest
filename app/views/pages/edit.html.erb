@@ -1,12 +1,8 @@
 <% title "Edit #{@page.title}" %>
 
-<%- model_class = @page.class -%>
-
 <div class="well">
-	<h2><%=t '.title', default: t('helpers.titles.edit', model: model_class.model_name.human,
-                                 default: "Edit #{model_class.model_name.human}") %></h2>
-
-	<br />
+	<h2>Edit Page</h2>
 
 	<%= render 'form' %>
+
 </div><!-- /well -->

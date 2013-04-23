@@ -41,7 +41,7 @@
   <div class="controls">
     <div id="datetimepicker1" class="input-append date">
       <input class="string optional" id="episode_published_at" name="episode[published_at]" type="text" 
-        value="<%= f.object.published_at.strftime("%d.%m.%Y %H:%M") %>"></input>
+        value="<%= f.object.published_at.strftime("%d.%m.%Y %H:%M") if f.object.published_at %>"></input>
       <span class="add-on">
         <i data-time-icon="icon-time" data-date-icon="icon-calendar">
         </i>
