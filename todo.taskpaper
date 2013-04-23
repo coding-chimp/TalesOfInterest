@@ -1,7 +1,9 @@
 Inbox:
-	- tidy up layout widths @na
+	- tidy up layout widths @na @done(2013-04-23)
 	- add robots.txt @na @done(2013-04-22)
 	- fix importer @na @done(2013-04-22)
+	- remove custom sidebars @na
+	- add responsive tables @na
 Later:
 	- add exporter
 	- caching
@@ -13,6 +15,7 @@ Later:
 	- remove <br /> from views
 	- validation for chapter_marks
 	- remove robots.txt when using right domain
+	- redirect non existing or unpublished episode routes
 Archive:
 	- remove pagination on top @na @done(2013-04-21) @project(Inbox)
 	- add pagination to episodes#show @na @done(2013-04-21) @project(Inbox)
