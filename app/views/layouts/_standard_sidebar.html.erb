@@ -1,5 +1,5 @@
 <div class="well">
-	<h3>Subscribe</h3>
+	<h3>Abonnieren</h3>
   <ul class="unstyled">
     <% podcasts.each do |podcast| %>
       <li><%= image_tag("rss.png") %> <%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
