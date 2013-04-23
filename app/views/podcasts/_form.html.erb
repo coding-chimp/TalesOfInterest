@@ -16,3 +16,23 @@
     </div>
   </div>
 <% end %>
+
+<%= f.input :category1, label: 'Category', collection: Podcast::CATEGORIES, prompt: 'Select a category' %>
+
+<%= f.input :category2, label: 'Category', collection: Podcast::CATEGORIES, prompt: 'Select a category' %>
+
+<%= f.input :category3, label: 'Category', collection: Podcast::CATEGORIES, prompt: 'Select a category' %>
+
+<%= f.input :keywords %>
+
+<%= f.input :explicit %>
+
+<%= f.input :itunes_link %>
+
+<%= f.input :slug %>
+
+<div class="form-actions">
+	<%= f.submit nil, class: 'btn btn-primary' %>
+ 	<%= link_to t('.cancel', default: t("helpers.links.cancel")),
+   		          podcasts_path, class: 'btn' %>
+</div><!-- /form-actions -->

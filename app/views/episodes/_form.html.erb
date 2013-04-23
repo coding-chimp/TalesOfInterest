@@ -26,6 +26,10 @@
 
 <%= f.input :chapter_marks, as: :text %>
 
+<%= f.input :draft %>
+	
+<%= f.input :published_at, order: [:day, :month, :year, :hour, :minute], label: "Publish Date" %>
+
 <%= f.fields_for :show_notes do |builder| %>
   <%= render "show_note_fields", f: builder %>
 <% end %>
@@ -33,3 +37,10 @@
 <div class="control-group">
   <%= link_to_add_fields "Add Show Note", f, :show_notes %>
 </div>
+
+<div class="form-actions">
+	<%= f.submit "Publish", name: 'publish', class: 'btn btn-primary' if f.object.draft %>
+	<%= f.submit nil, class: 'btn btn-primary' %>
+	<%= link_to t('.cancel', default: t("helpers.links.cancel")),
+	              podcast_episodes_path(@podcast), class: 'btn' %>
+</div><!-- /form-actions -->

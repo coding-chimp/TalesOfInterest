@@ -2,7 +2,7 @@ Inbox:
 	- tidy up layout widths @na @done(2013-04-23)
 	- add robots.txt @na @done(2013-04-22)
 	- fix importer @na @done(2013-04-22)
-	- remove custom sidebars @na
+	- remove form sidebars @na @done(2013-04-23)
 	- add responsive tables @na
 Later:
 	- add exporter
@@ -21,7 +21,7 @@ Archive:
 	- add pagination to episodes#show @na @done(2013-04-21) @project(Inbox)
 	- fix pages titles @na @done(2013-04-21) @project(Inbox)
 	- für deployment vorbereiten @done(2013-04-20) @project(Inbox)
-	- add admin sidebars @na @done(2013-04-19) @project(Inbox)
+	- add admin sidebars @na @done(2013-04-19) @project(Inbox)http://talesofinterest.dev/
 	- search method in application_controller @na @done(2013-04-19) @project(Inbox)
 	- private or protected in controller?  @done(2013-04-19) @project(Inbox)
 	- add missing wells @done(2013-04-19) @project(Inbox)

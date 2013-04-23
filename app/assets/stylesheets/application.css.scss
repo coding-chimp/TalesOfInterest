@@ -147,11 +147,9 @@ html, body {
  	border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-#page_content, #episode_chapter_marks {
-	width: 60%;
-}
+#page_content, #episode_chapter_marks,
 #episode_description, #podcast_description {
-	width: 90%
+	width: 60%;
 }
 
 .footer {
@@ -212,12 +210,6 @@ html, body {
 			margin-left: 20px;
 		}
 	}
-	.span11 .row {
-		.span7, .span4 {
-			float: none;
-			width: 662px
-		}
-	}
 	#page_content, #podcast_description, #episode_description,
 	#episode_chapter_marks {
 		width: 80%;
@@ -238,12 +230,6 @@ html, body {
 		}
 		li.span4 {
 			margin-left: 20px;
-		}
-	}
-	.span11 .row {
-		.span7, .span4 {
-			width: 100%;
-			margin-left: 0
 		}
 	}
 }
