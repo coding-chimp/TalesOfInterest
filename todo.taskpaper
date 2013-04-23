@@ -6,7 +6,7 @@ Inbox:
 	- give responsive table less padding @done(2013-04-23)
 	- fix pagination on iPhone
 	- add Datepicker @done(2013-04-23)
-	- remove wells
+	- remove wells @done(2013-04-23)
 Later:
 	- add exporter
 	- caching
