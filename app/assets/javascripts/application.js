@@ -16,4 +16,5 @@
 //= require chaptertoggle
 //= require episodes
 //= require bootstrap-datetimepicker.min
+//= require jwplayer
 //= require_tree .
