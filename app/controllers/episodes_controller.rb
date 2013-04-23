@@ -1,7 +1,7 @@
 class EpisodesController < ApplicationController
 	before_filter :search, except: [:index, :podcast_index]
 	before_filter :authenticate_user!, except: [:index, :show, :latest]
-	before_filter :standard_sidebar, only: [:index, :show, :podcast_index]
+	before_filter :standard_sidebar, only: [:index, :show]
 
 	def index
 		ppp = Settings.first.posts_per_page

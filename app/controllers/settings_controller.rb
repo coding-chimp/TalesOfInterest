@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-	before_filter :authenticate_user!, :search, :standard_sidebar
+	before_filter :authenticate_user!, :search
 
 	def edit
 		@settings = Settings.first

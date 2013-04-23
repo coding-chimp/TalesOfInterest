@@ -1,5 +1,5 @@
 class BlogrollsController < ApplicationController
-	before_filter :search, :standard_sidebar, :authenticate_user!
+	before_filter :search, :authenticate_user!
 
 	def index
 		@blogroll = Blogroll.order("name asc")

@@ -11,13 +11,16 @@ html, body {
 	.container .row {
 		padding-top: 60px;
 		padding-bottom: 40px;
+		.span11 .row {
+			padding-top: 0
+		}
 	}
 }
 
 .span11 { 
 	margin-top: -10px;
 	margin-left: 50px;
-	.span7 { margin-left:30px }
+	.span7 { margin-left: 20px }
 }
 
 .nav p {
@@ -144,9 +147,11 @@ html, body {
  	border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-#page_content, #podcast_description, #episode_description,
-#episode_chapter_marks {
-	width: 440px;
+#page_content, #episode_chapter_marks {
+	width: 60%;
+}
+#episode_description, #podcast_description {
+	width: 90%
 }
 
 .footer {
@@ -207,6 +212,16 @@ html, body {
 			margin-left: 20px;
 		}
 	}
+	.span11 .row {
+		.span7, .span4 {
+			float: none;
+			width: 662px
+		}
+	}
+	#page_content, #podcast_description, #episode_description,
+	#episode_chapter_marks {
+		width: 80%;
+	}
 }
 
 @media only screen and (max-width: 768px) {
@@ -223,6 +238,12 @@ html, body {
 		}
 		li.span4 {
 			margin-left: 20px;
+		}
+	}
+	.span11 .row {
+		.span7, .span4 {
+			width: 100%;
+			margin-left: 0
 		}
 	}
 }

@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 	include ImportHelper
-	before_filter :search, :standard_sidebar
+	before_filter :search
+	before_filter :standard_sidebar, only: [:show]
 	before_filter :authenticate_user!, except: [:show]
 
 	def index

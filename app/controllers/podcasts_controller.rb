@@ -2,7 +2,7 @@ class PodcastsController < ApplicationController
 	include ImportHelper
 	before_filter :search
 	before_filter :authenticate_user!, except: [:show, :feed]
-	before_filter :standard_sidebar, only: [:show, :index]
+	before_filter :standard_sidebar, only: [:show]
 
 	def index
 		@podcasts = Podcast.order("name asc")
