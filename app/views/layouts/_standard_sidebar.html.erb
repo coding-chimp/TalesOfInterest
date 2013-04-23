@@ -13,7 +13,7 @@
 <% unless settings.flattr_code.blank? %>
   <div class="well">
     <h3>Spenden</h3>
-    <a href="http://flattr.com/thing/<%= settings.flattr_code %>" target="_blank">
+    <a href="http://flattr.com/thing/<%= settings.flattr_code %>" target="_blank" class="flattr_button">
       <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Podcast Flattrn" border="0">
     </a>
   </div><!-- /well -->
@@ -24,7 +24,7 @@
     <h3>Blogroll</h3>
     <dl>
       <% blogroll.each do |blog| %>
-        <dt><%= link_to blog.name, blog.url %></dt>
+        <dt><%= link_to blog.name, blog.url, target: "_blank" %></dt>
         <dd><%= blog.description %></dd>
       <% end %>
     </dl>

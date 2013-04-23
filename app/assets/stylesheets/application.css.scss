@@ -127,7 +127,13 @@ html, body {
 }
 
 .span4 {
-	dl {margin: 0}
+	ul, dl {
+		margin: 0 0 0 5px;
+	}
+	a.flattr_button {
+		margin-left: 5px;
+		img { margin-top: 5px }
+	}
 	h3:after {
 		-webkit-box-shadow: inset 0 16px 8px -20px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: inset 0 15px 8px -20px rgba(0, 0, 0, 0.4);
