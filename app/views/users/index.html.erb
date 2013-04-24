@@ -1,7 +1,5 @@
 <% title "Users" %>
 
-<%- model_class = User.new.class -%>
-
 <div class="well">
 	<h2>Users</h2>
 
@@ -22,10 +20,8 @@
 					<td><%= user.updated_at.strftime("%d.%m.%y %H:%M") %></td>
 					<td>
 						<%= link_to "Edit", edit_user_path(user), :class => 'btn btn-info btn-mini' %>
-						<%= link_to t('.destroy', default: t("helpers.links.delete")), user_path(user),
-  	                                	method: :delete, confirm: t('.confirm', 
-  	                                	default: t("helpers.links.confirm", default: 'Are you sure?')),
-  	                                	class: 'btn btn-mini btn-danger' %>
+						<%= link_to "Delete", user_path(user), method: :delete, confirm: 'Are you sure?',
+  	                              class: 'btn btn-mini btn-danger' %>
 					</td>
 				</tr>
 			<% end %>
@@ -33,7 +29,7 @@
 	</table>
 
 	<p class="pull-right">
-  	<%= link_to t('.new', default: t("helpers.links.new")), new_user_path, class: 'btn btn-primary' %>
+  	<%= link_to "New", new_user_path, class: 'btn btn-primary' %>
 	</p>
 
 	<div class="clearfix"></div>

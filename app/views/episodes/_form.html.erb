@@ -61,6 +61,5 @@
 <div class="form-actions">
 	<%= f.submit "Publish", name: 'publish', class: 'btn btn-primary' if f.object.draft %>
 	<%= f.submit nil, class: 'btn btn-primary' %>
-	<%= link_to t('.cancel', default: t("helpers.links.cancel")),
-	              podcast_episodes_path(@podcast), class: 'btn' %>
+	<%= link_to "Cancel", podcast_episodes_path(@podcast), class: 'btn' %>
 </div><!-- /form-actions -->

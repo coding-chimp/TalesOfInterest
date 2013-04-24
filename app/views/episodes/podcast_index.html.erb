@@ -1,7 +1,5 @@
 <% title "#{@podcast.name}" %>
 
-<%- model_class = Episode.new.class -%>
-
 <div class="well">
 	<h2><%= @podcast.name %> Episodes</h2>
 
@@ -26,10 +24,8 @@
 					<% end %>
 					<td>
 						<%= link_to "Edit", edit_episode_path(@podcast, episode), class: 'btn btn-info btn-mini' %>
-						<%= link_to t('.destroy', default: t("helpers.links.delete")), episode_path(@podcast, episode),
-  	                                	method: :delete, confirm: t('.confirm', 
-  	                                	default: t("helpers.links.confirm", default: 'Are you sure?')),
-  	                                	class: 'btn btn-mini btn-danger' %>
+						<%= link_to "Delete", episode_path(@podcast, episode), method: :delete, confirm: 'Are you sure?',
+  	                              class: 'btn btn-mini btn-danger' %>
 					</td>
 				</tr>
 			<% end %>
@@ -37,7 +33,7 @@
 	</table>
 
 	<p class="pull-right">
-  	<%= link_to t('.new', default: t("helpers.links.new")), new_podcast_episode_path(@podcast), class: 'btn btn-primary' %>
+  	<%= link_to "New", new_podcast_episode_path(@podcast), class: 'btn btn-primary' %>
 	</p>
 
 	<div class="clearfix"></div>

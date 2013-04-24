@@ -1,7 +1,5 @@
 <% title "Podcasts" %>
 
-<%- model_class = Podcast.new.class -%>
-
 <div class="well">
 	<h2>Podcasts</h2>
 
@@ -24,10 +22,8 @@
 						<%= link_to "Episodes", podcast_episodes_path(podcast), class: 'btn btn-mini' %>
 						<%= link_to "New Episode", new_podcast_episode_path(podcast), class: 'btn btn-primary btn-mini' %>
 						<%= link_to "Edit", edit_podcast_path(podcast), class: 'btn btn-info btn-mini' %>
-						<%= link_to t('.destroy', default: t("helpers.links.delete")), podcast_path(podcast),
-  	                                	method: :delete, :confirm => t('.confirm', 
-  	                                	default: t("helpers.links.confirm", default: 'Are you sure?')),
-  	                                	class: 'btn btn-mini btn-danger' %>
+						<%= link_to "Cancel", podcast_path(podcast), method: :delete, confirm: 'Are you sure?',
+  	                              class: 'btn btn-mini btn-danger' %>
 					</td>
 				</tr>
 			<% end %>
@@ -39,7 +35,7 @@
 	</p>
 
 	<p class="pull-right">
-  	<%= link_to t('.new', default: t("helpers.links.new")), new_podcast_path, class: 'btn btn-primary' %>
+  	<%= link_to "New", new_podcast_path, class: 'btn btn-primary' %>
 	</p>
 
 	<div class="clearfix"></div>

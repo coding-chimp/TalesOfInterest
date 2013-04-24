@@ -2,6 +2,8 @@ Inbox:
 	- remove link parsing from import? @na @done(2013-04-24)
 	- change duration to secs @na @done(2013-04-24)
 	- change feed_duration format (HH:MM:SS, H:MM:SS, MM:SS, M:SS) @done(2013-04-24)
+	- redirect non existing or unpublished episode routes @done(2013-04-24)
+	- remove bootstrap localisation @na
 Later:
 	- add exporter
 	- caching
@@ -11,7 +13,6 @@ Later:
 	- make more clear in table what is published and what not
 	- validation for chapter_marks
 	- remove robots.txt when using right domain
-	- redirect non existing or unpublished episode routes
 	- flattr button for every episode
 	- localisation
 	- write api for adding duration to episode

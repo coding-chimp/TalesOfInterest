@@ -1,7 +1,5 @@
 <% title @page.title %>
 
-<%- model_class = @page.class -%>
-
 <div class="well">
 	<h2><%= @page.title %></h2>
 	<%= markdown(@page.content) %>

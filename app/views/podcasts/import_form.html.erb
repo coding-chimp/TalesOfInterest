@@ -3,8 +3,6 @@
 <div class="well">
 	<h2>New Podcast</h2>
 
-	<br />
-
 	<p>Import episodes from a XML file.</p>
 
 	<%= simple_form_for :import, url: { action: "import_xml" }, html: { class: 'form-horizontal' } do |f| %>
@@ -17,8 +15,7 @@
 	
 		<div class="form-actions">
    		<%= f.submit "Import", class: 'btn btn-primary' %>
-    	<%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                podcasts_path, class: 'btn' %>
+    	<%= link_to "Cancel", pages_path, class: 'btn' %>
   	</div>
 
 	<% end %>
