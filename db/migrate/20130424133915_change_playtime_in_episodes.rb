@@ -3,7 +3,7 @@ class ChangePlaytimeInEpisodes < ActiveRecord::Migration
   	connection.execute(%q{
   		alter table episodes
   		alter column playtime
-  		type integer using cast(playtime as integer)
+  		type integer using cast(case playtime when '' then null else playtime as integer)
   	})
   end
 
