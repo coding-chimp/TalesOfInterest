@@ -88,6 +88,18 @@
           </div><!-- /span11 -->
         <% end %>
       
+        <div class="span11">
+        <% if notice %>
+          <div class="alert alert-success">
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert">
+            <%= alert %>
+          </div>
+        <% end %>
+        </div>
 
         <% if content_for?(:banner) %>
           <div class="span11">
