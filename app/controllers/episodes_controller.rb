@@ -78,7 +78,7 @@ class EpisodesController < ApplicationController
 
 	def latest
 		@podcast = Podcast.find(params[:podcast])
-		@episode = @podcast.episodes.published.recent.last
+		@episode = @podcast.episodes.published.recent.first
 		redirect_to episode_url(@podcast, @episode)
 	end
 end
