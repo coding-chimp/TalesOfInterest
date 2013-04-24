@@ -3,7 +3,8 @@ Inbox:
 	- change duration to secs @na @done(2013-04-24)
 	- change feed_duration format (HH:MM:SS, H:MM:SS, MM:SS, M:SS) @done(2013-04-24)
 	- redirect non existing or unpublished episode routes @done(2013-04-24)
-	- remove bootstrap localisation @na
+	- remove bootstrap localisation @na  @done(2013-04-24)
+	- fix active tabs in admin nav  @done(2013-04-24)
 Later:
 	- add exporter
 	- caching

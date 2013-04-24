@@ -66,10 +66,11 @@
               <li class="<%= 'active' if params[:controller] == "blogrolls" %>">
                 <%= link_to "Blogroll", blogrolls_path %>
               </li>
-              <li class="<%= 'active' if params[:controller] == "pages" %>">
+              <li class="<%= 'active' if (params[:controller] == "pages") && (params[:action] != "show") %>">
                 <%= link_to "Pages", pages_path %>
               </li>
-              <li class="<%= 'active' if params[:controller] == "podcasts" %>">
+              <li class="<%= 'active' if ((params[:controller] == "podcasts") && (params[:action] != "show") ||
+                                          (params[:controller] == "episodes") && (params[:action] != ("index" || "show"))) %>">
                 <%= link_to "Podcasts", podcasts_path %>
               </li>
               <li class="<%= 'active' if params[:controller] == "settings" %>">
