@@ -58,9 +58,9 @@ class Episode < ActiveRecord::Base
     hours = playtime / (60 * 60)
 
     if hours > 0
-      format("%02d:%02d:%02d", hours, minutes, seconds)
+      format("%d:%02d:%02d", hours, minutes, seconds)
     else
-      format("%02d:%02d", minutes, seconds) 
+      format("%d:%02d", minutes, seconds) 
     end
   end
 

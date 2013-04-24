@@ -1,6 +1,7 @@
 Inbox:
 	- remove link parsing from import? @na @done(2013-04-24)
 	- change duration to secs @na @done(2013-04-24)
+	- change feed_duration format (HH:MM:SS, H:MM:SS, MM:SS, M:SS) @done(2013-04-24)
 Later:
 	- add exporter
 	- caching
@@ -13,6 +14,7 @@ Later:
 	- redirect non existing or unpublished episode routes
 	- flattr button for every episode
 	- localisation
+	- write api for adding duration to episode
 Archive:
 	- tidy up layout widths @na @done(2013-04-23) @project(Inbox)
 	- remove form sidebars @na @done(2013-04-23) @project(Inbox)
