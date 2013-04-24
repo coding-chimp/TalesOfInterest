@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:coding-chimp/html2markdown.git
+  revision: 0baad8bc4f10b6d23d11455d51296effddc08155
+  specs:
+    html2markdown (0.0.3)
+      nokogiri
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -186,6 +193,7 @@ DEPENDENCIES
   friendly_id
   grit
   hirb
+  html2markdown!
   jquery-rails
   kaminari
   less-rails
