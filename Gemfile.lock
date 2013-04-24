@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:coding-chimp/html2markdown.git
+  revision: 64e54752d30d6f019b5cc211031971aa4af65625
+  specs:
+    html2markdown (0.0.3)
+      nokogiri
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -142,8 +149,6 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redcarpet (2.1.1)
-    reverse_markdown (0.4.1)
-      nokogiri
     ruby-graphviz (1.0.8)
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
@@ -188,6 +193,7 @@ DEPENDENCIES
   friendly_id
   grit
   hirb
+  html2markdown!
   jquery-rails
   kaminari
   less-rails
@@ -198,7 +204,6 @@ DEPENDENCIES
   rails (= 3.2.3)
   rails-erd
   redcarpet
-  reverse_markdown
   rvm-capistrano
   sass-rails (~> 3.2.3)
   simple_form
