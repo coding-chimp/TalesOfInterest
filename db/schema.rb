@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423205052) do
+ActiveRecord::Schema.define(:version => 20130424133915) do
 
   create_table "blogrolls", :force => true do |t|
     t.string   "name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20130423205052) do
     t.integer  "number"
     t.string   "title"
     t.text     "description"
-    t.string   "playtime"
+    t.integer  "playtime"
     t.string   "file"
     t.integer  "file_size"
     t.boolean  "explicit"

@@ -1,4 +1,6 @@
 class Episode < ActiveRecord::Base
+  include ActionView::Helpers::TextHelper
+
   belongs_to :podcast
   has_many :show_notes
   has_many :chapters
@@ -23,7 +25,6 @@ class Episode < ActiveRecord::Base
   validates_presence_of :podcast, :number, :title, :description, :file
   validates_uniqueness_of :title, :description
   validate :unique_number
-  validate :valid_playtime
 
   def unique_number
     resp = true
@@ -39,21 +40,27 @@ class Episode < ActiveRecord::Base
     end
   end
 
-  def valid_playtime
-    resp = false
-    if /^\d\d:\d\d:\d\d$/ === playtime
-      resp = true
-    elsif /^\d:\d\d:\d\d$/ === playtime
-      resp = true
-    elsif /^\d\d:\d\d$/ === playtime
-      resp = true
-    elsif /^\d:\d\d$/ === playtime
-      resp = true
-    elsif playtime.blank?
-      resp = true
+  def duration
+    seconds = playtime % 60
+    minutes = (playtime / 60) % 60
+    hours = playtime / (60 * 60)
+
+    if hours > 0
+      "#{pluralize(hours, 'Stunde', 'Stunden')} #{pluralize(minutes, 'Minute', 'Minuten')}"
+    else
+      pluralize(minutes, 'Minute', 'Minuten')
     end
-    unless resp == true
-      errors.add(:playtime, 'wrong format')
+  end
+
+  def feed_duration
+    seconds = playtime % 60
+    minutes = (playtime / 60) % 60
+    hours = playtime / (60 * 60)
+
+    if hours > 0
+      format("%02d:%02d:%02d", hours, minutes, seconds)
+    else
+      format("%02d:%02d", minutes, seconds) 
     end
   end
 

@@ -90,7 +90,7 @@ xml.rss version: "2.0" do
         xml.enclosure url: episode.file, length: episode.file_size, type: 'audio/x-m4a'
         xml.content :encoded, raw("<p>#{episode.description}</p>\n" + episode.stringify_show_notes)
         xml.itunes :author, @podcast.author
-        xml.itunes :duration, episode.playtime
+        xml.itunes :duration, episode.feed_duration
         xml.itunes :subtitle, truncate(episode.description, length: 150)
         xml.itunes :summary, episode.description
         xml.itunes :keywords, @podcast.keywords

@@ -14,7 +14,7 @@
 
 <%= f.input :description %>
 
-<%= f.input :playtime, hint: "Formatted as: HH:MM:SS, H:MM:SS, MM:SS, or M:SS" %>
+<%= f.input :playtime, hint: "In seconds." %>
 
 <% if f.object.new_record? %>
   <%= f.input :file, input_html: { value: @episode.set_file_url } %>

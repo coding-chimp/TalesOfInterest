@@ -1,6 +1,6 @@
 Inbox:
 	- remove link parsing from import? @na @done(2013-04-24)
-	- change duration to secs @na
+	- change duration to secs @na @done(2013-04-24)
 Later:
 	- add exporter
 	- caching

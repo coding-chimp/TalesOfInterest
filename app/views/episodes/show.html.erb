@@ -36,7 +36,7 @@
 <div class="well">
 	<h4>Episode #<%= @episode.num %>
 	<h2><%= @episode.title %></h2>
-	<h4><%= @episode.published_at.strftime("%d. %B %Y") %><%= " • #{@episode.playtime} Minuten" if @episode.playtime.present? %></h4>
+	<h4><%= @episode.published_at.strftime("%d. %B %Y") %><%= " • #{@episode.duration}" if @episode.playtime.present? %></h4>
 	<div class="description"><%= markdown(@episode.description) %></div>
 
 	<div class="player"><div id="myElement">Loading the player...</div></div>
