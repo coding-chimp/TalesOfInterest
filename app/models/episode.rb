@@ -110,7 +110,7 @@ class Episode < ActiveRecord::Base
   end
 
   def clean_description
-    description.gsub(/\[([^\]]+)\]\(([^)]+)\)/, '\1').gsub(/[_*]/, '').rstrip
+    description.gsub(/\[([^\]]+)\]\(([^)]+)\)/, '\1').gsub(/[_*]/, '')
   end
 
   def content
