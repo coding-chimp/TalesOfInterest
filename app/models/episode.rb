@@ -129,6 +129,14 @@ class Episode < ActiveRecord::Base
     string << "</ul>"
   end
 
+  def type
+    if file.include?("mp3")
+      type = 'audio/mpeg'
+    else
+      type = 'audio/x-m4a'
+    end
+  end
+
   def publish!
     self.draft = false
     self.save!

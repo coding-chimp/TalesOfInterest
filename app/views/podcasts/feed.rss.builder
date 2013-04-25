@@ -87,7 +87,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
         xml.guid(episode_url(@podcast, episode))
         xml.pubDate episode.created_at.to_s(:rfc822)
         xml.description { xml.cdata!(markdown(episode.description)) }
-        xml.enclosure url: episode.file, length: episode.file_size, type: 'audio/x-m4a'
+        xml.enclosure url: episode.file, length: episode.file_size, type: episode.type
         xml.tag!("content:encoded") { xml.cdata!(markdown(episode.content)) }
         xml.itunes :author, @podcast.author
         xml.itunes :duration, episode.feed_duration
