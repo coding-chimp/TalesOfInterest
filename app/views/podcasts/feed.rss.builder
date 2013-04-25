@@ -1,5 +1,5 @@
 xml.instruct! :xml, version: "1.0"
-xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd" do
+xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "xmlns:content" => "http://purl.org/rss/1.0/modules/content/" do
   xml.channel do
     xml.title @podcast.name
     xml.link podcast_url(@podcast)
@@ -24,7 +24,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
     else
       xml.itunes :explicit, 'clean'
     end
-    xml.itunes :image, href: @podcast.artwork
+    xml.itunes :image, href: "#{root_url}#{@podcast.artwork.url[1..-1]}"
     xml.itunes :owner do
       xml.itunes :name, @podcast.author
       xml.itunes :email, @settings.feed_email
@@ -84,7 +84,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
       xml.item do
         xml.title "#{@podcast.name} #{episode.num}: #{episode.title}"
         xml.link episode_url(@podcast, episode)
-        xml.guid({isPermalink: "false"}, episode_url(@podcast, episode))
+        xml.guid(episode_url(@podcast, episode))
         xml.pubDate episode.created_at.to_s(:rfc822)
         xml.description episode.description
         xml.enclosure url: episode.file, length: episode.file_size, type: 'audio/x-m4a'
@@ -94,7 +94,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
         xml.itunes :subtitle, truncate(episode.description, length: 150)
         xml.itunes :summary, episode.description
         xml.itunes :keywords, @podcast.keywords
-        xml.itunes :image, href: @podcast.artwork
+        xml.itunes :image, href: "#{root_url}#{@podcast.artwork.url[1..-1]}"
         if episode.explicit
           xml.itunes :explicit, 'yes'
         else
