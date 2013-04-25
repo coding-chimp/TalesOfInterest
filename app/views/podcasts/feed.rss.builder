@@ -92,7 +92,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
         xml.itunes :author, @podcast.author
         xml.itunes :duration, episode.feed_duration
         xml.itunes :subtitle, truncate(episode.description, length: 150)
-        xml.itunes :summary, markdown(episode.description)
+        xml.itunes :summary, episode.clean_description
         xml.itunes :keywords, @podcast.keywords
         xml.itunes :image, href: "#{root_url}#{@podcast.artwork.url[1..-1]}"
         if episode.explicit

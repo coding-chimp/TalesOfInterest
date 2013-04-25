@@ -64,6 +64,10 @@ class Episode < ActiveRecord::Base
     end
   end
 
+  def clean_description
+    description.gsub(/](.*)/, '').gsub(/\[/, '')
+  end
+
   def num
     number.to_s.rjust(3, '0')
   end
