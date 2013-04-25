@@ -122,7 +122,7 @@ class Episode < ActiveRecord::Base
   end
 
   def stringify_show_notes
-    string = "<p>Links f&uuml;r diese Episode:</p>\n<ul>"
+    string = "<p>Show Notes:</p>\n<ul>"
     show_notes.each do |show_note|
       string << "<li><a href='#{show_note.url}>#{show_note.name}</a></li>\n"
     end
