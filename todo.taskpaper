@@ -1,15 +1,9 @@
 Inbox:
-	- remove link parsing from import? @na @done(2013-04-24)
-	- change duration to secs @na @done(2013-04-24)
-	- change feed_duration format (HH:MM:SS, H:MM:SS, MM:SS, M:SS) @done(2013-04-24)
-	- redirect non existing or unpublished episode routes @done(2013-04-24)
-	- remove bootstrap localisation @na  @done(2013-04-24)
-	- fix active tabs in admin nav  @done(2013-04-24)
+	- change media player to podlove @na
+	- uri.lv einbauen @na
 Later:
 	- add exporter
 	- caching
-	- change media player to podlove
-	- uri.lv einbauen
 	- js to change 'update podcast' button to 'schedule podcast'
 	- make more clear in table what is published and what not
 	- validation for chapter_marks
@@ -18,6 +12,12 @@ Later:
 	- localisation
 	- write api for adding duration to episode
 Archive:
+	- remove link parsing from import? @na @done(2013-04-24) @project(Inbox)
+	- change duration to secs @na @done(2013-04-24) @project(Inbox)
+	- change feed_duration format (HH:MM:SS, H:MM:SS, MM:SS, M:SS) @done(2013-04-24) @project(Inbox)
+	- redirect non existing or unpublished episode routes @done(2013-04-24) @project(Inbox)
+	- remove bootstrap localisation @na  @done(2013-04-24) @project(Inbox)
+	- fix active tabs in admin nav  @done(2013-04-24) @project(Inbox)
 	- tidy up layout widths @na @done(2013-04-23) @project(Inbox)
 	- remove form sidebars @na @done(2013-04-23) @project(Inbox)
 	- add responsive tables @na @done(2013-04-23) @project(Inbox)
