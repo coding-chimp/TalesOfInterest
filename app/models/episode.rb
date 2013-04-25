@@ -64,10 +64,6 @@ class Episode < ActiveRecord::Base
     end
   end
 
-  def clean_description
-    description.gsub(/](.*)/, '').gsub(/\[/, '')
-  end
-
   def num
     number.to_s.rjust(3, '0')
   end
@@ -113,12 +109,22 @@ class Episode < ActiveRecord::Base
     "http://www.talesofinterest.de/podcasts/#{podcast_name}#{nr}.m4a"
   end
 
+  def clean_description
+    description.gsub(/](.*)/, '').gsub(/\[/, '')
+  end
+
+  def content
+    content = self.description
+    if self.show_notes.size > 0
+      content << "\n" + self.stringify_show_notes.html_safe
+    end
+    content
+  end
+
   def stringify_show_notes
-    string = "<p>Links f&uuml;r diese Episode:</p><ul>
-"
+    string = "<p>Links f&uuml;r diese Episode:</p>\n<ul>"
     show_notes.each do |show_note|
-      string << "<li><a href='#{show_note.url}>#{show_note.name}</a></li>
-"
+      string << "<li><a href='#{show_note.url}>#{show_note.name}</a></li>\n"
     end
     string << "</ul>"
   end
