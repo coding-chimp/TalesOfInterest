@@ -37,27 +37,29 @@
 	<h4><%= @episode.published_at.strftime("%d. %B %Y") %><%= " • #{@episode.duration}" if @episode.playtime.present? %></h4>
 	<div class="description"><%= markdown(@episode.description) %></div>
 
-	<div class="player"><div id="myElement">Loading the player...</div></div>
+	<audio id="player">
+		<source src="<%= @episode.file %>" type="<%= @episode.type %>"></source>
+	</audio>
 
-	<script type="text/javascript">
-    	jwplayer("myElement").setup({
-        	file: "<%= @episode.file %>",
-        	height: 20,
-        	controls: true
-    	});
+	<script>
+		$('#player').podlovewebplayer({
+			poster: '<%= @episode.podcast.artwork.url(:thumb) %>',
+			title: '<%= @episode.title %>',
+			permalink: '<%= episode_url(@episode.podcast, @episode) %>',
+			subtitle: '<%= truncate(@episode.clean_description.gsub(/\n/, ' ').gsub(/\r/, ''), length: 150) %>',
+			<% if @episode.chapters.size > 0 %>
+				chapters: <%= @episode.podlove_chapters %>,
+			<% end %>
+			duration: '<%= @episode.feed_duration if @episode.playtime %>',
+			alwaysShowHours: true,
+			startVolume: 1,
+			width: 'auto',
+			summaryVisible: false,
+			timecontrolsVisible: false,
+			sharebuttonsVisible: false,
+			chaptersVisible: false	
+		});
 	</script>
-
-	<% if @episode.chapters.size > 0 %>
-		<div class="chapters">
-			<a href="#" class="hide">[hide chapters]</a>
-			<a href="#" class="show">[show chapters]</a>
-			<ul class="chapterlist">
-				<% @episode.chapters.order("timestamp asc").each do |chapter| %>
-					<li onclick='jwplayer().seek(<%= chapter.timestamp %>)'><a href="#"><%= "#{chapter.pretty_time} #{chapter.title}" %></a></li>
-				<% end %>
-			</ul>
-		</div><!-- /chapters -->
-	<% end %>
 
 	<p class="download"><%= link_to "Download Podcast", @episode.file %></p>
 

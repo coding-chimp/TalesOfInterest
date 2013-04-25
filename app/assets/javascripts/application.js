@@ -16,5 +16,7 @@
 //= require chaptertoggle
 //= require episodes
 //= require bootstrap-datetimepicker.min
-//= require jwplayer
+//= require html5shiv
+//= require mediaelement-and-player.min
+//= require podlove-web-player
 //= require_tree .

@@ -1,7 +1,8 @@
 Inbox:
-	- change media player to podlove @na
-	- uri.lv einbauen @na
-	- test feed @na
+	- change media player to podlove @na @done(2013-04-25)
+	- uri.lv einbauen @na @done(2013-04-25)
+	- test feed @na @done(2013-04-25)
+	- add introduced titles to feed
 Later:
 	- add exporter
 	- caching

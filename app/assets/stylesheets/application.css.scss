@@ -1,5 +1,7 @@
 @import "bootstrap_and_overrides";
 @import "bootstrap-datetimepicker.min";
+@import "mediaelementplayer.min";
+@import "podlovewebplayer";
 
 body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;;
@@ -172,44 +174,41 @@ html, body {
 	background-color: white;
 }
 
-.description:after {
-	-webkit-box-shadow: inset 0 16px 8px -20px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: inset 0 15px 8px -20px rgba(0, 0, 0, 0.4);
-  -webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
-  -moz-mask-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
-  height: 5px;
-  width: 100%;
-  position: relative;
-  content: '';
-  top: -2px;
-  left: 0;
-  display: block;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-.player {
-	margin: 10px 10px 5px 0;
-}
-
-.chapters {
+.description {
 	margin-bottom: 10px;
-	ul { list-style: none }
-	.chapterlist { display: none }
+	&:after {
+		-webkit-box-shadow: inset 0 16px 8px -20px rgba(0, 0, 0, 0.4);
+  	-moz-box-shadow: inset 0 15px 8px -20px rgba(0, 0, 0, 0.4);
+  	-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
+  	-moz-mask-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
+  	height: 5px;
+  	width: 100%;
+  	position: relative;
+  	content: '';
+  	top: -2px;
+  	left: 0;
+  	display: block;
+  	border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
 }
 
-.download:after {
-	-webkit-box-shadow: inset 0 16px 8px -20px rgba(0, 0, 0, 0.4);
- 	-moz-box-shadow: inset 0 15px 8px -20px rgba(0, 0, 0, 0.4);
- 	-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
- 	-moz-mask-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
- 	height: 5px;
- 	width: 100%;
- 	position: relative;
- 	content: '';
- 	top: 5px;
- 	left: 0;
- 	display: block;
- 	border-top: 1px solid rgba(0, 0, 0, 0.15);
+.download {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	&:after {
+		-webkit-box-shadow: inset 0 16px 8px -20px rgba(0, 0, 0, 0.4);
+ 		-moz-box-shadow: inset 0 15px 8px -20px rgba(0, 0, 0, 0.4);
+ 		-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
+ 		-moz-mask-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
+ 		height: 5px;
+ 		width: 100%;
+ 		position: relative;
+ 		content: '';
+ 		top: 5px;
+ 		left: 0;
+ 		display: block;
+ 		border-top: 1px solid rgba(0, 0, 0, 0.15);
+	}
 }
 
 table#links {

@@ -95,6 +95,14 @@ class Episode < ActiveRecord::Base
     self.save
   end
 
+  def podlove_chapters
+    chapters = "[{'start':'00:00:00.000','title':'Intro','image':''}"
+    self.chapters.order("timestamp asc")[1..-1].each do |chapter|
+      chapters << "\n,{'start':'#{chapter.pretty_time}','title':'#{chapter.title}','image':''}"
+    end
+    chapters << "]"
+  end
+
   def set_episode_number
     if podcast.episodes.size > 1
       podcast.episodes.order("number").last.number + 1
