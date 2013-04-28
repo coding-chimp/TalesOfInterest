@@ -1,8 +1,5 @@
 Inbox:
-	- change media player to podlove @na @done(2013-04-25)
-	- uri.lv einbauen @na @done(2013-04-25)
-	- test feed @na @done(2013-04-25)
-	- add introduced titles to feed
+	- add introduced titles to feed @na @done(2013-04-28)
 Later:
 	- add exporter
 	- caching
@@ -11,9 +8,11 @@ Later:
 	- validation for chapter_marks
 	- remove robots.txt when using right domain
 	- flattr button for every episode
-	- localisation
 	- write api for adding duration to episode
 Archive:
+	- change media player to podlove @na @done(2013-04-25) @project(Inbox)
+	- uri.lv einbauen @na @done(2013-04-25) @project(Inbox)
+	- test feed @na @done(2013-04-25) @project(Inbox)
 	- remove link parsing from import? @na @done(2013-04-24) @project(Inbox)
 	- change duration to secs @na @done(2013-04-24) @project(Inbox)
 	- change feed_duration format (HH:MM:SS, H:MM:SS, MM:SS, M:SS) @done(2013-04-24) @project(Inbox)

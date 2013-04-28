@@ -123,10 +123,21 @@ class Episode < ActiveRecord::Base
 
   def content
     content = self.description
+    if self.introduced_titles.size > 0
+      content << "\n" + self.stringify_introduced_titles.html_safe
+    end
     if self.show_notes.size > 0
       content << "\n" + self.stringify_show_notes.html_safe
     end
     content
+  end
+
+  def stringify_introduced_titles
+    string = "<p>Vorgestellte Titel:</p>\n<ul>"
+    introduced_titles.each do |title|
+      string << "<li><a href='#{title.url}>#{title.name}</a></li>\n"
+    end
+    string << "</ul>"
   end
 
   def stringify_show_notes
