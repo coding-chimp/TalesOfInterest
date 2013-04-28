@@ -1,14 +1,16 @@
 Inbox:
 	- add introduced titles to feed @na @done(2013-04-28)
+	- make more clear in table what is published and what not @done(2013-04-28)
 Later:
 	- add exporter
 	- caching
 	- js to change 'update podcast' button to 'schedule podcast'
-	- make more clear in table what is published and what not
 	- validation for chapter_marks
 	- remove robots.txt when using right domain
 	- flattr button for every episode
 	- write api for adding duration to episode
+	- create validations for publishing episodes
+	- create a dashboard
 Archive:
 	- change media player to podlove @na @done(2013-04-25) @project(Inbox)
 	- uri.lv einbauen @na @done(2013-04-25) @project(Inbox)

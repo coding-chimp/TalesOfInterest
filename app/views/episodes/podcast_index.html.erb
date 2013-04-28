@@ -18,9 +18,14 @@
 					<td><%= episode.number %></td>
 					<td><%= episode.title %></td>
 					<% if episode.published_at.present? %>
-						<td><%= episode.published_at.strftime("%d.%m.%y %H:%M") %></td>
+						<td>
+							<% if episode.published_at > DateTime.now %>
+								<b>Scheduled</b><br />
+							<% end %> 
+							<%= episode.published_at.strftime("%d.%m.%y %H:%M") %>
+						</td>
 					<% else %>
-						<td>Draft</td>
+						<td><b>Draft</b></td>
 					<% end %>
 					<td>
 						<%= link_to "Edit", edit_episode_path(@podcast, episode), class: 'btn btn-info btn-mini' %>
