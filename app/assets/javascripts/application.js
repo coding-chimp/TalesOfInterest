@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require chaptertoggle
 //= require episodes
 //= require bootstrap-datetimepicker.min
 //= require html5shiv
 //= require mediaelement-and-player.min
 //= require podlove-web-player
+//= require navigation
 //= require_tree .

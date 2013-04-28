@@ -1,6 +1,5 @@
 Inbox:
-	- add introduced titles to feed @na @done(2013-04-28)
-	- make more clear in table what is published and what not @done(2013-04-28)
+	- change navigation @na  @done(2013-04-29)
 Later:
 	- add exporter
 	- caching
@@ -12,6 +11,8 @@ Later:
 	- create validations for publishing episodes
 	- create a dashboard
 Archive:
+	- add introduced titles to feed @na @done(2013-04-28) @project(Inbox)
+	- make more clear in table what is published and what not @done(2013-04-28) @project(Inbox)
 	- change media player to podlove @na @done(2013-04-25) @project(Inbox)
 	- uri.lv einbauen @na @done(2013-04-25) @project(Inbox)
 	- test feed @na @done(2013-04-25) @project(Inbox)

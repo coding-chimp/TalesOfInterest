@@ -19,44 +19,69 @@
 <body>
   <div id="holder">
 
-  	<div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/"><%= settings.site_name %></a>
-          <div class="nav-collapse">
-            <ul class="nav">
-            	<% podcasts.each do |podcast| %>
-            		<li class="divider-vertical"></li>
-            		<li><%= link_to podcast.name, podcast %></li>
-            	<% end %> 
-              <li class="divider-vertical"></li>
-            </ul><!-- /nav -->
-            <form class="navbar-search pull-right">
-              <%= form_for @search do |f| %>
-                <%= f.text_field :title_or_description_contains, :class => "search-query", :placeholder => "  Search" %>
-              <% end %>
-            </form>
-            <% unless pages.size == 0 %>
-            <ul class="nav pull-right">
-              <% pages.each do |page| %>
-                <li class="divider-vertical"></li>
-                <li><%= link_to page.title, page %></li>
-              <% end %>
-              <li class="divider-vertical"></li>
-            </ul><!-- /nav -->
-            <% end %>
-          </div><!-- /nav-collapse -->
-        </div><!-- /container -->
-      </div><!-- /navbar-inner -->
-    </div><!-- /navbar -->
-
     <div class="container">
 		  <div class="row">
+
+        <div class="page-header" id="header">
+          <h1><%= link_to settings.site_name, root_url %></h1>
+          
+          <nav id="main-nav">
+            <ul class="main">
+              <% podcasts.each do |podcast| %>
+                <li><%= link_to podcast.name, podcast %></li>
+              <% end %>
+            </ul><!-- /main -->
+          </nav><!-- /main-nav -->
+
+          <nav id="mobile-nav">
+            <div class="pull-left menu">
+              <a class="button">Menu</a>
+              <div class="container">
+                <ul class="main">
+                  <% podcasts.each do |podcast| %>
+                    <li><%= link_to podcast.name, podcast %></li>
+                  <% end %>
+                  <li><a href="#">•••</a></li>
+                  <% pages.each do |page| %>
+                    <li><%= link_to page.title, page %></li>
+                  <% end %>
+                  <li><a href="#">•••</a></li>
+                  <% podcasts.each do |podcast| %>
+                    <li><%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
+                    <% unless podcast.itunes_link.blank?  %>
+                      <li><%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %></li>
+                    <% end %>
+                  <% end %>
+                </ul><!-- /main -->
+              </div><!-- /container -->
+            </div><!-- /menu -->
+            <div class="pull-right search">
+              <a class="button"></a>
+              <div class="container">
+                <%= form_for @search, html: { :class => 'search' } do |f| %>
+                  <%= f.text_field :title_or_description_contains, :placeholder => "Search..."  %>
+                <% end %>
+              </div><!-- /container -->
+            </div><!-- /search -->
+          </nav><!-- /mobile-nav -->
+
+          <nav id="sub-nav">
+            <% unless pages.size == 0 %>
+            <ul class="main pull-left">
+              <% pages.each do |page| %>
+                <li><%= link_to page.title, page %></li>
+              <% end %>
+            </ul><!-- /main -->
+            <% end %>
+
+            <%= form_for @search, html: { :class => 'search' } do |f| %>
+              <%= f.text_field :title_or_description_contains, :class => "pull-right", 
+                               :placeholder => "Search..."  %>
+             <% end %>
+          </nav><!-- /sub-nav -->
+
+          <div class="clearfix"></div>
+        </div><!-- /page-header -->
 
         <% if user_signed_in? %>
           <div class="span11">
