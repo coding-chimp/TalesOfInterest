@@ -5,12 +5,12 @@ Inbox:
 	- create validations for publishing episodes @na @done(2013-04-29)
 	- add eager loading @na @done(2013-04-29)
 	- validation for chapter_marks @done(2013-04-29)
+	- create a dashboard
 Later:
 	- add exporter
 	- remove robots.txt when using right domain
 	- flattr button for every episode
 	- write api for adding duration to episode
-	- create a dashboard
 Archive:
 	- add introduced titles to feed @na @done(2013-04-28) @project(Inbox)
 	- make more clear in table what is published and what not @done(2013-04-28) @project(Inbox)
