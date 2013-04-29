@@ -24,7 +24,11 @@
 
 <%= f.input :explicit %>
 
-<%= f.input :chapter_marks, as: :text %>
+<% if params[:episode] %>
+  <%= f.input :chapter_marks, as: :text, input_html: { value: params[:episode][:chapter_marks] } %>
+<% else %>
+  <%= f.input :chapter_marks, as: :text %>
+<% end %>
 
 <%= f.fields_for :introduced_titles do |builder| %>
   <%= render "introduced_title_fields", f: builder %>

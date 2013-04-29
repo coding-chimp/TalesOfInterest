@@ -17,6 +17,7 @@ class Episode < ActiveRecord::Base
   after_create :set_slug
   before_save :fetch_file_size
   before_save :ensure_published_at, unless: :draft?
+  before_validation :custom_before_validation
 
   scope :published, lambda { where(draft: false).where('published_at <= ?', Time.now.utc) }
   scope :unpublished, lambda { where(draft: true).where('published_at > ?', Time.now.utc) }
@@ -29,30 +30,32 @@ class Episode < ActiveRecord::Base
                         :unless => Proc.new { |episode| episode.draft.present? }
 
   def unique_title
-    resp = true
     podcast.episodes.each do |ep|
       unless ep == self
         if ep.title == title
-          resp = false
+          errors.add(:title, 'already exists')
+          break
         end
       end
-    end
-    unless resp == true
-      errors.add(:title, 'already exists')
     end
   end
 
   def unique_number
-    resp = true
     podcast.episodes.each do |ep|
       unless ep == self
         if ep.number == number
-          resp = false
+          errors.add(:number, 'already exists')
+          break
         end
       end
     end
-    unless resp == true
-      errors.add(:number, 'already exists')
+  end
+
+  def custom_before_validation
+    if @virtual_errors
+      @virtual_errors.each do |k,v|
+        v.each { |e| errors[k] << e }
+      end
     end
   end
 
@@ -102,15 +105,19 @@ class Episode < ActiveRecord::Base
     count = 0
     chapter_marks.each_line do |line|
       unless line.empty?
-        count += 1
-        time = line.scan(/\d\d:\d\d:\d\d/)[0]
-        title = line.scan(/\d (\D*)/)[0][0].chomp
-        if count <= self.chapters.count
-          c = self.chapters[count-1]
-          c.update_attributes(:pretty_time => time, :title => title)
+        unless line =~ /^\d\d:\d\d:\d\d\s.+$/
+          @virtual_errors = { chapter_marks: ['not properly formatted'] }
         else
-          c = Chapter.create!(:pretty_time => time, :title => title, :episode_id => id)
-          self.chapters << c
+          count += 1
+          time = line.scan(/\d\d:\d\d:\d\d/)[0]
+          title = line.scan(/\d (\D*)/)[0][0].chomp
+          if count <= self.chapters.count
+            c = self.chapters[count-1]
+            c.update_attributes(:pretty_time => time, :title => title)
+          else
+            c = Chapter.create!(:pretty_time => time, :title => title, :episode_id => id)
+            self.chapters << c
+          end
         end
       end
     end
