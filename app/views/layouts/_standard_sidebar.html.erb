@@ -1,10 +1,16 @@
 <div class="well">
 	<h3>Abonnieren</h3>
   <ul class="unstyled">
-    <% podcasts.each do |podcast| %>
-      <li><%= image_tag("rss.png") %> <%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
-      <% unless podcast.itunes_link.blank?  %>
-        <li><%= image_tag("itunes.png") %> <%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %></li>
+    <% cache "podcasts" do %>
+      <% podcasts.each do |podcast| %>
+        <li>
+          <%= image_tag("rss.png") %> <%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %>
+        </li>
+        <% unless podcast.itunes_link.blank?  %>
+          <li>
+            <%= image_tag("itunes.png") %> <%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %>
+          </li>
+        <% end %>
       <% end %>
     <% end %>
   </ul><!-- /unstyled -->
@@ -23,9 +29,11 @@
   <div class="well">
     <h3>Blogroll</h3>
     <dl>
-      <% blogroll.each do |blog| %>
-        <dt><%= link_to blog.name, blog.url, target: "_blank" %></dt>
-        <dd><%= blog.description %></dd>
+      <% cache "blogroll" do %>
+        <% blogroll.each do |blog| %>
+          <dt><%= link_to blog.name, blog.url, target: "_blank" %></dt>
+          <dd><%= blog.description %></dd>
+        <% end %>
       <% end %>
     </dl>
   </div><!-- /well -->

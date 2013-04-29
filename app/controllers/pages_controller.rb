@@ -20,6 +20,8 @@ class PagesController < ApplicationController
 		@page = Page.new(params[:page])
 
 		if @page.save
+			expire_fragment("pages")
+			expire_fragment("footer_pages")
 			redirect_to(pages_path, notice: 'Page was successfully created.')
 		else
 			render action: "new"
@@ -34,6 +36,8 @@ class PagesController < ApplicationController
 		@page = Page.find(params[:id])
 
 		if @page.update_attributes(params[:page])
+			expire_fragment("pages")
+			expire_fragment("footer_pages")
 			redirect_to(pages_path, notice: 'Page was successfully updated.')
 		else
 			render action: "edit"
@@ -45,6 +49,8 @@ class PagesController < ApplicationController
 		@slug = FriendlyId::Slug.find_by_slug(@page.slug)
 		@slug.destroy
 		@page.destroy
+		expire_fragment("pages")
+		expire_fragment("footer_pages")
 		redirect_to pages_path
 	end
 

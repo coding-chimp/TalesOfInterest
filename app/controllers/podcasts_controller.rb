@@ -22,6 +22,7 @@ class PodcastsController < ApplicationController
 		@podcast = Podcast.new(params[:podcast])
 
 		if @podcast.save
+			expire_fragment("podcasts")
 			redirect_to(podcasts_path, notice: 'Podcast was successfully created.')
 		else
 			render action: "new"
@@ -36,6 +37,7 @@ class PodcastsController < ApplicationController
 		@podcast = Podcast.find(params[:id])
 
 		if @podcast.update_attributes(params[:podcast])
+			expire_fragment("podcasts")
 			redirect_to(podcasts_path, notice: 'Podcast was successfully updated.')
 		else
 			render action: "edit"
@@ -47,6 +49,7 @@ class PodcastsController < ApplicationController
 		@slug = FriendlyId::Slug.find_by_slug(@podcast.slug)
 		@slug.destroy
 		@podcast.destroy
+		expire_fragment("podcasts")
 		redirect_to podcasts_path
 	end
 

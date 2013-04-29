@@ -27,8 +27,10 @@
           
           <nav id="main-nav">
             <ul class="main">
-              <% podcasts.each do |podcast| %>
-                <li><%= link_to podcast.name, podcast %></li>
+              <% cache "podcasts" do %>
+                <% podcasts.each do |podcast| %>
+                  <li><%= link_to podcast.name, podcast %></li>
+                <% end %>
               <% end %>
             </ul><!-- /main -->
           </nav><!-- /main-nav -->
@@ -38,18 +40,26 @@
               <a class="button">Menu</a>
               <div class="container">
                 <ul class="main">
-                  <% podcasts.each do |podcast| %>
-                    <li><%= link_to podcast.name, podcast %></li>
+                  <% cache "podcasts" do %>
+                    <% podcasts.each do |podcast| %>
+                      <li><%= link_to podcast.name, podcast %></li>
+                    <% end %>
+                  <% end %>
+                  <% unless pages.size == 0 %>
+                    <li><a href="#">•••</a></li>
+                    <% cache "pages" do %>
+                      <% pages.each do |page| %>
+                        <li><%= link_to page.title, page %></li>
+                      <% end %>
+                    <% end %>
                   <% end %>
                   <li><a href="#">•••</a></li>
-                  <% pages.each do |page| %>
-                    <li><%= link_to page.title, page %></li>
-                  <% end %>
-                  <li><a href="#">•••</a></li>
-                  <% podcasts.each do |podcast| %>
-                    <li><%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
-                    <% unless podcast.itunes_link.blank?  %>
-                      <li><%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %></li>
+                  <% cache "podcasts" do %>
+                    <% podcasts.each do |podcast| %>
+                      <li><%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
+                      <% unless podcast.itunes_link.blank?  %>
+                        <li><%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %></li>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </ul><!-- /main -->
@@ -68,8 +78,10 @@
           <nav id="sub-nav">
             <% unless pages.size == 0 %>
             <ul class="main pull-left">
-              <% pages.each do |page| %>
-                <li><%= link_to page.title, page %></li>
+              <% cache "pages" do %>
+                <% pages.each do |page| %>
+                  <li><%= link_to page.title, page %></li>
+                <% end %>
               <% end %>
             </ul><!-- /main -->
             <% end %>
@@ -154,8 +166,10 @@
     <div class="footer">
       <div class="container">
         <p>Copyright © <%= Date.today.strftime("%Y") %> <%= settings.site_name %>
-          <% footer_pages.each do |page| %> 
-            | <%= link_to page.title, page %>
+          <% cache "footer_pages" do %>
+            <% footer_pages.each do |page| %> 
+              | <%= link_to page.title, page %>
+            <% end %>
           <% end %>
         </p>
       </div><!-- /container -->
