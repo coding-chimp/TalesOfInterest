@@ -22,9 +22,25 @@ class Episode < ActiveRecord::Base
   scope :unpublished, lambda { where(draft: true).where('published_at > ?', Time.now.utc) }
   scope :recent, order("published_at DESC")
 
-  validates_presence_of :podcast, :number, :title, :description, :file
-  validates_uniqueness_of :title, :description
+  validates_presence_of :podcast, :number, :title
+  validate :unique_title
   validate :unique_number
+  validates_presence_of :description, :file, :playtime, 
+                        :unless => Proc.new { |episode| episode.draft.present? }
+
+  def unique_title
+    resp = true
+    podcast.episodes.each do |ep|
+      unless ep == self
+        if ep.title == title
+          resp = false
+        end
+      end
+    end
+    unless resp == true
+      errors.add(:title, 'already exists')
+    end
+  end
 
   def unique_number
     resp = true
@@ -160,11 +176,6 @@ class Episode < ActiveRecord::Base
     else
       type = 'audio/x-m4a'
     end
-  end
-
-  def publish!
-    self.draft = false
-    self.save!
   end
 
   private

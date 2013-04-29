@@ -38,13 +38,20 @@ class EpisodesController < ApplicationController
 
 		if @episode.save
 			if params[:publish]
-				@episode.publish!
-				redirect_to(podcast_episodes_path(@episode.podcast), notice: 'Episode was successfully published.')
+				@episode.draft = false
+				if @episode.valid?
+					@episode.save
+					redirect_to(podcast_episodes_path(@episode.podcast), notice: 'Episode was successfully published.')
+				else
+					@episode.draft = true
+					@episode.published_at = nil
+					render action: "new"
+				end
 			else
 				redirect_to(podcast_episodes_path(@episode.podcast), notice: 'Episode was successfully created.')
 			end
 		else
-			render :action => "new"
+			render action: "new"
 		end
 	end
 
@@ -59,13 +66,20 @@ class EpisodesController < ApplicationController
 
 		if @episode.update_attributes(params[:episode])
 			if params[:publish]
-				@episode.publish!
-				redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully published.')
+				@episode.draft = false
+				if @episode.valid?
+					@episode.save
+					redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully published.')
+				else
+					@episode.draft = true
+					@episode.published_at = nil
+					render action: "edit"
+				end
 			else
 				redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully updated.')
 			end
 		else
-			render :action => "edit"
+			render action: "edit"
 		end
 	end
 

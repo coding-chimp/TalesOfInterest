@@ -19,7 +19,7 @@ module ImportHelper
   	                           :title => item.at_xpath("title").text.scan(/:\D(.+)/)[0][0],
   	                           :description => description,
   	                           :file => links.last[1].match(/^[^ ]+/)[0],
-                               :draft => false,
+                               :draft => true,
   	                           :created_at => item.at_xpath("pubDate").text,
                                :published_at => item.at_xpath("pubDate").text)
   	  end
