@@ -70,6 +70,7 @@ html, body {
 }
 
 #header {
+	border: none;
 	height: 30px;
 	line-height: 35px;
 	padding: 10px 0;
@@ -351,8 +352,14 @@ html, body {
 	}
 }
 
-.nav p {
-	padding-top: 8px;
+.nav {
+	a {
+		font-size: 14px;
+	}
+	p {
+		padding-top: 7px;
+		margin-bottom: 5px;
+	}
 }
 
 #banner_alt { display: none }
@@ -417,8 +424,10 @@ html, body {
 }
 
 .span4 {
+	margin-top: 10px;
 	ul, dl {
 		margin: 0 0 0 5px;
+		font-size: 14px;
 	}
 	a.flattr_button {
 		margin-left: 5px;
