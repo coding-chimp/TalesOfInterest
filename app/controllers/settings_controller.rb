@@ -9,6 +9,8 @@ class SettingsController < ApplicationController
 		@settings = Settings.first
 
 		if @settings.update_attributes(params[:settings])
+			expire_fragment("site-name")
+			expire_fragment("favicon")
 			redirect_to(settings_path, notice: 'Settings were successfully updated.')
 		else
 			render action: :edit

@@ -6,8 +6,10 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
   <%= stylesheet_link_tag "application", :media => "all" %>
+  <% cache "favicon" do %>
   <% if settings.favicon %>
     <%= favicon_link_tag settings.favicon.url %>
+  <% end %>
   <% end %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -23,11 +25,13 @@
 		  <div class="row">
 
         <div class="page-header" id="header">
+          <% cache "site-name" do %>
           <h1><%= link_to settings.site_name, root_url %></h1>
-          
+          <% end %>
+
           <nav id="main-nav">
             <ul class="main">
-              <% cache "podcasts" do %>
+              <% cache "nav-podcasts" do %>
                 <% podcasts.each do |podcast| %>
                   <li><%= link_to podcast.name, podcast %></li>
                 <% end %>
@@ -40,7 +44,7 @@
               <a class="button">Menu</a>
               <div class="container">
                 <ul class="main">
-                  <% cache "podcasts" do %>
+                  <% cache "mobile-podcasts" do %>
                     <% podcasts.each do |podcast| %>
                       <li><%= link_to podcast.name, podcast %></li>
                     <% end %>
@@ -54,7 +58,7 @@
                     <% end %>
                   <% end %>
                   <li><a href="#">•••</a></li>
-                  <% cache "podcasts" do %>
+                  <% cache "mobile-subscribe-podcasts" do %>
                     <% podcasts.each do |podcast| %>
                       <li><%= link_to "#{podcast.name} RSS Feed", podcast_feed_path(podcast) %></li>
                       <% unless podcast.itunes_link.blank?  %>
@@ -107,8 +111,8 @@
               <li class="<%= 'active' if (params[:controller] == "pages") && (params[:action] != "show") %>">
                 <%= link_to "Pages", pages_path %>
               </li>
-              <li class="<%= 'active' if ((params[:controller] == "podcasts") && (params[:action] != "show") ||
-                                          (params[:controller] == "episodes") && (params[:action] != ("index" || "show"))) %>">
+              <li class="<%= 'active' if ((params[:controller] == "podcasts") && (params[:action] != "show")||                          (params[:controller] == "episodes") && (params[:action] != 
+                                          ("index" || "show"))) %>">
                 <%= link_to "Podcasts", podcasts_path %>
               </li>
               <li class="<%= 'active' if params[:controller] == "settings" %>">
