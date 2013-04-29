@@ -4,9 +4,9 @@ Inbox:
 	- add fragment caching @na @done(2013-04-29)
 	- create validations for publishing episodes @na @done(2013-04-29)
 	- add eager loading @na @done(2013-04-29)
+	- validation for chapter_marks @done(2013-04-29)
 Later:
 	- add exporter
-	- validation for chapter_marks
 	- remove robots.txt when using right domain
 	- flattr button for every episode
 	- write api for adding duration to episode
