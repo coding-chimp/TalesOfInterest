@@ -11,6 +11,12 @@ class Podcast < ActiveRecord::Base
 	validates_presence_of :name, :author
 	validates_uniqueness_of :name
 
+	after_update :flush_name_cache
+
+	def flush_name_cache
+		Rails.cache.delete([:category, id, :name]) if name_changed?
+	end
+
 	CATEGORIES = [
 		"Arts: Design",
 		"Arts: Fashion & Beauty",

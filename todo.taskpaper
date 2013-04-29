@@ -1,8 +1,10 @@
 Inbox:
 	- change navigation @na  @done(2013-04-29)
+	- change caching to memched @na @done(2013-04-29)
+	- add fragment caching @na
+	- 
 Later:
 	- add exporter
-	- caching
 	- js to change 'update podcast' button to 'schedule podcast'
 	- validation for chapter_marks
 	- remove robots.txt when using right domain

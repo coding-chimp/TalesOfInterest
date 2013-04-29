@@ -14,7 +14,7 @@
 	<div class="well">
 		<h2>
 			<%= link_to episode_path(episode.podcast, episode) do %>
-				<%= "#{episode.podcast.name} #{episode.num}: " if episode.number %>
+				<%= "#{episode.podcast_name} #{episode.num}: " %>
 				<%= episode.title %>
 			<% end %>
 		</h2>

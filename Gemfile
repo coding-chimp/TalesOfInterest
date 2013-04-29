@@ -18,6 +18,10 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+group :development do
+  gem 'rails-erd'
+end
+
 gem 'jquery-rails'
 
 # Users
@@ -48,10 +52,12 @@ gem 'kaminari'
 # XML Parser
 gem 'nokogiri'
 
-gem 'rails-erd'
-
+# Easier forms
 gem 'simple_form'
 
 # Deployment
 gem 'capistrano'
 gem 'rvm-capistrano'
+
+# Memcached
+gem 'dalli'

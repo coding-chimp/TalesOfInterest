@@ -40,6 +40,12 @@ class Episode < ActiveRecord::Base
     end
   end
 
+  def podcast_name
+    Rails.cache.fetch([:podcast, podcast_id, :name], expires_in: 15.minutes) do
+      podcast.name
+    end
+  end
+
   def duration
     seconds = playtime % 60
     minutes = (playtime / 60) % 60
