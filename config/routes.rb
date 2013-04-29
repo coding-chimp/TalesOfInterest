@@ -8,6 +8,8 @@ TalesOfInterest::Application.routes.draw do
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout" }, 
              controllers: { sessions: 'sessions' }
 
+  get    'admin/dashboard',             to: 'dashboard#index',        as: :dashboard
+
   get    'admin/settings',              to: 'settings#edit',          as: :settings
   put    'admin/settings',              to: 'settings#update'
 

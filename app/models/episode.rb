@@ -20,7 +20,7 @@ class Episode < ActiveRecord::Base
   before_validation :custom_before_validation
 
   scope :published, lambda { where(draft: false).where('published_at <= ?', Time.now.utc) }
-  scope :unpublished, lambda { where(draft: true).where('published_at > ?', Time.now.utc) }
+  scope :scheduled, lambda { where('published_at > ?', Time.now.utc).order('published_at asc') }
   scope :recent, order("published_at DESC")
 
   validates_presence_of :podcast, :number, :title

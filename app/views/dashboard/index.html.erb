@@ -1,0 +1,47 @@
+<% title "Dashboard" %>
+
+<div class="well">
+  <h2>Podcasts</h2>
+
+  <table class="table table-striped" id="podcasts_table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th># Episodes</th>
+        <th>Last Episode</th>
+        <th>Next Episode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for podcast in @podcasts do %>
+        <tr>
+          <td><%= podcast.name %></td>
+          <td><%= podcast.episodes.count %></td>
+          <td><%= podcast.since_last_episode %></td>
+          <td><%= podcast.until_next_episode %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <h2>Recent Commits</h2>
+
+  <table class="table table-striped" id="commits_table">
+    <thead>
+      <tr>
+        <th>Message</th>
+        <th>Commit Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for commit in @commits do %>
+        <tr>
+          <td><%= commit.message %></td>
+          <td><%= commit.committed_date.strftime("%d.%m.%y %H:%M") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div><!-- /well -->

@@ -1,4 +1,6 @@
 class Podcast < ActiveRecord::Base
+	include ActionView::Helpers::DateHelper
+
 	has_many :episodes, dependent: :destroy
   attr_accessible :description, :name, :slug, :artwork, :author, :keywords, :explicit, :itunes_link, :category1, :category2, :category3
 
@@ -15,6 +17,18 @@ class Podcast < ActiveRecord::Base
 
 	def flush_name_cache
 		Rails.cache.delete([:category, id, :name]) if name_changed?
+	end
+
+	def since_last_episode
+		if episode = self.episodes.published.recent.first
+			distance_of_time_in_words(DateTime.now, episode.published_at) + " ago"
+		end
+	end
+
+	def until_next_episode
+		if episode = self.episodes.scheduled.first
+			episode.published_at.strftime("%d.%m.%y %H:%M")
+		end
 	end
 
 	CATEGORIES = [
