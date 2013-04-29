@@ -10,6 +10,9 @@
         <th># Episodes</th>
         <th>Last Episode</th>
         <th>Next Episode</th>
+        <% if @settings.uri_key.present? && @settings.uri_token.present? %>
+        <th>Subscribers</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +22,9 @@
           <td><%= podcast.episodes.count %></td>
           <td><%= podcast.since_last_episode %></td>
           <td><%= podcast.until_next_episode %></td>
+          <% if @settings.uri_key.present? && @settings.uri_token.present? %>
+          <td><%= subscribers(podcast.name) %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
