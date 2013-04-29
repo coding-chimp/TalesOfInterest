@@ -20,6 +20,7 @@ end
 
 group :development do
   gem 'rails-erd'
+  gem 'bullet'
 end
 
 gem 'jquery-rails'

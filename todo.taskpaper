@@ -3,6 +3,7 @@ Inbox:
 	- change caching to memched @na @done(2013-04-29)
 	- add fragment caching @na @done(2013-04-29)
 	- create validations for publishing episodes @na @done(2013-04-29)
+	- add eager loading @na @done(2013-04-29)
 Later:
 	- add exporter
 	- validation for chapter_marks
