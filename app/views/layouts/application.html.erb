@@ -137,7 +137,7 @@
             <%= notice %>
           </div>
         <% end %>
-        <% if alert %>
+        <% if alert && (params[:controller] != "sessions") %>
           <div class="alert">
             <%= alert %>
           </div>
