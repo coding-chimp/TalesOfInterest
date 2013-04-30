@@ -6,6 +6,9 @@ Inbox:
 	- Responsive dashboard tables @na @done(2013-04-30)
 	- update readme @na @done(2013-04-30)
 	- add tooltip to dashboard podcasts table  @done(2013-04-30)
+	- responsive commit table not working @done(2013-04-30)
+	- add color coding to dashboard
+	- add subscriber charts in modal
 Later:
 	- add exporter
 	- remove robots.txt when using right domain
