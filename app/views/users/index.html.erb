@@ -16,8 +16,10 @@
 			<% for user in @users do %>
 				<tr>
 					<td><%= user.email %></td>
-					<td><%= user.current_sign_in_at.strftime("%d.%m.%y %H:%M") if user.current_sign_in_at %></td>
-					<td><%= user.updated_at.strftime("%d.%m.%y %H:%M") %></td>
+					<td>
+						<%= user.current_sign_in_at.blank? ? raw('&nbsp') : user.current_sign_in_at.strftime("%d.%m.%y %H:%M") %>
+					</td>
+					<td><%= user.updated_at.blank? ? raw('&nbsp') : user.updated_at.strftime("%d.%m.%y %H:%M") %></td>
 					<td>
 						<%= link_to "Edit", edit_user_path(user), :class => 'btn btn-info btn-mini' %>
 						<%= link_to "Delete", user_path(user), method: :delete, confirm: 'Are you sure?',

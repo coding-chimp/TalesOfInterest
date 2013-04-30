@@ -3,7 +3,7 @@ Inbox:
 	- add subscriber count to dashboard @done(2013-04-30)
 	- failed login gives two error messages @na @done(2013-04-30)
 	- redirect to dashboard after login @na @done(2013-04-30)
-	- Responsive dashboard tables @na
+	- Responsive dashboard tables @na @done(2013-04-30)
 Later:
 	- add exporter
 	- remove robots.txt when using right domain

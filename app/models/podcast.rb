@@ -22,12 +22,16 @@ class Podcast < ActiveRecord::Base
 	def since_last_episode
 		if episode = self.episodes.published.recent.first
 			distance_of_time_in_words(DateTime.now, episode.published_at) + " ago"
+		else
+			'&nbsp'
 		end
 	end
 
 	def until_next_episode
 		if episode = self.episodes.scheduled.first
 			episode.published_at.strftime("%d.%m.%y %H:%M")
+		else
+			'&nbsp'
 		end
 	end
 

@@ -3,7 +3,7 @@
 <div class="well">
   <h2>Podcasts</h2>
 
-  <table class="table table-striped" id="podcasts_table">
+  <table class="table table-striped" id="dashboard_podcast_table">
     <thead>
       <tr>
         <th>Name</th>
@@ -20,8 +20,8 @@
         <tr>
           <td><%= podcast.name %></td>
           <td><%= podcast.episodes.count %></td>
-          <td><%= podcast.since_last_episode %></td>
-          <td><%= podcast.until_next_episode %></td>
+          <td><%= raw(podcast.since_last_episode) %></td>
+          <td><%= raw(podcast.until_next_episode) %></td>
           <% if @settings.uri_key.present? && @settings.uri_token.present? %>
           <td><%= subscribers(podcast.name) %></td>
           <% end %>
@@ -33,11 +33,11 @@
 
   <h2>Recent Commits</h2>
 
-  <table class="table table-striped" id="commits_table">
+  <table class="table table-striped" id="dashboard_commits_table">
     <thead>
       <tr>
         <th>Message</th>
-        <th>Commit Date</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody>
