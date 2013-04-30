@@ -11,7 +11,7 @@
         <th>Last Episode</th>
         <th>Next Episode</th>
         <% if @settings.uri_key.present? && @settings.uri_token.present? %>
-        <th>Subscribers</th>
+        <th><a href="#" data-toggle="tooltip" title="according to uri.lv"><b>Subscribers</b></a></th>
         <% end %>
       </tr>
     </thead>
