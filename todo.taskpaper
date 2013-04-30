@@ -2,7 +2,7 @@ Inbox:
 	- create a dashboard @done(2013-04-30)
 	- add subscriber count to dashboard @done(2013-04-30)
 	- failed login gives two error messages @na @done(2013-04-30)
-	- redirect to dashboard after login @na
+	- redirect to dashboard after login @na @done(2013-04-30)
 	- Responsive dashboard tables @na
 Later:
 	- add exporter
