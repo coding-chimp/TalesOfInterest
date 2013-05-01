@@ -2,6 +2,7 @@
 @import "bootstrap-datetimepicker.min";
 @import "mediaelementplayer.min";
 @import "podlovewebplayer";
+@import "dashboard";
 
 body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;;
@@ -713,15 +714,4 @@ table#links {
 		td:nth-of-type(3):before { content: "Updated At"; }
 		td:nth-of-type(4):before { content: ""; }
 	}
-	#dashboard_podcast_table {
-    td:nth-of-type(1):before { content: "Name"; }
-    td:nth-of-type(2):before { content: "# Episodes"; }
-    td:nth-of-type(3):before { content: "Last Episode"; }
-    td:nth-of-type(4):before { content: "Next Episode"; }
-    td:nth-of-type(5):before { content: "Subscribers"; }
-  }
-  #dashboard_commit_table {
-    td:nth-of-type(1):before { content: "Message"; }
-    td:nth-of-type(2):before { content: "Date"; }
-  }
 }

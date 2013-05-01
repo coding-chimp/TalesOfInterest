@@ -20,7 +20,7 @@
         <tr>
           <td><%= podcast.name %></td>
           <td><%= podcast.episodes.count %></td>
-          <td><%= raw(podcast.since_last_episode) %></td>
+          <td class="<%= podcast.since_color_code %>"><%= raw(podcast.since_last_episode) %></td>
           <td><%= raw(podcast.until_next_episode) %></td>
           <% if @settings.uri_key.present? && @settings.uri_token.present? %>
           <td><%= subscribers(podcast.name) %></td>
