@@ -1,6 +1,6 @@
 Inbox:
 	- add color coding to dashboard @done(2013-05-01)
-	- add subscriber charts in modal
+	- add subscriber charts in modal @done(2013-05-01)
 Later:
 	- add exporter
 	- remove robots.txt when using right domain

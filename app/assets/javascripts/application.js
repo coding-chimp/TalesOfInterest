@@ -19,4 +19,6 @@
 //= require mediaelement-and-player.min
 //= require podlove-web-player
 //= require navigation
+//= require raphael
+//= require morris
 //= require_tree .

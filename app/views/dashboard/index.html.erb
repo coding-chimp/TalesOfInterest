@@ -23,9 +23,12 @@
           <td class="<%= podcast.since_color_code %>"><%= raw(podcast.since_last_episode) %></td>
           <td><%= raw(podcast.until_next_episode) %></td>
           <% if @settings.uri_key.present? && @settings.uri_token.present? %>
-          <td><%= subscribers(podcast.name) %></td>
+          <td><a href="#<%= podcast.name %>SubscribersModal" data-toggle="modal">
+            <%= subscribers(podcast.name) %>
+          </a></td>
           <% end %>
         </tr>
+        <%= render 'subscribers_chart', podcast: podcast %>
       <% end %>
     </tbody>
   </table>
