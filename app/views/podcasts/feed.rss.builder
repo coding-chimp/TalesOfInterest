@@ -89,7 +89,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
         xml.description episode.clean_description
         xml.enclosure url: episode.file, length: episode.file_size, type: episode.type
         xml.itunes :author, @podcast.author
-        xml.itunes :duration, episode.feed_duration
+        xml.itunes :duration, episode.feed_duration if episode.playtime.present?
         xml.itunes :subtitle, truncate(episode.clean_description, length: 150)
         xml.itunes :summary, episode.clean_description
         xml.itunes :keywords, @podcast.keywords
