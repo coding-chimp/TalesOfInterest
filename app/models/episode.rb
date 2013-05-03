@@ -164,7 +164,7 @@ class Episode < ActiveRecord::Base
   def stringify_introduced_titles
     string = "<p>Vorgestellte Titel:</p><ul>"
     introduced_titles.each do |title|
-      string << "<li><a href='#{title.url}>#{title.name}</a></li>"
+      string << "<li><a href=\"#{title.url}\">#{title.name}</a></li>"
     end
     string << "</ul><p>"
   end
@@ -172,7 +172,7 @@ class Episode < ActiveRecord::Base
   def stringify_show_notes
     string = "<p>Show Notes:</p><ul>"
     show_notes.each do |show_note|
-      string << "<li><a href='#{show_note.url}>#{show_note.name}</a></li>"
+      string << "<li><a href=\"#{show_note.url}\">#{show_note.name}</a></li>"
     end
     string << "</ul><p>"
   end
