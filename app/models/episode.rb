@@ -153,28 +153,28 @@ class Episode < ActiveRecord::Base
   def content
     content = self.description
     if self.introduced_titles.size > 0
-      content << "</p>\n" + self.stringify_introduced_titles.html_safe
+      content << "</p>" + self.stringify_introduced_titles.html_safe
     end
     if self.show_notes.size > 0
-      content << "</p>\n" + self.stringify_show_notes.html_safe
+      content << "</p>" + self.stringify_show_notes.html_safe
     end
     content
   end
 
   def stringify_introduced_titles
-    string = "<p>Vorgestellte Titel:</p>\n<p><ul>"
+    string = "<p>Vorgestellte Titel:</p><ul>"
     introduced_titles.each do |title|
-      string << "<li><a href='#{title.url}>#{title.name}</a></li>\n"
+      string << "<li><a href='#{title.url}>#{title.name}</a></li>"
     end
-    string << "</ul>"
+    string << "</ul><p>"
   end
 
   def stringify_show_notes
-    string = "<p>Show Notes:</p>\n<p><ul>"
+    string = "<p>Show Notes:</p><ul>"
     show_notes.each do |show_note|
-      string << "<li><a href='#{show_note.url}>#{show_note.name}</a></li>\n"
+      string << "<li><a href='#{show_note.url}>#{show_note.name}</a></li>"
     end
-    string << "</ul>"
+    string << "</ul><p>"
   end
 
   def type
