@@ -1,5 +1,6 @@
 Inbox:
-	- remove redundant success and error messages  @na
+	- remove redundant success and error messages  @na @done(2013-05-09)
+	- fix dissapearing page link @na @done(2013-05-09)
 Later:
 	- add exporter
 	- remove robots.txt when using right domain

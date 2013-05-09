@@ -26,7 +26,7 @@ module ApplicationHelper
 	end
 
 	def pages
-		Page.where(footer: false || nil).select("title, slug").order("title asc")
+		Page.where("footer = false OR footer = null").select("title, slug").order("title asc")
 	end
 
 	def footer_pages
