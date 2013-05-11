@@ -25,4 +25,13 @@ module DashboardHelper
       ]
     end
   end
+
+  def traffic_data
+    JSON.parse(
+      open(
+        "https://secure.gaug.es/gauges/#{Settings.first.gauges}/traffic",
+        'X-Gauges-Token' => Settings.first.gauges_key
+      ).read
+     )['traffic']
+  end
 end

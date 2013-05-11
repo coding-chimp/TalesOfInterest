@@ -23,6 +23,8 @@
 	
 		<%= f.input :gauges, label: 'Gaug.es Code' %>
 
+		<%= f.input :gauges_key, label: 'Gaug.es API Key', as: :password, :input_html => { :value => f.object.gauges_key } %>
+
 		<%= f.input :ga_code, label: 'Google Analytics Code' %>
 	
 		<%= f.input :flattr_code, label: 'Flattr Code' %>

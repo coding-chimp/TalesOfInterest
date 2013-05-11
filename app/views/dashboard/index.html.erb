@@ -33,6 +33,13 @@
     </tbody>
   </table>
 
+  <% if @settings.gauges.present? && @settings.gauges_key.present? %>
+
+  <h2>Traffic</h2>
+
+  <%= content_tag :div, "", id: "traffic_chart", data: { traffic: traffic_data } %>
+
+  <% end %>
 
   <h2>Recent Commits</h2>
 

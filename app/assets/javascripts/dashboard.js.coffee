@@ -15,3 +15,13 @@ jQuery ->
   Morris.Donut
     element: 'Tales_subscribers_chart'
     data: $('#Tales_subscribers_chart').data('subscribers')
+
+  Morris.Area
+    element: 'traffic_chart'
+    data: $('#traffic_chart').data('traffic')
+    xkey: 'date'
+    ykeys: ['views', 'people']
+    labels: ['Views', 'People']
+    lineColors: ['blue', 'red']
+    behaveLikeLine: true
+    hideHover: 'auto'
