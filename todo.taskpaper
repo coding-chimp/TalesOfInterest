@@ -1,12 +1,14 @@
 Inbox:
-	- remove redundant success and error messages  @na @done(2013-05-09)
-	- fix dissapearing page link @na @done(2013-05-09)
+	- add gauges @na @done(2013-05-11)
+	- add gauges to dashboard @na
 Later:
 	- add exporter
 	- remove robots.txt when using right domain
 	- flattr button for every episode
 	- write api for adding duration to episode
 Archive:
+	- remove redundant success and error messages  @na @done(2013-05-09) @project(Inbox)
+	- fix dissapearing page link @na @done(2013-05-09) @project(Inbox)
 	- feed uberarbeiten @done(2013-05-03) @project(Inbox)
 	- add color coding to dashboard @done(2013-05-01) @project(Inbox)
 	- add subscriber charts in modal @done(2013-05-01) @project(Inbox)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429213405) do
+ActiveRecord::Schema.define(:version => 20130511100244) do
 
   create_table "blogrolls", :force => true do |t|
     t.string   "name"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20130429213405) do
     t.datetime "updated_at",           :null => false
     t.string   "uri_key"
     t.string   "uri_token"
+    t.string   "gauges"
   end
 
   create_table "show_notes", :force => true do |t|
