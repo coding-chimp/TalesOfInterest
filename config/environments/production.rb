@@ -20,11 +20,8 @@ TalesOfInterest::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  # Add the fonts path
-  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-
   # Precompile additional assets
-  config.assets.precompile += %w( .svg .eot .woff .ttf )
+  config.assets.precompile += %w( .svg .eot .woff .ttf .otf )
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH

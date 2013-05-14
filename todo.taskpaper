@@ -1,12 +1,15 @@
 Inbox:
-	- add gauges @na @done(2013-05-11)
-	- add gauges to dashboard @na @done(2013-05-11)
+	- devide appliction.css.scss @na
+	- update dependencies @na
 Later:
 	- add exporter
 	- remove robots.txt when using right domain
 	- flattr button for every episode
 	- write api for adding duration to episode
 Archive:
+	- put external assets in vendor directory @na @done(2013-05-12) @project(Inbox)
+	- add gauges @na @done(2013-05-11) @project(Inbox)
+	- add gauges to dashboard @na @done(2013-05-11) @project(Inbox)
 	- remove redundant success and error messages  @na @done(2013-05-09) @project(Inbox)
 	- fix dissapearing page link @na @done(2013-05-09) @project(Inbox)
 	- feed uberarbeiten @done(2013-05-03) @project(Inbox)

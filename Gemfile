@@ -62,3 +62,6 @@ gem 'rvm-capistrano'
 
 # Memcached
 gem 'dalli'
+
+# Web Player
+gem 'podlove-web-player-rails', '~> 0.2.0'

@@ -15,9 +15,7 @@
 //= require twitter/bootstrap
 //= require episodes
 //= require bootstrap-datetimepicker.min
-//= require html5shiv
-//= require mediaelement-and-player.min
-//= require podlove-web-player
+//= require podlove-web-player-rails
 //= require navigation
 //= require raphael
 //= require morris

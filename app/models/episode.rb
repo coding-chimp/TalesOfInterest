@@ -125,11 +125,15 @@ class Episode < ActiveRecord::Base
   end
 
   def podlove_chapters
-    chapters = "[{'start':'00:00:00.000','title':'Intro','image':''}"
-    self.chapters.order("timestamp asc")[1..-1].each do |chapter|
-      chapters << "\n,{'start':'#{chapter.pretty_time}','title':'#{chapter.title}','image':''}"
+    if self.chapters.size > 0
+      chapters = []
+      self.chapters.order("timestamp asc").each do |chapter|
+        chapters << { :start => chapter.pretty_time, :title => chapter.title }
+      end
+      chapters
+    else
+      ""
     end
-    chapters << "]"
   end
 
   def set_episode_number
