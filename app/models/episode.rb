@@ -78,14 +78,18 @@ class Episode < ActiveRecord::Base
   end
 
   def feed_duration
-    seconds = playtime % 60
-    minutes = (playtime / 60) % 60
-    hours = playtime / (60 * 60)
+    if playtime.present?
+      seconds = playtime % 60
+      minutes = (playtime / 60) % 60
+      hours = playtime / (60 * 60)
 
-    if hours > 0
-      format("%d:%02d:%02d", hours, minutes, seconds)
+      if hours > 0
+        format("%d:%02d:%02d", hours, minutes, seconds)
+      else
+        format("%d:%02d", minutes, seconds) 
+      end
     else
-      format("%d:%02d", minutes, seconds) 
+      ""
     end
   end
 

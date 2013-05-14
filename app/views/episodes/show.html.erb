@@ -40,7 +40,7 @@
 	<%= podloveaudio(src: @episode.file, type: @episode.type, poster: @episode.podcast.artwork.url(:thumb),
 			           	 title: @episode.title, permalink: episode_url(@episode.podcast, @episode), 
 			             subtitle: truncate(@episode.clean_description.gsub(/\n/, ' ').gsub(/\r/, ''), length: 150),
-			             startVolume: 1, chapters: @episode.podlove_chapters) %>
+			             startVolume: 1, chapters: @episode.podlove_chapters, duration: @episode.feed_duration) %>
 
 	<p class="download"><%= link_to "Download Podcast", @episode.file %></p>
 
