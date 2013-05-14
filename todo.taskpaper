@@ -1,6 +1,5 @@
 Inbox:
-	- devide appliction.css.scss @na
-	- update dependencies @na
+	- update dependencies @na  @done(2013-05-14)
 Later:
 	- add exporter
 	- remove robots.txt when using right domain
