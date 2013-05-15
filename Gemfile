@@ -64,4 +64,4 @@ gem 'rvm-capistrano'
 gem 'dalli'
 
 # Web Player
-gem 'podlove-web-player-rails', '~> 0.2.0'
+gem 'podlove-web-player-rails', '~> 0.3.1'
