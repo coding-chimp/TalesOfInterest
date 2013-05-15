@@ -1,12 +1,13 @@
 Inbox:
-	- update dependencies @na  @done(2013-05-14)
 	- fix banner @na
+	- make episode information less in your face @na
 Later:
 	- add exporter
 	- remove robots.txt when using right domain
 	- flattr button for every episode
 	- write api for adding duration to episode
 Archive:
+	- update dependencies @na  @done(2013-05-14) @project(Inbox)
 	- put external assets in vendor directory @na @done(2013-05-12) @project(Inbox)
 	- add gauges @na @done(2013-05-11) @project(Inbox)
 	- add gauges to dashboard @na @done(2013-05-11) @project(Inbox)
