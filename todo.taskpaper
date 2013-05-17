@@ -2,6 +2,7 @@ Inbox:
 	- fix banner @na @done(2013-05-15)
 	- make episode information less in your face @na @done(2013-05-15)
 	- try to make the player layout more responsive @na @done(2013-05-15)
+	- look into ransack @na
 Later:
 	- add exporter
 	- remove robots.txt when using right domain
