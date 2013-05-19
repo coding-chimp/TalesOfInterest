@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def search
-		@search = Episode.published.recent.search(params[:search])
-		if params[:search]
-			redirect_to controller: :episodes, action: :index, search: params[:search]
+		@search = Episode.published.recent.search(params[:q])
+		if params[:q]
+			redirect_to controller: :episodes, action: :index, q: params[:q]
 		end
 	end
 

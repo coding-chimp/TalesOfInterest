@@ -29,7 +29,7 @@ gem 'jquery-rails'
 gem 'devise'
 
 # Search
-gem 'meta_search',  '>= 1.1.0.pre'
+gem 'ransack'
 
 # Pretty URLs
 gem 'friendly_id'

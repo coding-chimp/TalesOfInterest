@@ -5,15 +5,15 @@ class EpisodesController < ApplicationController
 
 	def index
 		ppp = Settings.first.posts_per_page
-		@search = Episode.includes(:podcast).published.recent.search(params[:search])
-		@episodes = @search.page(params[:page]).per(ppp)
+		@search = Episode.includes(:podcast).published.recent.search(params[:q])
+		@episodes = @search.result(distinct: true).page(params[:page]).per(ppp)
 		@podcasts = Podcast.order("name")
 	end
 
 	def podcast_index
 		@podcast = Podcast.find(params[:podcast])
-		@search = @podcast.episodes.recent.search(params[:search])
-		@episodes = @search
+		@search = @podcast.episodes.recent.search(params[:q])
+		@episodes = @search.result(distinct: true)
 	end
 
 	def show

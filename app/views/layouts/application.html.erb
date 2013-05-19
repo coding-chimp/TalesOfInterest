@@ -73,8 +73,14 @@
             <div class="pull-right search">
               <a class="button"></a>
               <div class="container">
-                <%= form_for @search, html: { :class => 'search' } do |f| %>
-                  <%= f.text_field :title_or_description_contains, :placeholder => "Search..."  %>
+                <% if params[:action] == "podcast_index" %>
+                  <%= search_form_for @search, url: podcast_episodes_path, html: { class: 'search' } do |f| %>
+                    <%= f.text_field :title_cont, placeholder: "Search..."  %>
+                  <% end %>
+                <% else %>
+                  <%= search_form_for @search, html: { class: 'search' } do |f| %>
+                    <%= f.text_field :title_or_description_cont, placeholder: "Search..."  %>
+                  <% end %>
                 <% end %>
               </div><!-- /container -->
             </div><!-- /search -->
@@ -90,11 +96,16 @@
               <% end %>
             </ul><!-- /main -->
             <% end %>
-
-            <%= form_for @search, html: { :class => 'search' } do |f| %>
-              <%= f.text_field :title_or_description_contains, :class => "pull-right", 
-                               :placeholder => "Search..."  %>
-             <% end %>
+            <% if params[:action] == "podcast_index" %>
+              <%= search_form_for @search, url: podcast_episodes_path, html: { class: 'search' } do |f| %>
+                <%= f.text_field :title_cont, class: "pull-right", placeholder: "Search..."  %>
+              <% end %>
+            <% else %>
+              <%= search_form_for @search, html: { class: 'search' } do |f| %>
+                <%= f.text_field :title_or_description_cont, class: "pull-right", 
+                                 placeholder: "Search..."  %>
+              <% end %>
+            <% end %>
           </nav><!-- /sub-nav -->
 
           <div class="clearfix"></div>
