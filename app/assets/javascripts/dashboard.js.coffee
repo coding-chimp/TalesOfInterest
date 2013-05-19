@@ -22,6 +22,6 @@ jQuery ->
     xkey: 'date'
     ykeys: ['views', 'people']
     labels: ['Views', 'People']
-    lineColors: ['blue', 'red']
+    lineColors: ['#0b62a4', '#da4f49']
     behaveLikeLine: true
     hideHover: 'auto'
