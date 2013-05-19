@@ -109,12 +109,12 @@ class Episode < ActiveRecord::Base
     count = 0
     chapter_marks.each_line do |line|
       unless line.empty?
-        unless line =~ /^\d\d:\d\d:\d\d\s.+$/
+        unless line =~ /^\d\d:\d\d:\d\d\s.+$/ || line =~ /^\d\d:\d\d:\d\d.\d{3}\s.+$/
           @virtual_errors = { chapter_marks: ['not properly formatted'] }
         else
           count += 1
           time = line.scan(/\d\d:\d\d:\d\d/)[0]
-          title = line.scan(/\d (\D*)/)[0][0].chomp
+          title = line.scan(/\d (.+)/)[0][0].chomp
           if count <= self.chapters.count
             c = self.chapters[count-1]
             c.update_attributes(:pretty_time => time, :title => title)
