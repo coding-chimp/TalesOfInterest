@@ -65,3 +65,6 @@ gem 'dalli'
 
 # Web Player
 gem 'podlove-web-player-rails', '~> 0.3.1'
+
+gem 'turbolinks'
+gem 'jquery-turbolinks'

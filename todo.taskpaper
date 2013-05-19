@@ -1,7 +1,7 @@
 Inbox:
 	- change colors in traffic graph @na @done(2013-05-19)
 	- look into ransack @na @done(2013-05-19)
-	- look into turbolinks
+	- look into turbolinks @done(2013-05-19)
 Later:
 	- add exporter
 	- remove robots.txt when using right domain

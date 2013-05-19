@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require episodes
@@ -19,4 +20,5 @@
 //= require navigation
 //= require raphael
 //= require morris
+//= require turbolinks
 //= require_tree .
