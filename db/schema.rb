@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511123404) do
+ActiveRecord::Schema.define(:version => 20130520101219) do
 
   create_table "blogrolls", :force => true do |t|
     t.string   "name"
@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(:version => 20130511123404) do
     t.integer  "podcast_id"
     t.string   "slug"
     t.datetime "published_at"
-    t.boolean  "draft",        :default => true
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "draft",            :default => true
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "spotify_playlist"
   end
 
   create_table "friendly_id_slugs", :force => true do |t|

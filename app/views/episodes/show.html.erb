@@ -44,6 +44,10 @@
 
 	<p class="download"><%= link_to "Download Podcast", @episode.file %></p>
 
+	<% if @episode.spotify_playlist.present? %>
+		<iframe src="https://embed.spotify.com/?uri=spotify:user:talesofinterest:playlist:<%= @episode.spotify_playlist %>&theme=white" width="500" height="580" frameborder="0" allowtransparency="true"></iframe>
+	<% end %>
+
 	<% unless @episode.introduced_titles.size == 0 %>
 		<h3>Vorgestellte Titel</h3>
 		<table class="table table-striped" id="links">

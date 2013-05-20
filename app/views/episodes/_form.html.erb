@@ -30,6 +30,8 @@
   <%= f.input :chapter_marks, as: :text %>
 <% end %>
 
+<%= f.input :spotify_playlist %>
+
 <%= f.fields_for :introduced_titles do |builder| %>
   <%= render "introduced_title_fields", f: builder %>
 <% end %>
