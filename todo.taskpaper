@@ -1,14 +1,15 @@
 Inbox:
-	- change colors in traffic graph @na @done(2013-05-19)
-	- look into ransack @na @done(2013-05-19)
-	- look into turbolinks @done(2013-05-19)
-	- fix chapter parsing (numbers) @na  @done(2013-05-19)
+	- center text in show notes table  @done(2013-05-20)
 Later:
 	- add exporter
 	- remove robots.txt when using right domain
 	- flattr button for every episode
 	- write api for adding duration to episode
 Archive:
+	- change colors in traffic graph @na @done(2013-05-19) @project(Inbox)
+	- look into ransack @na @done(2013-05-19) @project(Inbox)
+	- look into turbolinks @done(2013-05-19) @project(Inbox)
+	- fix chapter parsing (numbers) @na  @done(2013-05-19) @project(Inbox)
 	- fix banner @na @done(2013-05-15) @project(Inbox)
 	- make episode information less in your face @na @done(2013-05-15) @project(Inbox)
 	- try to make the player layout more responsive @na @done(2013-05-15) @project(Inbox)
