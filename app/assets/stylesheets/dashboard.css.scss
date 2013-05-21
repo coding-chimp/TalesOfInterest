@@ -1,5 +1,10 @@
 td.ok { color: #468847 }
-td.alert { color: #c09853 }
+td.alert { 
+  color: #c09853;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
 td.warning { color: #b94a48 }
 
 @media only screen and (max-width: 760px),

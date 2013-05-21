@@ -1,6 +1,6 @@
 jQuery ->
   $("#dashboard_podcast_table").tooltip selector: "a[data-toggle=tooltip]"
-  
+
   Morris.Donut
     element: 'Celluloid_subscribers_chart'
     data: $('#Celluloid_subscribers_chart').data('subscribers')

@@ -1,12 +1,14 @@
 Inbox:
-	- center text in show notes table  @done(2013-05-20)
-	- add spotify playlist to episodes @na @done(2013-05-20)
 Later:
 	- add exporter
 	- remove robots.txt when using right domain
 	- flattr button for every episode
 	- write api for adding duration to episode
+	- add a forum?
+	- add episode analytics
 Archive:
+	- center text in show notes table  @done(2013-05-20) @project(Inbox)
+	- add spotify playlist to episodes @na @done(2013-05-20) @project(Inbox)
 	- change colors in traffic graph @na @done(2013-05-19) @project(Inbox)
 	- look into ransack @na @done(2013-05-19) @project(Inbox)
 	- look into turbolinks @done(2013-05-19) @project(Inbox)
