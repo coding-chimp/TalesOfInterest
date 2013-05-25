@@ -195,6 +195,9 @@ GEM
     uniform_notifier (1.2.0)
     warden (1.2.1)
       rack (>= 1.0)
+    xray-rails (0.1.5)
+      coffee-rails
+      rails (>= 3.1.0)
 
 PLATFORMS
   ruby
@@ -228,3 +231,4 @@ DEPENDENCIES
   turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  xray-rails

@@ -21,6 +21,7 @@ end
 group :development do
   gem 'rails-erd'
   gem 'bullet'
+  gem 'xray-rails'
 end
 
 gem 'jquery-rails'
