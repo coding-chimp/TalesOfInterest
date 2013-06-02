@@ -1,6 +1,8 @@
 Inbox:
+	- play length not necessary @na
+	- hint for chapter format @na
 	- fix gaug.es graph @na
-	- remove robots.txt when using right domain
+	- remove robots.txt when using right domain @done(2013-06-02)
 Later:
 	- add exporter
 	- flattr button for every episode
