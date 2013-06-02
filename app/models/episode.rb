@@ -187,7 +187,7 @@ class Episode < ActiveRecord::Base
   def type
     if file.include?("mp3")
       type = 'audio/mpeg'
-    else
+    elsif file.include?("m4a")
       type = 'audio/x-m4a'
     end
   end
