@@ -151,7 +151,7 @@ class Episode < ActiveRecord::Base
   def set_file_url
     podcast_name = podcast.name.downcase
     nr = set_episode_number.to_s.rjust(3, '0')
-    "http://www.talesofinterest.de/podcasts/#{podcast_name}#{nr}.m4a"
+    "http://dl.talesofinterest.de/#{podcast_name}#{nr}.m4a"
   end
 
   def clean_description

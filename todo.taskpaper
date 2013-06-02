@@ -3,6 +3,7 @@ Inbox:
 	- hint for chapter format @na
 	- fix gaug.es graph @na
 	- remove robots.txt when using right domain @done(2013-06-02)
+	- change pre-genrated file url @na
 Later:
 	- add exporter
 	- flattr button for every episode
