@@ -27,11 +27,19 @@ module DashboardHelper
   end
 
   def traffic_data
-    JSON.parse(
-      open(
-        "https://secure.gaug.es/gauges/#{Settings.first.gauges}/traffic",
-        'X-Gauges-Token' => Settings.first.gauges_key
-      ).read
-     )['traffic']
+    traffic = JSON.parse(open("https://secure.gaug.es/gauges/#{Settings.first.gauges}/traffic",
+        'X-Gauges-Token' => Settings.first.gauges_key).read)
+
+    unless traffic['urls']['older'].nil?
+      older_traffic = JSON.parse(open(traffic['urls']['older'],
+        'X-Gauges-Token' => Settings.first.gauges_key).read)
+      traffic = older_traffic['traffic'] + traffic['traffic']
+      
+      ending = traffic.size - 1
+      beginning = ending - 30
+      traffic = traffic[beginning..ending]
+    end
+    
+    traffic
   end
 end
