@@ -27,7 +27,7 @@
 <% if params[:episode] %>
   <%= f.input :chapter_marks, as: :text, input_html: { value: params[:episode][:chapter_marks] } %>
 <% else %>
-  <%= f.input :chapter_marks, as: :text %>
+  <%= f.input :chapter_marks, as: :text, hint: "<b>Format:</b> HH:MM:SS Title" %>
 <% end %>
 
 <%= f.input :spotify_playlist %>

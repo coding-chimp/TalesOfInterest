@@ -1,9 +1,9 @@
 Inbox:
 	- play length not necessary @na
-	- hint for chapter format @na
+	- hint for chapter format @na @done(2013-06-02)
 	- fix gaug.es graph @na
 	- remove robots.txt when using right domain @done(2013-06-02)
-	- change pre-genrated file url @na
+	- change pre-genrated file url @na @done(2013-06-02)
 Later:
 	- add exporter
 	- flattr button for every episode
