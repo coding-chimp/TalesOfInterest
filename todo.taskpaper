@@ -1,10 +1,10 @@
 Inbox:
+	- fix gaug.es graph @na
+	- remove robots.txt when using right domain
 Later:
 	- add exporter
-	- remove robots.txt when using right domain
 	- flattr button for every episode
 	- write api for adding duration to episode
-	- add a forum?
 	- add episode analytics
 Archive:
 	- center text in show notes table  @done(2013-05-20) @project(Inbox)
