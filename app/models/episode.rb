@@ -26,8 +26,7 @@ class Episode < ActiveRecord::Base
   validates_presence_of :podcast, :number, :title
   validate :unique_title
   validate :unique_number
-  validates_presence_of :description, :file, :playtime, 
-                        :unless => Proc.new { |episode| episode.draft.present? }
+  validates_presence_of :description, :file, :unless => Proc.new { |episode| episode.draft.present? }
 
   def unique_title
     podcast.episodes.each do |ep|
