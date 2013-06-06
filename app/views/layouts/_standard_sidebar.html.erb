@@ -8,7 +8,7 @@
         </li>
         <% unless podcast.itunes_link.blank?  %>
           <li>
-            <%= image_tag("itunes.png") %> <%= link_to "#{podcast.name} in iTunes", podcast.itunes_link %>
+            <%= image_tag("itunes.png") %> <%= link_to "#{podcast.name} in iTunes", podcast.itunes_link, target: "_blank" %>
           </li>
         <% end %>
       <% end %>
