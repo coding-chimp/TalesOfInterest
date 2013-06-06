@@ -1,7 +1,11 @@
 Inbox:
-	- fix podlove web player on firefox @na
-	- fix episode creation breaking on wrong file url
-	- timeout beim fetchen von file size abfangen
+	- fix episode creation breaking on wrong file url @done(2013-06-06)
+	- timeout beim fetchen von file size abfangen @done(2013-06-06)
+Multiple File Support:
+	- add rows to episodes table
+	- migration schreiben
+	- add fields to form
+	- change podlove player creation
 Later:
 	- add exporter
 	- flattr button for every episode

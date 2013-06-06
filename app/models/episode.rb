@@ -15,7 +15,7 @@ class Episode < ActiveRecord::Base
   friendly_id :number, use: :slugged
 
   after_create :set_slug
-  before_save :fetch_file_size
+  before_save :update_file_size, if: :file_changed?
   before_save :ensure_published_at, unless: :draft?
   before_validation :custom_before_validation
 
@@ -202,6 +202,15 @@ class Episode < ActiveRecord::Base
     self.published_at ||= Time.zone.now
   end
 
+  def update_file_size
+    begin
+      fetch_file_size
+    rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
+       Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
+      self.file_size = nil
+    end
+  end
+
   def fetch_file_size
     url = URI.parse(self.file)
     response = Net::HTTP.start(url.host, url.port) do |http|
@@ -209,6 +218,8 @@ class Episode < ActiveRecord::Base
     end
     if response.code == "200"
       self.file_size = response["content-length"].to_i
+    else
+      self.file_size = nil
     end
   end
 
