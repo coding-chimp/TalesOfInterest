@@ -6,7 +6,7 @@ module DashboardHelper
     uri.query = URI.encode_www_form(params)
     response = Net::HTTP.get_response(uri)
     if stats = JSON.parse(response.body)['stats']
-      subscribers = stats.first['greader'] + stats.first['other'] + stats.first['direct']
+      subscribers = stats.first['greader'] + stats.first['other']
     else
       "ERROR"
     end
@@ -20,8 +20,7 @@ module DashboardHelper
     if stats = JSON.parse(response.body)['stats']
       [
         {label: "Google Reader", value: stats.first['greader']},
-        {label: "Other", value: stats.first['other']},
-        {label: "Direct", value: stats.first['direct']}
+        {label: "Other", value: stats.first['other']}
       ]
     end
   end
