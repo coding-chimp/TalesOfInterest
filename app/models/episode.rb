@@ -5,17 +5,21 @@ class Episode < ActiveRecord::Base
   has_many :show_notes
   has_many :chapters
   has_many :introduced_titles
+  has_many :audio_files
 
-  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks, :published_at, :draft, :introduced_titles_attributes, :spotify_playlist
+  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at
+  attr_accessible :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks
+  attr_accessible :published_at, :draft, :introduced_titles_attributes, :spotify_playlist
+  attr_accessible :audio_files_attributes
   accepts_nested_attributes_for :show_notes, allow_destroy: true
   accepts_nested_attributes_for :chapters, allow_destroy: true
   accepts_nested_attributes_for :introduced_titles, allow_destroy: true
+  accepts_nested_attributes_for :audio_files, allow_destroy: true
 
   extend FriendlyId
   friendly_id :number, use: :slugged
 
   after_create :set_slug
-  before_save :update_file_size, if: :file_changed?
   before_save :ensure_published_at, unless: :draft?
   before_validation :custom_before_validation
 
@@ -26,7 +30,8 @@ class Episode < ActiveRecord::Base
   validates_presence_of :podcast, :number, :title
   validate :unique_title
   validate :unique_number
-  validates_presence_of :description, :file, :unless => Proc.new { |episode| episode.draft.present? }
+  validates_presence_of :description, :unless => Proc.new { |episode| episode.draft.present? }
+  validates :audio_files, length: { minimum: 1 }, :unless => Proc.new { |episode| episode.draft.present? }
 
   def unique_title
     podcast.episodes.each do |ep|
@@ -89,6 +94,21 @@ class Episode < ActiveRecord::Base
       end
     else
       ""
+    end
+  end
+
+  def feed_file
+    if file = audio_files.find_by_media_type("mp4")
+    elsif file = audio_files.find_by_media_type("mp3")
+    end
+    file      
+  end
+
+  def feed_file_type
+    if feed_file.media_type == "mp4"
+      'audio/x-m4a'
+    elsif feed_file.media_type = "mp3"
+      'audio/mpeg'
     end
   end
 
@@ -188,39 +208,46 @@ class Episode < ActiveRecord::Base
     string << "</ul><p>"
   end
 
-  def type
-    if file.include?("mp3")
-      type = 'audio/mpeg'
-    elsif file.include?("m4a")
-      type = 'audio/x-m4a'
+  def connection_error?
+    error = false
+    audio_files.each do |file|
+      if file.size.nil?
+        error = true
+        break
+      end
+    end
+    error
+  end
+
+  def connection_error_message
+    faulty_files = []
+    audio_files.each do |file|
+      if file.size.nil?
+        faulty_files << file.media_type
+      end
+    end
+    "Couldn't connect to <b>#{faulty_files.join(", ")}</b> #{pluralize_without_count(faulty_files.size, "file")}. Please check the file #{pluralize_without_count(faulty_files.size, "url")}."
+  end
+
+  def file_url(type)
+    file = audio_files.find_by_media_type(type)
+    if file
+      file.url
+    else
+      file
     end
   end
 
   private
 
+  def pluralize_without_count(count, noun, text = nil)
+    if count != 0
+      count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
+    end
+  end
+
   def ensure_published_at
     self.published_at ||= Time.zone.now
-  end
-
-  def update_file_size
-    begin
-      fetch_file_size
-    rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
-       Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
-      self.file_size = nil
-    end
-  end
-
-  def fetch_file_size
-    url = URI.parse(self.file)
-    response = Net::HTTP.start(url.host, url.port) do |http|
-      http.request_head(url.path)
-    end
-    if response.code == "200"
-      self.file_size = response["content-length"].to_i
-    else
-      self.file_size = nil
-    end
   end
 
   def set_slug

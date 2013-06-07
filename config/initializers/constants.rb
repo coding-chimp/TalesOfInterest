@@ -156,3 +156,10 @@ LANGUAGES = [
   "Turkish [tr]",
   "Ukranian [uk]"
 ]
+
+MEDIA_TYPES = [
+  "mp4",
+  "mp3",
+  "ogg",
+  "opus"
+]
