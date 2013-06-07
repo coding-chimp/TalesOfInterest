@@ -37,20 +37,19 @@
 	<h4><%= @episode.published_at.strftime("%d. %B %Y") %><%= " • #{@episode.duration}" if @episode.playtime.present? %></h4>
 	<div class="description"><%= markdown(@episode.description) %></div>
 
-	<% if @podcast.name == "Celluloid" and @episode.number == 25 %>
-	<%= podloveaudio(src: @episode.file, type: @episode.type,
-	                 opus: "http://dl.talesofinterest.de/celluloid025.opus",
+	<%= podloveaudio(mp4: @episode.file_url("mp4"), mp3: @episode.file_url("mp3"),
+	                 opus: @episode.file_url("opus"), ogg: @episode.file_url("ogg"), 
 			           	 title: @episode.title, permalink: episode_url(@episode.podcast, @episode), 
 			             subtitle: truncate(@episode.clean_description.gsub(/\n/, ' ').gsub(/\r/, ''), length: 150),
 			             startVolume: 1, chapters: @episode.podlove_chapters, duration: @episode.feed_duration) %>
-	<% else %>
-	<%= podloveaudio(src: @episode.file, type: @episode.type,
-			           	 title: @episode.title, permalink: episode_url(@episode.podcast, @episode), 
-			             subtitle: truncate(@episode.clean_description.gsub(/\n/, ' ').gsub(/\r/, ''), length: 150),
-			             startVolume: 1, chapters: @episode.podlove_chapters, duration: @episode.feed_duration) %>
-	<% end %>
 
-	<p class="download"><%= link_to "Download Podcast", @episode.file %></p>
+	<div class="downloads">
+	<% @episode.audio_files.order('media_type').each_with_index do |file, index| %>
+		<p class="<%= index.even? ? "pull-left" : "pull-right" %>">
+			<%= link_to "Download #{file.media_type.upcase}", file.url %>
+		</p>
+	<% end %>
+	</div>
 
 	<% if @episode.spotify_playlist.present? %>
 		<iframe src="https://embed.spotify.com/?uri=spotify:user:talesofinterest:playlist:<%= @episode.spotify_playlist %>&theme=white" width="500" height="580" frameborder="0" allowtransparency="true"></iframe>

@@ -30,6 +30,9 @@ class EpisodesController < ApplicationController
 		@podcast = Podcast.find(params[:podcast])
 		@episode = Episode.new
 		@episode.podcast = @podcast
+		url = @episode.set_file_url
+		audio_file = AudioFile.new(url: url, media_type: "mp4", episode_id: @episode.id)
+		@episode.audio_files << audio_file
 	end
 
 	def create

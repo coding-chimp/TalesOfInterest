@@ -16,12 +16,6 @@
 
 <%= f.input :playtime, hint: "In seconds." %>
 
-<% if f.object.new_record? %>
-  <%= f.input :file, input_html: { value: @episode.set_file_url } %>
-<% else %>
-  <%= f.input :file, as: :url %>
-<% end %>
-
 <%= f.input :explicit %>
 
 <% if params[:episode] %>
@@ -32,12 +26,12 @@
 
 <%= f.input :spotify_playlist %>
 
-<%= f.fields_for :introduced_titles do |builder| %>
-  <%= render "introduced_title_fields", f: builder %>
+<%= f.fields_for :audio_files do |builder| %>
+  <%= render "audio_file_fields", f: builder %>
 <% end %>
 
 <div class="control-group">
-    <%= link_to_add_fields "Add Introduced Title", f, :introduced_titles %>
+    <%= link_to_add_fields "Add Audio File", f, :audio_files %>
 </div>
 
 <%= f.fields_for :show_notes do |builder| %>
@@ -46,6 +40,14 @@
 
 <div class="control-group">
     <%= link_to_add_fields "Add Show Note", f, :show_notes %>
+</div>
+
+<%= f.fields_for :introduced_titles do |builder| %>
+  <%= render "introduced_title_fields", f: builder %>
+<% end %>
+
+<div class="control-group">
+    <%= link_to_add_fields "Add Introduced Title", f, :introduced_titles %>
 </div>
 
 <div class="control-group string optional">

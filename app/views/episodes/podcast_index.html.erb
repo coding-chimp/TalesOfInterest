@@ -14,12 +14,12 @@
 		</thead>
 		<tbody>
 			<% for episode in @episodes do %>
-				<tr class="<%= "error" if episode.file_size.nil? %>">
+				<tr class="<%= "error" if episode.connection_error? %>">
 					<td><%= episode.number %></td>
 					<td>
 						<%= episode.title %>
-						<% if episode.file_size.nil? %>
-							<br /><span class="text-error">Couldn't connect to file. Please check the file url.</span>
+						<% if episode.connection_error? %>
+							<br /><span class="text-error"><%=raw episode.connection_error_message %></span>
 						<% end %>
 					</td>
 					<% if episode.draft %>
