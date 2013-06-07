@@ -97,6 +97,21 @@ class Episode < ActiveRecord::Base
     end
   end
 
+  def feed_file
+    if file = audio_files.find_by_media_type("mp4")
+    elsif file = audio_files.find_by_media_type("mp3")
+    end
+    file      
+  end
+
+  def feed_file_type
+    if feed_file.media_type == "mp4"
+      'audio/x-m4a'
+    elsif feed_file.media_type = "mp3"
+      'audio/mpeg'
+    end
+  end
+
   def num
     number.to_s.rjust(3, '0')
   end
@@ -191,14 +206,6 @@ class Episode < ActiveRecord::Base
       string << "<li><a href=\"#{show_note.url}\">#{show_note.name}</a></li>"
     end
     string << "</ul><p>"
-  end
-
-  def type
-    if file.include?("mp3")
-      type = 'audio/mpeg'
-    elsif file.include?("m4a")
-      type = 'audio/x-m4a'
-    end
   end
 
   def connection_error?

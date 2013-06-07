@@ -6,9 +6,8 @@ Multiple File Support:
 	- move fetch_file_size to audio_files  @done(2013-06-07)
 	- add connection_error_message to episode @done(2013-06-07)
 	- add fields to form @done(2013-06-07)
-	- update feed
+	- update feed @done(2013-06-07)
 	- update episodes#show view @done(2013-06-07)
-	- change podlove player creation
 Later:
 	- add exporter
 	- flattr button for every episode
