@@ -5,6 +5,7 @@ class Episode < ActiveRecord::Base
   has_many :show_notes
   has_many :chapters
   has_many :introduced_titles
+  has_many :audio_files
 
   attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks, :published_at, :draft, :introduced_titles_attributes, :spotify_playlist
   accepts_nested_attributes_for :show_notes, allow_destroy: true

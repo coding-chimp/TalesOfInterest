@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130520101219) do
+ActiveRecord::Schema.define(:version => 20130607120509) do
+
+  create_table "audio_files", :force => true do |t|
+    t.string   "url"
+    t.string   "media_type"
+    t.integer  "size"
+    t.integer  "episode_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "blogrolls", :force => true do |t|
     t.string   "name"
@@ -34,8 +43,6 @@ ActiveRecord::Schema.define(:version => 20130520101219) do
     t.string   "title"
     t.text     "description"
     t.integer  "playtime"
-    t.string   "file"
-    t.integer  "file_size"
     t.boolean  "explicit"
     t.integer  "podcast_id"
     t.string   "slug"
