@@ -6,6 +6,7 @@ Multiple File Support:
 	- migration schreiben
 	- add fields to form
 	- change podlove player creation
+	- fetch filesize for each?
 Later:
 	- add exporter
 	- flattr button for every episode
