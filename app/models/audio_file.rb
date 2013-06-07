@@ -3,7 +3,7 @@ class AudioFile < ActiveRecord::Base
 
   belongs_to :episode
 
-  validates_presence_of :type, :url, :episode_id
+  validates_presence_of :media_type, :url, :episode_id
 
   before_save :update_size, if: :url_changed?
 

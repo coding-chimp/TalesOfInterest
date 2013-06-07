@@ -7,8 +7,8 @@ Multiple File Support:
 	- add connection_error_message to episode @done(2013-06-07)
 	- add fields to form @done(2013-06-07)
 	- update feed
+	- update episodes#show view @done(2013-06-07)
 	- change podlove player creation
-	- fetch filesize for each
 Later:
 	- add exporter
 	- flattr button for every episode

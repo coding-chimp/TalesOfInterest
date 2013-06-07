@@ -222,6 +222,15 @@ class Episode < ActiveRecord::Base
     "Couldn't connect to <b>#{faulty_files.join(", ")}</b> #{pluralize_without_count(faulty_files.size, "file")}. Please check the file #{pluralize_without_count(faulty_files.size, "url")}."
   end
 
+  def file_url(type)
+    file = audio_files.find_by_media_type(type)
+    if file
+      file.url
+    else
+      file
+    end
+  end
+
   private
 
   def pluralize_without_count(count, noun, text = nil)

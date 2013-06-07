@@ -159,7 +159,6 @@ LANGUAGES = [
 
 MEDIA_TYPES = [
   "mp4",
-  "m4a",
   "mp3",
   "ogg",
   "opus"
