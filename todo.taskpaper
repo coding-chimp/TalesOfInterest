@@ -4,7 +4,7 @@ Multiple File Support:
 	- create audio file table  @done(2013-06-07)
 	- migration schreiben @done(2013-06-07)
 	- move fetch_file_size to audio_files  @done(2013-06-07)
-	- add connection_error_message to episode
+	- add connection_error_message to episode @done(2013-06-07)
 	- add fields to form @done(2013-06-07)
 	- update feed
 	- change podlove player creation

@@ -19,7 +19,7 @@
 					<td>
 						<%= episode.title %>
 						<% if episode.connection_error? %>
-							<br /><span class="text-error">Couldn't connect to file. Please check the file url.</span>
+							<br /><span class="text-error"><%=raw episode.connection_error_message %></span>
 						<% end %>
 					</td>
 					<% if episode.draft %>

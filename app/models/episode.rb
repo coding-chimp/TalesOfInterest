@@ -212,7 +212,23 @@ class Episode < ActiveRecord::Base
     error
   end
 
+  def connection_error_message
+    faulty_files = []
+    audio_files.each do |file|
+      if file.size.nil?
+        faulty_files << file.media_type
+      end
+    end
+    "Couldn't connect to <b>#{faulty_files.join(", ")}</b> #{pluralize_without_count(faulty_files.size, "file")}. Please check the file #{pluralize_without_count(faulty_files.size, "url")}."
+  end
+
   private
+
+  def pluralize_without_count(count, noun, text = nil)
+    if count != 0
+      count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
+    end
+  end
 
   def ensure_published_at
     self.published_at ||= Time.zone.now
