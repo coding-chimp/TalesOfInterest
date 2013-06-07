@@ -8,6 +8,7 @@ Multiple File Support:
 	- add fields to form @done(2013-06-07)
 	- update feed @done(2013-06-07)
 	- update episodes#show view @done(2013-06-07)
+	- pre fill fields for one file  @done(2013-06-07)
 Later:
 	- add exporter
 	- flattr button for every episode
