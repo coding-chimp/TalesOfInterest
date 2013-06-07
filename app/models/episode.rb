@@ -7,10 +7,14 @@ class Episode < ActiveRecord::Base
   has_many :introduced_titles
   has_many :audio_files
 
-  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks, :published_at, :draft, :introduced_titles_attributes, :spotify_playlist
+  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at
+  attr_accessible :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks
+  attr_accessible :published_at, :draft, :introduced_titles_attributes, :spotify_playlist
+  attr_accessible :audio_files_attributes
   accepts_nested_attributes_for :show_notes, allow_destroy: true
   accepts_nested_attributes_for :chapters, allow_destroy: true
   accepts_nested_attributes_for :introduced_titles, allow_destroy: true
+  accepts_nested_attributes_for :audio_files, allow_destroy: true
 
   extend FriendlyId
   friendly_id :number, use: :slugged
@@ -26,7 +30,8 @@ class Episode < ActiveRecord::Base
   validates_presence_of :podcast, :number, :title
   validate :unique_title
   validate :unique_number
-  validates_presence_of :description, :file, :unless => Proc.new { |episode| episode.draft.present? }
+  validates_presence_of :description, :unless => Proc.new { |episode| episode.draft.present? }
+  validates :audio_files, length: { minimum: 1 }, :unless => Proc.new { |episode| episode.draft.present? }
 
   def unique_title
     podcast.episodes.each do |ep|

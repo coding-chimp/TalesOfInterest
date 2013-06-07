@@ -1,18 +1,22 @@
 class AudioFile < ActiveRecord::Base
-  attr_accessible :size, :type, :url, :episode, :episode_id
+  attr_accessible :size, :media_type, :url, :episode, :episode_id
 
   belongs_to :episode
+
+  validates_presence_of :type, :url, :episode_id
 
   before_save :update_size, if: :url_changed?
 
   private
 
   def update_size
-    begin
-      fetch_size
-    rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
-       Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
-      self.size = nil
+    if url.present?
+      begin
+        fetch_size
+      rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
+             Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
+        self.size = nil
+      end
     end
   end
 

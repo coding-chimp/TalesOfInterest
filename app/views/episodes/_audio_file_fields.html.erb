@@ -1,0 +1,14 @@
+<div class="form-head">
+  <h3>Audio File</h3>
+</div>
+
+<%= f.input :url, as: :url %>
+
+<%= f.input :media_type, label: "Type", collection: MEDIA_TYPES %>
+
+<div class="control-group">
+  <div class="controls">
+    <%= f.check_box :_destroy, class: 'check_box' %>
+    <span class="help-inline">Remove Audio File</span>
+  </div>
+</div><!-- /control-group -->
