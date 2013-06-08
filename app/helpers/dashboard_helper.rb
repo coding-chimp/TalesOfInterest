@@ -6,7 +6,7 @@ module DashboardHelper
     uri.query = URI.encode_www_form(params)
     response = Net::HTTP.get_response(uri)
     if stats = JSON.parse(response.body)['stats']
-      subscribers = stats.first['greader'] + stats.first['other']
+      "#{stats.first['greader']} / #{stats.first['other']}"
     else
       "ERROR"
     end

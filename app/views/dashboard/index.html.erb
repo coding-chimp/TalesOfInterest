@@ -11,7 +11,9 @@
         <th>Last Episode</th>
         <th>Next Episode</th>
         <% if @settings.uri_key.present? && @settings.uri_token.present? %>
-        <th><a href="#" data-toggle="tooltip" title="according to uri.lv"><b>Subscribers</b></a></th>
+        <th>
+          <a href="#" data-toggle="tooltip" title="RSS Readers / Other Readers"><b>Subscribers</b></a>
+        </th>
         <% end %>
       </tr>
     </thead>
@@ -23,9 +25,11 @@
           <td class="<%= podcast.since_color_code %>"><%= raw(podcast.since_last_episode) %></td>
           <td><%= raw(podcast.until_next_episode) %></td>
           <% if @settings.uri_key.present? && @settings.uri_token.present? %>
-          <td><a href="#<%= podcast.name %>SubscribersModal" data-toggle="modal">
-            <%= subscribers(podcast.name) %>
-          </a></td>
+          <td>
+            <a href="#<%= podcast.name %>SubscribersModal" data-toggle="modal">
+              <%= subscribers(podcast.name) %>
+            </a>
+        </td>
           <% end %>
         </tr>
         <%= render 'subscribers_chart', podcast: podcast %>

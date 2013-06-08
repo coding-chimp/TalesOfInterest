@@ -7,9 +7,18 @@ td.alert {
 }
 td.warning { color: #b94a48 }
 
+#dashboard_podcast_table {
+  td, th {
+    text-align: center;
+  }
+}
+
 @media only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
   #dashboard_podcast_table {
+    td, th {
+      text-align: left;
+    }
     td:nth-of-type(1):before { content: "Name"; }
     td:nth-of-type(2):before { content: "# Episodes"; }
     td:nth-of-type(3):before { content: "Last Episode"; }
