@@ -1,20 +1,21 @@
 Inbox:
 	- add proper validation for nested forms
-Multiple File Support:
-	- create audio file table  @done(2013-06-07)
-	- migration schreiben @done(2013-06-07)
-	- move fetch_file_size to audio_files  @done(2013-06-07)
-	- add connection_error_message to episode @done(2013-06-07)
-	- add fields to form @done(2013-06-07)
-	- update feed @done(2013-06-07)
-	- update episodes#show view @done(2013-06-07)
-	- pre fill fields for one file  @done(2013-06-07)
+	- update readme @na @done(2013-06-08)
 Later:
 	- add exporter
 	- flattr button for every episode
 	- write api for adding duration to episode
 	- add episode analytics
 Archive:
+	Multiple File Support: @done(2013-06-07) @project(Multiple File Support)
+	- create audio file table  @done(2013-06-07) @project(Multiple File Support)
+	- migration schreiben @done(2013-06-07) @project(Multiple File Support)
+	- move fetch_file_size to audio_files  @done(2013-06-07) @project(Multiple File Support)
+	- add connection_error_message to episode @done(2013-06-07) @project(Multiple File Support)
+	- add fields to form @done(2013-06-07) @project(Multiple File Support)
+	- update feed @done(2013-06-07) @project(Multiple File Support)
+	- update episodes#show view @done(2013-06-07) @project(Multiple File Support)
+	- pre fill fields for one file  @done(2013-06-07) @project(Multiple File Support)
 	- fix episode creation breaking on wrong file url @done(2013-06-06) @project(Inbox)
 	- timeout beim fetchen von file size abfangen @done(2013-06-06) @project(Inbox)
 	- play length not necessary @nad @done(2013-06-02) @project(Inbox)
