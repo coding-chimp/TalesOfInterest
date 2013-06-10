@@ -1,12 +1,14 @@
 Inbox:
 	- add proper validation for nested forms
-	- update readme @na @done(2013-06-08)
+	- add bitlove
+	- make API calls for gaug.es and uri.lv via cron job an save data to DB
 Later:
 	- add exporter
 	- flattr button for every episode
 	- write api for adding duration to episode
 	- add episode analytics
 Archive:
+	- update readme @na @done(2013-06-08) @project(Inbox)
 	Multiple File Support: @done(2013-06-07) @project(Multiple File Support)
 	- create audio file table  @done(2013-06-07) @project(Multiple File Support)
 	- migration schreiben @done(2013-06-07) @project(Multiple File Support)
