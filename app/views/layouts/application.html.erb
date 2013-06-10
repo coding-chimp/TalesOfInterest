@@ -113,7 +113,7 @@
           <div class="span11">
             <ul class="nav nav-tabs">
               <li class="<%= 'active' if params[:controller] == "dashboard" %>">
-                <%# link_to "Dashboard", dashboard_path %>
+                <%= link_to "Dashboard", dashboard_path %>
               </li>
               <li class="<%= 'active' if params[:controller] == "blogrolls" %>">
                 <%= link_to "Blogroll", blogrolls_path %>
