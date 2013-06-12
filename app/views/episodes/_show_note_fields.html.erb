@@ -1,14 +1,5 @@
-<div class="form-head">
-  <h3>Show Note</h3>
-</div>
-
-<%= f.input :name %>
-
-<%= f.input :url %>
-
-<div class="control-group">
-  <div class="controls">
-    <%= f.check_box :_destroy, class: 'check_box' %>
-    <span class="help-inline">Remove Show Note</span>
-  </div>
-</div><!-- /control-group -->
+<tr>
+  <td><%= f.input_field :name %></td>
+  <td><%= f.input_field :url %></td>
+  <td><%= f.check_box :_destroy, class: 'check_box' %></td>
+</tr>

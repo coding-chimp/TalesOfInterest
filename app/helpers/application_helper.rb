@@ -13,7 +13,7 @@ module ApplicationHelper
 		fields = f.fields_for(association, new_object, child_index: id) do |builder|
 			render(association.to_s.singularize + "_fields", f: builder, :collection => @id = id)			
 		end
-		link_to(name, '#', id: "add_fields", class: 'btn btn-info', data: {id: id, fields: fields.gsub("\n", "")})
+		link_to(name, '#', id: "add_#{association.to_s.singularize}_fields", class: 'btn btn-info', data: {id: id, fields: fields.gsub("\n", "")})
 	end
 
 	# Layout

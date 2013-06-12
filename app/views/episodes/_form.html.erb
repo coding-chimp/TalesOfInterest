@@ -26,29 +26,77 @@
 
 <%= f.input :spotify_playlist %>
 
-<%= f.fields_for :audio_files do |builder| %>
-  <%= render "audio_file_fields", f: builder %>
-<% end %>
-
-<div class="control-group">
-    <%= link_to_add_fields "Add Audio File", f, :audio_files %>
+<div class="form-head">
+  <h3>Audio Files</h3>
 </div>
 
-<%= f.fields_for :show_notes do |builder| %>
-  <%= render "show_note_fields", f: builder %>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>URL</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= f.fields_for :audio_files do |builder| %>
+      <%= render "audio_file_fields", f: builder %>
+    <% end %>
+    <tr id="add_audio_file">
+      <td><%= link_to_add_fields "Add Audio File", f, :audio_files %></td>
+      <td></td>
+      <td></td>
+    </td>
+  </tbody>
+</table>
 
-<div class="control-group">
-    <%= link_to_add_fields "Add Show Note", f, :show_notes %>
+<div class="form-head">
+  <h3>Show Notes</h3>
 </div>
 
-<%= f.fields_for :introduced_titles do |builder| %>
-  <%= render "introduced_title_fields", f: builder %>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= f.fields_for :show_notes do |builder| %>
+      <%= render "show_note_fields", f: builder %>
+    <% end %>
+    <tr id="add_show_note">
+      <td><%= link_to_add_fields "Add Show Note", f, :show_notes %></td>
+      <td></td>
+      <td></td>
+    </td>
+  </tbody>
+</table>
 
-<div class="control-group">
-    <%= link_to_add_fields "Add Introduced Title", f, :introduced_titles %>
+<div class="form-head">
+  <h3>Introduced Titles</h3>
 </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= f.fields_for :introduced_titles do |builder| %>
+      <%= render "introduced_title_fields", f: builder %>
+    <% end %>
+    <tr id="add_introduced_title">
+      <td><%= link_to_add_fields "Add Introduced Title", f, :introduced_titles %></td>
+      <td></td>
+      <td></td>
+    </td>
+  </tbody>
+</table>
 
 <div class="control-group string optional">
   <label class="string optional control-label" for="episode_published_at">Publish Date</label>
