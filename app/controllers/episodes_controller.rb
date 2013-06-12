@@ -63,6 +63,7 @@ class EpisodesController < ApplicationController
 	def edit
 		@podcast = Podcast.find(params[:podcast])
 		@episode = @podcast.episodes.find(params[:id])
+		@show_notes = @episode.show_notes
 	end
 
 	def update

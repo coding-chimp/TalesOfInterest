@@ -59,16 +59,18 @@
 <table class="table">
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>URL</th>
       <th>Delete</th>
     </tr>
   </thead>
-  <tbody>
-    <%= f.fields_for :show_notes do |builder| %>
+  <tbody id="show_notes" data-update-url="<%= sort_show_notes_url %>">
+    <%= f.fields_for :show_notes, @show_notes.sort_by(&:position) do |builder| %>
       <%= render "show_note_fields", f: builder %>
     <% end %>
     <tr id="add_show_note">
+      <td></td>
       <td><%= link_to_add_fields "Add Show Note", f, :show_notes %></td>
       <td></td>
       <td></td>

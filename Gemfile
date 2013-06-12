@@ -69,3 +69,5 @@ gem 'podlove-web-player-rails', '~> 1.1.0'
 
 gem 'turbolinks'
 gem 'jquery-turbolinks'
+
+gem 'acts_as_list'

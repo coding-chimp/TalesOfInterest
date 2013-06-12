@@ -6,7 +6,7 @@ h4.episode-num { margin-bottom: 0 }
 
 .downloads {
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 table#links {
@@ -32,4 +32,10 @@ table#links {
     .subtitle { display: none; }
     .togglers { top: 25px; }
   }
+}
+
+table .handle {
+  cursor: pointer;
+  width: 5px;
+  padding-top: 12px
 }

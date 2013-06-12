@@ -1,6 +1,10 @@
 TalesOfInterest::Application.routes.draw do
   break if ARGV.join.include? 'assets:precompile'
 
+  resources :show_notes do
+    collection { post :sort}
+  end
+
   as :user do
     get "/login" => "sessions#new"
   end
