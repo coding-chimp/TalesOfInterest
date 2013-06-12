@@ -1,3 +1,5 @@
+
+
 <% if notification = f.error_notification %>
     <%= notification %>
 <% end %>
@@ -116,6 +118,7 @@
 
 <div class="form-actions">
 	<%= f.submit "Publish", name: 'publish', class: 'btn btn-primary' if f.object.draft %>
-	<%= f.submit nil, class: 'btn btn-primary' %>
+	<%= f.submit "Save", class: 'btn btn-primary' %>
+  <%= f.submit "Save & Close", name: 'save_close', class: 'btn btn-primary' %>
 	<%= link_to "Cancel", podcast_episodes_path(@podcast), class: 'btn' %>
 </div><!-- /form-actions -->

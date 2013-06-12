@@ -50,8 +50,10 @@ class EpisodesController < ApplicationController
 					@episode.published_at = nil
 					render action: "new"
 				end
+			elsif params[:save_close]
+				redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully saved.')
 			else
-				redirect_to(podcast_episodes_path(@episode.podcast), notice: 'Episode was successfully created.')
+				redirect_to(edit_episode_path(@podcast, @episode), notice: 'Episode was successfully saved.')
 			end
 		else
 			render action: "new"
@@ -78,8 +80,10 @@ class EpisodesController < ApplicationController
 					@episode.published_at = nil
 					render action: "edit"
 				end
+			elsif params[:save_close]
+				redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully saved.')
 			else
-				redirect_to(podcast_episodes_path(@podcast), notice: 'Episode was successfully updated.')
+				redirect_to(edit_episode_path(@podcast, @episode), notice: 'Episode was successfully saved.')
 			end
 		else
 			render action: "edit"

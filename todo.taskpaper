@@ -2,6 +2,9 @@ Inbox:
 	- add proper validation for nested forms
 	- add bitlove
 	- make API calls for gaug.es and uri.lv via cron job an save data to DB
+	- wrap nested fields into tables in episode form @na @done(2013-06-12)
+	- add update without leaving page for episodes page @na @done(2013-06-12)
+	- make fields sortable in episode form @na
 Later:
 	- add exporter
 	- flattr button for every episode
