@@ -26,14 +26,14 @@ module ImportHelper
   end
 
   def parse_episode(item, podcast)
-      title = item.at_xpath("title").text.scan(/:\D(.+)/)[0][0]
-      episode_nr = item.at_xpath("title").text.scan(/(\d+):/)[0][0].to_i
-      pub_date = item.at_xpath("pubDate").text
-      description = HTMLPage.new :contents => item.at_xpath("content:encoded").text
-      description = description.markdown
-      file = description.scan(/\[([^\]]+)\]\(([^)]+)\)/).last[1].match(/^[^ ]+/)[0]
-      description = description.gsub("Download #{podcast_name} #{episode_nr.to_s.rjust(3, '0')}",'').gsub("Download Podcast (mp3)",'').gsub(/\[\]\(.*\)/,'')
-      Episode.create!(podcast: podcast, number: episode_nr, title: title, description: description,
-                      file: file, draft: true, created_at: pub_date, published_at: pub_date)
+    title = item.at_xpath("title").text.scan(/:\D(.+)/)[0][0]
+    episode_nr = item.at_xpath("title").text.scan(/(\d+):/)[0][0].to_i
+    pub_date = item.at_xpath("pubDate").text
+    description = HTMLPage.new :contents => item.at_xpath("content:encoded").text
+    description = description.markdown
+    file = description.scan(/\[([^\]]+)\]\(([^)]+)\)/).last[1].match(/^[^ ]+/)[0]
+    description = description.gsub("Download #{podcast_name} #{episode_nr.to_s.rjust(3, '0')}",'').gsub("Download Podcast (mp3)",'').gsub(/\[\]\(.*\)/,'')
+    Episode.create!(podcast: podcast, number: episode_nr, title: title, description: description,
+                    file: file, draft: true, created_at: pub_date, published_at: pub_date)
   end
 end

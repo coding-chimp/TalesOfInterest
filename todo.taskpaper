@@ -2,15 +2,20 @@ Inbox:
 	- add proper validation for nested forms
 	- add bitlove
 	- make API calls for gaug.es and uri.lv via cron job an save data to DB
-	- wrap nested fields into tables in episode form @na @done(2013-06-12)
-	- add update without leaving page for episodes page @na @done(2013-06-12)
-	- make fields sortable in episode form @na
+	- make fields sortable in episode form @na @done(2013-06-17)
+	- refactor import_helper  @done(2013-06-17)
+	- refactor episodes_controller  @done(2013-06-17)
+	- refactor episode model
+	- add chapter text file parsing @done(2013-06-17)
+	- add chapter json file parsing @na
 Later:
 	- add exporter
 	- flattr button for every episode
 	- write api for adding duration to episode
 	- add episode analytics
 Archive:
+	- wrap nested fields into tables in episode form @na @done(2013-06-12) @project(Inbox)
+	- add update without leaving page for episodes page @na @done(2013-06-12) @project(Inbox)
 	- update readme @na @done(2013-06-08) @project(Inbox)
 	Multiple File Support: @done(2013-06-07) @project(Multiple File Support)
 	- create audio file table  @done(2013-06-07) @project(Multiple File Support)

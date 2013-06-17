@@ -10,7 +10,7 @@ class Episode < ActiveRecord::Base
   attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at
   attr_accessible :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks
   attr_accessible :published_at, :draft, :introduced_titles_attributes, :spotify_playlist
-  attr_accessible :audio_files_attributes
+  attr_accessible :audio_files_attributes, :chapter_file
   accepts_nested_attributes_for :show_notes, allow_destroy: true
   accepts_nested_attributes_for :chapters, allow_destroy: true
   accepts_nested_attributes_for :introduced_titles, allow_destroy: true
@@ -133,21 +133,21 @@ class Episode < ActiveRecord::Base
           break
         else
           count += 1
-          time = line.scan(/\d{0,3}[:.]?\d{1,2}[:.]\d{1,2}/)[0].gsub '.', ':'
-          if time.count(':') == 1
-            time = time.prepend("0:")
-          end
-          title = line.scan(/\s(.+)/)[0][0].chomp
-          if count <= self.chapters.count
-            c = self.chapters[count-1]
-            c.update_attributes(:pretty_time => time, :title => title)
-          else
-            c = Chapter.create!(:pretty_time => time, :title => title, :episode_id => id)
-            self.chapters << c
-          end
+          parse_chapter(line, count)
         end
       end
     end
+    delete_remaining_chapters(count)
+    self.save
+  end
+
+  def chapter_file=(file)
+    count = 0
+    File.open(file.tempfile, 'r').each_line do |line, index|
+      count += 1
+      parse_chapter(line, count)
+    end
+    delete_remaining_chapters(count)
     self.save
   end
 
@@ -239,6 +239,27 @@ class Episode < ActiveRecord::Base
   end
 
   private
+
+  def parse_chapter(line, count)
+    time = line.scan(/\d{0,3}[:.]?\d{1,2}[:.]\d{1,2}/)[0].gsub '.', ':'
+    if time.count(':') == 1
+      time = time.prepend("0:")
+    end
+    title = line.scan(/\s(.+)/)[0][0].gsub(/<.+>/, "").chomp
+    if count <= self.chapters.count
+      c = self.chapters[count-1]
+      c.update_attributes(pretty_time: time, title: title)
+    else
+      c = Chapter.create!(pretty_time: time, title: title, episode_id: self.id)
+      self.chapters << c
+    end
+  end
+
+  def delete_remaining_chapters(count)
+    for n in count...self.chapters.count do
+      self.chapters[n].delete
+    end
+  end
 
   def pluralize_without_count(count, noun, text = nil)
     if count != 0
