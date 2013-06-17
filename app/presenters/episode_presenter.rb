@@ -39,17 +39,19 @@ class EpisodePresenter
   end
 
   def prev_link
-    if prev = Episode.published.where(podcast_id: @episode.podcast.id, number: @episode.number-1).first
-      h.content_tag :li, class: "previous" do
-        h.link_to "Previous Episode", h.episode_path(@episode.podcast, prev)
-      end
-    end
+    pagination_link(@episode.number-1, "previous")
   end
 
   def next_link
-    if next_ep = Episode.published.where(podcast_id: @episode.podcast.id, number: @episode.number+1).first
-      h.content_tag :li, class: "next" do
-        h.link_to "Next Episode", h.episode_path(@episode.podcast, next_ep)
+    pagination_link(@episode.number+1, "next")
+  end
+
+  private
+
+  def pagination_link(episode_num, klass)
+    if episode = Episode.published.where(podcast_id: @episode.podcast.id, number: episode_num).first
+      h.content_tag :li, class: klass do
+        h.link_to "#{klass.titleize} Episode", h.episode_path(@episode.podcast, episode)
       end
     end
   end
