@@ -18,11 +18,11 @@ class EpisodesController < ApplicationController
 
 	def show
 		@podcast = Podcast.find(params[:podcast])
-		@last_episode = @podcast.episodes.published.recent.first
-		if params[:id].to_i > @last_episode.number
-			redirect_to episode_path(@podcast, @last_episode), alert: "An episode with number #{params[:id]} is not available. This is the most recent episode."
+		@episode = @podcast.latest_episode
+		if params[:id].to_i > @episode.number
+			redirect_to episode_path(@podcast, @episode), alert: "An episode with number #{params[:id]} is not available. This is the most recent episode."
 		else
-			@episode = @podcast.episodes.published.find(params[:id])
+			@episode = @podcast.episodes.find(params[:id])
 		end
 	end
 

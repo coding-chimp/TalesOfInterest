@@ -9,7 +9,6 @@ class Podcast < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
-#  validates_presence_of :name, :author, :description, :keywords, :category1
 	validates_presence_of :name, :author
 	validates_uniqueness_of :name
 
@@ -20,7 +19,7 @@ class Podcast < ActiveRecord::Base
 	end
 
 	def since_color_code
-		if episode = self.episodes.published.recent.first
+		if episode = self.latest_episode
 			distance = Date.today - episode.published_at.to_date
 			if distance <= 14
 				"ok"
@@ -32,8 +31,12 @@ class Podcast < ActiveRecord::Base
 		end
 	end
 
+	def latest_episode
+		self.episodes.published.recent.first
+	end
+
 	def since_last_episode
-		if episode = self.episodes.published.recent.first
+		if episode = self.latest_episode
 			distance_of_time_in_words(DateTime.now, episode.published_at) + " ago"
 		else
 			'&nbsp'
