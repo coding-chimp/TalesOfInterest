@@ -4,7 +4,10 @@ module ImportHelper
   	items = xml.xpath("//channel//item")
   	author = xml.at_xpath("//channel//title").text
   	items.each do |item|
-      parse_episode(item, author)
+      podcast_name = item.at_xpath("title").text.scan(/(.+) \d+:/)[0][0]
+      next if podcast_name.nil?
+      podcast = find_podcast(podcast_name, author)
+      parse_episode(item, podcast) 
   	end
 	end
 
@@ -12,30 +15,25 @@ module ImportHelper
     items = Nokogiri::XML(params[:import][:file]).xpath("//channel//item")
     items.each do |item|
       text = HTMLPage.new :contents => item.at_xpath("content:encoded").text
-      Page.create!(:title => item.at_xpath("title").text,
-                   :content =>  text.markdown )
+      Page.create!(title: item.at_xpath("title").text, content:  text.markdown )
     end
   end
 
   private
 
-  def parse_episode(item, author)
-    podcast_name = item.at_xpath("title").text.scan(/(.+) \d+:/)[0][0]
-    unless podcast_name.nil?
+  def find_podcast(name, author)
+    Podcast.find_by_name(name) || Podcast.create!(name: name, author: author)
+  end
+
+  def parse_episode(item, podcast)
+      title = item.at_xpath("title").text.scan(/:\D(.+)/)[0][0]
+      episode_nr = item.at_xpath("title").text.scan(/(\d+):/)[0][0].to_i
+      pub_date = item.at_xpath("pubDate").text
       description = HTMLPage.new :contents => item.at_xpath("content:encoded").text
       description = description.markdown
-      links = description.scan(/\[([^\]]+)\]\(([^)]+)\)/)
+      file = description.scan(/\[([^\]]+)\]\(([^)]+)\)/).last[1].match(/^[^ ]+/)[0]
       description = description.gsub("Download #{podcast_name} #{episode_nr.to_s.rjust(3, '0')}",'').gsub("Download Podcast (mp3)",'').gsub(/\[\]\(.*\)/,'')
-      podcast = Podcast.find_by_name(podcast_name)
-      podcast = Podcast.create!(:name => podcast_name, :author => author) if podcast.nil?
-      Episode.create!(:podcast => podcast,
-                      :number => item.at_xpath("title").text.scan(/(\d+):/)[0][0].to_i,
-                      :title => item.at_xpath("title").text.scan(/:\D(.+)/)[0][0],
-                      :description => description,
-                      :file => links.last[1].match(/^[^ ]+/)[0],
-                      :draft => true,
-                      :created_at => item.at_xpath("pubDate").text,
-                      :published_at => item.at_xpath("pubDate").text)
-    end
+      Episode.create!(podcast: podcast, number: episode_nr, title: title, description: description,
+                      file: file, draft: true, created_at: pub_date, published_at: pub_date)
   end
 end
