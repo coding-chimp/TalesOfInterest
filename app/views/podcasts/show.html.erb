@@ -31,15 +31,17 @@
 <% end %>
 
 <% @episodes.each do |episode| %>
-	<div class="well">
-		<h2>
-			<%= link_to(episode_path(@podcast, episode)) do %>
-				<%= "##{episode.num}: " if episode.number %><%= episode.title %>
-			<% end %>
-		</h2>
-		<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= " • #{episode.duration}" if episode.playtime.present? %></h4>
-		<%= markdown(episode.description) %>
-	</div><!-- /well -->
+	<% present episode do |episode_presenter| %>
+		<div class="well">
+			<h2>
+				<%= link_to(episode_path(@podcast, episode)) do %>
+					<%= "##{episode_presenter.num}: " %><%= episode.title %>
+				<% end %>
+			</h2>
+			<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= episode_presenter.duration %></h4>
+			<%= markdown(episode.description) %>
+		</div><!-- /well -->
+	<% end %>
 <% end %>
 
 <%= paginate @episodes %>

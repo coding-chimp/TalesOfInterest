@@ -1,4 +1,11 @@
 module ApplicationHelper
+	def present(object, klass = nil)
+		klass ||= "#{object.class}Presenter".constantize
+		presenter = klass.new(object, self)
+		yield presenter if block_given?
+		presenter
+	end
+
 	def markdown(text)
  		Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true), :space_after_headers => true, :autolink => true).render(text).html_safe
 	end

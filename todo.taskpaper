@@ -5,7 +5,7 @@ Inbox:
 	- make fields sortable in episode form @na @done(2013-06-17)
 	- refactor import_helper  @done(2013-06-17)
 	- refactor episodes_controller  @done(2013-06-17)
-	- refactor episode model
+	- refactor episode model @na
 	- add chapter text file parsing @done(2013-06-17)
 	- add chapter json file parsing @na @done(2013-06-17)
 Later:

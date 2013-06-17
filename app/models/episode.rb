@@ -21,65 +21,17 @@ class Episode < ActiveRecord::Base
 
   after_create :set_slug
   before_save :ensure_published_at, unless: :draft?
-  before_validation :custom_before_validation
 
   scope :published, lambda { where(draft: false).where('published_at <= ?', Time.now.utc) }
   scope :scheduled, lambda { where('published_at > ?', Time.now.utc).order('published_at asc') }
   scope :recent, order("published_at DESC")
 
+  before_validation :custom_before_validation
   validates_presence_of :podcast, :number, :title
   validate :unique_title
   validate :unique_number
   validates_presence_of :description, :unless => Proc.new { |episode| episode.draft.present? }
   validates :audio_files, length: { minimum: 1 }, :unless => Proc.new { |episode| episode.draft.present? }
-
-  def unique_title
-    podcast.episodes.each do |ep|
-      unless ep == self
-        if ep.title == title
-          errors.add(:title, 'already exists')
-          break
-        end
-      end
-    end
-  end
-
-  def unique_number
-    podcast.episodes.each do |ep|
-      unless ep == self
-        if ep.number == number
-          errors.add(:number, 'already exists')
-          break
-        end
-      end
-    end
-  end
-
-  def custom_before_validation
-    if @virtual_errors
-      @virtual_errors.each do |k,v|
-        v.each { |e| errors[k] << e }
-      end
-    end
-  end
-
-  def podcast_name
-    Rails.cache.fetch([:podcast, podcast_id, :name], expires_in: 15.minutes) do
-      podcast.name
-    end
-  end
-
-  def duration
-    seconds = playtime % 60
-    minutes = (playtime / 60) % 60
-    hours = playtime / (60 * 60)
-
-    if hours > 0
-      "#{pluralize(hours, 'Stunde', 'Stunden')} #{pluralize(minutes, 'Minute', 'Minuten')}"
-    else
-      pluralize(minutes, 'Minute', 'Minuten')
-    end
-  end
 
   def feed_duration
     if playtime.present?
@@ -110,10 +62,6 @@ class Episode < ActiveRecord::Base
     elsif feed_file.media_type = "mp3"
       'audio/mpeg'
     end
-  end
-
-  def num
-    number.to_s.rjust(3, '0')
   end
 
   def chapter_marks
@@ -161,18 +109,6 @@ class Episode < ActiveRecord::Base
 
     delete_remaining_chapters(count)
     self.save
-  end
-
-  def podlove_chapters
-    if self.chapters.size > 0
-      chapters = []
-      self.chapters.order("timestamp asc").each do |chapter|
-        chapters << { :start => chapter.pretty_time, :title => chapter.title }
-      end
-      chapters
-    else
-      ""
-    end
   end
 
   def set_episode_number
@@ -281,11 +217,43 @@ class Episode < ActiveRecord::Base
     end
   end
 
-  def ensure_published_at
-    self.published_at ||= Time.zone.now
-  end
-
   def set_slug
     update_attribute :slug, number
+  end
+
+  # Validations
+
+  def unique_title
+    podcast.episodes.each do |ep|
+      unless ep == self
+        if ep.title == title
+          errors.add(:title, 'already exists')
+          break
+        end
+      end
+    end
+  end
+
+  def unique_number
+    podcast.episodes.each do |ep|
+      unless ep == self
+        if ep.number == number
+          errors.add(:number, 'already exists')
+          break
+        end
+      end
+    end
+  end
+
+  def custom_before_validation
+    if @virtual_errors
+      @virtual_errors.each do |k,v|
+        v.each { |e| errors[k] << e }
+      end
+    end
+  end
+
+  def ensure_published_at
+    self.published_at ||= Time.zone.now
   end
 end
