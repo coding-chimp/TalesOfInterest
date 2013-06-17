@@ -7,7 +7,7 @@ Inbox:
 	- refactor episodes_controller  @done(2013-06-17)
 	- refactor episode model
 	- add chapter text file parsing @done(2013-06-17)
-	- add chapter json file parsing @na
+	- add chapter json file parsing @na @done(2013-06-17)
 Later:
 	- add exporter
 	- flattr button for every episode
