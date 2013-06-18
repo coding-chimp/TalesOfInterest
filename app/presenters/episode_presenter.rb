@@ -50,40 +50,19 @@ class EpisodePresenter < BasePresenter
   end
 
   def connection_error
-    error = false
-    episode.audio_files.each do |file|
-      if file.size.nil?
-        error = true
-        break
-      end
-    end
-    "error" if error
+    "error" if connection_error_message.present?
   end
 
   def connection_error_message
-    if connection_error.present?
-      faulty_files = []
-      episode.audio_files.each do |file|
-        if file.size.nil?
-          faulty_files << file.media_type
-        end
-      end
-      "<br /><span class=\"text-error\">Couldn't connect to <b>#{faulty_files.join(", ")}</b> #{pluralize_without_count(faulty_files.size, "file")}. Please check the file #{pluralize_without_count(faulty_files.size, "url")}.</span>"
-    end
+    "<br /><span class=\"text-error\">Couldn't connect to <b>#{faulty_files.join(", ")}</b> #{pluralize_without_count(faulty_files.size, "file")}. Please check the file #{pluralize_without_count(faulty_files.size, "url")}.</span>" unless faulty_files.empty?
   end
 
   def publish_date
-    string = ""
     if episode.draft
-      string << h.content_tag(:b, "Draft")
+      h.content_tag(:b, "Draft")
     else
-      if episode.published_at > DateTime.now
-        string << h.content_tag(:b, "Scheduled")
-        string << h.tag("br")
-      end 
-      string << episode.published_at.strftime("%d.%m.%y %H:%M")
+      publish_date_helper
     end
-    string
   end
 
   ## Feed
@@ -99,14 +78,12 @@ class EpisodePresenter < BasePresenter
   end
 
   def feed_duration
-    unless episode.playtime.blank?
+    if episode.playtime.present?
       if hours > 0
         format("%d:%02d:%02d", hours, minutes, seconds)
       else
         format("%d:%02d", minutes, seconds) 
       end
-    else
-      ""
     end
   end
 
@@ -158,16 +135,31 @@ private
     end
   end
 
+  def publish_date_helper
+    string = ""
+    if episode.published_at > DateTime.now
+      string << h.content_tag(:b, "Scheduled")
+      string << h.tag("br")
+    end 
+    string << episode.published_at.strftime("%d.%m.%y %H:%M")
+  end
+
+  def faulty_files
+    faulty_files = []
+    episode.audio_files.each do |file|
+      if file.size.nil?
+        faulty_files << file.media_type
+      end
+    end
+    faulty_files
+  end
+
   def stringify_introduced_titles
-    string = "<p>Vorgestellte Titel:</p><ul>"
-    string << stringify(episode.introduced_titles)
-    string << "</ul><p>"
+    "<p>Vorgestellte Titel:</p><ul>#{stringify(episode.introduced_titles)}</ul><p>"
   end
 
   def stringify_show_notes
-    string = "<p>Show Notes:</p><ul>"
-    string << stringify(episode.show_notes.order('position'))
-    string << "</ul><p>"
+    "<p>Show Notes:</p><ul>#{stringify(episode.show_notes.order('position'))}</ul><p>"
   end
 
   def stringify(array)
