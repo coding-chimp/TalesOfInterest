@@ -73,3 +73,6 @@ gem 'jquery-turbolinks'
 
 # Makes the show notes sortable
 gem 'acts_as_list'
+
+# Cron jobs
+gem 'whenever', require: false
