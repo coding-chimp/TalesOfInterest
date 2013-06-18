@@ -1,6 +1,8 @@
-<% title @page.title %>
+<% present @page do |page_presenter| %>
+  <% title page_presenter.title %>
 
-<div class="well" id="page">
-	<h2><%= @page.title %></h2>
-	<%= markdown(@page.content) %>
-</div><!-- /well -->
+  <div class="well" id="page">
+  	<h2><%= page_presenter.title %></h2>
+  	<%= page_presenter.content %>
+  </div><!-- /well -->
+<% end %>

@@ -2,9 +2,11 @@
 <ul class="thumbnails">
 	<% @podcasts.each do |podcast| %>
     <li class="span3">
-      <div class="thumbnail">
-        <%= link_to image_tag(podcast.artwork.url(:medium)), podcast %>
-      </div><!-- /thumbnail -->
+      <% if podcast.artwork.present? %>
+        <div class="thumbnail">
+          <%= link_to image_tag(podcast.artwork.url(:medium)), podcast %>
+        </div><!-- /thumbnail -->
+      <% end %>
     </li><!-- /span -->
   <% end %>
 </ul><!-- /thumbnails -->

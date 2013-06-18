@@ -13,15 +13,17 @@
 		</thead>
 		<tbody>
 			<% for page in @pages do %>
-				<tr>
-					<td><%= page.title %></td>
-					<td><%= page.updated_at.strftime("%d.%m.%y %H:%M") %></td>
-					<td>
-						<%= link_to "Edit", edit_page_path(page), class: 'btn btn-info btn-mini' %>
-						<%= link_to "Delete", page_path(page), method: :delete, confirm: 'Are you sure?',
-  	                              class: 'btn btn-mini btn-danger' %>
-					</td>
-				</tr>
+				<% present page do |page_presenter| %>
+					<tr>
+						<td><%= page_presenter.title %></td>
+						<td><%= page_presenter.updated_at %></td>
+						<td>
+							<%= link_to "Edit", edit_page_path(page), class: 'btn btn-info btn-mini' %>
+							<%= link_to "Delete", page_path(page), method: :delete, confirm: 'Are you sure?',
+	  	                              class: 'btn btn-mini btn-danger' %>
+						</td>
+					</tr>
+				<% end %>		
 			<% end %>
 		</tbody>
 	</table>
