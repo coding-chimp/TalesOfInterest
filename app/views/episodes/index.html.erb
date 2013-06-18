@@ -14,10 +14,7 @@
 	<% present episode do |episode_presenter| %>
     <div class="well">
   		<h2>
-  			<%= link_to episode_path(episode.podcast, episode) do %>
-  				<%= "#{episode.podcast.name} #{episode_presenter.num}: " %>
-  				<%= episode.title %>
-  			<% end %>
+  			<%= link_to episode_presenter.full_title, episode_path(episode.podcast, episode) %>
   		</h2>
   		<h4><%= episode.published_at.strftime("%d. %B %Y") %><%= episode_presenter.duration %></h4>
   		<%= markdown(episode.description) %>

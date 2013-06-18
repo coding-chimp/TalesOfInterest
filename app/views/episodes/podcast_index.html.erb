@@ -14,30 +14,21 @@
 		</thead>
 		<tbody>
 			<% for episode in @episodes do %>
-				<tr class="<%= "error" if episode.connection_error? %>">
-					<td><%= episode.number %></td>
-					<td>
-						<%= episode.title %>
-						<% if episode.connection_error? %>
-							<br /><span class="text-error"><%=raw episode.connection_error_message %></span>
-						<% end %>
-					</td>
-					<% if episode.draft %>
-						<td><b>Draft</b></td>
-					<% else %>
+				<% present episode do |episode_presenter| %>
+					<tr class="<%= episode_presenter.connection_error %>">
+						<td><%= episode.number %></td>
 						<td>
-							<% if episode.published_at > DateTime.now %>
-								<b>Scheduled</b><br />
-							<% end %> 
-							<%= episode.published_at.strftime("%d.%m.%y %H:%M") %>
+							<%= episode.title %>
+							<%=raw episode_presenter.connection_error_message %>
 						</td>
-					<% end %>
-					<td>
-						<%= link_to "Edit", edit_episode_path(@podcast, episode), class: 'btn btn-info btn-mini' %>
-						<%= link_to "Delete", episode_path(@podcast, episode), method: :delete, confirm: 'Are you sure?',
-  	                              class: 'btn btn-mini btn-danger' %>
-					</td>
-				</tr>
+						<td><%=raw episode_presenter.publish_date %></td>
+						<td>
+							<%= link_to "Edit", edit_episode_path(@podcast, episode), class: 'btn btn-info btn-mini' %>
+							<%= link_to "Delete", episode_path(@podcast, episode), method: :delete, confirm: 'Are you sure?',
+	  	                              class: 'btn btn-mini btn-danger' %>
+						</td>
+					</tr>
+				<% end %>
 			<% end %>
 		</tbody>
 	</table>

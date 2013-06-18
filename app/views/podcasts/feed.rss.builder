@@ -81,25 +81,27 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
     end
 
     @episodes.each do |episode|
-      xml.item do
-        xml.title "#{@podcast.name} #{episode.num}: #{episode.title}"
-        xml.link episode_url(@podcast, episode)
-        xml.guid(episode_url(@podcast, episode))
-        xml.pubDate episode.created_at.to_s(:rfc822)
-        xml.description episode.clean_description
-        xml.enclosure url: episode.feed_file.url, length: episode.feed_file.size, type: episode.feed_file_type
-        xml.itunes :author, @podcast.author
-        xml.itunes :duration, episode.feed_duration if episode.playtime.present?
-        xml.itunes :subtitle, truncate(episode.clean_description, length: 150)
-        xml.itunes :summary, episode.clean_description
-        xml.itunes :keywords, @podcast.keywords
-        xml.itunes :image, href: "#{root_url}#{@podcast.artwork.url(:original, false)[1..-1]}"
-        if episode.explicit
-          xml.itunes :explicit, 'yes'
-        else
-          xml.itunes :explicit, 'no'
+      present episode do |episode_presenter|
+        xml.item do
+          xml.title episode_presenter.full_title
+          xml.link episode_url(@podcast, episode)
+          xml.guid episode_url(@podcast, episode)
+          xml.pubDate episode.created_at.to_s(:rfc822)
+          xml.description episode_presenter.clean_description
+          xml.enclosure url: episode_presenter.feed_file.url, length: episode_presenter.feed_file.size, type: episode_presenter.feed_file_type
+          xml.itunes :author, @podcast.author
+          xml.itunes :duration, episode_presenter.feed_duration
+          xml.itunes :subtitle, episode_presenter.truncated_clean_description
+          xml.itunes :summary, episode_presenter.clean_description
+          xml.itunes :keywords, @podcast.keywords
+          xml.itunes :image, href: "#{root_url}#{@podcast.artwork.url(:original, false)[1..-1]}"
+          if episode.explicit
+            xml.itunes :explicit, 'yes'
+          else
+            xml.itunes :explicit, 'no'
+          end
+          xml.tag!("content:encoded") { xml.cdata!(markdown(episode_presenter.content)) }
         end
-        xml.tag!("content:encoded") { xml.cdata!(markdown(episode.content)) }
       end
     end
   end

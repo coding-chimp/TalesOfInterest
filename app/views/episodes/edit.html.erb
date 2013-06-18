@@ -1,4 +1,5 @@
-<% title "Edit #{@podcast.name} #{@episode.num}: #{@episode.title}" %>
+<% present @episode do |episode_presenter| %>
+<% title "Edit #{@podcast.name} #{episode_presenter.num}: #{@episode.title}" %>
 
 <div class="well">
 	<h2>Edit Episode</h2>
@@ -8,3 +9,4 @@
 	<% end %>
 
 </div><!-- /well -->
+<% end %>

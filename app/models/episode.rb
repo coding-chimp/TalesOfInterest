@@ -33,37 +33,6 @@ class Episode < ActiveRecord::Base
   validates_presence_of :description, :unless => Proc.new { |episode| episode.draft.present? }
   validates :audio_files, length: { minimum: 1 }, :unless => Proc.new { |episode| episode.draft.present? }
 
-  def feed_duration
-    if playtime.present?
-      seconds = playtime % 60
-      minutes = (playtime / 60) % 60
-      hours = playtime / (60 * 60)
-
-      if hours > 0
-        format("%d:%02d:%02d", hours, minutes, seconds)
-      else
-        format("%d:%02d", minutes, seconds) 
-      end
-    else
-      ""
-    end
-  end
-
-  def feed_file
-    if file = audio_files.find_by_media_type("mp4")
-    elsif file = audio_files.find_by_media_type("mp3")
-    end
-    file      
-  end
-
-  def feed_file_type
-    if feed_file.media_type == "mp4"
-      'audio/x-m4a'
-    elsif feed_file.media_type = "mp3"
-      'audio/mpeg'
-    end
-  end
-
   def chapter_marks
     chapter_marks = ""
     chapters.order("timestamp asc").each do |chapter|
@@ -125,58 +94,6 @@ class Episode < ActiveRecord::Base
     "http://dl.talesofinterest.de/#{podcast_name}#{nr}.m4a"
   end
 
-  def clean_description
-    description.gsub(/\[([^\]]+)\]\(([^)]+)\)/, '\1').gsub(/[_*]/, '')
-  end
-
-  def content
-    content = self.description
-    if self.introduced_titles.size > 0
-      content << "</p>" + self.stringify_introduced_titles.html_safe
-    end
-    if self.show_notes.size > 0
-      content << "</p>" + self.stringify_show_notes.html_safe
-    end
-    content
-  end
-
-  def stringify_introduced_titles
-    string = "<p>Vorgestellte Titel:</p><ul>"
-    introduced_titles.each do |title|
-      string << "<li><a href=\"#{title.url}\">#{title.name}</a></li>"
-    end
-    string << "</ul><p>"
-  end
-
-  def stringify_show_notes
-    string = "<p>Show Notes:</p><ul>"
-    show_notes.each do |show_note|
-      string << "<li><a href=\"#{show_note.url}\">#{show_note.name}</a></li>"
-    end
-    string << "</ul><p>"
-  end
-
-  def connection_error?
-    error = false
-    audio_files.each do |file|
-      if file.size.nil?
-        error = true
-        break
-      end
-    end
-    error
-  end
-
-  def connection_error_message
-    faulty_files = []
-    audio_files.each do |file|
-      if file.size.nil?
-        faulty_files << file.media_type
-      end
-    end
-    "Couldn't connect to <b>#{faulty_files.join(", ")}</b> #{pluralize_without_count(faulty_files.size, "file")}. Please check the file #{pluralize_without_count(faulty_files.size, "url")}."
-  end
-
   def file_url(type)
     file = audio_files.find_by_media_type(type)
     if file
@@ -208,12 +125,6 @@ class Episode < ActiveRecord::Base
   def delete_remaining_chapters(count)
     for n in count...self.chapters.count do
       self.chapters[n].delete
-    end
-  end
-
-  def pluralize_without_count(count, noun, text = nil)
-    if count != 0
-      count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
     end
   end
 

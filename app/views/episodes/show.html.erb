@@ -39,10 +39,11 @@
 		<div class="description"><%= markdown(@episode.description) %></div>
 
 		<%= podloveaudio(mp4: @episode.file_url("mp4"), mp3: @episode.file_url("mp3"),
-		                 opus: @episode.file_url("opus"), ogg: @episode.file_url("ogg"), 
+		                 opus: @episode.file_url("opus"), ogg: @episode.file_url("ogg"),
 				           	 title: @episode.title, permalink: episode_url(@episode.podcast, @episode), 
-				             subtitle: truncate(@episode.clean_description.gsub(/\n/, ' ').gsub(/\r/, ''), length: 150),
-				             startVolume: 1, chapters: episode_presenter.podlove_chapters, duration: @episode.feed_duration) %>
+				             subtitle: episode_presenter.truncated_clean_description.gsub(/\n/, ' ').gsub(/\r/, ''),
+				             startVolume: 1, chapters: episode_presenter.podlove_chapters,
+				             duration: episode_presenter.feed_duration) %>
 
 		<div class="downloads">
 		<% @episode.audio_files.order('media_type').each_with_index do |file, index| %>
