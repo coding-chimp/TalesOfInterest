@@ -18,37 +18,8 @@ class Podcast < ActiveRecord::Base
 		Rails.cache.delete([:category, id, :name]) if name_changed?
 	end
 
-	def since_color_code
-		if episode = self.latest_episode
-			distance = Date.today - episode.published_at.to_date
-			if distance <= 14
-				"ok"
-			elsif distance > 14 && distance <= 28
-				"alert"
-			else
-				"warning"
-			end 
-		end
-	end
-
 	def latest_episode
 		self.episodes.published.recent.first
-	end
-
-	def since_last_episode
-		if episode = self.latest_episode
-			distance_of_time_in_words(DateTime.now, episode.published_at) + " ago"
-		else
-			'&nbsp'
-		end
-	end
-
-	def until_next_episode
-		if episode = self.episodes.scheduled.first
-			episode.published_at.strftime("%d.%m.%y %H:%M")
-		else
-			'&nbsp'
-		end
 	end
 
 end

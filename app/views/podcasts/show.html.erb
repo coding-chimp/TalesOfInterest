@@ -1,35 +1,31 @@
-<% title @podcast.name %>
+<% present @podcast do |podcast_presenter| %>
+	<% title podcast_presenter.name %>
 
-<% content_for :banner do %>
-<ul class="thumbnails">
+	<% content_for :banner do %>
+	<ul class="thumbnails">
 
-	<li class="span3">
-		<% if @podcast.artwork? %>
-			<div class="thumbnail">
-				<%= image_tag @podcast.artwork.url(:medium) %>
-			</div><!-- /thumbnail -->
-		<% end %>
-	</li><!-- /span -->
+		<li class="span3">
+			<%= podcast_presenter.artwork_thumb(:medium) %>
+		</li><!-- /span -->
 
-	<li class="span5">
-		<h2><%= @podcast.name %></h2>
-		<p><%= @podcast.description %></p>
-	</li><!-- /span -->
+		<li class="span5">
+			<h2><%= podcast_presenter.name %></h2>
+			<p><%= podcast_presenter.description %></p>
+		</li><!-- /span -->
 
-</ul><!-- /thumbnails -->
+	</ul><!-- /thumbnails -->
+	<% end %>
+
+	<% content_for :banner_alt do %>
+	<ul class="thumbnails">
+		<li class="span4">
+			<h2><%= podcast_presenter.name %></h2>
+			<p><%= podcast_presenter.description %></p>
+		</li><!-- /span -->
+	</ul><!-- /thumbnails -->
+	<% end %>
+
+	<%= render @episodes %>
+
+	<%= paginate @episodes %>
 <% end %>
-
-<% content_for :banner_alt do %>
-<ul class="thumbnails">
-
-	<li class="span4">
-		<h2><%= link_to @podcast.name, podcast_path(@podcast) %></h2>
-		<p><%= @podcast.description %></p>
-	</li><!-- /span -->
-
-</ul><!-- /thumbnails -->
-<% end %>
-
-<%= render @episodes %>
-
-<%= paginate @episodes %>

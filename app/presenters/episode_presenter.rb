@@ -7,18 +7,18 @@ class EpisodePresenter < BasePresenter
   end
 
   def linked_podcast_name
-    h.content_tag :h2, h.link_to( episode.podcast.name, h.podcast_path(episode.podcast))
+    podcast_presenter.send(:linked_name)
   end
 
   def podcast_description
-    h.content_tag :p, episode.podcast.description
+    podcast_presenter.send(:description)
   end
 
   def linked_title(controller)
     if controller == "episodes"
       title = full_title
     elsif controller == "podcasts"
-      title = "##{num}: #{title}"
+      title = "##{num}: #{self.title}"
     end
     h.link_to title, h.episode_path(episode.podcast, episode)
   end
@@ -32,11 +32,7 @@ class EpisodePresenter < BasePresenter
   end
 
   def artwork
-    if artwork = episode.podcast.artwork
-      h.content_tag :div, class: "thumbnail" do
-        h.link_to h.image_tag(episode.podcast.artwork.url(:medium)), episode.podcast
-      end
-    end
+    podcast_presenter.send(:artwork_thumb, :medium)
   end
 
   def duration
@@ -122,6 +118,10 @@ class EpisodePresenter < BasePresenter
   end
 
 private
+
+  def podcast_presenter
+    PodcastPresenter.new(episode.podcast, h)
+  end
 
   def pagination_link(episode_num, klass)
     if ep = Episode.published.where(podcast_id: episode.podcast.id, number: episode_num).first

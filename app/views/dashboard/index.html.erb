@@ -19,20 +19,22 @@
     </thead>
     <tbody>
       <% for podcast in @podcasts do %>
-        <tr>
-          <td><%= podcast.name %></td>
-          <td><%= podcast.episodes.count %></td>
-          <td class="<%= podcast.since_color_code %>"><%= raw(podcast.since_last_episode) %></td>
-          <td><%= raw(podcast.until_next_episode) %></td>
-          <% if @settings.uri_key.present? && @settings.uri_token.present? %>
-          <td>
-            <a href="#<%= podcast.name %>SubscribersModal" data-toggle="modal">
-              <%= subscribers(podcast.name) %>
-            </a>
-        </td>
-          <% end %>
-        </tr>
-        <%= render 'subscribers_chart', podcast: podcast %>
+        <% present podcast do |podcast_presenter| %>
+          <tr>
+            <td><%= podcast_presenter.name %></td>
+            <td><%= podcast_presenter.episodes_count %></td>
+            <td class="<%= podcast_presenter.since_color_code %>"><%= raw(podcast_presenter.since_last_episode) %></td>
+            <td><%= raw(podcast_presenter.until_next_episode) %></td>
+            <% if @settings.uri_key.present? && @settings.uri_token.present? %>
+            <td>
+              <a href="#<%= podcast_presenter.name %>SubscribersModal" data-toggle="modal">
+                <%= subscribers(podcast_presenter.name) %>
+              </a>
+          </td>
+            <% end %>
+          </tr>
+          <%= render 'subscribers_chart', podcast: podcast %>
+        <% end %>
       <% end %>
     </tbody>
   </table>

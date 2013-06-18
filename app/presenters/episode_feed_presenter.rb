@@ -60,7 +60,7 @@ class EpisodeFeedPresenter < BasePresenter
   end
 
   def artwork
-    h.root_url + episode.podcast.artwork.url(:original, false)[1..-1]
+    podcast_presenter.send(:feed_artwork)
   end
 
   def explicit
@@ -75,6 +75,10 @@ private
 
   def episode_presenter
     EpisodePresenter.new(episode, h)
+  end
+
+  def podcast_presenter
+    PodcastPresenter.new(episode.podcast, h)
   end
 
   def stringify_introduced_titles
