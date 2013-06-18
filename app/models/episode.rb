@@ -99,7 +99,7 @@ class Episode < ActiveRecord::Base
     playtime / (60 * 60)
   end
 
-  private
+private
 
   def parse_text_chapter_file(file)
     count = 0

@@ -42,7 +42,11 @@
 				             duration: episode_presenter.duration) %>
 
 		<div class="downloads">
-			<%=raw episode_presenter.downloads %>
+	    <% @episode.audio_files.order('media_type').each_with_index do |file, index| %>
+      	<p class="<%= index.even? ? "pull-left" : "pull-right" %>">
+      		<%= link_to "Download #{file.media_type.upcase}", file.url %>
+      	</p>
+     	<% end %>
 		</div>
 
 		<div class="clearfix"></div>
@@ -56,7 +60,7 @@
 			<table class="table table-striped" id="links">
 				<% @episode.introduced_titles.each do |title| %>
 					<tr>
-						<td><%= link_to markdown(title.name), title.url, target: "_blank" %></td>
+						<td><p><%= link_to title.name, title.url, target: "_blank" %></p></td>
 		  			</tr>
 				<% end %>
 			</table>
@@ -67,7 +71,7 @@
 			<table class="table table-striped" id="links">
 				<% @episode.show_notes.order('position').each do |show_note| %>
 					<tr>
-						<td><%= link_to markdown(show_note.name), show_note.url, target: "_blank" %></td>
+						<td><p><%= link_to show_note.name, show_note.url, target: "_blank" %></p></td>
 		  			</tr>
 				<% end %>
 			</table>

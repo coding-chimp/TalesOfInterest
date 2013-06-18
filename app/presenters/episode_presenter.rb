@@ -71,16 +71,6 @@ class EpisodePresenter < BasePresenter
     end
   end
 
-  def downloads
-    string = ""
-    episode.audio_files.order('media_type').each_with_index do |file, index|
-      klass = index.even? ? "pull-left" : "pull-right"
-      text = "Download #{file.media_type.upcase}"
-      string << h.content_tag(:p, class: klass){h.link_to text, file.url}
-    end
-    string
-  end
-
   def description
     markdown(episode.description)
   end

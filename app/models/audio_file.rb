@@ -7,7 +7,7 @@ class AudioFile < ActiveRecord::Base
 
   before_save :update_size, if: :url_changed?
 
-  private
+private
 
   def update_size
     if url.present?
