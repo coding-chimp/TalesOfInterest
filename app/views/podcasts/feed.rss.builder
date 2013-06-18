@@ -81,26 +81,22 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
     end
 
     @episodes.each do |episode|
-      present episode do |episode_presenter|
+      present episode, EpisodeFeedPresenter do |episode_presenter|
         xml.item do
           xml.title episode_presenter.full_title
-          xml.link episode_url(@podcast, episode)
-          xml.guid episode_url(@podcast, episode)
-          xml.pubDate episode.created_at.to_s(:rfc822)
+          xml.link episode_presenter.uri
+          xml.guid episode_presenter.uri
+          xml.pubDate episode_presenter.created_at
           xml.description episode_presenter.clean_description
-          xml.enclosure url: episode_presenter.feed_file.url, length: episode_presenter.feed_file.size, type: episode_presenter.feed_file_type
-          xml.itunes :author, @podcast.author
-          xml.itunes :duration, episode_presenter.feed_duration
+          xml.enclosure url: episode_presenter.file.url, length: episode_presenter.file.size, type: episode_presenter.file_type
+          xml.itunes :author, episode_presenter.author
+          xml.itunes :duration, episode_presenter.duration
           xml.itunes :subtitle, episode_presenter.truncated_clean_description
           xml.itunes :summary, episode_presenter.clean_description
-          xml.itunes :keywords, @podcast.keywords
-          xml.itunes :image, href: "#{root_url}#{@podcast.artwork.url(:original, false)[1..-1]}"
-          if episode.explicit
-            xml.itunes :explicit, 'yes'
-          else
-            xml.itunes :explicit, 'no'
-          end
-          xml.tag!("content:encoded") { xml.cdata!(markdown(episode_presenter.content)) }
+          xml.itunes :keywords, episode_presenter.keywords
+          xml.itunes :image, href: episode_presenter.artwork
+          xml.itunes :explicit, episode_presenter.explicit
+          xml.tag!("content:encoded") { xml.cdata!(episode_presenter.content) }
         end
       end
     end

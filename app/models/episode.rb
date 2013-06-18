@@ -100,6 +100,18 @@ class Episode < ActiveRecord::Base
     end
   end
 
+  def seconds
+    playtime % 60
+  end
+
+  def minutes
+    (playtime / 60) % 60
+  end
+
+  def hours
+    playtime / (60 * 60)
+  end
+
   private
 
   def parse_chapter(line, count)

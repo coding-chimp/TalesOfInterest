@@ -1,13 +1,15 @@
 class EpisodePresenter < BasePresenter
   presents :episode
 
-  ## Views
+  def full_title
+    "#{episode.podcast.name} #{num}: #{episode.title}"
+  end
 
   def duration
     unless episode.playtime.blank?
       hours_string = ""
-      hours_string = "#{h.pluralize(hours, 'Stunde', 'Stunden')} " if hours > 0
-      minutes_string = h.pluralize(minutes, 'Minute', 'Minuten')
+      hours_string = "#{h.pluralize(episode.hours, 'Stunde', 'Stunden')} " if episode.hours > 0
+      minutes_string = h.pluralize(episode.minutes, 'Minute', 'Minuten')
     
       " &#8226; #{hours_string} #{minutes_string}".html_safe
     end
@@ -65,67 +67,7 @@ class EpisodePresenter < BasePresenter
     end
   end
 
-  ## Feed
-
-  def full_title
-    "#{episode.podcast.name} #{num}: #{episode.title}"
-  end
-
-  def pluralize_without_count(count, noun, text = nil)
-    if count != 0
-      count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
-    end
-  end
-
-  def feed_duration
-    if episode.playtime.present?
-      if hours > 0
-        format("%d:%02d:%02d", hours, minutes, seconds)
-      else
-        format("%d:%02d", minutes, seconds) 
-      end
-    end
-  end
-
-  def feed_file
-    if file = episode.audio_files.find_by_media_type("mp4")
-    elsif file = episode.audio_files.find_by_media_type("mp3")
-    end
-    file      
-  end
-
-  def feed_file_type
-    if feed_file.media_type == "mp4"
-      'audio/x-m4a'
-    elsif feed_file.media_type = "mp3"
-      'audio/mpeg'
-    end
-  end
-
-  def content
-    content = episode.description
-    if episode.introduced_titles.size > 0
-      content << "</p>" + stringify_introduced_titles.html_safe
-    end
-    if episode.show_notes.size > 0
-      content << "</p>" + stringify_show_notes.html_safe
-    end
-    content
-  end
-
 private
-
-  def seconds
-    episode.playtime % 60
-  end
-
-  def minutes
-    (episode.playtime / 60) % 60
-  end
-
-  def hours
-    episode.playtime / (60 * 60)
-  end
 
   def pagination_link(episode_num, klass)
     if ep = Episode.published.where(podcast_id: episode.podcast.id, number: episode_num).first
@@ -152,21 +94,5 @@ private
       end
     end
     faulty_files
-  end
-
-  def stringify_introduced_titles
-    "<p>Vorgestellte Titel:</p><ul>#{stringify(episode.introduced_titles)}</ul><p>"
-  end
-
-  def stringify_show_notes
-    "<p>Show Notes:</p><ul>#{stringify(episode.show_notes.order('position'))}</ul><p>"
-  end
-
-  def stringify(array)
-    string = ""
-    array.each do |object|
-      string << "<li><a href=\"#{object.url}\">#{object.name}</a></li>"
-    end
-    string
   end
 end
