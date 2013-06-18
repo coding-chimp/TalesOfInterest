@@ -4,10 +4,6 @@ class Traffic < ActiveRecord::Base
   validates_presence_of :date, :people, :views
   validates_uniqueness_of :date
 
-  def as_json
-    { date: date, people: people, views: views }
-  end
-
   def self.update_today
     today = Traffic.find_or_create_by_date(Date.today)
     yesterday = Traffic.find_or_create_by_date(Date.today-1)
@@ -26,6 +22,14 @@ class Traffic < ActiveRecord::Base
     if older = json['urls']['older']
       update_history(older)
     end
+  end
+
+  def self.graph
+    order("date DESC").limit(31).as_json
+  end
+
+  def as_json
+    { date: date, people: people, views: views }
   end
 
 private

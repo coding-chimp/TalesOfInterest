@@ -55,6 +55,14 @@ class PodcastPresenter < BasePresenter
     h.image_tag podcast.artwork.url(size) if podcast.artwork?
   end
 
+  def subscribers
+    Subscriber.latest(podcast).sum('count')
+  end
+
+  def subscribers_chart_data
+    Subscriber.latest(podcast).as_json
+  end
+
   ## Feed
 
   def uri

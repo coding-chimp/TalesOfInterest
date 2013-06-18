@@ -1,7 +1,7 @@
 class Podcast < ActiveRecord::Base
-	include ActionView::Helpers::DateHelper
-
 	has_many :episodes, dependent: :destroy
+  has_many :subscribers
+
   attr_accessible :description, :name, :slug, :artwork, :author, :keywords, :explicit, :itunes_link, :category1, :category2, :category3
 
   has_attached_file :artwork, styles: { thumb: "80x80", medium: "180x180" }

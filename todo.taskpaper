@@ -1,17 +1,17 @@
 Inbox:
-	- refactor episode model @na @done(2013-06-18)
-	- simplify episodes with presenter @na @done(2013-06-18)
-	- simplify episodes in feed with presenter @na @done(2013-06-18)
-	- simplify models with presenters @done(2013-06-18)
 	- add proper validation for nested forms
 	- add bitlove
-	- make API calls for gaug.es and uri.lv via cron job an save data to DB
+	- make API calls for uri.lv via cron job an save data to DB @na @done(2013-06-19)
+	- add episode analytics
 Later:
 	- add exporter
 	- flattr button for every episode
-	- write api for adding duration to episode
-	- add episode analytics
 Archive:
+	- refactor episode model @na @done(2013-06-18) @project(Inbox)
+	- simplify episodes with presenter @na @done(2013-06-18) @project(Inbox)
+	- simplify episodes in feed with presenter @na @done(2013-06-18) @project(Inbox)
+	- simplify models with presenters @done(2013-06-18) @project(Inbox)
+	- make API calls for gaug.es via cron job and save data to DB @done(2013-06-18) @project(Inbox)
 	- make fields sortable in episode form @na @done(2013-06-17) @project(Inbox)
 	- refactor import_helper  @done(2013-06-17) @project(Inbox)
 	- refactor episodes_controller  @done(2013-06-17) @project(Inbox)
