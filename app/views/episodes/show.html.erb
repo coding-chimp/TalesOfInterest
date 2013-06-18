@@ -36,7 +36,7 @@
 		<h4 class="episode-num">Episode #<%= episode_presenter.num %>
 		<h2><%= @episode.title %></h2>
 		<h4><%= @episode.published_at.strftime("%d. %B %Y") %><%= episode_presenter.duration %></h4>
-		<div class="description"><%= markdown(@episode.description) %></div>
+		<div class="description"><%= episode_presenter.description %></div>
 
 		<%= podloveaudio(mp4: @episode.file_url("mp4"), mp3: @episode.file_url("mp3"),
 		                 opus: @episode.file_url("opus"), ogg: @episode.file_url("ogg"),

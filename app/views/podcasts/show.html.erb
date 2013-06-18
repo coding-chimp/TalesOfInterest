@@ -39,7 +39,7 @@
 				<% end %>
 			</h2>
 			<h4><%= episode.created_at.strftime("%d. %B %Y") %><%= episode_presenter.duration %></h4>
-			<%= markdown(episode.description) %>
+			<%= episode_presenter.description %>
 		</div><!-- /well -->
 	<% end %>
 <% end %>

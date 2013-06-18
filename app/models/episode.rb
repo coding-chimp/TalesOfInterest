@@ -1,5 +1,6 @@
 class Episode < ActiveRecord::Base
-  include ActionView::Helpers::TextHelper
+  extend FriendlyId
+  friendly_id :number, use: :slugged
 
   belongs_to :podcast
   has_many :show_notes
@@ -9,15 +10,12 @@ class Episode < ActiveRecord::Base
 
   attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at
   attr_accessible :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks
-  attr_accessible :published_at, :draft, :introduced_titles_attributes, :spotify_playlist
-  attr_accessible :audio_files_attributes, :chapter_file
+  attr_accessible :published_at, :draft, :introduced_titles_attributes, :spotify_playlist, :chapter_file
+  attr_accessible :audio_files_attributes
   accepts_nested_attributes_for :show_notes, allow_destroy: true
   accepts_nested_attributes_for :chapters, allow_destroy: true
   accepts_nested_attributes_for :introduced_titles, allow_destroy: true
   accepts_nested_attributes_for :audio_files, allow_destroy: true
-
-  extend FriendlyId
-  friendly_id :number, use: :slugged
 
   after_create :set_slug
   before_save :ensure_published_at, unless: :draft?
@@ -28,8 +26,7 @@ class Episode < ActiveRecord::Base
 
   before_validation :custom_before_validation
   validates_presence_of :podcast, :number, :title
-  validate :unique_title
-  validate :unique_number
+  validate :unique_title, :unique_number
   validates_presence_of :description, :unless => Proc.new { |episode| episode.draft.present? }
   validates :audio_files, length: { minimum: 1 }, :unless => Proc.new { |episode| episode.draft.present? }
 
@@ -135,21 +132,18 @@ class Episode < ActiveRecord::Base
   # Validations
 
   def unique_title
-    podcast.episodes.each do |ep|
-      unless ep == self
-        if ep.title == title
-          errors.add(:title, 'already exists')
-          break
-        end
-      end
-    end
+    unique(:title)
   end
 
   def unique_number
-    podcast.episodes.each do |ep|
+    unique(:number)
+  end
+
+  def unique(name)
+    self.podcast.episodes.each do |ep|
       unless ep == self
-        if ep.number == number
-          errors.add(:number, 'already exists')
+        if ep.send(name) == self.send(name)
+          errors.add(name, 'already exists')
           break
         end
       end
