@@ -46,12 +46,8 @@ class EpisodePresenter < BasePresenter
   end
 
   def duration_in_words
-    unless episode.playtime.blank?
-      hours_string = ""
-      hours_string = "#{h.pluralize(episode.hours, 'Stunde', 'Stunden')} " if episode.hours > 0
-      minutes_string = h.pluralize(episode.minutes, 'Minute', 'Minuten')
-    
-      " &#8226; #{hours_string} #{minutes_string}".html_safe
+    unless episode.playtime.blank?    
+      " &#8226; #{h.pluralize(episode.hours, 'Stunde', 'Stunden') if episode.hours > 0} #{h.pluralize(episode.minutes, 'Minute', 'Minuten')}".html_safe
     end
   end
 
@@ -60,15 +56,11 @@ class EpisodePresenter < BasePresenter
   end
 
   def podlove_chapters
-    if episode.chapters.size > 0
-      chapters = []
-      episode.chapters.order("timestamp asc").each do |chapter|
-        chapters << { :start => chapter.pretty_time, :title => chapter.title }
-      end
-      chapters
-    else
-      ""
+    chapters = []
+    episode.chapters.order("timestamp asc").each do |chapter|
+      chapters << { :start => chapter.pretty_time, :title => chapter.title }
     end
+    chapters
   end
 
   def description
