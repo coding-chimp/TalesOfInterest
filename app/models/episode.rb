@@ -22,7 +22,7 @@ class Episode < ActiveRecord::Base
 
   before_validation :custom_before_validation
   validates_presence_of :podcast, :number, :title
-  validate :unique_title, :unique_number
+  validates_uniqueness_of :title, :number, scope: :podcast_id
   validates_presence_of :description, :unless => Proc.new { |episode| episode.draft.present? }
   validates :audio_files, length: { minimum: 1 }, :unless => Proc.new { |episode| episode.draft.present? }
 
@@ -35,11 +35,7 @@ class Episode < ActiveRecord::Base
   end
 
   def chapter_marks
-    chapter_marks = ""
-    chapters.order("timestamp asc").each do |chapter|
-      chapter_marks << "#{chapter.pretty_time} #{chapter.title}\n"
-    end
-    chapter_marks
+    chapters.order("timestamp asc").map { |c| c.to_s }.join("\n")
   end
 
   def chapter_marks=(chapter_marks)
@@ -154,27 +150,6 @@ private
 
   def set_slug
     update_attribute :slug, number
-  end
-
-  # Validations
-
-  def unique_title
-    unique(:title)
-  end
-
-  def unique_number
-    unique(:number)
-  end
-
-  def unique(name)
-    self.podcast.episodes.each do |ep|
-      unless ep == self
-        if ep.send(name) == self.send(name)
-          errors.add(name, 'already exists')
-          break
-        end
-      end
-    end
   end
 
   def custom_before_validation

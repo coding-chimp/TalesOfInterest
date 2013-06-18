@@ -14,4 +14,8 @@ class Chapter < ActiveRecord::Base
   def as_json(options={})
     { start: pretty_time, title: title }
   end
+
+  def to_s
+    "#{pretty_time} #{title}"
+  end
 end
