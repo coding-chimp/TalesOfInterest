@@ -1,20 +1,16 @@
 <% present @episode do |episode_presenter| %>
-<% title "#{@episode.podcast.name} #{episode_presenter.num}: #{@episode.title}" %>
+<% title episode_presenter.full_title %>
 
 	<% content_for :banner do %>
 	<ul class="thumbnails">
 
 		<li class="span3">
-			<% if @podcast.artwork? %>
-				<div class="thumbnail">
-					<%= link_to image_tag(@episode.podcast.artwork.url(:medium)), @podcast %>
-				</div><!-- /thumbnail -->
-			<% end %>
+			<%= episode_presenter.artwork %>
 		</li><!-- /span -->
 
 		<li class="span5">
-			<h2><%= link_to @episode.podcast.name, podcast_path(@episode.podcast) %></h2>
-			<p><%= @episode.podcast.description %></p>
+			<%= episode_presenter.linked_podcast_name %>
+			<%= episode_presenter.podcast_description %>
 		</li><!-- /span -->
 
 	</ul><!-- /thumbnails -->
@@ -24,8 +20,8 @@
 	<ul class="thumbnails">
 
 		<li class="span4">
-			<h2><%= link_to @episode.podcast.name, podcast_path(@episode.podcast) %></h2>
-			<p><%= @episode.podcast.description %></p>
+			<%= episode_presenter.linked_podcast_name %>
+			<%= episode_presenter.podcast_description %>
 		</li><!-- /span -->
 
 	</ul><!-- /thumbnails -->
@@ -34,23 +30,19 @@
 
 	<div class="well">
 		<h4 class="episode-num">Episode #<%= episode_presenter.num %>
-		<h2><%= @episode.title %></h2>
-		<h4><%= @episode.published_at.strftime("%d. %B %Y") %><%= episode_presenter.duration %></h4>
+		<h2><%= episode_presenter.title %></h2>
+		<h4><%= episode_presenter.published_at %><%= episode_presenter.duration_in_words %></h4>
 		<div class="description"><%= episode_presenter.description %></div>
 
-		<%= podloveaudio(mp4: @episode.file_url("mp4"), mp3: @episode.file_url("mp3"),
-		                 opus: @episode.file_url("opus"), ogg: @episode.file_url("ogg"),
-				           	 title: @episode.title, permalink: episode_url(@episode.podcast, @episode), 
+		<%= podloveaudio(mp4: episode_presenter.file_url("mp4"), mp3: episode_presenter.file_url("mp3"),
+		                 opus: episode_presenter.file_url("opus"), ogg: episode_presenter.file_url("ogg"),
+				           	 title: episode_presenter.title, permalink: episode_presenter.uri, 
 				             subtitle: episode_presenter.truncated_clean_description.gsub(/\n/, ' ').gsub(/\r/, ''),
 				             startVolume: 1, chapters: episode_presenter.podlove_chapters,
-				             duration: episode_presenter.feed_duration) %>
+				             duration: episode_presenter.duration) %>
 
 		<div class="downloads">
-		<% @episode.audio_files.order('media_type').each_with_index do |file, index| %>
-			<p class="<%= index.even? ? "pull-left" : "pull-right" %>">
-				<%= link_to "Download #{file.media_type.upcase}", file.url %>
-			</p>
-		<% end %>
+			<%=raw episode_presenter.downloads %>
 		</div>
 
 		<div class="clearfix"></div>

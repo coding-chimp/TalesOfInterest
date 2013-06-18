@@ -10,16 +10,6 @@
 </ul><!-- /thumbnails -->
 <% end %>
 
-<% @episodes.each do |episode| %>
-	<% present episode do |episode_presenter| %>
-    <div class="well">
-  		<h2>
-  			<%= link_to episode_presenter.full_title, episode_path(episode.podcast, episode) %>
-  		</h2>
-  		<h4><%= episode.published_at.strftime("%d. %B %Y") %><%= episode_presenter.duration %></h4>
-  		<%= episode_presenter.description %>
-  	</div><!-- /well -->
-  <% end %>
-<% end %>
+<%= render @episodes %>
 
 <%= paginate @episodes %>

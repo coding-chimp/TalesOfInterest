@@ -1,15 +1,24 @@
 class EpisodeFeedPresenter < BasePresenter
   presents :episode
-  delegate :full_title, :clean_description, :truncated_clean_description, to: EpisodePresenter.new(@object, @template)
+
+  def full_title
+    episode_presenter.send(:full_title)
+  end
+
+  def clean_description
+    episode_presenter.send(:clean_description)
+  end
+
+  def truncated_clean_description
+    episode_presenter.send(:truncated_clean_description)
+  end
 
   def duration
-    if episode.playtime.present?
-      if episode.hours > 0
-        format("%d:%02d:%02d", episode.hours, episode.minutes, episode.seconds)
-      else
-        format("%d:%02d", episode.minutes, episode.seconds) 
-      end
-    end
+    episode_presenter.send(:duration)
+  end
+
+  def uri
+    episode_presenter.send(:uri)
   end
 
   def file
@@ -38,10 +47,6 @@ class EpisodeFeedPresenter < BasePresenter
     markdown(content)
   end
 
-  def uri
-    h.episode_url(episode.podcast, episode)
-  end
-
   def created_at
     episode.created_at.to_s(:rfc822)
   end
@@ -67,6 +72,10 @@ class EpisodeFeedPresenter < BasePresenter
   end
 
 private
+
+  def episode_presenter
+    EpisodePresenter.new(episode, h)
+  end
 
   def stringify_introduced_titles
     "<p>Vorgestellte Titel:</p><ul>#{stringify(episode.introduced_titles)}</ul><p>"

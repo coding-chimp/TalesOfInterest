@@ -1,11 +1,55 @@
 class EpisodePresenter < BasePresenter
   presents :episode
+  delegate :title, :file_url, to: :episode
 
   def full_title
-    "#{episode.podcast.name} #{num}: #{episode.title}"
+    "#{episode.podcast.name} #{num}: #{title}"
+  end
+
+  def linked_podcast_name
+    h.content_tag :h2, h.link_to( episode.podcast.name, h.podcast_path(episode.podcast))
+  end
+
+  def podcast_description
+    h.content_tag :p, episode.podcast.description
+  end
+
+  def linked_title(controller)
+    if controller == "episodes"
+      title = full_title
+    elsif controller == "podcasts"
+      title = "##{num}: #{title}"
+    end
+    h.link_to title, h.episode_path(episode.podcast, episode)
+  end
+
+  def published_at
+    episode.published_at.strftime("%d. %B %Y")
+  end
+
+  def uri
+    h.episode_url(episode.podcast, episode)
+  end
+
+  def artwork
+    if artwork = episode.podcast.artwork
+      h.content_tag :div, class: "thumbnail" do
+        h.link_to h.image_tag(episode.podcast.artwork.url(:medium)), episode.podcast
+      end
+    end
   end
 
   def duration
+    if episode.playtime.present?
+      if episode.hours > 0
+        format("%d:%02d:%02d", episode.hours, episode.minutes, episode.seconds)
+      else
+        format("%d:%02d", episode.minutes, episode.seconds) 
+      end
+    end
+  end
+
+  def duration_in_words
     unless episode.playtime.blank?
       hours_string = ""
       hours_string = "#{h.pluralize(episode.hours, 'Stunde', 'Stunden')} " if episode.hours > 0
@@ -29,6 +73,16 @@ class EpisodePresenter < BasePresenter
     else
       ""
     end
+  end
+
+  def downloads
+    string = ""
+    episode.audio_files.order('media_type').each_with_index do |file, index|
+      klass = index.even? ? "pull-left" : "pull-right"
+      text = "Download #{file.media_type.upcase}"
+      string << h.content_tag(:p, class: klass){h.link_to text, file.url}
+    end
+    string
   end
 
   def description

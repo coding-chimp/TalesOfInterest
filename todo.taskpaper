@@ -1,6 +1,6 @@
 Inbox:
-	- refactor episode model @na
-	- simplify episodes with presenter @na
+	- refactor episode model @na @done(2013-06-18)
+	- simplify episodes with presenter @na @done(2013-06-18)
 	- simplify episodes in feed with presenter @na @done(2013-06-18)
 	- simplify models with presenters
 	- add proper validation for nested forms
