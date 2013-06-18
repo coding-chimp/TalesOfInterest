@@ -1,10 +1,6 @@
 class EpisodePresenter < BasePresenter
   presents :episode
-  delegate :title, :file_url, to: :episode
-
-  def full_title
-    "#{episode.podcast.name} #{num}: #{title}"
-  end
+  delegate :title, :num, :full_title, :file_url, to: :episode
 
   def linked_podcast_name
     podcast_presenter.send(:linked_name)
@@ -16,9 +12,9 @@ class EpisodePresenter < BasePresenter
 
   def linked_title(controller)
     if controller == "episodes"
-      title = full_title
+      title = episode.full_title
     elsif controller == "podcasts"
-      title = "##{num}: #{self.title}"
+      title = "##{episode.num}: #{episode.title}"
     end
     h.link_to title, h.episode_path(episode.podcast, episode)
   end
@@ -51,16 +47,8 @@ class EpisodePresenter < BasePresenter
     end
   end
 
-  def num
-    episode.number.to_s.rjust(3, '0')
-  end
-
-  def podlove_chapters
-    chapters = []
-    episode.chapters.order("timestamp asc").each do |chapter|
-      chapters << { :start => chapter.pretty_time, :title => chapter.title }
-    end
-    chapters
+  def chapters
+    episode.chapters.order("timestamp asc").as_json
   end
 
   def description
@@ -123,12 +111,6 @@ private
   end
 
   def faulty_files
-    faulty_files = []
-    episode.audio_files.each do |file|
-      if file.size.nil?
-        faulty_files << file.media_type
-      end
-    end
-    faulty_files
+    episode.audio_files.where(size: nil).pluck(:media_type)
   end
 end

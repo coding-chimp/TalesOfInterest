@@ -1,9 +1,6 @@
 class EpisodeFeedPresenter < BasePresenter
   presents :episode
-
-  def full_title
-    episode_presenter.send(:full_title)
-  end
+  delegate :full_title, to: :episode
 
   def clean_description
     episode_presenter.send(:clean_description)

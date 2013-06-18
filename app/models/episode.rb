@@ -26,6 +26,14 @@ class Episode < ActiveRecord::Base
   validates_presence_of :description, :unless => Proc.new { |episode| episode.draft.present? }
   validates :audio_files, length: { minimum: 1 }, :unless => Proc.new { |episode| episode.draft.present? }
 
+  def full_title
+    "#{self.podcast.name} #{num}: #{self.title}"
+  end
+
+  def num
+    self.number.to_s.rjust(3, '0')
+  end
+
   def chapter_marks
     chapter_marks = ""
     chapters.order("timestamp asc").each do |chapter|

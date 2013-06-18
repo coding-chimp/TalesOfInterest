@@ -10,4 +10,8 @@ class Chapter < ActiveRecord::Base
   def pretty_time=(time)
   	self.timestamp = Time.parse(time).seconds_since_midnight.to_i
   end
+
+  def as_json(options={})
+    { start: pretty_time, title: title }
+  end
 end

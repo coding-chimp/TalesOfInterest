@@ -38,7 +38,7 @@
 		                 opus: episode_presenter.file_url("opus"), ogg: episode_presenter.file_url("ogg"),
 				           	 title: episode_presenter.title, permalink: episode_presenter.uri, 
 				             subtitle: episode_presenter.truncated_clean_description.gsub(/\n/, ' ').gsub(/\r/, ''),
-				             startVolume: 1, chapters: episode_presenter.podlove_chapters,
+				             startVolume: 1, chapters: episode_presenter.chapters,
 				             duration: episode_presenter.duration) %>
 
 		<div class="downloads">
