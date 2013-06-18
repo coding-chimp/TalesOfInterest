@@ -2,7 +2,7 @@ Inbox:
 	- refactor episode model @na @done(2013-06-18)
 	- simplify episodes with presenter @na @done(2013-06-18)
 	- simplify episodes in feed with presenter @na @done(2013-06-18)
-	- simplify models with presenters
+	- simplify models with presenters @done(2013-06-18)
 	- add proper validation for nested forms
 	- add bitlove
 	- make API calls for gaug.es and uri.lv via cron job an save data to DB

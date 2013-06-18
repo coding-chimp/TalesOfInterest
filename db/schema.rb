@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612102353) do
+ActiveRecord::Schema.define(:version => 20130618190807) do
 
   create_table "audio_files", :force => true do |t|
     t.string   "url"
@@ -127,6 +127,14 @@ ActiveRecord::Schema.define(:version => 20130612102353) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "position"
+  end
+
+  create_table "traffics", :force => true do |t|
+    t.integer  "views"
+    t.integer  "people"
+    t.date     "date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

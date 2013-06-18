@@ -4,5 +4,4 @@ class Settings < ActiveRecord::Base
   has_attached_file :favicon
 
   validates_presence_of :site_name, :posts_per_page, :feed_email, :feed_language
-  
 end

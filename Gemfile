@@ -67,7 +67,9 @@ gem 'dalli'
 # Web Player
 gem 'podlove-web-player-rails', '~> 1.1.0'
 
+# Faster site loading
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 
+# Makes the show notes sortable
 gem 'acts_as_list'
