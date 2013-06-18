@@ -71,6 +71,7 @@ class EpisodesController < ApplicationController
 	def update
 		@podcast = Podcast.find(params[:podcast])
 		@episode = @podcast.episodes.find(params[:id])
+		@show_notes = @episode.show_notes
 
 		if @episode.update_attributes(params[:episode])
 			if params[:publish]
