@@ -8,14 +8,10 @@ class Episode < ActiveRecord::Base
   has_many :introduced_titles
   has_many :audio_files
 
-  attr_accessible :description, :file, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at
-  attr_accessible :show_notes_attributes, :chapters_attributes, :file_size, :explicit, :chapter_marks
-  attr_accessible :published_at, :draft, :introduced_titles_attributes, :spotify_playlist, :chapter_file
-  attr_accessible :audio_files_attributes
-  accepts_nested_attributes_for :show_notes, allow_destroy: true
-  accepts_nested_attributes_for :chapters, allow_destroy: true
-  accepts_nested_attributes_for :introduced_titles, allow_destroy: true
-  accepts_nested_attributes_for :audio_files, allow_destroy: true
+  attr_accessible :description, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :draft
+  attr_accessible :show_notes_attributes, :chapters_attributes, :explicit, :chapter_marks, :published_at
+  attr_accessible :introduced_titles_attributes, :spotify_playlist, :chapter_file, :audio_files_attributes
+  accepts_nested_attributes_for :show_notes, :chapters, :introduced_titles, :audio_files, allow_destroy: true
 
   after_create :set_slug
   before_save :ensure_published_at, unless: :draft?
@@ -56,21 +52,12 @@ class Episode < ActiveRecord::Base
   end
 
   def chapter_file=(file)
-    count = 0
     type = file.content_type
 
     if type.include? "text"
-      File.open(file.tempfile, 'r').each_line do |line, index|
-        count += 1
-        parse_chapter(line, count)
-      end
+      count = parse_text_chapter_file(file)
     elsif type.include? "json"
-      json = JSON.parse File.read(file.tempfile)
-      self.playtime = json['length'].to_i
-      json['chapters'].each do |chapter|
-        count += 1
-        create_or_update_chapter(count, chapter['start'], chapter['title'])
-      end
+      count = parse_json_chapter_file(file)
     end
 
     delete_remaining_chapters(count)
@@ -113,6 +100,26 @@ class Episode < ActiveRecord::Base
   end
 
   private
+
+  def parse_text_chapter_file(file)
+    count = 0
+    File.open(file.tempfile, 'r').each_line do |line, index|
+      count += 1
+      parse_chapter(line, count)
+    end
+    count
+  end
+
+  def parse_json_chapter_file(file)
+    count = 0
+    json = JSON.parse File.read(file.tempfile)
+    self.playtime = json['length'].to_i
+    json['chapters'].each do |chapter|
+      count += 1
+      create_or_update_chapter(count, chapter['start'], chapter['title'])
+    end
+    count
+  end
 
   def parse_chapter(line, count)
     time = line.scan(/\d{0,3}[:.]?\d{1,2}[:.]\d{1,2}/)[0].gsub '.', ':'
