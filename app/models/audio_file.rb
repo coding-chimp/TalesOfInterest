@@ -8,6 +8,18 @@ class AudioFile < ActiveRecord::Base
 
   before_save :update_size, if: :url_changed?
 
+  def total_hits
+    download_datas.sum(:hits)
+  end
+
+  def total_download_size
+    download_datas.sum(:downloaded)
+  end
+
+  def total_download_count
+    total_download_size / size
+  end
+
 private
 
   def update_size

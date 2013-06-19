@@ -29,10 +29,14 @@
 	
 		<%= f.input :flattr_code, label: 'Flattr Code' %>
 
-		<%= f.input :uri_key, label: 'URI.LV Key', as: :password, :input_html => { :value => f.object.uri_key } %>
+		<%= f.input :uri_key, label: 'FeedPress Key', as: :password, :input_html => { :value => f.object.uri_key } %>
 
-		<%= f.input :uri_token, label: 'URI.LV Token', as: :password, :input_html => { :value => f.object.uri_token } %>
-	
+		<%= f.input :uri_token, label: 'FeedPress Token', as: :password, :input_html => { :value => f.object.uri_token } %>
+
+		<%= f.input :qloudstat_api_key, label: "Qloudstat API Key", as: :password, input_html: { value: f.object.qloudstat_api_key } %>
+
+		<%= f.input :qloudstat_api_secret, label: "Qloudstat API Secret", as: :password, input_html: { value: f.object.qloudstat_api_secret } %>
+
 		<h3>RSS/iTunes Feed</h3>
 		<br />
 	

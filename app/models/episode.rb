@@ -103,6 +103,18 @@ class Episode < ActiveRecord::Base
     playtime / (60 * 60)
   end
 
+  def total_hits
+    audio_files.sum(&:total_hits)
+  end
+
+  def total_downloads
+    audio_files.sum(&:total_download_count)
+  end
+
+  def total_download_size
+    audio_files.sum(&:total_download_size)
+  end
+
 private
 
   def parse_text_chapter_file(file)

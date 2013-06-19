@@ -10,6 +10,9 @@
         <th># Episodes</th>
         <th>Last Episode</th>
         <th>Next Episode</th>
+        <% if @settings.qloudstat_api_key.present? && @settings.qloudstat_api_secret.present? %>
+        <th>Top Episode</th>
+        <% end %>
         <% if @settings.uri_key.present? && @settings.uri_token.present? %>
         <th>
           <a href="#" data-toggle="tooltip" title="according to FeedPress"><b>Subscribers</b></a>
@@ -25,12 +28,19 @@
             <td><%= podcast_presenter.episodes_count %></td>
             <td class="<%= podcast_presenter.since_color_code %>"><%= raw(podcast_presenter.since_last_episode) %></td>
             <td><%= raw(podcast_presenter.until_next_episode) %></td>
+            <% if @settings.qloudstat_api_key.present? && @settings.qloudstat_api_secret.present? %>
+            <td>
+              <a href="#" data-toggle="tooltip" title="<%= podcast_presenter.top_episode_downloads %> Downloads">
+                <%= podcast_presenter.top_episode_title %>
+              </a>
+            </td>
+            <% end %>
             <% if @settings.uri_key.present? && @settings.uri_token.present? %>
             <td>
               <a href="#<%= podcast_presenter.name %>SubscribersModal" data-toggle="modal">
                 <%= podcast_presenter.subscribers %>
               </a>
-          </td>
+            </td>
             <% end %>
           </tr>
           <%= render 'subscribers_chart', podcast_presenter: podcast_presenter %>

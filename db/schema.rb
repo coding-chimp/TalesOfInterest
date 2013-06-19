@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619082501) do
+ActiveRecord::Schema.define(:version => 20130619174325) do
 
   create_table "audio_files", :force => true do |t|
     t.string   "url"
@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(:version => 20130619082501) do
   create_table "download_data", :force => true do |t|
     t.date     "date"
     t.integer  "audio_file_id"
-    t.integer  "downloaded"
+    t.integer  "downloaded",    :limit => 8
     t.integer  "hits"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "episodes", :force => true do |t|
@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(:version => 20130619082501) do
     t.string   "uri_token"
     t.string   "gauges"
     t.string   "gauges_key"
+    t.string   "qloudstat_api_key"
+    t.string   "qloudstat_api_secret"
   end
 
   create_table "show_notes", :force => true do |t|

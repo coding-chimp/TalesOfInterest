@@ -43,6 +43,18 @@ class PodcastPresenter < BasePresenter
     end
   end
 
+  def top_episode
+    podcast.episodes.max_by { |e| e.total_downloads }
+  end
+
+  def top_episode_title
+    "##{top_episode.num} #{top_episode.title}"
+  end
+
+  def top_episode_downloads
+    top_episode.total_downloads
+  end
+
   def artwork_thumb(size)
     if podcast.artwork?
       h.content_tag :div, class: "thumbnail" do

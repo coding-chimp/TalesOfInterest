@@ -13,8 +13,8 @@ private
   def self.fetch_downloads(from, to)
     digest_auth = Net::HTTP::DigestAuth.new
     uri = URI.parse "https://api.qloudstat.com/v1/6782979/dl.talesofinterest.de/uri,referrer/hits,bandwidth_outbound/values.json?from=#{from}&to=#{to}"
-    uri.user = '0P687T32MOHUBOA9QNZ1M41AWMHVDN'
-    uri.password = 't2lrz20v'
+    uri.user = Settings.first.qloudstat_api_key
+    uri.password = Settings.first.qloudstat_api_secret
 
     http = Net::HTTP.new uri.host, uri.port
     http.use_ssl = true
@@ -58,7 +58,8 @@ private
     unless podcast.nil?
       episode = podcast.episodes.find_by_number(episode_num)
       unless episode.nil?
-        audio_file = episode.audio_files.find_by_media_type(type[1..-1])
+        type = type[1..-1] == "m4a" ? "mp4" : type[1..-1]
+        audio_file = episode.audio_files.find_by_media_type(type)
       end
     end
     audio_file || nil

@@ -12,9 +12,9 @@ namespace :downloads do
   end
 
   desc "Updates the traffic history"
-  task update_last_month: :environment do
+  task update_last_few_month: :environment do
     today = Date.today
-    start = today - 31
+    start = today - 62
     for date in start..today do
       DownloadData.update(date)
     end
