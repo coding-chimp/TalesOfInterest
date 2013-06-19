@@ -12,9 +12,7 @@ private
 
   def self.fetch_downloads(from, to)
     digest_auth = Net::HTTP::DigestAuth.new
-    uri = URI.parse "https://api.qloudstat.com/v1/6782979/dl.talesofinterest.de/uri,referrer/hits,bandwidth_outbound/values.json?from=#{from}&to=#{to}"
-    uri.user = Settings.first.qloudstat_api_key
-    uri.password = Settings.first.qloudstat_api_secret
+    uri = build_uri(from, to)
 
     http = Net::HTTP.new uri.host, uri.port
     http.use_ssl = true
@@ -30,10 +28,16 @@ private
     JSON.parse res.body
   end
 
+  def self.build_uri(from, to)
+    uri = URI.parse "https://api.qloudstat.com/v1/6782979/dl.talesofinterest.de/uri,referrer/hits,bandwidth_outbound/values.json?from=#{from}&to=#{to}"
+    uri.user = Settings.first.qloudstat_api_key
+    uri.password = Settings.first.qloudstat_api_secret
+    uri
+  end
+
   def self.process_data(rows, date)
     rows.each do |row|
-      name = row['c'][0]['v']
-      name = name[1..-1]
+      name = row['c'][0]['v'][1..-1]
       referrer = row['c'][1]['v']
       hits = row['c'][2]['v']
       downloaded = row['c'][3]['v']
