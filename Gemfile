@@ -76,3 +76,6 @@ gem 'acts_as_list'
 
 # Cron jobs
 gem 'whenever', require: false
+
+# Digest access authentication for qloudstat
+gem 'net-http-digest_auth'

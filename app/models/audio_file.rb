@@ -2,6 +2,7 @@ class AudioFile < ActiveRecord::Base
   attr_accessible :size, :media_type, :url, :episode, :episode_id
 
   belongs_to :episode
+  has_many  :download_datas
 
   validates_presence_of :media_type, :url, :episode_id
 

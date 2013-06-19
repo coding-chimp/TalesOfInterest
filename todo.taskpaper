@@ -2,7 +2,7 @@ Inbox:
 	- add proper validation for nested forms
 	- add bitlove
 	- make API calls for uri.lv via cron job an save data to DB @na @done(2013-06-19)
-	- add episode analytics
+	- add episode analytics @na
 Later:
 	- add exporter
 	- flattr button for every episode

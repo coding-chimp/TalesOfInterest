@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2013-06-19
+  audio_file_id: 1
+  downloaded: 1.5
+  hits: 1
+
+two:
+  date: 2013-06-19
+  audio_file_id: 1
+  downloaded: 1.5
+  hits: 1
