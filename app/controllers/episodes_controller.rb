@@ -38,7 +38,7 @@ class EpisodesController < ApplicationController
 
 	def create
 		@podcast = Podcast.find(params[:podcast])
-		@episode = Episode.includes(:podcast, :show_notes, :introduced_titles).new(params[:episode])
+		@episode = Episode.includes(:podcast, :show_notes).new(params[:episode])
 		@show_notes = @episode.show_notes
 
 		if @episode.save

@@ -55,17 +55,6 @@
 			<iframe src="https://embed.spotify.com/?uri=spotify:user:talesofinterest:playlist:<%= @episode.spotify_playlist %>&theme=white" width="500" height="580" frameborder="0" allowtransparency="true"></iframe>
 		<% end %>
 
-		<% unless @episode.introduced_titles.size == 0 %>
-			<h3>Vorgestellte Titel</h3>
-			<table class="table table-striped" id="links">
-				<% @episode.introduced_titles.each do |title| %>
-					<tr>
-						<td><p><%= link_to title.name, title.url, target: "_blank" %></p></td>
-		  			</tr>
-				<% end %>
-			</table>
-		<% end %>
-
 		<% unless @episode.show_notes.size == 0 %>
 			<h3>Show Notes & Links</h3>
 			<table class="table table-striped" id="links">

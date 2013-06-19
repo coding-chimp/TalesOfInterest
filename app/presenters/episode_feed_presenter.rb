@@ -35,9 +35,6 @@ class EpisodeFeedPresenter < BasePresenter
 
   def content
     content = episode.description
-    if episode.introduced_titles.size > 0
-      content << "</p>" + stringify_introduced_titles.html_safe
-    end
     if episode.show_notes.size > 0
       content << "</p>" + stringify_show_notes.html_safe
     end
@@ -76,10 +73,6 @@ private
 
   def podcast_presenter
     PodcastPresenter.new(episode.podcast, h)
-  end
-
-  def stringify_introduced_titles
-    "<p>Vorgestellte Titel:</p><ul>#{stringify(episode.introduced_titles)}</ul><p>"
   end
 
   def stringify_show_notes
