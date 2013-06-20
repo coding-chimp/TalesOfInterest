@@ -107,6 +107,14 @@ class Episode < ActiveRecord::Base
     audio_files.sum(&:total_download_count)
   end
 
+  def total_downloaded
+    audio_files.sum(&:total_download_size)
+  end
+
+  def total_hits
+    audio_files.sum(&:total_hits)
+  end
+
 private
 
   def parse_text_chapter_file(file)

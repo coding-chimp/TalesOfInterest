@@ -17,6 +17,8 @@ TalesOfInterest::Application.routes.draw do
   get    'admin/settings',              to: 'settings#edit',          as: :settings
   put    'admin/settings',              to: 'settings#update'
 
+  get    'admin/analytics',             to: 'analytics#index',        as: :analytics
+
   get    'admin/users',                 to: 'users#index',            as: :users
   post   'admin/users',                 to: 'users#create'
   get    'admin/users/new',             to: 'users#new',              as: :new_user

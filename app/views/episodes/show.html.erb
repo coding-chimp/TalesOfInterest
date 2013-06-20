@@ -29,8 +29,8 @@
 
 
 	<div class="well">
-		<h4 class="episode-num">Episode #<%= episode_presenter.num %>
-		<h2><%= episode_presenter.title %></h2>
+		<h4 class="episode-num">Episode #<%= episode_presenter.num %></h4>
+		<h2><%= episode_presenter.title %> | <%= "#{params[:controller]} #{params[:action]}" %></h2>
 		<h4><%= episode_presenter.published_at %><%= episode_presenter.duration_in_words %></h4>
 		<div class="description"><%= episode_presenter.description %></div>
 
