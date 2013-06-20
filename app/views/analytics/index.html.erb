@@ -1,19 +1,17 @@
 <div class="well">
   <h2>Analytics</h2>
 
-  <table class="table table-striped" id="episode_table">
+  <table class="table table-striped" id="episode_analytics_table">
     <thead>
       <tr>
         <th style="width: 25%; text-align: center;">Title</th>
         <th style="width: 25%; text-align: center;">Hits</th>
         <th style="width: 30%; text-align: center;">Downloaded</th>
-<!--        <th>Average Size</th> -->
         <th style="width: 20%; text-align: center;">Full Downloads</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
-      <% for episode in @episodes.sort_by { |e| e.total_downloads }.reverse do %>
+    <% for episode in @episodes.sort_by { |e| e.total_downloads }.reverse do %>
       <% present episode, AnalyticsEpisodePresenter do |episode_presenter| %>
       <tr>
         <td><%= episode.full_title %></td>
@@ -31,7 +29,6 @@
             </div>
           </div>
         </td>
-<!--        <td><%# number_with_precision((episode.audio_files.average('size') / 1048576), precision: 1) %> MB</td> -->
         <td>
           <div class="progress">
             <div class="bar" style="width: <%= episode_presenter.downloads_percentage %>">
@@ -41,7 +38,7 @@
         </td>
       </tr>
       <% end %>
-      <% end %>
+    <% end %>
     </tbody>
   </table>
 </div>
