@@ -6,7 +6,11 @@ class Subscriber < ActiveRecord::Base
   validates_presence_of :count, :date, :reader, :podcast_id
 
   def self.latest(podcast)
-    where(podcast_id: podcast.id, date: Date.today) || where(podcast_id: podcast.id, date: Date.today-1)
+    subscribers = where(podcast_id: podcast.id, date: Date.today)
+    if subscribers.count == 0
+      subscribers = where(podcast_id: podcast.id, date: Date.today-1)
+    end
+    subscribers
   end
 
   def self.update
