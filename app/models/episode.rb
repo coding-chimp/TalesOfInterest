@@ -36,7 +36,7 @@ class Episode < ActiveRecord::Base
   end
 
   def chapter_marks
-    chapters.order("timestamp asc").map { |c| c.to_s }.join("\n")
+    chapters.order("timestamp ASC").map { |c| c.to_s }.join("\n")
   end
 
   def chapter_marks=(chapter_marks)
@@ -48,7 +48,7 @@ class Episode < ActiveRecord::Base
           break
         else
           count += 1
-          parse_chapter(line, count)
+          ChapterParser.new(self).parse_line(line, count)
         end
       end
     end
@@ -58,13 +58,7 @@ class Episode < ActiveRecord::Base
 
   def chapter_file=(file)
     type = file.content_type
-
-    if type.include? "text"
-      count = parse_text_chapter_file(file)
-    elsif type.include? "json"
-      count = parse_json_chapter_file(file)
-    end
-
+    count = ChapterParser.new(self).parse_file(file, type)
     delete_remaining_chapters(count)
     self.save
   end
@@ -105,43 +99,6 @@ class Episode < ActiveRecord::Base
   end
 
 private
-
-  def parse_text_chapter_file(file)
-    count = 0
-    File.open(file.tempfile, 'r').each_line do |line, index|
-      count += 1
-      parse_chapter(line, count)
-    end
-    count
-  end
-
-  def parse_json_chapter_file(file)
-    count = 0
-    json = JSON.parse File.read(file.tempfile)
-    self.playtime = json['length'].to_i
-    json['chapters'].each do |chapter|
-      count += 1
-      create_or_update_chapter(count, chapter['start'], chapter['title'])
-    end
-    count
-  end
-
-  def parse_chapter(line, count)
-    time = line.scan(/\d{0,3}[:.]?\d{1,2}[:.]\d{1,2}/)[0].gsub '.', ':'
-    time = time.prepend("0:") if time.count(':') == 1
-    title = line.scan(/\s(.+)/)[0][0].gsub(/<.+>/, "").chomp
-    create_or_update_chapter(count, time, title)
-  end
-
-  def create_or_update_chapter(count, time, title)
-    if count <= self.chapters.count
-      chapter = self.chapters[count-1]
-      chapter.update_attributes(pretty_time: time, title: title)
-    else
-      chapter = Chapter.create!(pretty_time: time, title: title, episode_id: self.id)
-      self.chapters << chapter
-    end
-  end
 
   def delete_remaining_chapters(count)
     for n in count...self.chapters.count do
