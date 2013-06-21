@@ -11,6 +11,7 @@ class Episode < ActiveRecord::Base
   attr_accessible :description, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :draft
   attr_accessible :show_notes_attributes, :chapters_attributes, :explicit, :chapter_marks, :published_at
   attr_accessible :introduced_titles_attributes, :spotify_playlist, :chapter_file, :audio_files_attributes
+  attr_accessible :hits, :downloaded, :downloads
   accepts_nested_attributes_for :show_notes, :chapters, :introduced_titles, :audio_files, allow_destroy: true
 
   after_create :set_slug
@@ -101,18 +102,6 @@ class Episode < ActiveRecord::Base
 
   def hours
     playtime / (60 * 60)
-  end
-
-  def total_downloads
-    audio_files.sum(&:total_download_count)
-  end
-
-  def total_downloaded
-    audio_files.sum(&:total_download_size)
-  end
-
-  def total_hits
-    audio_files.sum(&:total_hits)
   end
 
 private

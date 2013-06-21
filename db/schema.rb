@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619190344) do
+ActiveRecord::Schema.define(:version => 20130621123056) do
 
   create_table "audio_files", :force => true do |t|
     t.string   "url"
@@ -56,10 +56,13 @@ ActiveRecord::Schema.define(:version => 20130619190344) do
     t.integer  "podcast_id"
     t.string   "slug"
     t.datetime "published_at"
-    t.boolean  "draft",            :default => true
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.boolean  "draft",                         :default => true
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.string   "spotify_playlist"
+    t.integer  "hits"
+    t.integer  "downloaded",       :limit => 8
+    t.integer  "downloads"
   end
 
   create_table "friendly_id_slugs", :force => true do |t|

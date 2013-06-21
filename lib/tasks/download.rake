@@ -3,12 +3,14 @@ namespace :downloads do
   task update_today: :environment do
     today = Date.today
     DownloadData.update(today)
+    EpisodeAnalytics.update
   end
 
   desc "Updates yesterday's traffic"
   task update_yesterday: :environment do
     yesterday = Date.today - 1
     DownloadData.update(yesterday)
+    EpisodeAnalytics.update
   end
 
   desc "Updates the traffic history"
@@ -18,5 +20,6 @@ namespace :downloads do
     for date in start..today do
       DownloadData.update(date)
     end
+    EpisodeAnalytics.update
   end
 end

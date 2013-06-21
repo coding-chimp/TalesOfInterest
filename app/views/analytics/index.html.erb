@@ -11,28 +11,28 @@
       </tr>
     </thead>
     <tbody>
-    <% for episode in @episodes.sort_by { |e| e.total_downloads }.reverse do %>
+    <% @episodes.each do |episode| %>
       <% present episode, AnalyticsEpisodePresenter do |episode_presenter| %>
       <tr>
         <td><%= episode.full_title %></td>
         <td>
           <div class="progress">
             <div class="bar" style="width: <%= episode_presenter.hits_percentage %>">
-              <%= episode_presenter.total_hits %>
+              <%= episode_presenter.hits %>
             </div>
           </div>
         </td>
         <td>
           <div class="progress">
             <div class="bar" style="width: <%= episode_presenter.downloaded_percentage %>">
-              <%= episode_presenter.total_downloaded %>
+              <%= episode_presenter.downloaded %>
             </div>
           </div>
         </td>
         <td>
           <div class="progress">
             <div class="bar" style="width: <%= episode_presenter.downloads_percentage %>">
-              <%= episode_presenter.total_downloads %>
+              <%= episode_presenter.downloads %>
             </div>
           </div>
         </td>

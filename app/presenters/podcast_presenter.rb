@@ -44,7 +44,7 @@ class PodcastPresenter < BasePresenter
   end
 
   def top_episode
-    podcast.episodes.max_by { |e| e.total_downloads }
+    podcast.episodes.order('downloads DESC').first
   end
 
   def top_episode_title
@@ -52,7 +52,7 @@ class PodcastPresenter < BasePresenter
   end
 
   def top_episode_downloads
-    top_episode.total_downloads
+    top_episode.downloads
   end
 
   def artwork_thumb(size)

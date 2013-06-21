@@ -1,35 +1,34 @@
 class AnalyticsEpisodePresenter < BasePresenter
   presents :episode
-  delegate :total_hits, :total_downloads, to: :episode
+  delegate :hits, :downloads, to: :episode
 
   def hits_percentage
-    h.number_to_percentage(episode.total_hits.to_f / max_hits * 100)
+    h.number_to_percentage(episode.hits.to_f / max_hits * 100)
   end
 
-  def total_downloaded
-  #  "#{episode.total_downloaded / 1048576} MB"
-    h.number_to_human_size(episode.total_downloaded)
+  def downloaded
+    h.number_to_human_size(episode.downloaded)
   end
 
   def downloaded_percentage
-    h.number_to_percentage(episode.total_downloaded.to_f / max_downloaded * 100)
+    h.number_to_percentage(episode.downloaded.to_f / max_downloaded * 100)
   end
 
   def downloads_percentage
-    h.number_to_percentage(episode.total_downloads.to_f / max_downloads * 100)
+    h.number_to_percentage(episode.downloads.to_f / max_downloads * 100)
   end
 
 private
 
   def max_hits
-    Episode.all.max_by(&:total_hits).total_hits
+    Episode.maximum(:hits)
   end
 
   def max_downloaded
-    Episode.all.max_by(&:total_downloaded).total_downloaded
+    Episode.maximum(:downloaded)
   end
 
   def max_downloads
-    Episode.all.max_by(&:total_downloads).total_downloads
+    Episode.maximum(:downloads)
   end
 end
