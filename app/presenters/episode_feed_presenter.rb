@@ -41,8 +41,8 @@ class EpisodeFeedPresenter < BasePresenter
     markdown(content)
   end
 
-  def created_at
-    episode.created_at.to_s(:rfc822)
+  def published_at
+    episode.published_at.to_s(:rfc822)
   end
 
   def author

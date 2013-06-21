@@ -83,7 +83,7 @@ present @podcast do |podcast_presenter|
             xml.title episode_presenter.full_title
             xml.link episode_presenter.uri
             xml.guid episode_presenter.uri
-            xml.pubDate episode_presenter.created_at
+            xml.pubDate episode_presenter.published_at
             xml.description episode_presenter.clean_description
             xml.enclosure url: episode_presenter.file.url, length: episode_presenter.file.size, type: episode_presenter.file_type
             xml.itunes :author, episode_presenter.author

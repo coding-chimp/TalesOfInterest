@@ -82,7 +82,7 @@ class PodcastPresenter < BasePresenter
   end
 
   def pubDate
-    episodes_count > 0 ? podcast.episodes.first.created_at.to_s(:rfc822) : podcast.created_at.to_s(:rfc822)
+    episodes_count > 0 ? podcast.episodes.maximum('published_at').to_s(:rfc822) : podcast.created_at.to_s(:rfc822)
   end
 
   def explicit
