@@ -8,6 +8,11 @@ class EpisodesController < ApplicationController
 		@search = Episode.includes(:podcast).published.recent.search(params[:q])
 		@episodes = @search.result(distinct: true).page(params[:page]).per(ppp)
 		@podcasts = Podcast.order("name")
+
+		respond_to do |format|
+			format.html
+			format.json { render json: EpisodesAnalyticsDatatable.new(view_context) }
+		end
 	end
 
 	def podcast_index
