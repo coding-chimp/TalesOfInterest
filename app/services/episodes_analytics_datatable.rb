@@ -20,16 +20,9 @@ private
     episodes.map do |episode|
       [
         full_title(episode),
-        content_tag(:div, class: "progress"){
-          content_tag(:div, episode.hits, class: "bar", style: "width: #{hits_percentage(episode)}")
-        },
-        content_tag(:div, class: "progress"){
-          content_tag(:div, downloaded(episode), class: "bar",
-                      style: "width: #{downloaded_percentage(episode)}")
-        },
-        content_tag(:div, class: "progress"){
-          content_tag(:div, episode.downloads, class: "bar", style: "width: #{downloads_percentage(episode)}")
-        }
+        progress_bar(episode, :hits),
+        progress_bar(episode, :downloaded),
+        progress_bar(episode, :downloads)
       ]
     end
   end
@@ -68,8 +61,16 @@ private
     "##{episode.num} #{episode.title} <span class='muted'>#{episode.podcast.name}</span>"
   end
 
-  def downloaded(episode)
-    number_to_human_size(episode.downloaded)
+  def progress_bar(episode, attribute)
+    percentage = self.send("#{attribute}_percentage", episode)
+    
+    content_tag(:div, class: "progress"){
+      content_tag(:div, self.send(attribute, episode), class: "bar", style: "width: #{percentage}")
+    }
+  end
+
+  def hits(episode)
+    episode.hits
   end
 
   def hits_percentage(episode)
@@ -80,12 +81,20 @@ private
     Episode.maximum(:hits)
   end
 
+  def downloaded(episode)
+    number_to_human_size(episode.downloaded)
+  end
+
   def downloaded_percentage(episode)
     number_to_percentage(episode.downloaded.to_f / max_downloaded * 100)
   end
 
   def max_downloaded
     Episode.maximum(:downloaded)
+  end
+
+  def downloads(episode)
+    episode.downloads
   end
 
   def downloads_percentage(episode)

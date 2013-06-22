@@ -3,7 +3,9 @@ Inbox:
 	- add bitlove
 	- figure out how to display download analytics
 	- flattr button for every episode
-	- write a form object for the episodes form @na
+	- refactor episodes model  @done(2013-06-22)
+	- refactor episodes controller @na
+	- refactor episodes analytics datatable @na @done(2013-06-22)
 Later:
 	- add exporter
 Archive:
