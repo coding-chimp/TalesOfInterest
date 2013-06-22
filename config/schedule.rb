@@ -10,6 +10,6 @@ every :hour do
   rake "downloads:update_today"
 end
 
-every :day, at: '02.30am' do
+every 6.hours do
   rake "downloads:update_yesterday"
 end

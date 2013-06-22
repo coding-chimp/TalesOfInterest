@@ -14,7 +14,7 @@ namespace :downloads do
   end
 
   desc "Updates the traffic history"
-  task update_last_few_month: :environment do
+  task update_last_few_months: :environment do
     today = Date.today
     start = today - 62
     for date in start..today do
