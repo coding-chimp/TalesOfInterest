@@ -22,7 +22,8 @@ private
         full_title(episode),
         progress_bar(episode, :hits),
         progress_bar(episode, :downloaded),
-        progress_bar(episode, :downloads)
+        progress_bar(episode, :downloads),
+        episode.title
       ]
     end
   end

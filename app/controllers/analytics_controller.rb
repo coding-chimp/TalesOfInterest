@@ -3,5 +3,6 @@ class AnalyticsController < ApplicationController
 
   def index
     @episodes = Episode.order('downloads DESC')
+    @episode = Episode.find_by_title(params[:episode]) || Episode.order('downloads DESC').first
   end
 end

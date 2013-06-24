@@ -1,14 +1,16 @@
 Inbox:
 	- add proper validation for nested forms
 	- add bitlove
-	- figure out how to display download analytics
+	- figure out how to display download analytics @done(2013-06-24)
 	- flattr button for every episode
-	- refactor episodes model  @done(2013-06-22)
 	- refactor episodes controller @na
-	- refactor episodes analytics datatable @na @done(2013-06-22)
+	- fix colors in dashboard's podcasts table @na
+	- make the spotify user configurable @na
 Later:
 	- add exporter
 Archive:
+	- refactor episodes model  @done(2013-06-22) @project(Inbox)
+	- refactor episodes analytics datatable @na @done(2013-06-22) @project(Inbox)
 	- make API calls for uri.lv via cron job an save data to DB @na @done(2013-06-19) @project(Inbox)
 	- add fetching of download analytics @na @done(2013-06-19) @project(Inbox)
 	- show top episode on dashboard  @done(2013-06-19) @project(Inbox)

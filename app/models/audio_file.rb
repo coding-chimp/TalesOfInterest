@@ -20,6 +20,10 @@ class AudioFile < ActiveRecord::Base
     total_download_size / size
   end
 
+  def downloads_on(date)
+    (download_datas.where(date: date).sum(:downloaded) / size.to_f).round(2)
+  end
+
 private
 
   def update_size
