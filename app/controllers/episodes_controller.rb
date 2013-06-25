@@ -44,17 +44,10 @@ class EpisodesController < ApplicationController
 		podcast = Podcast.find(params[:podcast])
 		@episode = Episode.includes(:podcast, :show_notes).new(params[:episode])
 
+		params[:episode][:draft] = false if params[:publish]
+
 		if @episode.save
-			if params[:publish]
-				@episode.draft = false
-				if @episode.valid?
-					@episode.save
-					redirect_to(podcast_episodes_path(podcast), notice: 'Episode was successfully published.')
-				else
-					@episode.update_attributes(draft: true, published_at: nil)
-					render action: "new"
-				end
-			elsif params[:save_close]
+			if params[:save_close]
 				redirect_to(podcast_episodes_path(podcast), notice: 'Episode was successfully saved.')
 			else
 				redirect_to(edit_episode_path(podcast, @episode), notice: 'Episode was successfully saved.')
@@ -73,17 +66,10 @@ class EpisodesController < ApplicationController
 		podcast = Podcast.find(params[:podcast])
 		@episode = podcast.episodes.find(params[:id])
 
+		params[:episode][:draft] = false if params[:publish]
+
 		if @episode.update_attributes(params[:episode])
-			if params[:publish]
-				@episode.draft = false
-				if @episode.valid?
-					@episode.save
-					redirect_to(podcast_episodes_path(podcast), notice: 'Episode was successfully published.')
-				else
-					@episode.update_attributes(draft: true, published_at: nil)
-					render action: "edit"
-				end
-			elsif params[:save_close]
+			if params[:save_close]
 				redirect_to(podcast_episodes_path(podcast), notice: 'Episode was successfully saved.')
 			else
 				redirect_to(edit_episode_path(podcast, @episode), notice: 'Episode was successfully saved.')
