@@ -65,7 +65,7 @@
     </tr>
   </thead>
   <tbody id="show_notes" data-update-url="<%= sort_show_notes_url %>">
-    <%= f.fields_for :show_notes, @show_notes.sort_by(&:position) do |builder| %>
+    <%= f.fields_for :show_notes, @episode.show_notes.sort_by(&:position) do |builder| %>
       <%= render "show_note_fields", f: builder %>
     <% end %>
     <tr id="add_show_note">
@@ -97,5 +97,5 @@
 	<%= f.submit "Publish", name: 'publish', class: 'btn btn-primary' if f.object.draft %>
 	<%= f.submit "Save", class: 'btn btn-primary' %>
   <%= f.submit "Save & Close", name: 'save_close', class: 'btn btn-primary' %>
-	<%= link_to "Cancel", podcast_episodes_path(@podcast), class: 'btn' %>
+	<%= link_to "Cancel", podcast_episodes_path(@episode.podcast), class: 'btn' %>
 </div><!-- /form-actions -->

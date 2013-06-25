@@ -2,11 +2,12 @@ Inbox:
 	- add proper validation for nested forms
 	- add bitlove
 	- flattr button for every episode
-	- refactor episodes controller @na
+	- refactor episodes controller @na @done(2013-06-25)
 	- fix colors in dashboard's podcasts table @na @done(2013-06-25)
 	- make the spotify user configurable @na
 Later:
 	- add exporter
+	- change from bootstrap to foundation
 Archive:
 	- figure out how to display download analytics @done(2013-06-24) @project(Inbox)
 	- refactor episodes model  @done(2013-06-22) @project(Inbox)

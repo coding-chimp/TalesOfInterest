@@ -1,7 +1,7 @@
-<% title "New #{@podcast.name} Episode" %>
+<% title "New #{@episode.podcast.name} Episode" %>
 
 <div class="well">
-	<h2>New <%= @podcast.name %> Episode</h2>
+	<h2>New <%= @episode.podcast.name %> Episode</h2>
 
 	<%= simple_form_for @episode, url: { action: :create }, method: 'post', html: { class: 'form-horizontal' } do |f| %>
 		<%= render 'form', f: f %>
