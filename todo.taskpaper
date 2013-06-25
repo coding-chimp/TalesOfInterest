@@ -4,7 +4,7 @@ Inbox:
 	- flattr button for every episode
 	- refactor episodes controller @na @done(2013-06-25)
 	- fix colors in dashboard's podcasts table @na @done(2013-06-25)
-	- make the spotify user configurable @na
+	- make the spotify user configurable @na @done(2013-06-25)
 Later:
 	- add exporter
 	- change from bootstrap to foundation

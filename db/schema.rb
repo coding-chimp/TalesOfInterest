@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621123056) do
+ActiveRecord::Schema.define(:version => 20130625143844) do
 
   create_table "audio_files", :force => true do |t|
     t.string   "url"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20130621123056) do
     t.string   "gauges_key"
     t.string   "qloudstat_api_key"
     t.string   "qloudstat_api_secret"
+    t.string   "spotify_username"
   end
 
   create_table "show_notes", :force => true do |t|

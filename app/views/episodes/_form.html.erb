@@ -25,7 +25,9 @@
 <% end %>
 <%= f.input :chapter_file, as: :file, hint: "Add Chapters through Auphonic's \"Chapters File\" or \"Production Description\" file." %>
 
-<%= f.input :spotify_playlist %>
+<% if Settings.first.spotify_username.present? %>
+  <%= f.input :spotify_playlist %>
+<% end %>
 
 <div class="form-head">
   <h3>Audio Files</h3>
