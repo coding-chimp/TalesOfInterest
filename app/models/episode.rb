@@ -14,7 +14,7 @@ class Episode < ActiveRecord::Base
   attr_accessible :hits, :downloaded, :downloads
   accepts_nested_attributes_for :show_notes, :chapters, :introduced_titles, :audio_files, allow_destroy: true
 
-  after_create :set_slug
+  after_create :set_slug, :set_download_data
   before_save :ensure_published_at, unless: :draft?
 
   scope :published, lambda { where(draft: false).where('published_at <= ?', Time.now.utc) }
@@ -108,6 +108,10 @@ private
 
   def set_slug
     update_attribute :slug, number
+  end
+
+  def set_download_data
+    update_attributes(hits: 0, downloaded: 0, downloads: 0)
   end
 
   def custom_before_validation
