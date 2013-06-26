@@ -7,12 +7,15 @@
   <![endif]-->
   <%= stylesheet_link_tag "application", :media => "all" %>
   <% cache "favicon" do %>
-    <% if settings.favicon %>
+    <% if settings.favicon.present? %>
       <%= favicon_link_tag settings.favicon.url %>
     <% end %>
   <% end %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <% if settings.flattr_username.present? %>
+    <link rel="payment" href="https://flattr.com/submit/auto?url=<%= root_url %>&user_id=<%= u settings.flattr_username %>&title=<%= u settings.site_name %>&language=de_DE&category=audio" type="text/html" />
+  <% end %>
   <meta name="google-site-verification" content="qpvA4wDnK1GUYsOa6qra7y_tX140G4ZId2JpHaznPjc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <% unless settings.ga_code.blank? %>

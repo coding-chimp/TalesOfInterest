@@ -16,12 +16,10 @@
   </ul><!-- /unstyled -->
 </div><!-- /well -->
 
-<% unless settings.flattr_code.blank? %>
+<% if settings.flattr_username.present? %>
   <div class="well">
     <h3>Spenden</h3>
-    <a href="http://flattr.com/thing/<%= settings.flattr_code %>" target="_blank" class="flattr_button">
-      <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Podcast Flattrn" border="0">
-    </a>
+    <%= link_to image_tag("https://api.flattr.com/button/flattr-badge-large.png", alt: "Flattr Tales of Interest"), "https://flattr.com/submit/auto?url=#{root_url}&user_id=#{u settings.flattr_username}&title=#{u settings.site_name}&language=de_DE&category=audio", target: "_blank", class: "flattr_button" %>
   </div><!-- /well -->
 <% end %>
 

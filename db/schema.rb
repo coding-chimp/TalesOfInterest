@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625143844) do
+ActiveRecord::Schema.define(:version => 20130626132324) do
 
   create_table "audio_files", :force => true do |t|
     t.string   "url"
@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(:version => 20130625143844) do
     t.integer  "favicon_file_size"
     t.datetime "favicon_updated_at"
     t.string   "ga_code"
-    t.string   "flattr_code"
     t.string   "feed_language"
     t.string   "feed_email"
     t.string   "feed_author"
@@ -125,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20130625143844) do
     t.string   "qloudstat_api_key"
     t.string   "qloudstat_api_secret"
     t.string   "spotify_username"
+    t.string   "flattr_username"
   end
 
   create_table "show_notes", :force => true do |t|

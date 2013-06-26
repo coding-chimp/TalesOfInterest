@@ -1,6 +1,6 @@
 present @podcast do |podcast_presenter|
   xml.instruct! :xml, version: "1.0"
-  xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "xmlns:content" => "http://purl.org/rss/1.0/modules/content/" do
+  xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "xmlns:content" => "http://purl.org/rss/1.0/modules/content/", "xmlns:atom" => "http://www.w3.org/2005/Atom" do
     xml.channel do
       xml.title podcast_presenter.name
       xml.link podcast_presenter.uri
@@ -25,6 +25,9 @@ present @podcast do |podcast_presenter|
       xml.itunes :owner do
         xml.itunes :name, @podcast.author
         xml.itunes :email, @settings.feed_email
+      end
+      if Settings.first.flattr_username.present?
+        xml.atom :link, rel: "payment", href: "https://flattr.com/submit/auto?url=#{root_url}&user_id=#{u Settings.first.flattr_username}&title=#{u podcast_presenter.name}&description=#{u @podcast.description}&language=de_DE&category=audio", type: "text/html"
       end
       xml.itunes :block, 'no'
 
