@@ -1,9 +1,11 @@
 Inbox:
-	- add bitlove
 	- flattr button for every episode @done(2013-06-26)
+	- improve analytics#index load times @na
+	- improve dashboard#index load times
+Foundation:
+	- exchange assets
 Later:
 	- add exporter
-	- change from bootstrap to foundation
 	- add proper validation for nested forms
 Archive:
 	- refactor episodes controller @na @done(2013-06-25) @project(Inbox)

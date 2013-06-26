@@ -25,6 +25,7 @@ group :development do
   gem 'rails-erd'
   gem 'bullet'
   gem 'xray-rails'
+  gem 'rack-mini-profiler'
 end
 
 gem 'jquery-rails'
