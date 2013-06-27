@@ -1,13 +1,14 @@
 Inbox:
-	- flattr button for every episode @done(2013-06-26)
 	- improve analytics#index load times @na @done(2013-06-27)
-	- improve dashboard#index load times
+	- improve dashboard#index load times @done(2013-06-27)
 Foundation:
 	- exchange assets
+	- move subscriber charts in remote modal
 Later:
 	- add exporter
 	- add proper validation for nested forms
 Archive:
+	- flattr button for every episode @done(2013-06-26) @project(Inbox)
 	- refactor episodes controller @na @done(2013-06-25) @project(Inbox)
 	- fix colors in dashboard's podcasts table @na @done(2013-06-25) @project(Inbox)
 	- make the spotify user configurable @na @done(2013-06-25) @project(Inbox)

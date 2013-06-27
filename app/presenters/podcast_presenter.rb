@@ -11,11 +11,21 @@ class PodcastPresenter < BasePresenter
   end
 
   def episodes_count
-    podcast.episodes.count
+    Episode.where(podcast_id: podcast.id).count
   end
 
-  def since_color_code
+  def since_last_episode
     if episode = podcast.latest_episode
+      content = h.distance_of_time_in_words(DateTime.now, episode.published_at) + " ago"
+    else
+      content = '&nbsp'
+    end
+
+    h.content_tag :td, h.raw(content), class: since_color_code(episode)
+  end
+
+  def since_color_code(episode)
+    if episode
       distance = Date.today - episode.published_at.to_date
       if distance <= 14
         "ok"
@@ -24,14 +34,6 @@ class PodcastPresenter < BasePresenter
       else
         "warning"
       end 
-    end
-  end
-
-  def since_last_episode
-    if episode = podcast.latest_episode
-      h.distance_of_time_in_words(DateTime.now, episode.published_at) + " ago"
-    else
-      '&nbsp'
     end
   end
 
@@ -44,15 +46,9 @@ class PodcastPresenter < BasePresenter
   end
 
   def top_episode
-    podcast.episodes.order('downloads DESC').first
-  end
+    episode = podcast.episodes.order('downloads DESC').first
 
-  def top_episode_title
-    "##{top_episode.num} #{top_episode.title}"
-  end
-
-  def top_episode_downloads
-    top_episode.downloads
+    h.content_tag :a, "##{episode.num} #{episode.title}", href: "#", data: { toggle: "tooltip" }, title: episode.downloads
   end
 
   def artwork_thumb(size)

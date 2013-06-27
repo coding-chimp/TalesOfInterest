@@ -11,7 +11,7 @@ class PodcastsController < ApplicationController
 	def show
 		ppp = Settings.first.posts_per_page
 		@podcast = Podcast.find(params[:id])
-		@episodes = @podcast.episodes.published.recent.page(params[:page]).per(ppp)
+		@episodes = @podcast.episodes.includes(:podcast).published.recent.page(params[:page]).per(ppp)
 	end
 
 	def new

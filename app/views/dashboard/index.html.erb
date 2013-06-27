@@ -26,13 +26,11 @@
           <tr>
             <td><%= podcast_presenter.name %></td>
             <td><%= podcast_presenter.episodes_count %></td>
-            <td class="<%= podcast_presenter.since_color_code %>"><%= raw(podcast_presenter.since_last_episode) %></td>
+            <%= podcast_presenter.since_last_episode %>
             <td><%= raw(podcast_presenter.until_next_episode) %></td>
             <% if @settings.qloudstat_api_key.present? && @settings.qloudstat_api_secret.present? %>
             <td>
-              <a href="#" data-toggle="tooltip" title="<%= podcast_presenter.top_episode_downloads %> Downloads">
-                <%= podcast_presenter.top_episode_title %>
-              </a>
+              <%= podcast_presenter.top_episode %>
             </td>
             <% end %>
             <% if @settings.uri_key.present? && @settings.uri_token.present? %>
