@@ -4,13 +4,13 @@ class EpisodesController < ApplicationController
 	before_filter :standard_sidebar, only: [:index, :show]
 
 	def index
-		ppp = Settings.first.posts_per_page
-		@search = Episode.includes(:podcast).published.recent.search(params[:q])
-		@episodes = @search.result(distinct: true).page(params[:page]).per(ppp)
-		@podcasts = Podcast.order("name")
-
 		respond_to do |format|
-			format.html
+			format.html do
+				ppp = Settings.first.posts_per_page
+				@search = Episode.includes(:podcast).published.recent.search(params[:q])
+				@episodes = @search.result(distinct: true).page(params[:page]).per(ppp)
+				@podcasts = Podcast.order("name")
+			end
 			format.json { render json: EpisodesAnalyticsDatatable.new(view_context) }
 		end
 	end

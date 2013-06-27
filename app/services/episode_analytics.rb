@@ -10,13 +10,17 @@ class EpisodeAnalytics
   end
 
   def self.graph(episode)
+    mp4_downloads_by_day  = downloads_grouped_by_day(episode, "mp4", 4.weeks.ago)
+    mp3_downloads_by_day  = downloads_grouped_by_day(episode, "mp3", 4.weeks.ago)
+    ogg_downloads_by_day  = downloads_grouped_by_day(episode, "ogg", 4.weeks.ago)
+    opus_downloads_by_day = downloads_grouped_by_day(episode, "opus", 4.weeks.ago)
     (4.weeks.ago.to_date..Date.today).map do |date|
       {
         date: date,
-        mp4: downloads_on(episode, date, "mp4"),
-        mp3: downloads_on(episode, date, "mp3"),
-        ogg: downloads_on(episode, date, "ogg"),
-        opus: downloads_on(episode, date, "opus")
+        mp4:  mp4_downloads_by_day[date].try(:first).try(:downloads)  || 0,
+        mp3:  mp3_downloads_by_day[date].try(:first).try(:downloads)  || 0,
+        ogg:  ogg_downloads_by_day[date].try(:first).try(:downloads)  || 0,
+        opus: opus_downloads_by_day[date].try(:first).try(:downloads) || 0
       }
     end
   end
@@ -39,9 +43,19 @@ private
     episode.audio_files.sum(&:total_download_count)
   end
 
-  def self.downloads_on(episode, date, type)
+  def self.downloads_grouped_by_day(episode, type, start)
     file = episode.audio_files.find_by_media_type(type)
-    file.downloads_on(date) if file
+    if file
+      fetch_downloads(file, start)
+    else
+      { date: Date.today }
+    end
   end
 
+  def self.fetch_downloads(file, start)
+    downloads = DownloadData.where(audio_file_id: file.id, date: start.to_date..Date.today)
+    downloads = downloads.group("id, date(date)")
+    downloads = downloads.select("date, round(sum(downloaded)/#{file.size.to_f},2) as downloads")
+    downloads.group_by { |d| d.date }
+  end
 end

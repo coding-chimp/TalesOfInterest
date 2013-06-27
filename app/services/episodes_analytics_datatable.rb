@@ -33,7 +33,7 @@ private
   end
 
   def fetch_episodes
-    episodes = Episode.joins(:podcast).order("#{sort_column} #{sort_direction}")
+    episodes = Episode.includes(:podcast).order("#{sort_column} #{sort_direction}")
     episodes = episodes.page(page).per(per_page)
     if params[:sSearch].present?
       episodes = episodes.where("LOWER(title) like :search or CAST(number AS TEXT) like :search or LOWER(podcasts.name) like :search", search: "%#{params[:sSearch].downcase}%")
