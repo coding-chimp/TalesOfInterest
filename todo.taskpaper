@@ -1,6 +1,6 @@
 Inbox:
 	- flattr button for every episode @done(2013-06-26)
-	- improve analytics#index load times @na
+	- improve analytics#index load times @na @done(2013-06-27)
 	- improve dashboard#index load times
 Foundation:
 	- exchange assets

@@ -1,0 +1,5 @@
+<h2>
+  Downloads #<%= "#{@episode.num} #{@episode.title}" %> <span class='muted'><%= @episode.podcast.name %></span>
+</h2>
+
+<%= content_tag :div, "", id: "downloads_chart", data: { downloads: EpisodeAnalytics.graph(@episode), files: EpisodeAnalytics.files(@episode) } %>

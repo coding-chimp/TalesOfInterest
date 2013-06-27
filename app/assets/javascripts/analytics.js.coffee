@@ -9,15 +9,19 @@ jQuery ->
     aaSorting: [[3, 'desc']]
     aoColumns: [ null, null, null, null, { bVisible: false } ]
     fnDrawCallback: ->
-      $("#episode_analytics_table tbody tr").click ->
+      $("#episode_analytics_table tbody tr").on "click", ->
         table = $('#episode_analytics_table').dataTable()
         position = table.fnGetPosition(this)
         name = table.fnGetData(position)[4]
-        document.location.href = "?episode=" + name
-
-  $('#episode_analytics_table tbody tr').click
+        $.getScript "?episode=" + name, ->
+          Chart.render()
+          $(window).scrollTop $('#graph').offset().top
 
   if $('#downloads_chart').length
+    Chart.render()
+
+@Chart = 
+  render: ->
     Morris.Area
       element: 'downloads_chart'
       data: $('#downloads_chart').data('downloads')
