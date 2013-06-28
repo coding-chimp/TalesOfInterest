@@ -5,6 +5,7 @@ class DownloadData < ActiveRecord::Base
 
   def self.update(date)
     json = fetch_downloads(date.to_s, date.to_s)
+    #puts JSON.pretty_generate json
     process_data(json['table']['rows'], date)
   end
 
@@ -36,20 +37,24 @@ private
   end
 
   def self.process_data(rows, date)
+    @data = {}
+    
     rows.each do |row|
       name = row['c'][0]['v'][1..-1]
       referrer = row['c'][1]['v']
-      hits = row['c'][2]['v']
-      downloaded = row['c'][3]['v']
-      
+      hits = row['c'][2]['v'].to_i
+      downloaded = row['c'][3]['v'].to_i
+
       if valid_name?(name) && no_dev_referrer?(referrer)
-        audio_file = find_audio_file(name)
-        unless audio_file.nil?
-          download_data = audio_file.download_datas.find_or_create_by_date(date)
-          download_data.update_attributes(hits: hits, downloaded: downloaded)
+        if @data.include?(name)
+          @data[name] = { hits: @data[name][:hits] + hits, downloaded: @data[name][:downloaded] + downloaded }
+        else
+          @data[name] = { hits: hits, downloaded: downloaded }
         end
       end
     end
+
+    save_data(@data, date)
   end
 
   def self.find_audio_file(name)
@@ -77,5 +82,15 @@ private
   def self.no_dev_referrer?(referrer)
     referrer = referrer =~ /.dev|localhost/
     referrer.nil? ? true : false
+  end
+
+  def self.save_data(data, date)
+    data.each do |key, values|
+      audio_file = find_audio_file(key)
+      unless audio_file.nil?
+        download_data = audio_file.download_datas.find_or_create_by_date(date)
+        download_data.update_attributes(hits: values[:hits], downloaded: values[:downloaded])
+      end
+    end
   end
 end

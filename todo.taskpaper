@@ -1,6 +1,6 @@
 Inbox:
 	- add timerange to analytics graph @na @done(2013-06-28)
-	- fix qloudstat api call @na
+	- fix qloudstat api call @na @done(2013-06-28)
 	- add a log for cronjobs @na
 	- try out EpicEditor @na
 		- http://epiceditor.com
