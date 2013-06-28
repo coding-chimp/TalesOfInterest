@@ -1,5 +1,9 @@
 Inbox:
 	- add timerange to analytics graph @na @done(2013-06-28)
+	- fix qloudstat api call @na
+	- add a log for cronjobs @na
+	- try out EpicEditor @na
+		- http://epiceditor.com
 Foundation:
 	- exchange assets
 	- move subscriber charts in remote modal
