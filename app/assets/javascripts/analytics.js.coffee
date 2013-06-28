@@ -20,6 +20,27 @@ jQuery ->
   if $('#downloads_chart').length
     Chart.render()
 
+  $("#startdatepicker").on "changeDate", (e) ->
+    date = $.datepicker.formatDate("yy-mm-dd", e.date)
+    $.getScript "?start=" + date, ->
+      Chart.render()
+      $(window).scrollTop $('#graph').offset().top
+
+  $("#enddatepicker").on "changeDate", (e) ->
+    date = $.datepicker.formatDate("yy-mm-dd", e.date)
+    $.getScript "?stop=" + date, ->
+      Chart.render()
+      $(window).scrollTop $('#graph').offset().top
+
+$ ->
+  $("#startdatepicker").datetimepicker
+    format: "yyyy-MM-dd"
+    pickTime: false
+
+  $("#enddatepicker").datetimepicker
+    format: "yyyy-MM-dd"
+    pickTime: false
+
 @Chart = 
   render: ->
     Morris.Area

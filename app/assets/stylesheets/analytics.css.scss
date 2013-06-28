@@ -16,3 +16,8 @@
     td:nth-of-type(4):before { content: "Downloads"; }
   }
 }
+
+.form-inline .date label {
+  margin: 0 10px;
+  &:hover { cursor: default }
+}

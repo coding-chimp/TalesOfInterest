@@ -1,6 +1,5 @@
 Inbox:
-	- improve analytics#index load times @na @done(2013-06-27)
-	- improve dashboard#index load times @done(2013-06-27)
+	- add timerange to analytics graph @na @done(2013-06-28)
 Foundation:
 	- exchange assets
 	- move subscriber charts in remote modal
@@ -8,6 +7,8 @@ Later:
 	- add exporter
 	- add proper validation for nested forms
 Archive:
+	- improve analytics#index load times @na @done(2013-06-27) @project(Inbox)
+	- improve dashboard#index load times @done(2013-06-27) @project(Inbox)
 	- flattr button for every episode @done(2013-06-26) @project(Inbox)
 	- refactor episodes controller @na @done(2013-06-25) @project(Inbox)
 	- fix colors in dashboard's podcasts table @na @done(2013-06-25) @project(Inbox)

@@ -14,6 +14,26 @@
     </tbody>
   </table>
 
+  <div id="graph_title">
+    <%= render "title" %>
+  </div>
+
+  <div class="well">
+  <form class="form-inline pull-right">
+    <div id="startdatepicker" class="input-append date">
+      <label>Von</label>
+      <input type="text" class="input-small" value="<%= @start.strftime("%Y-%m-%d") %>"></input>
+      <span class="add-on"><i data-date-icon="icon-calendar"></i></span>
+    </div>
+
+    <div id="enddatepicker" class="input-append date">
+      <label>Bis</label>
+      <input type="text" class="input-small" value="<%= @stop.strftime("%Y-%m-%d") %>"></input>
+      <span class="add-on"><i data-date-icon="icon-calendar"></i></span>
+    </div>
+  </form>
+  </div>
+
   <div id="graph">
     <%= render "graph" %>
   </div>
