@@ -13,3 +13,5 @@ end
 every 6.hours do
   rake "downloads:update_yesterday"
 end
+
+set :output, '/log/cron.log'
