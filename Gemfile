@@ -82,3 +82,5 @@ gem 'whenever', require: false
 
 # Digest access authentication for qloudstat
 gem 'net-http-digest_auth'
+
+gem 'newrelic_rpm'

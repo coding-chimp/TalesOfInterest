@@ -6,3 +6,4 @@
 config/database.yml
 config/deploy.rb
 config/recipes/*
+config/newrelic.yml
