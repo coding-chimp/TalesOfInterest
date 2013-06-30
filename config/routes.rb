@@ -1,9 +1,8 @@
 TalesOfInterest::Application.routes.draw do
   break if ARGV.join.include? 'assets:precompile'
 
-  resources :show_notes do
-    collection { post :sort}
-  end
+  post  'show_notes/sort',              to: 'show_notes#sort',        as: :sort_show_notes
+  get   'show_notes/:podcast',         to: 'show_notes#post'
 
   as :user do
     get "/login" => "sessions#new"

@@ -1,16 +1,20 @@
 Inbox:
-	- add a log for cronjobs @na @done(2013-06-29)
-	- try out EpicEditor @na
-		- http://epiceditor.com
+	- add show note bookmarklet  @done(2013-06-30)
 Foundation:
 	- exchange assets
 	- move subscriber charts in remote modal
 Later:
 	- start analytics graph on publish date 
 	- group data in analytics graph on larger date ranges
+	- markdown preview
+		- https://github.com/joshmcarthur/showdown-rails
+		- https://github.com/samwillis/pagedown-bootstrap
 	- add exporter
 	- add proper validation for nested forms
+	- add rack-timout?
+		- https://github.com/kch/rack-timeout
 Archive:
+	- add a log for cronjobs @na @done(2013-06-29) @project(Inbox)
 	- add timerange to analytics graph @na @done(2013-06-28) @project(Inbox)
 	- fix qloudstat api call @na @done(2013-06-28) @project(Inbox)
 	- improve analytics#index load times @na @done(2013-06-27) @project(Inbox)

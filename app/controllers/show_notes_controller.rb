@@ -5,4 +5,10 @@ class ShowNotesController < ApplicationController
     end
     render nothing: true
   end
+
+  def post
+    podcast = Podcast.find_by_name(params[:podcast])
+    @episode = podcast.last_episode
+    ShowNote.create(episode: @episode, url: params[:u], name: params[:t])
+  end
 end

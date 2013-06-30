@@ -71,6 +71,10 @@ class PodcastPresenter < BasePresenter
     Subscriber.latest(podcast).as_json
   end
 
+  def bookmarklet_link
+    "javascript:function toi1(){var d=document,z=d.createElement('scr'+'ipt'),b=d.body,l=d.location,t=d.title;try{if(!b) throw(0);z.setAttribute('src','#{h.root_url}show_notes/#{podcast.name}.js?u='+encodeURIComponent(l.href)+'&t='+encodeURIComponent(t));b.appendChild(z);}catch(e){alert('Please wait until the page has loaded.');}}toi1();void(0)"
+  end
+  
   ## Feed
 
   def uri

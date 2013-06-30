@@ -9,7 +9,7 @@
 				<th>Artwork</th>
 				<th>Name</th>
 				<th># Episodes</th>
-				<th></th>
+				<th style="width: 50%"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,10 +21,14 @@
 						<td><%= podcast_presenter.episodes_count %></td>
 						<td>
 							<%= link_to "Episodes", podcast_episodes_path(podcast), class: 'btn btn-mini' %>
+							<%= link_to "Last Episode", edit_episode_path(podcast, podcast.last_episode),
+													class: 'btn btn-info btn-mini' %>
 							<%= link_to "New Episode", new_podcast_episode_path(podcast), class: 'btn btn-primary btn-mini' %>
+							<%= link_to "Bookmarklet", podcast_presenter.bookmarklet_link, class: 'btn btn-inverse btn-mini',
+													data: { toggle: 'tooltip' }, title: "Ein Bookmarklet, das die dezeitig offene Seite zu den Show Notes der letzten Episode dieses Podcasts hinzufügt. Zieh diesen Link einfach in deine Bookmark Bar." %>
 							<%= link_to "Edit", edit_podcast_path(podcast), class: 'btn btn-info btn-mini' %>
 							<%= link_to "Delete", podcast_path(podcast), method: :delete, confirm: 'Are you sure?',
-	  	                              class: 'btn btn-mini btn-danger' %>
+													class: 'btn btn-mini btn-danger' %>
 						</td>
 					</tr>
 				<% end %>

@@ -17,7 +17,6 @@
 //= require twitter/bootstrap
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
-//= require episodes
 //= require bootstrap-datetimepicker.min
 //= require podlove-web-player-rails
 //= require navigation

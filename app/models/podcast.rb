@@ -22,4 +22,8 @@ class Podcast < ActiveRecord::Base
 		self.episodes.published.recent.first
 	end
 
+  def last_episode
+    self.episodes.order("number DESC").first
+  end
+
 end
