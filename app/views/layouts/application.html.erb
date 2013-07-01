@@ -159,14 +159,14 @@
       </div>
 
       <div class="row" id="content">
-        <%= @sidebar ? raw("<div class=\"small-7 columns\" id=\"posts\">") : raw("<div class=\"small-11 columns\">") %>
+        <%= @sidebar ? raw("<div class=\"small-7 columns\" id=\"episodes\">") : raw("<div class=\"small-11 columns\">") %>
           <%= yield %>
         </div><!-- /span -->
 
         <% if @sidebar %>
-          <div class="small-4 columns">
+          <aside class="small-4 columns">
             <%= render @sidebar %>
-          </div><!-- /small-4 -->
+          </aside><!-- /small-4 -->
         <% end %>
       </div><!-- /row -->
 
