@@ -4,7 +4,7 @@
   <%= simple_form_for(resource, as: resource_name, url: user_session_path, html: { class: 'form-horizontal' }) do |f| %>
   
     <% if alert %>
-      <div class="alert alert-error">
+      <div class="alert-message">
         <%= alert %>
       </div>
     <% end %>

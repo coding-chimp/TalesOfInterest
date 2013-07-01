@@ -53,7 +53,7 @@ class PodcastPresenter < BasePresenter
 
   def artwork_thumb(size)
     if podcast.artwork?
-      h.content_tag :div, class: "thumbnail" do
+      h.content_tag :div, class: "th radius" do
         h.link_to h.image_tag(podcast.artwork.url(size)), podcast
       end
     end

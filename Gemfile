@@ -9,13 +9,12 @@ gem 'pg'
 group :assets do
 	gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  
   gem 'uglifier', '>= 1.0.3'
 
   # Layout
-  gem 'therubyracer'
-  gem 'less-rails'
-  gem 'twitter-bootstrap-rails'
+  gem 'compass-rails'
+  gem 'zurb-foundation', '~> 4.0.0'
+  gem 'font-awesome-rails'
 
   # DataTables
   gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'

@@ -1,15 +1,15 @@
 <% content_for :banner do %>
-<ul class="thumbnails">
+<ul class="small-block-grid-3">
 	<% @podcasts.each do |podcast| %>
-    <li class="span3">
+    <li>
       <% if podcast.artwork.present? %>
-        <div class="thumbnail">
-          <%= link_to image_tag(podcast.artwork.url(:medium)), podcast %>
-        </div><!-- /thumbnail -->
+        <div>
+        <%= link_to image_tag(podcast.artwork.url(:medium)), podcast, class: "th radius" %>
+        </div>
       <% end %>
     </li><!-- /span -->
   <% end %>
-</ul><!-- /thumbnails -->
+</ul><!-- /large-block-grid-4 -->
 <% end %>
 
 <%= render @episodes %>

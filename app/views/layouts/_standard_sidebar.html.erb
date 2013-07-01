@@ -1,6 +1,6 @@
-<div class="well">
-	<h3>Abonnieren</h3>
-  <ul class="unstyled">
+<div class="sidebar">
+  <h3>Abonnieren</h3>
+  <ul class="side-nav">
     <% cache "subscribe-podcasts" do %>
       <% podcasts.each do |podcast| %>
         <li>
@@ -13,26 +13,26 @@
         <% end %>
       <% end %>
     <% end %>
-  </ul><!-- /unstyled -->
-</div><!-- /well -->
+  </ul><!-- /side-nav -->
+</div><!-- /sidebar -->
 
 <% if settings.flattr_username.present? %>
-  <div class="well">
-    <h3>Spenden</h3>
-    <%= link_to image_tag("https://api.flattr.com/button/flattr-badge-large.png", alt: "Flattr Tales of Interest"), "https://flattr.com/submit/auto?url=#{root_url}&user_id=#{u settings.flattr_username}&title=#{u settings.site_name}&language=de_DE&category=audio", target: "_blank", class: "flattr_button" %>
-  </div><!-- /well -->
+<div class="sidebar">
+  <h3>Spenden</h3>
+  <%= link_to image_tag("https://api.flattr.com/button/flattr-badge-large.png", alt: "Flattr Tales of Interest"), "https://flattr.com/submit/auto?url=#{root_url}&user_id=#{u settings.flattr_username}&title=#{u settings.site_name}&language=de_DE&category=audio", target: "_blank", class: "flattr_button" %>
+</div><!-- /sidebar -->
 <% end %>
 
 <% unless blogroll.size == 0 %>
-  <div class="well">
-    <h3>Blogroll</h3>
-    <dl>
-      <% cache "blogroll" do %>
-        <% blogroll.each do |blog| %>
-          <dt><%= link_to blog.name, blog.url, target: "_blank" %></dt>
-          <dd><%= blog.description %></dd>
-        <% end %>
+<div class="sidebar">
+  <h3>Blogroll</h3>
+  <dl>
+    <% cache "blogroll" do %>
+      <% blogroll.each do |blog| %>
+        <dt><%= link_to blog.name, blog.url, target: "_blank" %></dt>
+        <dd><%= blog.description %></dd>
       <% end %>
-    </dl>
-  </div><!-- /well -->
+    <% end %>
+  </dl>
+</div><!-- /sidebar -->
 <% end %>

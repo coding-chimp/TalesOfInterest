@@ -1,49 +1,18 @@
-@import "bootstrap_and_overrides";
+@import "foundation_and_overrides";
 @import "bootstrap-datetimepicker.min";
 @import "dataTables/jquery.dataTables.bootstrap";
 @import "podlove-web-player";
 @import "morris";
-@import "episodes";
-@import "dashboard";
-@import "analytics";
 
-body {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;;
-	font-weight: 300;
-	p {
-		font-size: 14px;
-		line-height: 24px;
-		color: rgb(102, 102, 102);
-	}
-	a:hover {
-		text-decoration: none;
-	}
-}
-
-h1{
-	font-size: 2em;
-}
 h2{
-	font-size: 1.8em;
-	font-weight: normal;
 	margin-bottom: 5px;
-	a {
-		color: rgb(102, 102, 102);
-	}
-	a:hover {
-		color: #258fb8;
-	}
+	a { color: rgb(102, 102, 102); }
+	a:hover { color: #258fb8; }
 }
-h3{
-	font-weight: normal;
-	font-size: 1.4em;
-}
-h4{
-	color: #666;
-	font-size: 1.1em;
-	margin-top: 0
-}
-a{
+
+h4 { margin-top: 0 }
+
+a {
 	text-decoration: none;
 	outline-width: 0;
 	color: #258fb8;
@@ -55,19 +24,27 @@ html, body {
 	height: 100%;
 }
 
-.alert {
+.alert-box {
 	text-align: center;
+}
+
+.alert-message {
+	text-align: center;
+	@include alert-base;
+	@include alert-style(#F2DEDE);
+	color: #B94A48;
+}
+
+.success-message {
+	text-align: center;
+	@include alert-base;
+	@include alert-style(#DFF0D8);
+	color: #468847;
 }
 
 #holder {
 	min-height: 100%;
 	position:relative;
-	.container .row {
-		padding-bottom: 40px;
-		.span11 .row {
-			padding-top: 0
-		}
-	}
 }
 
 .span11 { 
@@ -84,6 +61,8 @@ html, body {
 	height: auto;
 	position: relative;
 	padding-bottom: 0px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 	a{
 		color: #666;
 		&:hover {
@@ -92,8 +71,6 @@ html, body {
 	}
 	h1{
 		float: left;
-		font-weight: 300;
-		font-size: 35px;
 		margin-bottom: 9px;
 		@media screen and (max-width: 980px ) and (min-width: 700px) {
 			margin-left: 20px;
@@ -364,112 +341,49 @@ html, body {
 	}
 }
 
-.nav {
-	a {
-		font-size: 14px;
+.sub-nav {
+	margin-left: auto;
+	margin-right: auto;
+	dd {
+		padding-left: 12px;
+		padding-right: 12px;
 	}
-	p {
-		padding-top: 7px;
-		margin-bottom: 5px;
+}
+
+#banner {
+	margin: 80px auto;
+	li { padding-bottom: 0; }
+	div {
+		display: block;
+		width: 188px;
+		margin: 0 auto;
+	}
+	.th { height: 188px; }
+	h2 { 
+		font-size: 35px;
 	}
 }
 
 #banner_alt { display: none }
 
-.hero-unit { 
-	padding: 50px 40px;
-	margin-bottom: 20px;
-	.thumbnails { 
-		margin: 0;
-		li.span3, li.span2 {
-			margin: 0 0 0 5%;
-			.thumbnail { 
-				width: 180px;
-				margin: 0 }	
-		}
-		li.span5 {
-			margin: 0;
-			h2 { 
-				font-size: 35px;
-				line-height: 38px;
-				a {
-					color: rgb(51, 51, 51);
-				}
-			}
-			h2:after {
-				-webkit-box-shadow: inset 0 16px 8px -20px rgba(0, 0, 0, 0.4);
-    		-moz-box-shadow: inset 0 15px 8px -20px rgba(0, 0, 0, 0.4);
-    		-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 		100%);
-    		-moz-mask-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
-    		height: 5px;
-    		width: 100%;
-    		position: relative;
-    		content: '';
-    		top: 0;
-    		left: 0;
-    		display: block;
-    		border-top: 1px solid rgba(0, 0, 0, 0.15);
-			}
-		}
-	}
-}
-
-.span7 {
-	margin-left: 50px;
-	h2:after {
-		-webkit-box-shadow: inset 0 16px 8px -20px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: inset 0 15px 8px -20px rgba(0, 0, 0, 0.4);
-    -webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
-    -moz-mask-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
-    height: 5px;
-    width: 100%;
-    position: relative;
-    content: '';
-    top: 0;
-    left: 0;
-    display: block;
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-	}
+#posts {
+	margin-left: 30px;
 	.pagination {
 		margin-top: 0
 	}
 }
 
-.span4 {
-	margin-top: 10px;
+.sidebar {
+	padding: 5px 19px 19px;
 	ul, dl {
 		margin: 0 0 0 5px;
 		font-size: 14px;
+		a { display: inline-block }
 	}
-	a.flattr_button {
+	dd { margin-left: 10px }
+	.side-nav, .flattr_button, dl {
 		margin-left: 5px;
-		img { margin-top: 5px }
 	}
-	h3:after {
-		-webkit-box-shadow: inset 0 16px 8px -20px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: inset 0 15px 8px -20px rgba(0, 0, 0, 0.4);
-    -webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
-    -moz-mask-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), black 20%, black 80%, rgba(0, 0, 0, 0) 100%);
-    height: 5px;
-    width: 100%;
-    position: relative;
-    content: '';
-    top: -2px;
-    left: 0;
-    display: block;
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-	}
-}
-
-.hero-unit {
-	background-color: white;
-}
-
-.well {
-	background-color: white;
-	border: none;
-	box-shadow: none;
-	margin-bottom: 0px;
 }
 
 .form-actions {
@@ -482,7 +396,21 @@ html, body {
 }
 
 .pager {
-	padding-right: 30px
+	ul {
+		list-style: none;
+		li > a {
+			display: inline-block;
+			padding: 5px 14px;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			@include radius(15px);
+		}
+		li > a:hover {
+			background-color: #f5f5f5;
+		}
+		.previous > a { float: left; }
+		.next > a { float: right;}
+	}
 }
 
 .footer {
@@ -499,7 +427,6 @@ html, body {
 		font-size: 13px;
 		line-height: 18px;
 	}
-
 }
 
 @media only screen and (min-width: 1024px) {
@@ -572,12 +499,12 @@ html, body {
 	.span11, .span7 {
 		margin-left: 0;
 	}
-	#sidebar { display: none; }
+	.sidebar { display: none; }
 }
 
 @media only screen and (max-width: 690px) {
 	#holder .container .row { padding-top: 0; }
-	#sidebar { display: none; }
+	.sidebar { display: none; }
 	.span11, .span7 {
 		margin-left: 0;
 	}
@@ -601,7 +528,7 @@ html, body {
 
 @media only screen and (max-width: 560px) {
 	#holder .container .row { padding-top: 0; }
-	#sidebar { display: none; }
+	.sidebar { display: none; }
 	.span11, .span7 {
 		margin-left: 0;
 	}
@@ -685,3 +612,7 @@ html, body {
 #page h3 {
 	padding: 5px 0;
 }
+
+@import "episodes";
+@import "dashboard";
+@import "analytics";
