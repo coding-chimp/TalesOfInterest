@@ -24,9 +24,7 @@ html, body {
 	height: 100%;
 }
 
-.alert-box {
-	text-align: center;
-}
+.alert-box { text-align: center; }
 
 .alert-message {
 	text-align: center;
@@ -42,10 +40,12 @@ html, body {
 	color: #468847;
 }
 
-#holder {
+#wrap {
 	min-height: 100%;
-	position:relative;
+	position: relative;
 }
+
+#content { padding-bottom: 60px; }
 
 .span11 { 
 	margin-top: -10px;
@@ -351,7 +351,7 @@ html, body {
 }
 
 #banner {
-	margin: 80px auto;
+	margin: 50px auto;
 	li { padding-bottom: 0; }
 	div {
 		display: block;
@@ -413,8 +413,7 @@ html, body {
 	}
 }
 
-.footer {
-	clear: both;
+#footer {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -422,9 +421,8 @@ html, body {
 	width: 100%;
 	overflow: visible;
 	p {
-		padding: 10px 10px 9px;
+		padding: 10px 10px 0;
 		margin: 0px;
-		font-size: 13px;
 		line-height: 18px;
 	}
 }
@@ -452,7 +450,7 @@ html, body {
 }
 
 @media only screen and (max-width: 980px) {
-	#holder .container .row { padding-top: 20px; }
+	#wrap .container .row { padding-top: 20px; }
 	.hero-unit .thumbnails {
 		li.span3 {
 			margin-left: 20px;
@@ -495,7 +493,7 @@ html, body {
 
 @media only screen and (max-width: 766px) {
 	body { padding: 0 }
-	#holder { padding: 0 20px }
+	#wrap { padding: 0 20px }
 	.span11, .span7 {
 		margin-left: 0;
 	}
@@ -503,7 +501,7 @@ html, body {
 }
 
 @media only screen and (max-width: 690px) {
-	#holder .container .row { padding-top: 0; }
+	#wrap .container .row { padding-top: 0; }
 	.sidebar { display: none; }
 	.span11, .span7 {
 		margin-left: 0;
@@ -527,7 +525,7 @@ html, body {
 
 
 @media only screen and (max-width: 560px) {
-	#holder .container .row { padding-top: 0; }
+	#wrap .container .row { padding-top: 0; }
 	.sidebar { display: none; }
 	.span11, .span7 {
 		margin-left: 0;
