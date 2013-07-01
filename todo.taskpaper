@@ -5,12 +5,19 @@ Foundation:
 	- fix search field @done(2013-07-01)
 	- fix header @done(2013-07-01)
 	- fix footer @done(2013-07-01)
-	- fix episodes
+	- fix episodes @done(2013-07-01)
 	- fix web player @done(2013-07-01)
 	- fix show notes @done(2013-07-01)
 	- fix download links @done(2013-07-01)
+	- fix admin nav
+	- fix admin dashboard @done(2013-07-01)
+	- fix admin analytics
+	- fix admin podcasts
+	- fix admin pages
+	- fix admin blogroll
+	- fix admin settings
+	- fix admin users
 	- responsive design?
-	- admin interface?
 	- move subscriber charts in remote modal
 	- update about page
 Later:

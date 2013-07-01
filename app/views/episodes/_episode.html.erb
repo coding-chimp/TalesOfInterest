@@ -1,7 +1,7 @@
 <% present episode do |episode_presenter| %>
-  <div class="well">
+  <div class="episode">
     <h2><%= episode_presenter.linked_title(params[:controller]) %></h2>
     <h4><%= episode_presenter.published_at %><%= episode_presenter.duration_in_words %></h4>
     <%= episode_presenter.description %>
-  </div><!-- /well -->
+  </div><!-- /episode -->
 <% end %>

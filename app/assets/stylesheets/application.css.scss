@@ -46,12 +46,6 @@ html, body {
 
 #content { padding-bottom: 60px; }
 
-.span11 { 
-	margin-top: -10px;
-	margin-left: 50px;
-	.span7 { margin-left: 20px }
-}
-
 #header {
 	border: none;
 	height: 30px;
@@ -87,6 +81,8 @@ ul.main {
 	-webkit-margin-end: 0px;
 	-webkit-padding-start: 30px;
 }
+
+table { width: 100%; }
 
 #main-nav {
 	float: left;
@@ -368,14 +364,12 @@ ul.main {
 
 #banner_alt { display: none }
 
-#episodes {
-	margin-left: 30px;
-	.pagination {
-		margin-top: 0
-	}
-}
+#episodes { margin-left: 30px; }
+
+.episode { padding: 15px 0; }
 
 aside {
+	padding-top: 15px;
 	margin-right: 30px;
 	text-align: left;
 	.sidebar {

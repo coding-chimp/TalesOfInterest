@@ -1,77 +1,74 @@
 <% title "Dashboard" %>
 
-<div class="well">
-  <h2>Podcasts</h2>
+<h2>Podcasts</h2>
 
-  <table class="table table-striped" id="dashboard_podcast_table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th># Episodes</th>
-        <th>Last Episode</th>
-        <th>Next Episode</th>
-        <% if @settings.qloudstat_api_key.present? && @settings.qloudstat_api_secret.present? %>
-        <th>Top Episode</th>
-        <% end %>
-        <% if @settings.uri_key.present? && @settings.uri_token.present? %>
-        <th>
-          <a href="#" data-toggle="tooltip" title="according to FeedPress"><b>Subscribers</b></a>
-        </th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% for podcast in @podcasts do %>
-        <% present podcast do |podcast_presenter| %>
-          <tr>
-            <td><%= podcast_presenter.name %></td>
-            <td><%= podcast_presenter.episodes_count %></td>
-            <%= podcast_presenter.since_last_episode %>
-            <td><%= raw(podcast_presenter.until_next_episode) %></td>
-            <% if @settings.qloudstat_api_key.present? && @settings.qloudstat_api_secret.present? %>
-            <td>
-              <%= podcast_presenter.top_episode %>
-            </td>
-            <% end %>
-            <% if @settings.uri_key.present? && @settings.uri_token.present? %>
-            <td>
-              <a href="#<%= podcast_presenter.name %>SubscribersModal" data-toggle="modal">
-                <%= podcast_presenter.subscribers %>
-              </a>
-            </td>
-            <% end %>
-          </tr>
-          <%= render 'subscribers_chart', podcast_presenter: podcast_presenter %>
-        <% end %>
+<table id="dashboard_podcast_table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th># Episodes</th>
+      <th>Last Episode</th>
+      <th>Next Episode</th>
+      <% if @settings.qloudstat_api_key.present? && @settings.qloudstat_api_secret.present? %>
+      <th>Top Episode</th>
       <% end %>
-    </tbody>
-  </table>
-
-  <% if @settings.gauges.present? && @settings.gauges_key.present? %>
-
-  <h2>Traffic</h2>
-
-  <%= content_tag :div, "", id: "traffic_chart", data: { traffic: Traffic.graph } %>
-
-  <% end %>
-
-  <h2>Recent Commits</h2>
-
-  <table class="table table-striped" id="dashboard_commit_table">
-    <thead>
-      <tr>
-        <th>Message</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for commit in @commits do %>
+      <% if @settings.uri_key.present? && @settings.uri_token.present? %>
+      <th>
+        <a href="#" data-tooltip class="has-tip" title="according to FeedPress"><b>Subscribers</b></a>
+      </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% for podcast in @podcasts do %>
+      <% present podcast do |podcast_presenter| %>
         <tr>
-          <td><%= commit.message %></td>
-          <td><%= commit.committed_date.strftime("%d.%m.%y %H:%M") %></td>
+          <td><%= podcast_presenter.name %></td>
+          <td><%= podcast_presenter.episodes_count %></td>
+          <%= podcast_presenter.since_last_episode %>
+          <td><%= raw(podcast_presenter.until_next_episode) %></td>
+          <% if @settings.qloudstat_api_key.present? && @settings.qloudstat_api_secret.present? %>
+          <td>
+            <%= podcast_presenter.top_episode %>
+          </td>
+          <% end %>
+          <% if @settings.uri_key.present? && @settings.uri_token.present? %>
+          <td>
+            <a href="#<%= podcast_presenter.name %>SubscribersModal" data-toggle="modal">
+              <%= podcast_presenter.subscribers %>
+            </a>
+          </td>
+          <% end %>
         </tr>
+        <%= render 'subscribers_chart', podcast_presenter: podcast_presenter %>
       <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </tbody>
+</table>
 
-</div><!-- /well -->
+<% if @settings.gauges.present? && @settings.gauges_key.present? %>
+
+<h2>Traffic</h2>
+
+<%= content_tag :div, "", id: "traffic_chart", data: { traffic: Traffic.graph } %>
+
+<% end %>
+
+<h2>Recent Commits</h2>
+
+<table id="dashboard_commit_table">
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for commit in @commits do %>
+      <tr>
+        <td><%= commit.message %></td>
+        <td><%= commit.committed_date.strftime("%d.%m.%y %H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

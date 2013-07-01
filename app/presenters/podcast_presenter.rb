@@ -48,7 +48,7 @@ class PodcastPresenter < BasePresenter
   def top_episode
     episode = podcast.episodes.order('downloads DESC').first
 
-    h.content_tag :a, "##{episode.num} #{episode.title}", href: "#", data: { toggle: "tooltip" }, title: "#{episode.downloads} Downloads"
+    h.content_tag :a, "##{episode.num} #{episode.title}", href: "#", data: { tooltip: "" }, title: "#{episode.downloads} Downloads", class: 'has-tip tip-top'
   end
 
   def artwork_thumb(size)

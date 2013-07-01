@@ -1,6 +1,4 @@
 jQuery ->
-  $("#dashboard_podcast_table").tooltip selector: "a[data-toggle=tooltip]"
-
   if $('#Celluloid_subscribers_chart').length
     Morris.Donut
       element: 'Celluloid_subscribers_chart'
