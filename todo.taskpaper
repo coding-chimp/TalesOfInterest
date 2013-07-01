@@ -2,7 +2,7 @@ Inbox:
 Foundation:
 	- exchange assets  @done(2013-07-01)
 	- fix hover on links
-	- fix search field
+	- fix search field @done(2013-07-01)
 	- fix header
 	- fix footer @done(2013-07-01)
 	- fix episodes

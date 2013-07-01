@@ -1,4 +1,5 @@
 @import "foundation_and_overrides";
+@import "font-awesome";
 @import "bootstrap-datetimepicker.min";
 @import "dataTables/jquery.dataTables.bootstrap";
 @import "podlove-web-player";
@@ -79,6 +80,14 @@ html, body {
 			float: none;
 		}
 	}
+}
+
+ul.main {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 30px;
 }
 
 #main-nav {
@@ -270,7 +279,7 @@ html, body {
 		display: none;
 	}
 	>ul {
-		margin-top: 5px;
+		margin-top: 15px;
 		@media screen and (max-width: 980px) {
 			margin-top: 50px;
 		}
@@ -279,6 +288,7 @@ html, body {
 		}
 		margin-right: 75px;
 		>li {
+			line-height: 20px;
 			margin-left: 30px;
 			display: inline-block;
 			&:hover{
@@ -288,7 +298,6 @@ html, body {
 			}
 			>a {
 				font-size: 14px;
-				margin-top: -38px;
 				&:after {
 					content: "\f078";
 					color: #ccc;
@@ -305,7 +314,7 @@ html, body {
 	}
 	.search {
 		float: left;
-		margin-top: 5px;
+		margin-top: 10px;
 		position: relative;
 		width: 100px;
 		@media screen and (max-width: 980px) {
@@ -325,18 +334,14 @@ html, body {
 			color: #999;
 			border: 1px solid #ddd;
 			padding: 6px 15px 6px 35px;
-			width: 100px;
+			width: 150px;
 			-webkit-border-radius: 15px;
  			-moz-border-radius: 15px;
  			-ms-border-radius: 15px;
  			-o-border-radius: 15px;
  			border-radius: 15px;
-			&:focus, &:active {
-				background: #fff;
-				border-top: 1px solid #ccc;
-				color: #666;
-				outline: none;
-			}
+			vertical-align: middle;
+			display: inline-block;
 		}
 	}
 }
