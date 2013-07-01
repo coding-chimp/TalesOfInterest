@@ -1,14 +1,15 @@
 Inbox:
 Foundation:
 	- exchange assets  @done(2013-07-01)
-	- fix hover on links
+	- fix hover on links @done(2013-07-01)
 	- fix search field @done(2013-07-01)
-	- fix header
+	- fix header @done(2013-07-01)
 	- fix footer @done(2013-07-01)
 	- fix episodes
-	- fix web player
-	- fix show notes
-	- fix download links
+	- fix web player @done(2013-07-01)
+	- fix show notes @done(2013-07-01)
+	- fix download links @done(2013-07-01)
+	- responsive design?
 	- admin interface?
 	- move subscriber charts in remote modal
 	- update about page

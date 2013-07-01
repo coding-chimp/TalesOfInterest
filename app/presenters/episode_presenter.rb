@@ -60,7 +60,7 @@ class EpisodePresenter < BasePresenter
   end
 
   def truncated_clean_description
-    h.truncate(clean_description, length: 150)
+    h.truncate(clean_description, length: 250)
   end
 
   def prev_link

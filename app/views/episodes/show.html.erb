@@ -16,7 +16,7 @@
 	<% content_for :banner_alt do %>
 	<ul class="thumbnails">
 
-		<li class="span4">
+		<li class="small-4">
 			<%= episode_presenter.linked_podcast_name %>
 			<%= episode_presenter.podcast_description %>
 		</li><!-- /span -->
@@ -36,7 +36,7 @@
 				           	 title: episode_presenter.title, permalink: episode_presenter.uri, 
 				             subtitle: episode_presenter.truncated_clean_description.gsub(/\n/, ' ').gsub(/\r/, ''),
 				             startVolume: 1, chapters: episode_presenter.chapters,
-				             duration: episode_presenter.duration) %>
+				             duration: episode_presenter.duration, preload: false) %>
 
 		<div class="downloads">
 	    <% @episode.audio_files.order('media_type').each_with_index do |file, index| %>
@@ -52,9 +52,9 @@
 			<iframe src="https://embed.spotify.com/?uri=spotify:user:<%= Settings.first.spotify_username %>:playlist:<%= @episode.spotify_playlist %>&theme=white" width="500" height="580" frameborder="0" allowtransparency="true"></iframe>
 		<% end %>
 
-		<% unless @episode.show_notes.size == 0 %>
+		<% if @episode.show_notes.size > 0 %>
 			<h3>Show Notes & Links</h3>
-			<table class="table table-striped" id="links">
+			<table id="links">
 				<% @episode.show_notes.order('position').each do |show_note| %>
 					<tr>
 						<td><p><%= link_to show_note.name, show_note.url, target: "_blank" %></p></td>

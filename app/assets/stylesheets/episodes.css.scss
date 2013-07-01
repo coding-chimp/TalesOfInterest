@@ -9,18 +9,24 @@ h4.episode-num { margin-bottom: 0 }
   margin-bottom: 10px;
 }
 
-table#links {
+#links {
+  width: 100%;
   margin-bottom: 10px;
   td {
     padding: 0 8px 0;
     vertical-align: bottom;
     p {
       margin: 5px 0;
+      font-size: 14px; 
     }
   }
 } 
 
 .podlovewebplayer_meta {
+  .bigplay { 
+    width: 75px;
+    height: 75px;
+  }
   .episodetitle {
     padding-top: 10px;
   }
