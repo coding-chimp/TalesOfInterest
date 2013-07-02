@@ -4,11 +4,13 @@
 @import "dataTables/jquery.dataTables.bootstrap";
 @import "morris";
 
-h2{
-	margin-bottom: 5px;
-	a { color: rgb(102, 102, 102); }
+h1, h2, h3 {
+	color: #333;
+	a { color: #333; }
 	a:hover { color: #258fb8; }
 }
+
+h2 { margin-bottom: 5px; }
 
 h4 { margin-top: 0 }
 
@@ -56,7 +58,7 @@ html, body {
 	padding-bottom: 0px;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	a{
+	a {
 		color: #666;
 		&:hover {
 			color: #258fb8;
@@ -398,6 +400,16 @@ aside {
 #page_content, #episode_chapter_marks,
 #episode_description, #podcast_description {
 	width: 60%;
+}
+
+.button.primary {
+	background-color: #006DCC;
+	border-color: #0164b9;
+}
+
+.button.inverse {
+	background-color: #363636;
+	border-color: #262626;
 }
 
 .pager {

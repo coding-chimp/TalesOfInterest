@@ -38,7 +38,7 @@
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
-// $shiny-edge-size: 0 1px 0;
+ $shiny-edge-size: 0;
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
 
@@ -235,7 +235,7 @@
 // $input-error-message-font-color-alt: #333;
 
 // We use these to build padding for buttons.
-// $button-med: emCalc(12px);
+// $button-med: emCalc(10px);
 // $button-tny: emCalc(7px);
 // $button-sml: emCalc(9px);
 // $button-lrg: emCalc(16px);
@@ -249,7 +249,7 @@
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
 // $button-font-med: emCalc(16px);
-// $button-font-tny: emCalc(11px);
+// $button-font-tny: emCalc(12px);
 // $button-font-sml: emCalc(13px);
 // $button-font-lrg: emCalc(20px);
 // $button-font-weight: bold;
@@ -918,7 +918,7 @@
 // These control the row padding and font styles
 // $table-row-padding: emCalc(9px) emCalc(10px);
  $table-row-font-size: 14px;
-// $table-row-font-color: #222;
+ $table-row-font-color: #333;
 // $table-line-height: emCalc(18px);
 
 // These are for controlling the display and margin of tables
@@ -944,7 +944,7 @@
 // Tooltip Variables
 //
 // $has-tip-border-bottom: dotted 1px #ccc;
-// $has-tip-font-weight: bold;
+ $has-tip-font-weight: 300;
 // $has-tip-font-color: #333;
 // $has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%);
 // $has-tip-font-color-hover: $primary-color;

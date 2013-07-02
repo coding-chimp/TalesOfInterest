@@ -1,49 +1,61 @@
 <% title "Podcasts" %>
 
-<div class="well">
-	<h2>Podcasts</h2>
+<h2>Podcasts</h2>
 
-	<table class="table table-striped" id="podcast_table">
-		<thead>
-			<tr>
-				<th>Artwork</th>
-				<th>Name</th>
-				<th># Episodes</th>
-				<th style="width: 50%"></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% for podcast in @podcasts do %>
-				<% present podcast do |podcast_presenter| %>
-					<tr>
-						<td><%= podcast_presenter.artwork(:thumb) %></td>
-						<td><%= podcast_presenter.name %></td>
-						<td><%= podcast_presenter.episodes_count %></td>
-						<td>
-							<%= link_to "Episodes", podcast_episodes_path(podcast), class: 'btn btn-mini' %>
-							<%= link_to "Last Episode", edit_episode_path(podcast, podcast.last_episode),
-													class: 'btn btn-info btn-mini' %>
-							<%= link_to "New Episode", new_podcast_episode_path(podcast), class: 'btn btn-primary btn-mini' %>
-							<%= link_to "Bookmarklet", podcast_presenter.bookmarklet_link, class: 'btn btn-inverse btn-mini',
-													data: { toggle: 'tooltip' }, title: "Ein Bookmarklet, das die dezeitig offene Seite zu den Show Notes der letzten Episode dieses Podcasts hinzufügt. Zieh diesen Link einfach in deine Bookmark Bar." %>
-							<%= link_to "Edit", edit_podcast_path(podcast), class: 'btn btn-info btn-mini' %>
-							<%= link_to "Delete", podcast_path(podcast), method: :delete, confirm: 'Are you sure?',
-													class: 'btn btn-mini btn-danger' %>
-						</td>
-					</tr>
-				<% end %>
+<table id="podcast_table">
+	<thead>
+		<tr>
+			<th>Artwork</th>
+			<th>Name</th>
+			<th># Episodes</th>
+			<th style="width: 50%; text-align: right;"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for podcast in @podcasts do %>
+			<% present podcast do |podcast_presenter| %>
+				<tr>
+					<td><%= podcast_presenter.artwork(:thumb) %></td>
+					<td><%= podcast_presenter.name %></td>
+					<td><%= podcast_presenter.episodes_count %></td>
+					<td>
+						<div class="button-bar">
+							<ul class="button-group">
+								<li>
+									<%= link_to "Episodes", podcast_episodes_path(podcast), class: 'small button secondary' %>
+								</li>
+								<li>
+									<%= link_to "Last Episode", edit_episode_path(podcast, podcast.last_episode),
+															class: 'small button' %>
+								</li>
+								<li>
+									<%= link_to "New Episode", new_podcast_episode_path(podcast), class: 'small button primary' %>
+								</li>
+								<li>
+									<%= link_to "Bookmarklet", podcast_presenter.bookmarklet_link, class: 'small button inverse' %>
+								</li>
+							</ul>
+							<ul class="button-group">
+								<li>
+									<%= link_to "Edit", edit_podcast_path(podcast), class: 'small button' %>
+								</li>
+								<li>
+									<%= link_to "Delete", podcast_path(podcast), method: :delete, confirm: 'Are you sure?',
+															class: 'small button alert' %>
+								</li>
+							</ul>
+						</div>
+					</td>
+				</tr>
 			<% end %>
-		</tbody>
-	</table>
+		<% end %>
+	</tbody>
+</table>
 
-	<p class="pull-left">
-  	<%= link_to "Import", import_podcast_path, class: 'btn btn-info' %>
-	</p>
+<p class="pull-left">
+	<%= link_to "Import", import_podcast_path, class: 'button' %>
+</p>
 
-	<p class="pull-right">
-  	<%= link_to "New", new_podcast_path, class: 'btn btn-primary' %>
-	</p>
-
-	<div class="clearfix"></div>
-
-</div><!-- /well -->
+<p class="pull-right">
+	<%= link_to "New", new_podcast_path, class: 'button primary' %>
+</p>
