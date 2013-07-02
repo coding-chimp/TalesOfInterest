@@ -1,58 +1,60 @@
 <% title "Settings" %>
 
-<div class="well">
-	<h2>Settings</h2>
-			
-	<%= simple_form_for @settings, url: { action: :update }, html: { class: 'form-horizontal' } do |f| %>
-		<% if notification = f.error_notification %>
-	    <%= notification %>
-	  <% end %>
+<div class="large-8 large-offset-2">
+<h2>Settings</h2>
 		
-		<%= f.input :site_name, label: 'Site Name' %>
+<%= simple_form_for @settings, url: { action: :update } do |f| %>
+	<% if notification = f.error_notification %>
+    <%= notification %>
+  <% end %>
 	
-		<%= f.input :posts_per_page, hint: 'How many episodes should be shown per page?' %>
-		
-		<%= f.input :favicon %>
-		<% if Settings.first.favicon? %>
-			<div class="control-group">
-	  		<div class="controls">
-					<%= image_tag Settings.first.favicon.url %>
-				</div>
+	<%= f.input :site_name, label: 'Site Name' %>
+
+	<%= f.input :posts_per_page, hint: 'How many episodes should be shown per page?' %>
+	
+	<%= f.input :favicon %>
+	<% if Settings.first.favicon? %>
+		<div class="control-group">
+  		<div class="controls">
+				<%= image_tag Settings.first.favicon.url %>
 			</div>
-		<% end %>
-	
-		<%= f.input :gauges, label: 'Gaug.es Code' %>
-
-		<%= f.input :gauges_key, label: 'Gaug.es API Key', as: :password, :input_html => { :value => f.object.gauges_key } %>
-
-		<%= f.input :ga_code, label: 'Google Analytics Code' %>
-	
-		<%= f.input :flattr_username, label: 'Flattr Username' %>
-
-		<%= f.input :uri_key, label: 'FeedPress Key', as: :password, :input_html => { :value => f.object.uri_key } %>
-
-		<%= f.input :uri_token, label: 'FeedPress Token', as: :password, :input_html => { :value => f.object.uri_token } %>
-
-		<%= f.input :qloudstat_api_key, label: "Qloudstat API Key", as: :password, input_html: { value: f.object.qloudstat_api_key } %>
-
-		<%= f.input :qloudstat_api_secret, label: "Qloudstat API Secret", as: :password, input_html: { value: f.object.qloudstat_api_secret } %>
-
-		<%= f.input :spotify_username, label: 'Spotify Username' %>
-
-		<h3>RSS/iTunes Feed</h3>
-		<br />
-	
-		<%= f.input :feed_language, label: 'Language', collection: LANGUAGES.map {|l| [l.match(/(.*)\s\[/)[1	] ,l.match(/\[(.*)\]/)[1]] } %>
-	
-		<%= f.input :feed_email, label: 'E-Mail' %>
-	
-		<%= f.input :feed_author, label: 'Author', hint: 'Will default to site name if left empty.' %>
-		
-		<div class="form-actions">
-		  <%= f.submit nil, :class => 'btn btn-primary' %>
-		  <%= link_to "Cancel", settings_path, class: 'btn' %>
 		</div>
-	
 	<% end %>
 
-</div><!-- /well -->
+	<%= f.input :gauges, label: 'Gaug.es Code' %>
+
+	<%= f.input :gauges_key, label: 'Gaug.es API Key', as: :password, :input_html => { :value => f.object.gauges_key } %>
+
+	<%= f.input :ga_code, label: 'Google Analytics Code' %>
+
+	<%= f.input :flattr_username, label: 'Flattr Username' %>
+
+	<%= f.input :uri_key, label: 'FeedPress Key', as: :password, :input_html => { :value => f.object.uri_key } %>
+
+	<%= f.input :uri_token, label: 'FeedPress Token', as: :password, :input_html => { :value => f.object.uri_token } %>
+
+	<%= f.input :qloudstat_api_key, label: "Qloudstat API Key", as: :password, input_html: { value: f.object.qloudstat_api_key } %>
+
+	<%= f.input :qloudstat_api_secret, label: "Qloudstat API Secret", as: :password, input_html: { value: f.object.qloudstat_api_secret } %>
+
+	<%= f.input :spotify_username, label: 'Spotify Username' %>
+
+	<h3>RSS/iTunes Feed</h3>
+	<br />
+
+	<%= f.input :feed_language, label: 'Language', collection: LANGUAGES.map {|l| [l.match(/(.*)\s\[/)[1	] ,l.match(/\[(.*)\]/)[1]] } %>
+
+	<%= f.input :feed_email, label: 'E-Mail' %>
+
+	<%= f.input :feed_author, label: 'Author', hint: 'Will default to site name if left empty.' %>
+
+</div>
+
+<div class="large-11">
+	<div class="form-actions">
+	  <%= link_to "Cancel", settings_path, class: 'button' %>
+	  <%= f.submit "Update", :class => 'primary button' %>
+	</div>
+</div>
+
+<% end %>

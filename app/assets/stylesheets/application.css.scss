@@ -37,6 +37,12 @@ html, body {
 	color: #468847;
 }
 
+.input {
+	margin-bottom: 5px;
+	&.field_with_hint input { margin-bottom: 5px; }
+	.hint { margin-left: 10px; }
+}
+
 #wrap {
 	min-height: 100%;
 	position: relative;
@@ -382,7 +388,8 @@ aside {
 }
 
 .form-actions {
-	background-color: white;
+	margin-top: 10px;
+	float: right;
 }
 
 #page_content, #episode_chapter_marks,

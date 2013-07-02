@@ -14,7 +14,6 @@
 //= require jquery.turbolinks
 //= require jquery-ui
 //= require jquery_ujs
-//= require foundation
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require bootstrap-datetimepicker.min
@@ -24,5 +23,3 @@
 //= require morris
 //= require turbolinks
 //= require_tree .
-
-$(document).foundation();
