@@ -1,16 +1,20 @@
 <%= simple_form_for @item, html: { class: 'form-horizontal' } do |f| %>
-  <% if notification = f.error_notification %>
-      <%= notification %>
-  <% end %>
+  <div class="large-8 large-offset-1">
+    <% if notification = f.error_notification %>
+        <%= notification %>
+    <% end %>
 
-  <%= f.input :name %>
+    <%= f.input :name %>
 
-  <%= f.input :url %>
+    <%= f.input :url %>
 
-  <%= f.input :description %>
+    <%= f.input :description %>
+  </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to "Cancel", blogrolls_path, class: 'btn' %>
-  </div><!-- /form-actions -->
+  <div class="large-10">
+    <div class="form-actions">
+      <%= link_to "Cancel", blogrolls_path, class: 'button' %>
+      <%= f.submit nil, :class => 'primary button' %>
+    </div><!-- /form-actions -->
+  </div>
 <% end %>

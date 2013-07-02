@@ -1,24 +1,14 @@
 Inbox:
 Foundation:
-	- exchange assets  @done(2013-07-01)
-	- fix hover on links @done(2013-07-01)
-	- fix search field @done(2013-07-01)
-	- fix header @done(2013-07-01)
-	- fix footer @done(2013-07-01)
-	- fix episodes @done(2013-07-01)
-	- fix web player @done(2013-07-01)
-	- fix show notes @done(2013-07-01)
-	- fix download links @done(2013-07-01)
 	- fix admin nav
-	- fix admin dashboard @done(2013-07-01)
-	- fix admin index pages  @done(2013-07-02)
+	- fix admin index pages @done(2013-07-02)
 	- fix forms
 	- fix admin analytics
 	- fix admin podcasts
 	- fix admin pages
-	- fix admin blogroll
+	- fix admin blogroll @done(2013-07-02)
 	- fix admin settings @done(2013-07-02)
-	- fix admin users
+	- fix admin users @done(2013-07-02)
 	- responsive design?
 	- move subscriber charts in remote modal
 	- update about page
@@ -33,6 +23,16 @@ Later:
 	- add rack-timout?
 		- https://github.com/kch/rack-timeout
 Archive:
+	- exchange assets  @done(2013-07-01) @project(Foundation)
+	- fix hover on links @done(2013-07-01) @project(Foundation)
+	- fix search field @done(2013-07-01) @project(Foundation)
+	- fix header @done(2013-07-01) @project(Foundation)
+	- fix footer @done(2013-07-01) @project(Foundation)
+	- fix episodes @done(2013-07-01) @project(Foundation)
+	- fix web player @done(2013-07-01) @project(Foundation)
+	- fix show notes @done(2013-07-01) @project(Foundation)
+	- fix download links @done(2013-07-01) @project(Foundation)
+	- fix admin dashboard @done(2013-07-01) @project(Foundation)
 	- add show note bookmarklet  @done(2013-06-30) @project(Inbox)
 	- add a log for cronjobs @na @done(2013-06-29) @project(Inbox)
 	- add timerange to analytics graph @na @done(2013-06-28) @project(Inbox)

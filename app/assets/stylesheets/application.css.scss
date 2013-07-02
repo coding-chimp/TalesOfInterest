@@ -387,14 +387,11 @@ aside {
 	}
 }
 
+textarea { height: auto; }
+
 .form-actions {
 	margin-top: 10px;
 	float: right;
-}
-
-#page_content, #episode_chapter_marks,
-#episode_description, #podcast_description {
-	width: 60%;
 }
 
 .button.primary {

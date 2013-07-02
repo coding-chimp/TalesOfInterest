@@ -1,6 +1,6 @@
 <% title "Settings" %>
 
-<div class="large-8 large-offset-2">
+<div class="large-8 large-offset-1">
 <h2>Settings</h2>
 		
 <%= simple_form_for @settings, url: { action: :update } do |f| %>
@@ -50,7 +50,7 @@
 
 </div>
 
-<div class="large-11">
+<div class="large-10">
 	<div class="form-actions">
 	  <%= link_to "Cancel", settings_path, class: 'button' %>
 	  <%= f.submit "Update", :class => 'primary button' %>
