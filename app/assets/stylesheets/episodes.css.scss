@@ -1,4 +1,9 @@
-h4.episode-num { margin-bottom: 0 }
+.episode {
+  padding: 15px 0;
+  h2 { margin-bottom: 5px; }
+  h4 { margin-top: 0 }
+  h4.episode-num { margin-bottom: 0 }
+}
 
 .description {
   margin-bottom: 20px;
@@ -10,7 +15,7 @@ h4.episode-num { margin-bottom: 0 }
 }
 
 #links {
-  margin-bottom: 10px;
+  margin-bottom: 0;
   td {
     padding: 0 8px 0;
     vertical-align: bottom;

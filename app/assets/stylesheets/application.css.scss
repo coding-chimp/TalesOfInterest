@@ -10,10 +10,6 @@ h1, h2, h3 {
 	a:hover { color: #258fb8; }
 }
 
-h2 { margin-bottom: 5px; }
-
-h4 { margin-top: 0 }
-
 a {
 	text-decoration: none;
 	outline-width: 0;
@@ -58,12 +54,6 @@ html, body {
 	padding-bottom: 0px;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	a {
-		color: #666;
-		&:hover {
-			color: #258fb8;
-		}
-	}
 	h1{
 		float: left;
 		margin-bottom: 9px;
@@ -146,10 +136,10 @@ table { width: 100%; }
 	a {
 		display: block;
 	}
-	.button{
+	.button {
 		cursor: pointer;
 	}
-	.container{
+	.container {
 		display: none;
 	}
 	.menu {
@@ -368,8 +358,6 @@ table { width: 100%; }
 
 #episodes { margin-left: 30px; }
 
-.episode { padding: 15px 0; }
-
 aside {
 	padding-top: 15px;
 	margin-right: 30px;
@@ -404,12 +392,14 @@ aside {
 
 .button.primary {
 	background-color: #006DCC;
-	border-color: #0164b9;
+	border-color: #0044cc;
+	&:hover { background-color: #0044cc }
 }
 
 .button.inverse {
 	background-color: #363636;
-	border-color: #262626;
+	border-color: #333;
+	&:hover { background-color: #333 }
 }
 
 .pager {

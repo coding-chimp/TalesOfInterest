@@ -1,37 +1,32 @@
 <% title "Blogroll" %>
 
-<div class="well">
-	<h2>Blogroll</h2>
+<h2>Blogroll</h2>
 
-	<table class="table table-striped" id="blogroll_table">
-		<thead>
+<table class="table table-striped" id="blogroll_table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>URL</th>
+			<th>Description</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for item in @blogroll do %>
 			<tr>
-				<th>Name</th>
-				<th>URL</th>
-				<th>Description</th>
-				<th></th>
+				<td><%= item.name %></td>
+				<td><%= item.url %></td>
+				<td><%= item.description %></td>
+				<td>
+					<%= link_to "Edit", edit_blogroll_item_path(item), class: 'small button' %>
+					<%= link_to "Delete", blogroll_path(item), method: :delete, confirm: 'Are you sure?',
+	                              class: 'small alert button' %>
+				</td>
 			</tr>
-		</thead>
-		<tbody>
-			<% for item in @blogroll do %>
-				<tr>
-					<td><%= item.name %></td>
-					<td><%= item.url %></td>
-					<td><%= item.description %></td>
-					<td>
-						<%= link_to "Edit", edit_blogroll_item_path(item), class: 'btn btn-info btn-mini' %>
-						<%= link_to "Delete", blogroll_path(item), method: :delete, confirm: 'Are you sure?',
-  	                              class: 'btn btn-mini btn-danger' %>
-					</td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+		<% end %>
+	</tbody>
+</table>
 
-	<p class="pull-right">
-  	<%= link_to "New", new_blogroll_item_path, class: 'btn btn-primary' %>
-	</p>
-
-	<div class="clearfix"></div>
-
-</div><!-- /well -->
+<p class="pull-right">
+	<%= link_to "New", new_blogroll_item_path, class: 'primary button' %>
+</p>
