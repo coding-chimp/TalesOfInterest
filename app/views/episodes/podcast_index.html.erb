@@ -1,42 +1,37 @@
 <% title "#{@podcast.name}" %>
 
-<div class="well">
-	<h2><%= @podcast.name %> Episodes</h2>
+<h2><%= @podcast.name %> Episodes</h2>
 
-	<table class="table table-striped" id="episode_table">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Title</th>
-				<th>Publish Date</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% for episode in @episodes do %>
-				<% present episode do |episode_presenter| %>
-					<tr class="<%= episode_presenter.connection_error %>">
-						<td><%= episode.number %></td>
-						<td>
-							<%= episode.title %>
-							<%=raw episode_presenter.connection_error_message %>
-						</td>
-						<td><%=raw episode_presenter.publish_date %></td>
-						<td>
-							<%= link_to "Edit", edit_episode_path(@podcast, episode), class: 'btn btn-info btn-mini' %>
-							<%= link_to "Delete", episode_path(@podcast, episode), method: :delete, confirm: 'Are you sure?',
-	  	                              class: 'btn btn-mini btn-danger' %>
-						</td>
-					</tr>
-				<% end %>
+<table id="episode_table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Title</th>
+			<th>Publish Date</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for episode in @episodes do %>
+			<% present episode do |episode_presenter| %>
+				<tr class="<%= episode_presenter.connection_error %>">
+					<td><%= episode.number %></td>
+					<td>
+						<%= episode.title %>
+						<%=raw episode_presenter.connection_error_message %>
+					</td>
+					<td><%=raw episode_presenter.publish_date %></td>
+					<td>
+						<%= link_to "Edit", edit_episode_path(@podcast, episode), class: 'small button' %>
+						<%= link_to "Delete", episode_path(@podcast, episode), method: :delete, confirm: 'Are you sure?',
+  	                              class: 'small alert button' %>
+					</td>
+				</tr>
 			<% end %>
-		</tbody>
-	</table>
+		<% end %>
+	</tbody>
+</table>
 
-	<p class="pull-right">
-  	<%= link_to "New", new_podcast_episode_path(@podcast), class: 'btn btn-primary' %>
-	</p>
-
-	<div class="clearfix"></div>
-
-</div><!-- /well -->
+<p class="right">
+	<%= link_to "New", new_podcast_episode_path(@podcast), class: 'primary button' %>
+</p>

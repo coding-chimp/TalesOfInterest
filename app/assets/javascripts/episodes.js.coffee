@@ -4,6 +4,7 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $('#add_audio_file').before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
+    $(document).foundation();
 
   $('#show_notes').sortable
     axis: 'y'
@@ -16,13 +17,9 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $('#add_show_note').before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
-
-  $('form').on 'click', '#add_introduced_title_fields', (event) ->
-    time = new Date().getTime()
-    regexp = new RegExp($(this).data('id'), 'g')
-    $('#add_introduced_title').before($(this).data('fields').replace(regexp, time))
-    event.preventDefault()
+    $(document).foundation();
 
 $ ->
-  $("#datetimepicker1").datetimepicker
-    format: "dd.MM.yyyy hh:mm"
+  $("#episode_published_at").fdatetimepicker
+    format: "dd.mm.yyyy hh:ii"
+    weekStart: 1

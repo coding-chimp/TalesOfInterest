@@ -162,14 +162,14 @@
       <div class="row" id="content">
         <%= @sidebar ? raw("<div class=\"small-7 columns\" id=\"episodes\">") : raw("<div class=\"small-12 columns\">") %>
           <%= yield %>
-        </div><!-- /span -->
+        </div><!-- /small -->
 
         <% if @sidebar %>
           <aside class="small-4 columns">
             <%= render @sidebar %>
           </aside><!-- /small-4 -->
         <% end %>
-      </div><!-- /row -->
+      </div><!-- /content -->
 
       <div class="row">
         <div id="footer">
@@ -202,6 +202,7 @@
     <% end %>
 
     <%= javascript_include_tag "foundation" %>
+    <%= javascript_include_tag "foundation-datetimepicker" %>
     <script type="text/javascript">
       $(document).foundation();
     </script>

@@ -1,16 +1,27 @@
-<%= simple_form_for @page, html: { class: 'form-horizontal' } do |f| %>
-  <% if notification = f.error_notification %>
-      <%= notification %>
-  <% end %>
+<%= simple_form_for @page do |f| %>
+  <div class="large-9 large-offset-1">
+    <% if notification = f.error_notification %>
+        <div class="alert-message"><%= notification %></div>
+    <% end %>
 
-  <%= f.input :title %>
+    <%= f.input :title %>
 
-  <%= f.input :content %>
+    <%= f.input :content, input_html: { rows: 30 } %>
 
-  <%= f.input :footer, label: "Show in footer?" %>
+    <div class="row checkbox-row">
+      <div class="small-9 small-offset-3">
+        <label for="page_footer">
+          <%= f.input_field :footer, style: "display: none;", id: "page_footer" %>
+          <span class="custom checkbox"></span> Show in footer?
+        </label>
+      </div>
+    </div>
+  </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, class: 'btn btn-primary' %>
-    <%= link_to "Cancel", pages_path, class: 'btn' %>
+  <div class="large-11">
+    <div class="form-actions">
+      <%= link_to "Cancel", pages_path, class: 'button' %>
+      <%= f.submit nil, class: 'primary button' %>
+    </div>
   </div>
 <% end %>

@@ -1,5 +1,22 @@
 <tr>
-  <td><%= f.input_field :media_type, label: "Type", collection: MEDIA_TYPES %></td>
-  <td><%= f.input_field :url, class: "input-xlarge" %></td>
-  <td><%= f.check_box :_destroy, class: 'check_box' %></td>
+  <td>
+    <div class="row collapse">
+      <div class="small-3 columns">
+        <span class="prefix">http://</span>
+      </div>
+      <div class="small-6 columns">
+        <%= f.input_field :url %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.input_field :media_type, label: "Type", collection: MEDIA_TYPES, prompt: "Select Type" %>
+      </div>
+    </div>
+  </td>
+  <td>
+    <label for="_delete">
+      <%= f.check_box :_destroy, class: 'check_box' %>
+      <span class="custom checkbox"></span>
+    </label>
+    
+  </td>
 </tr>

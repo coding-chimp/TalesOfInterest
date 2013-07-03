@@ -1,4 +1,4 @@
-<%= simple_form_for @item, html: { class: 'form-horizontal' } do |f| %>
+<%= simple_form_for @item do |f| %>
   <div class="large-8 large-offset-1">
     <% if notification = f.error_notification %>
         <%= notification %>

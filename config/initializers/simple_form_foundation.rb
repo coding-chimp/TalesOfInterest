@@ -38,7 +38,7 @@ SimpleForm.setup do |config|
   # Define the way to render check boxes / radio buttons with labels.
   #   :inline => input + label
   #   :nested => label > input
-  config.boolean_style = :nested
+  config.boolean_style = :inline
 
   # CSS class for buttons
   config.button_class = 'button'

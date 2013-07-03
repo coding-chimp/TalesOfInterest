@@ -1,22 +1,27 @@
 <% title "Podcast Import" %>
 
-<div class="well">
-	<h2>New Podcast</h2>
+<div class="large-8 large-offset-1">
+  <h2>New Podcast</h2>
+</div>
 
-	<p>Import episodes from a XML file.</p>
+<div class="large-9 large-offset-3">
+  <p>Import episodes from a XML file.</p>
+</div>
 
-	<%= simple_form_for :import, url: { action: "import_xml" }, html: { class: 'form-horizontal' } do |f| %>
-	
+<%= simple_form_for :import, :url => { :action => "import_xml" } do |f| %>
+  <div class="large-9 large-offset-1">
+
     <% if notification = flash[:error] %>
-    	<div class="alert alert-error"><%= notification %></div>
-  	<% end %>
+      <div class="alert-message"><%= notification %></div>
+    <% end %>
 
-		<%= f.input :file, as: :file %>
-	
-		<div class="form-actions">
-   		<%= f.submit "Import", class: 'btn btn-primary' %>
-    	<%= link_to "Cancel", pages_path, class: 'btn' %>
-  	</div>
-
-	<% end %>
-</div><!-- /well -->
+    <%= f.input :file, :as => :file %>
+  </div>
+  
+  <div class="large-5">
+    <div class="form-actions">
+      <%= link_to "Cancel", podcasts_path, :class => 'button' %>
+      <%= f.submit "Import", :class => 'primary button' %>
+    </div>
+  </div>
+<% end %>

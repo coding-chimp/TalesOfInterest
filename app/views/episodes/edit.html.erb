@@ -1,12 +1,12 @@
 <% present @episode do |episode_presenter| %>
 <% title "Edit #{@episode.podcast.name} #{episode_presenter.num}: #{@episode.title}" %>
 
-<div class="well">
-	<h2>Edit Episode</h2>
+<div class="large-8 large-offset-1">
+  <h2>Edit Episode</h2>
+</div>
 
-	<%= simple_form_for [@episode.podcast, @episode], url: { :action => :update }, html: { :class => 'form-horizontal' } do |f| %>
-		<%= render 'form', f: f %>
-	<% end %>
+<%= simple_form_for [@episode.podcast, @episode], url: { :action => :update } do |f| %>
+	<%= render 'form', f: f %>
+<% end %>
 
-</div><!-- /well -->
 <% end %>

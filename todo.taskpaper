@@ -2,13 +2,16 @@ Inbox:
 Foundation:
 	- fix admin nav
 	- fix admin index pages @done(2013-07-02)
-	- fix forms
+	- fix forms @done(2013-07-02)
 	- fix admin analytics
 	- fix admin podcasts
-	- fix admin pages
+	- fix admin pages @done(2013-07-02)
 	- fix admin blogroll @done(2013-07-02)
 	- fix admin settings @done(2013-07-02)
 	- fix admin users @done(2013-07-02)
+	- fix alert messages in forms
+	- make all cancel buttons .secondary
+	- prettier upload form with js
 	- responsive design?
 	- move subscriber charts in remote modal
 	- update about page

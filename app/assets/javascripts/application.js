@@ -16,7 +16,6 @@
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
-//= require bootstrap-datetimepicker.min
 //= require podlove-web-player-rails
 //= require navigation
 //= require raphael

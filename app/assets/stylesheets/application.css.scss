@@ -1,6 +1,6 @@
 @import "foundation_and_overrides";
 @import "font-awesome";
-@import "bootstrap-datetimepicker.min";
+@import "foundation-datetimepicker";
 @import "dataTables/jquery.dataTables.bootstrap";
 @import "morris";
 
@@ -42,6 +42,13 @@ html, body {
 	&.field_with_hint input { margin-bottom: 5px; }
 	.hint { margin-left: 10px; }
 }
+
+textarea { height: auto; }
+.row.checkbox-row {
+	margin-bottom: 20px;
+	&:before { clear: both; }
+}
+.custom.checkbox { margin-left: 15px; }
 
 #wrap {
 	min-height: 100%;
@@ -386,8 +393,6 @@ aside {
 		}
 	}
 }
-
-textarea { height: auto; }
 
 .form-actions {
 	margin-top: 10px;

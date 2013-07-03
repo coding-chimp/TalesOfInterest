@@ -1,12 +1,9 @@
 <% title "New Podcast" %>
 
-<div class="well">
+<div class="large-8 large-offset-1">
 	<h2>New Podcast</h2>
+</div>
 
-	<%= simple_form_for @podcast, html: { class: 'form-horizontal' } do |f| %>
-		<%= render 'form', f: f %>
-	<% end %>
-
-</div><!-- /well -->
-
-
+<%= simple_form_for @podcast do |f| %>
+	<%= render 'form', f: f %>
+<% end %>

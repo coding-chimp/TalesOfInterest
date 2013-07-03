@@ -1,103 +1,116 @@
-<% if notification = f.error_notification %>
-    <%= notification %>
-<% end %>
+<div class="large-9 large-offset-1">
+  <% if notification = f.error_notification %>
+      <%= notification %>
+  <% end %>
 
-<%= f.association :podcast, prompt: "Select Podcast" %>
+  <%= f.association :podcast, prompt: "Select Podcast" %>
 
-<% if f.object.new_record? %>
-  <%= f.input :number, input_html: { value: @episode.set_episode_number } %>
-<% else %>
-  <%= f.input :number %>
-<% end %>
+  <% if f.object.new_record? %>
+    <%= f.input :number, input_html: { value: @episode.set_episode_number } %>
+  <% else %>
+    <%= f.input :number %>
+  <% end %>
 
-<%= f.input :title %>
+  <%= f.input :title %>
 
-<%= f.input :description %>
+  <%= f.input :description %>
 
-<%= f.input :playtime, hint: "In seconds." %>
+  <%= f.input :playtime, hint: "In seconds." %>
 
-<%= f.input :explicit %>
+  <% if params[:episode] %>
+    <%= f.input :chapter_marks, as: :text, input_html: { value: params[:episode][:chapter_marks] } %>
+  <% else %>
+    <%= f.input :chapter_marks, as: :text, hint: "Format: HH:MM:SS Title" %>
+  <% end %>
+  <%= f.input :chapter_file, as: :file, hint: "Add Chapters through Auphonic's \"Chapters File\" or \"Production Description\" file." %>
 
-<% if params[:episode] %>
-  <%= f.input :chapter_marks, as: :text, input_html: { value: params[:episode][:chapter_marks] } %>
-<% else %>
-  <%= f.input :chapter_marks, as: :text, hint: "<b>Format:</b> HH:MM:SS Title" %>
-<% end %>
-<%= f.input :chapter_file, as: :file, hint: "Add Chapters through Auphonic's \"Chapters File\" or \"Production Description\" file." %>
+  <% if Settings.first.spotify_username.present? %>
+    <%= f.input :spotify_playlist %>
+  <% end %>
+</div>
 
-<% if Settings.first.spotify_username.present? %>
-  <%= f.input :spotify_playlist %>
-<% end %>
-
-<div class="form-head">
+<div class="large-8 large-offset-2">
   <h3>Audio Files</h3>
-</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>URL</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= f.fields_for :audio_files do |builder| %>
-      <%= render "audio_file_fields", f: builder %>
-    <% end %>
-    <tr id="add_audio_file">
-      <td><%= link_to_add_fields "Add Audio File", f, :audio_files %></td>
-      <td></td>
-      <td></td>
-    </td>
-  </tbody>
-</table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :audio_files do |builder| %>
+        <%= render "audio_file_fields", f: builder %>
+      <% end %>
+      <tr id="add_audio_file">
+        <td><%= link_to_add_fields "Add Audio File", f, :audio_files %></td>
+        <td></td>
+      </td>
+    </tbody>
+  </table>
 
-<div class="form-head">
   <h3>Show Notes</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id="show_notes" data-update-url="<%= sort_show_notes_url %>">
+      <%= f.fields_for :show_notes, @episode.show_notes.sort_by(&:position) do |builder| %>
+        <%= render "show_note_fields", f: builder %>
+      <% end %>
+      <tr id="add_show_note">
+        <td></td>
+        <td><%= link_to_add_fields "Add Show Note", f, :show_notes %></td>
+        <td></td>
+        <td></td>
+      </td>
+    </tbody>
+  </table>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>URL</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody id="show_notes" data-update-url="<%= sort_show_notes_url %>">
-    <%= f.fields_for :show_notes, @episode.show_notes.sort_by(&:position) do |builder| %>
-      <%= render "show_note_fields", f: builder %>
-    <% end %>
-    <tr id="add_show_note">
-      <td></td>
-      <td><%= link_to_add_fields "Add Show Note", f, :show_notes %></td>
-      <td></td>
-      <td></td>
-    </td>
-  </tbody>
-</table>
+<div class="input large-9 large-offset-1">
+  <div class="string optional episode_published_at">
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="datetime optional inline right" for="episode_published_at">Publish Date</label>
+      </div>
+      <div class="small-9 columns">
+        <%= f.input_field :published_at, as: :string, value: @episode.published_at.strftime("%d.%m.%Y %H:%M") %>
+      </div>
+    </div>
+  </div>
 
-<div class="control-group string optional">
-  <label class="string optional control-label" for="episode_published_at">Publish Date</label>
-  <div class="controls">
-    <div id="datetimepicker1" class="input-append date">
-      <input class="string optional" id="episode_published_at" name="episode[published_at]" type="text" 
-        value="<%= f.object.published_at.strftime("%d.%m.%Y %H:%M") if f.object.published_at %>"></input>
-      <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-        </i>
-      </span>
+  <div class="row checkbox-row">
+    <div class="small-9 small-offset-3">
+      <label for="page_footer">
+        <%= f.input_field :explicit, style: "display: none;", id: "page_footer" %>
+        <span class="custom checkbox"></span> Explicit
+      </label>
+    </div>
+  </div>
+
+  <div class="row checkbox-row">
+    <div class="small-9 small-offset-3">
+      <label for="page_footer">
+        <%= f.input_field :draft, style: "display: none;", id: "page_footer" %>
+        <span class="custom checkbox"></span> Draft
+      </label>
     </div>
   </div>
 </div>
 
-<%= f.input :draft %>
-
-<div class="form-actions">
-	<%= f.submit "Publish", name: 'publish', class: 'btn btn-primary' if f.object.draft %>
-	<%= f.submit "Save", class: 'btn btn-primary' %>
-  <%= f.submit "Save & Close", name: 'save_close', class: 'btn btn-primary' %>
-	<%= link_to "Cancel", podcast_episodes_path(@episode.podcast), class: 'btn' %>
-</div><!-- /form-actions -->
+<div class="large-11">
+  <div class="form-actions">
+  	<%= link_to "Cancel", podcast_episodes_path(@episode.podcast), class: 'secondary button' %>
+    <%= f.submit "Save & Close", name: 'save_close', class: 'button' %>
+  	<%= f.submit "Save", class: 'button' %>
+    <%= f.submit "Publish", name: 'publish', class: 'primary button' if f.object.draft %>
+  </div><!-- /form-actions -->
+</div>

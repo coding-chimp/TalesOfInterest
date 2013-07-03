@@ -1,7 +1,9 @@
 <%= simple_form_for @user, html: { class: 'form-horizontal' } do |f| %>
   <div class="large-8 large-offset-1">
     <% if notification = f.error_notification %>
-        <%= notification %>
+      <div class="large-9 large-offset-3">
+        <div class="alert-message"><%= notification %></div>
+      </div>
     <% end %>
 
     <%= f.input :email %>
