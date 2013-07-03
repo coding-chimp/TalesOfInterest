@@ -1,14 +1,9 @@
 Inbox:
 Foundation:
-	- fix admin nav
-	- fix admin index pages @done(2013-07-02)
-	- fix forms @done(2013-07-02)
+	- fix show notes margin @done(2013-07-03)
+	- change admin nav
 	- fix admin analytics
 	- fix admin podcasts
-	- fix admin pages @done(2013-07-02)
-	- fix admin blogroll @done(2013-07-02)
-	- fix admin settings @done(2013-07-02)
-	- fix admin users @done(2013-07-02)
 	- fix alert messages in forms
 	- make all cancel buttons .secondary
 	- prettier upload form with js
@@ -26,6 +21,12 @@ Later:
 	- add rack-timout?
 		- https://github.com/kch/rack-timeout
 Archive:
+	- fix admin index pages @done(2013-07-02) @project(Foundation)
+	- fix forms @done(2013-07-02) @project(Foundation)
+	- fix admin pages @done(2013-07-02) @project(Foundation)
+	- fix admin blogroll @done(2013-07-02) @project(Foundation)
+	- fix admin settings @done(2013-07-02) @project(Foundation)
+	- fix admin users @done(2013-07-02) @project(Foundation)
 	- exchange assets  @done(2013-07-01) @project(Foundation)
 	- fix hover on links @done(2013-07-01) @project(Foundation)
 	- fix search field @done(2013-07-01) @project(Foundation)

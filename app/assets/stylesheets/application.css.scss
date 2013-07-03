@@ -23,6 +23,8 @@ html, body {
 	height: 100%;
 }
 
+.clearfix { @include clearfix; }
+
 .alert-box, .alert-message, .success-message { text-align: center; }
 
 .alert-message {
