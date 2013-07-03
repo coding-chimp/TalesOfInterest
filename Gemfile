@@ -67,7 +67,7 @@ gem 'rvm-capistrano'
 gem 'dalli'
 
 # Web Player
-gem 'podlove-web-player-rails', '~> 1.1.0'
+gem 'podlove-web-player-rails', '~> 1.2.0'
 
 # Faster site loading
 gem 'turbolinks'
