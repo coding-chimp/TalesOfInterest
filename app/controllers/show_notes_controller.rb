@@ -9,6 +9,6 @@ class ShowNotesController < ApplicationController
   def post
     podcast = Podcast.find_by_name(params[:podcast])
     @episode = podcast.last_episode
-    ShowNote.create(episode: @episode, url: params[:u], name: params[:t])
+    ShowNote.create(episode: @episode, url: params[:u], name: params[:t], position: ShowNote.maximum(:position) + 1)
   end
 end

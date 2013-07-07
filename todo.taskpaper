@@ -1,6 +1,6 @@
 Inbox:
 	- turn of preload on webplayer @na @done(2013-07-07)
-	- add show notes with the right position (bookmarklet)
+	- add show notes with the right position (bookmarklet) @done(2013-07-07)
 Foundation:
 	- change admin nav
 	- fix admin analytics
