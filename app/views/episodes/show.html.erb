@@ -36,7 +36,7 @@
 				           	 title: episode_presenter.title, permalink: episode_presenter.uri, 
 				             subtitle: episode_presenter.truncated_clean_description.gsub(/\n/, ' ').gsub(/\r/, ''),
 				             startVolume: 1, chapters: episode_presenter.chapters,
-				             duration: episode_presenter.duration, preload: false) %>
+				             duration: episode_presenter.duration, preload: "none") %>
 
 		<div class="downloads">
 	    <% @episode.audio_files.order('media_type').each_with_index do |file, index| %>

@@ -1,6 +1,7 @@
 Inbox:
+	- turn of preload on webplayer @na @done(2013-07-07)
+	- add show notes with the right position (bookmarklet)
 Foundation:
-	- fix show notes margin @done(2013-07-03)
 	- change admin nav
 	- fix admin analytics
 	- fix admin podcasts
@@ -11,6 +12,10 @@ Foundation:
 	- move subscriber charts in remote modal
 	- update about page
 Later:
+	- firtz ansehen
+		- http://podcast.firtz.org/firtz/show
+		- thread on APN
+		- download and bitlove links as dropdown
 	- start analytics graph on publish date 
 	- group data in analytics graph on larger date ranges
 	- markdown preview
@@ -20,7 +25,10 @@ Later:
 	- add proper validation for nested forms
 	- add rack-timout?
 		- https://github.com/kch/rack-timeout
+	- implement paged feeds
+		- http://podlove.org/2013/06/22/paged-feeds-for-podcasts/
 Archive:
+	- fix show notes margin @done(2013-07-03) @project(Foundation)
 	- fix admin index pages @done(2013-07-02) @project(Foundation)
 	- fix forms @done(2013-07-02) @project(Foundation)
 	- fix admin pages @done(2013-07-02) @project(Foundation)
