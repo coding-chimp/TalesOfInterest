@@ -1,6 +1,6 @@
 Inbox:
 Foundation:
-	- change admin nav
+	- change admin nav @done(2013-07-09)
 	- fix admin analytics
 	- fix admin podcasts @done(2013-07-09)
 	- fix alert messages in forms
