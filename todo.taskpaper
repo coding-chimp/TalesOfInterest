@@ -4,7 +4,7 @@ Foundation:
 	- fix admin analytics
 	- fix admin podcasts @done(2013-07-09)
 	- fix alert messages in forms
-	- make all cancel buttons .secondary
+	- make all cancel buttons .secondary @done(2013-07-09)
 	- prettier upload form with js
 	- responsive design?
 	- move subscriber charts in remote modal
