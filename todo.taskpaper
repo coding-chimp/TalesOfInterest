@@ -2,7 +2,7 @@ Inbox:
 Foundation:
 	- change admin nav
 	- fix admin analytics
-	- fix admin podcasts
+	- fix admin podcasts @done(2013-07-09)
 	- fix alert messages in forms
 	- make all cancel buttons .secondary
 	- prettier upload form with js

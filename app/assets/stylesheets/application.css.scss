@@ -59,6 +59,17 @@ textarea { height: auto; }
 }
 .custom.checkbox { margin-left: 15px; }
 
+[data-clearing] {
+	list-style: none;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	li {
+		float: left;
+		margin-right: 20px;
+		a { height: 188px }
+	}
+}
+
 #wrap {
 	min-height: 100%;
 	position: relative;

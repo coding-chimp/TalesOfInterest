@@ -1,4 +1,4 @@
-<div class="large-9 large-offset-1">
+<div class="large-8 large-offset-1">
   <% if notification = f.error_notification %>
     <%= notification %>
   <% end %>
@@ -10,11 +10,12 @@
   <%= f.input :description %>
 
   <%= f.input :artwork %>
+
   <% if @podcast.artwork? %>
-    <div class="control-group">
-      <div class="controls">
-        <%= image_tag @podcast.artwork.url(:medium) %>
-      </div>
+    <div class="large-offset-3">
+      <ul class="clearing-thumbs" data-clearing>
+        <li><%= link_to image_tag(@podcast.artwork.url(:medium)), @podcast.artwork.url, class: "th radius" %></li>
+      </ul>
     </div>
   <% end %>
 
@@ -38,9 +39,7 @@
   <%= f.input :itunes_link %>
 
   <%= f.input :slug %>
-</div>
 
-<div class="large-11">
   <div class="form-actions">
   	<%= link_to "Cancel", podcasts_path, class: 'button' %>
     <%= f.submit nil, class: 'primary button' %>
