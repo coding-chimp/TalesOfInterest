@@ -41,8 +41,15 @@ html, body {
 
 .input {
 	margin-bottom: 5px;
-	&.field_with_hint input { margin-bottom: 5px; }
-	.hint { margin-left: 10px; }
+}
+.input.field_with_hint {
+	margin-bottom: 10px;
+	input { margin-bottom: 4px }
+	.hint {
+		margin-left: 5px;
+		display: block;
+		font-size: 14px;
+	}
 }
 
 textarea { height: auto; }

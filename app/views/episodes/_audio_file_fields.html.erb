@@ -13,10 +13,9 @@
     </div>
   </td>
   <td>
-    <label for="_delete">
-      <%= f.check_box :_destroy, class: 'check_box' %>
+    <label for="_destroy">
+      <%= f.input_field :_destroy, as: :boolean, class: 'check_box', style: "display: none;", id: "_destroy" %>
       <span class="custom checkbox"></span>
     </label>
-    
   </td>
 </tr>

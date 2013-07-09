@@ -1,4 +1,4 @@
-<div class="large-9 large-offset-1">
+<div class="large-10">
   <% if notification = f.error_notification %>
       <%= notification %>
   <% end %>
@@ -27,55 +27,60 @@
   <% if Settings.first.spotify_username.present? %>
     <%= f.input :spotify_playlist %>
   <% end %>
-</div>
 
-<div class="large-8 large-offset-2">
-  <h3>Audio Files</h3>
+  <div class="small-offset-2">
+    <h3>Audio Files</h3>
+  </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= f.fields_for :audio_files do |builder| %>
-        <%= render "audio_file_fields", f: builder %>
-      <% end %>
-      <tr id="add_audio_file">
-        <td><%= link_to_add_fields "Add Audio File", f, :audio_files %></td>
-        <td></td>
-      </td>
-    </tbody>
-  </table>
+  <div class="small-offset-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.fields_for :audio_files do |builder| %>
+          <%= render "audio_file_fields", f: builder %>
+        <% end %>
+        <tr id="add_audio_file">
+          <td><%= link_to_add_fields "Add Audio File", f, :audio_files %></td>
+          <td></td>
+        </td>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="small-offset-2">
+    <h3>Show Notes</h3>
+  </div>
 
-  <h3>Show Notes</h3>
+  <div class="small-offset-3">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>URL</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="show_notes" data-update-url="<%= sort_show_notes_url %>">
+        <%= f.fields_for :show_notes, @episode.show_notes.sort_by(&:position) do |builder| %>
+          <%= render "show_note_fields", f: builder %>
+        <% end %>
+        <tr id="add_show_note">
+          <td></td>
+          <td><%= link_to_add_fields "Add Show Note", f, :show_notes %></td>
+          <td></td>
+          <td></td>
+        </td>
+      </tbody>
+    </table>
+  </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>URL</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody id="show_notes" data-update-url="<%= sort_show_notes_url %>">
-      <%= f.fields_for :show_notes, @episode.show_notes.sort_by(&:position) do |builder| %>
-        <%= render "show_note_fields", f: builder %>
-      <% end %>
-      <tr id="add_show_note">
-        <td></td>
-        <td><%= link_to_add_fields "Add Show Note", f, :show_notes %></td>
-        <td></td>
-        <td></td>
-      </td>
-    </tbody>
-  </table>
-</div>
 
-<div class="input large-9 large-offset-1">
   <div class="string optional episode_published_at">
     <div class="row">
       <div class="small-3 columns">
@@ -104,9 +109,7 @@
       </label>
     </div>
   </div>
-</div>
 
-<div class="large-11">
   <div class="form-actions">
   	<%= link_to "Cancel", podcast_episodes_path(@episode.podcast), class: 'secondary button' %>
     <%= f.submit "Save & Close", name: 'save_close', class: 'button' %>

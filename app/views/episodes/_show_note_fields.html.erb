@@ -2,5 +2,9 @@
   <td class="handle"><i class="icon-move"></i></td>
   <td><%= f.input_field :name, class: "input-xlarge" %></td>
   <td><%= f.input_field :url, class: "input-xlarge" %></td>
-  <td><%= f.check_box :_destroy, class: 'check_box' %></td>
+  <td>
+    <label for="_destroy">
+      <%= f.input_field :_destroy, as: :boolean, class: 'check_box', style: "display: none;", id: "_destroy" %>
+      <span class="custom checkbox"></span>
+    </label></td>
 </tr>
