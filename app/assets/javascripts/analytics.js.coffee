@@ -33,13 +33,11 @@ jQuery ->
       $(window).scrollTop $('#graph').offset().top
 
 $ ->
-  $("#startdatepicker").fdatetimepicker
+  $("#startdatepicker").fdatepicker
     format: "yyyy-mm-dd"
-    pickTime: false
 
-  $("#enddatepicker").fdatetimepicker
+  $("#enddatepicker").fdatepicker
     format: "yyyy-mm-dd"
-    pickTime: false
 
 @Chart = 
   render: ->

@@ -65,8 +65,8 @@ private
   def progress_bar(episode, attribute)
     percentage = self.send("#{attribute}_percentage", episode)
     
-    content_tag(:div, class: "progress"){
-      content_tag(:div, self.send(attribute, episode), class: "bar", style: "width: #{percentage}")
+    content_tag(:div, class: "progress radius"){
+      content_tag(:span, self.send(attribute, episode), class: "meter", style: "width: #{percentage}")
     }
   end
 

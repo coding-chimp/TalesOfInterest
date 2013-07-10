@@ -1,15 +1,13 @@
 Inbox:
 Foundation:
-	- change admin nav @done(2013-07-09)
-	- fix admin analytics
-	- fix admin podcasts @done(2013-07-09)
+	- fix admin analytics @done(2013-07-10)
 	- fix alert messages in forms
-	- make all cancel buttons .secondary @done(2013-07-09)
 	- prettier upload form with js
 	- responsive design?
 	- move subscriber charts in remote modal
-	- update about page
 	- validate format for file url
+	- set audio file type automatically
+	- update about page
 Later:
 	- firtz ansehen
 		- http://podcast.firtz.org/firtz/show
@@ -27,6 +25,9 @@ Later:
 	- implement paged feeds
 		- http://podlove.org/2013/06/22/paged-feeds-for-podcasts/
 Archive:
+	- change admin nav @done(2013-07-09) @project(Foundation)
+	- fix admin podcasts @done(2013-07-09) @project(Foundation)
+	- make all cancel buttons .secondary @done(2013-07-09) @project(Foundation)
 	- turn of preload on webplayer @na @done(2013-07-07) @project(Inbox)
 	- add show notes with the right position (bookmarklet) @done(2013-07-07) @project(Inbox)
 	- fix show notes margin @done(2013-07-03) @project(Foundation)
