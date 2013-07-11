@@ -1,9 +1,0 @@
-<div id="<%= podcast_presenter.name %>SubscribersModal" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3><%= podcast_presenter.name %> Subscribers</h3>
-  </div>
-  <div class="modal-body">
-    <%= content_tag :div, "", id: "#{podcast_presenter.name}_subscribers_chart", style: "height: 400px; width: 530px", data: {subscribers: podcast_presenter.subscribers_chart_data} %>
-  </div>
-</div>

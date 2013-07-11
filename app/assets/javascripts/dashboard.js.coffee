@@ -1,18 +1,8 @@
 jQuery ->
-  if $('#Celluloid_subscribers_chart').length
+  $("#subscribers_modal").bind "opened", ->
     Morris.Donut
-      element: 'Celluloid_subscribers_chart'
-      data: $('#Celluloid_subscribers_chart').data('subscribers')
-
-  if $('#Recordcase_subscribers_chart').length
-    Morris.Donut
-      element: 'Recordcase_subscribers_chart'
-      data: $('#Recordcase_subscribers_chart').data('subscribers')
-
-  if $('#Tales_subscribers_chart').length
-    Morris.Donut
-      element: 'Tales_subscribers_chart'
-      data: $('#Tales_subscribers_chart').data('subscribers')
+      element: 'subscribers_chart'
+      data: $('#subscribers_chart').data('subscribers')
 
   if $('#traffic_chart').length
     Morris.Area

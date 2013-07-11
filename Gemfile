@@ -13,7 +13,7 @@ group :assets do
 
   # Layout
   gem 'compass-rails'
-  gem 'zurb-foundation', '~> 4.0.0'
+  gem 'zurb-foundation'
   gem 'font-awesome-rails'
 
   # DataTables
@@ -67,7 +67,7 @@ gem 'rvm-capistrano'
 gem 'dalli'
 
 # Web Player
-gem 'podlove-web-player-rails', '~> 1.2'
+gem 'podlove-web-player-rails'
 
 # Faster site loading
 gem 'turbolinks'

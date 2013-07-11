@@ -3,7 +3,7 @@ Foundation:
 	- fix alert messages in forms
 	- prettier upload form with js
 	- responsive design?
-	- move subscriber charts in remote modal
+	- move subscriber charts in remote modal @done(2013-07-11)
 	- validate format for file url
 	- set audio file type automatically
 	- update about page

@@ -2,7 +2,7 @@ TalesOfInterest::Application.routes.draw do
   break if ARGV.join.include? 'assets:precompile'
 
   post  'show_notes/sort',              to: 'show_notes#sort',        as: :sort_show_notes
-  get   'show_notes/:podcast',         to: 'show_notes#post'
+  get   'show_notes/:podcast',          to: 'show_notes#post'
 
   as :user do
     get "/login" => "sessions#new"
@@ -77,6 +77,7 @@ TalesOfInterest::Application.routes.draw do
   get    'admin/:podcast/episodes/new', to: 'episodes#new',           as: :new_podcast_episode
   post   'admin/:podcast/episodes/new', to: 'episodes#create',        as: :create_episdoe
   get    'admin/:podcast/:id/edit',     to: 'episodes#edit',          as: :edit_episode
+  get    'admin/:podcast/subscribers',  to: 'subscribers#show',       as: :subscribers_chart
 
   root to: 'episodes#index'
 

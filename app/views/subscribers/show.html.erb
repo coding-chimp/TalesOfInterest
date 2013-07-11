@@ -1,0 +1,4 @@
+<h2><%= @podcast.name %> Subscribers</h2>
+<%= content_tag :div, "", id: "subscribers_chart", style: "height: 400px; width: 642px",
+                data: {subscribers: @subscribers.as_json} %>
+<a class="close-reveal-modal">&#215;</a>

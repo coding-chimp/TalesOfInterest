@@ -34,13 +34,11 @@
           <% end %>
           <% if @settings.uri_key.present? && @settings.uri_token.present? %>
           <td>
-            <a href="#<%= podcast_presenter.name %>SubscribersModal" data-toggle="modal">
-              <%= podcast_presenter.subscribers %>
-            </a>
+            <%= link_to podcast_presenter.subscribers, subscribers_chart_url(podcast),
+                        data: { reveal_id: "subscribers_modal", reveal_ajax: true } %>
           </td>
           <% end %>
         </tr>
-        <%= render 'subscribers_chart', podcast_presenter: podcast_presenter %>
       <% end %>
     <% end %>
   </tbody>
@@ -72,3 +70,5 @@
     <% end %>
   </tbody>
 </table>
+
+<div id="subscribers_modal" class="reveal-modal"></div>
