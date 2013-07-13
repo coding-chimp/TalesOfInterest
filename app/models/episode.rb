@@ -5,14 +5,13 @@ class Episode < ActiveRecord::Base
   belongs_to :podcast
   has_many :show_notes
   has_many :chapters
-  has_many :introduced_titles
   has_many :audio_files
 
   attr_accessible :description, :playtime, :number, :podcast_id, :podcast, :title, :slug, :created_at, :draft
   attr_accessible :show_notes_attributes, :chapters_attributes, :explicit, :chapter_marks, :published_at
-  attr_accessible :introduced_titles_attributes, :spotify_playlist, :chapter_file, :audio_files_attributes
+  attr_accessible :spotify_playlist, :chapter_file, :audio_files_attributes
   attr_accessible :hits, :downloaded, :downloads
-  accepts_nested_attributes_for :show_notes, :chapters, :introduced_titles, :audio_files, allow_destroy: true
+  accepts_nested_attributes_for :show_notes, :chapters, :audio_files, allow_destroy: true
 
   after_create :set_slug, :set_download_data
   before_save :ensure_published_at, unless: :draft?

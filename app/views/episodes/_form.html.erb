@@ -3,7 +3,7 @@
       <%= notification %>
   <% end %>
 
-  <%= f.association :podcast, prompt: "Select Podcast" %>
+  <%= f.association :podcast, prompt: "Select Podcast", input_html: { style: "display: none" } %>
 
   <% if f.object.new_record? %>
     <%= f.input :number, input_html: { value: @episode.set_episode_number } %>

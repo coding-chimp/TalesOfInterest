@@ -42,7 +42,8 @@
 	<h3>RSS/iTunes Feed</h3>
 	<br />
 
-	<%= f.input :feed_language, label: 'Language', collection: LANGUAGES.map {|l| [l.match(/(.*)\s\[/)[1	] ,l.match(/\[(.*)\]/)[1]] } %>
+	<%= f.input :feed_language, label: 'Language', collection: LANGUAGES.map {|l| [l.match(/(.*)\s\[/)[1],
+							l.match(/\[(.*)\]/)[1]] }, input_html: { style: "display: none" } %>
 
 	<%= f.input :feed_email, label: 'E-Mail' %>
 

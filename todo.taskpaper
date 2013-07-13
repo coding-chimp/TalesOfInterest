@@ -1,9 +1,7 @@
 Inbox:
 Foundation:
 	- fix alert messages in forms
-	- prettier upload form with js
 	- responsive design?
-	- move subscriber charts in remote modal @done(2013-07-11)
 	- validate format for file url
 	- set audio file type automatically
 	- update about page
@@ -12,6 +10,7 @@ Later:
 		- http://podcast.firtz.org/firtz/show
 		- thread on APN
 		- download and bitlove links as dropdown
+	- prettier upload form with js
 	- start analytics graph on publish date 
 	- group data in analytics graph on larger date ranges
 	- markdown preview
@@ -24,6 +23,7 @@ Later:
 	- implement paged feeds
 		- http://podlove.org/2013/06/22/paged-feeds-for-podcasts/
 Archive:
+	- move subscriber charts in remote modal @done(2013-07-11) @project(Foundation)
 	- fix admin analytics @done(2013-07-10) @project(Foundation)
 	- change admin nav @done(2013-07-09) @project(Foundation)
 	- fix admin podcasts @done(2013-07-09) @project(Foundation)

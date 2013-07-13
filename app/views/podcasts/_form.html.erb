@@ -19,11 +19,14 @@
     </div>
   <% end %>
 
-  <%= f.input :category1, label: 'Category', collection: CATEGORIES, prompt: 'Select a category' %>
+  <%= f.input :category1, label: 'Category', collection: CATEGORIES, prompt: 'Select a category',
+              input_html: { style: "display: none" } %>
 
-  <%= f.input :category2, label: 'Category', collection: CATEGORIES, prompt: 'Select a category' %>
+  <%= f.input :category2, label: 'Category', collection: CATEGORIES, prompt: 'Select a category',
+              input_html: { style: "display: none" } %>
 
-  <%= f.input :category3, label: 'Category', collection: CATEGORIES, prompt: 'Select a category' %>
+  <%= f.input :category3, label: 'Category', collection: CATEGORIES, prompt: 'Select a category',
+              input_html: { style: "display: none" } %>
 
   <%= f.input :keywords %>
 
