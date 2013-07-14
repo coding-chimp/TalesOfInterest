@@ -86,11 +86,17 @@ div.pagination ul {
 .row.collapse.graph_dates {
   margin-bottom: 10px;
   label, input { text-align: center }
-  input { @include side-radius(left, 3px) }
+  input {
+    @include side-radius(left, 3px);
+    position: relative;
+    width: 66.66667%;
+  }
   .prefix {
     border-left: none;
     border-right: 1px solid #D9D9D9;
     @include side-radius(right, 3px);
+    position: relative;
+    width: 25%;
   }
 }
 

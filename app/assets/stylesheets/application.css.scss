@@ -443,8 +443,14 @@ table { width: 100%; }
 		margin: 0 auto;
 	}
 	.th { height: 188px; }
-	h2 { font-size: 35px; }
-	p { font-size: 14px; }
+	h2 {
+		font-size: 35px;
+		margin-bottom: 10px;
+	}
+	p {
+		font-size: 14px;
+		width: 380px;
+	}
 }
 
 #banner_alt { display: none }
