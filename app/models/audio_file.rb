@@ -1,12 +1,24 @@
 class AudioFile < ActiveRecord::Base
-  attr_accessible :size, :media_type, :url, :episode, :episode_id
+  attr_accessible :size, :media_type, :url, :uri, :episode, :episode_id
 
   belongs_to :episode
   has_many  :download_datas
 
-  validates_presence_of :media_type, :url, :episode_id
+  validates_presence_of :url, :episode_id
 
   before_save :update_size, if: :url_changed?
+  before_save :set_media_type, if: :url
+
+  def uri
+    url.gsub(/http:\/\/|https:\/\//, "") if url
+  end
+
+  def uri=(uri)
+    unless uri.empty? || uri.include?("http://") 
+      uri = uri.prepend("http://")
+    end
+    self.url = uri
+  end
 
   def total_hits
     download_datas.sum(:hits)
@@ -21,6 +33,11 @@ class AudioFile < ActiveRecord::Base
   end
 
 private
+
+  def set_media_type
+    ext = File.extname(url)
+    self.media_type = ext[1..-1] == "m4a" ? "mp4" : ext[1..-1]
+  end
 
   def update_size
     if url.present?

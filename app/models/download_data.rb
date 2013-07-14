@@ -5,7 +5,6 @@ class DownloadData < ActiveRecord::Base
 
   def self.update(date)
     json = fetch_downloads(date.to_s, date.to_s)
-    #puts JSON.pretty_generate json
     process_data(json['table']['rows'], date)
   end
 

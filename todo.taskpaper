@@ -2,10 +2,11 @@ Inbox:
 Foundation:
 	- fix alert messages in forms
 	- responsive design?
-	- validate format for file url
-	- set audio file type automatically
+	- validate format for file url @na @done(2013-07-14)
+	- set audio file type automatically @na @done(2013-07-14)
 	- update about page
 Later:
+	- update importer to support multiple audio files
 	- firtz ansehen
 		- http://podcast.firtz.org/firtz/show
 		- thread on APN

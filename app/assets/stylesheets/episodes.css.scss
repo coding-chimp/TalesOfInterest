@@ -53,3 +53,8 @@ table .handle {
   width: 5px;
   padding-top: 12px
 }
+
+#episode_table td {
+  line-height: 20px;
+  & .text-error { color: #b94a48 }
+}

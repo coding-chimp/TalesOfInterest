@@ -14,7 +14,7 @@
 	<tbody>
 		<% for episode in @episodes do %>
 			<% present episode do |episode_presenter| %>
-				<tr class="<%= episode_presenter.connection_error %>">
+				<tr>
 					<td><%= episode.number %></td>
 					<td>
 						<%= episode.title %>
