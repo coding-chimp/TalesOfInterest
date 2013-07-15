@@ -120,27 +120,28 @@ table { width: 100%; }
 #main-nav {
 	float: left;
 	margin-top: 10px;
-	@media screen and (max-width: 980px){
+	@media screen and (max-width: 980px) {
 		float: none;
 		margin-left: 20px;
 		margin-top: 15px;
 	}
-	>ul {
+	> ul {
 		margin-top: 5px;
 		margin-bottom: 5px;
-		@media screen and (max-width: 700px){
+		@media screen and (max-width: 700px) {
 			display: none;
 		}
-		>li {
+		> li {
 			margin-left: 30px;
 			display: inline-block;
 			line-height: 40px;
 			&:hover {
-				>a{
+				> a {
 					color: #258fb8;
 				}
 			}
-			>a{
+			> a {
+				color: #666;
 				font-size: 14px;
 				margin-top: -38px;
 				&:after {
@@ -156,10 +157,10 @@ table { width: 100%; }
 				}
 			}
 		}
-		li{
+		li {
 			position: relative;
-			&:hover{
-				>ul{
+			&:hover {
+				> ul {
 					display: block;
 				}
 			}
@@ -305,7 +306,7 @@ table { width: 100%; }
 	@media screen and (max-width: 700px) {
 		display: none;
 	}
-	>ul {
+	> ul {
 		margin-top: 15px;
 		@media screen and (max-width: 980px) {
 			margin-top: 50px;
@@ -314,16 +315,17 @@ table { width: 100%; }
 			display: none;
 		}
 		margin-right: 75px;
-		>li {
+		> li {
 			line-height: 20px;
 			margin-left: 30px;
 			display: inline-block;
 			&:hover{
-				>a{
+				> a {
 					color: #258fb8;
 				}
 			}
-			>a {
+			> a {
+				color: #666;
 				font-size: 14px;
 				&:after {
 					content: "\f078";

@@ -43,7 +43,7 @@ class EpisodePresenter < BasePresenter
 
   def duration_in_words
     unless episode.playtime.blank?    
-      " &#8226; #{h.pluralize(episode.hours, 'Stunde', 'Stunden') if episode.hours > 0} #{h.pluralize(episode.minutes, 'Minute', 'Minuten')}".html_safe
+      " <small>&#8226;</small> #{h.pluralize(episode.hours, 'Stunde', 'Stunden') if episode.hours > 0} #{h.pluralize(episode.minutes, 'Minute', 'Minuten')}".html_safe
     end
   end
 

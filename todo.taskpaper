@@ -2,8 +2,7 @@ Inbox:
 Foundation:
 	- fix alert messages in forms
 	- responsive design?
-	- validate format for file url @na @done(2013-07-14)
-	- set audio file type automatically @na @done(2013-07-14)
+	- fix post metadata @done(2013-07-15)
 	- update about page
 Later:
 	- update importer to support multiple audio files
@@ -24,6 +23,8 @@ Later:
 	- implement paged feeds
 		- http://podlove.org/2013/06/22/paged-feeds-for-podcasts/
 Archive:
+	- validate format for file url @na @done(2013-07-14) @project(Foundation)
+	- set audio file type automatically @na @done(2013-07-14) @project(Foundation)
 	- move subscriber charts in remote modal @done(2013-07-11) @project(Foundation)
 	- fix admin analytics @done(2013-07-10) @project(Foundation)
 	- change admin nav @done(2013-07-09) @project(Foundation)
