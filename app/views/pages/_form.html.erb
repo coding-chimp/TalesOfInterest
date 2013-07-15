@@ -1,7 +1,11 @@
 <%= simple_form_for @page do |f| %>
   <div class="large-9 large-offset-1">
     <% if notification = f.error_notification %>
-        <div class="alert-message"><%= notification %></div>
+      <div class="row">
+        <div class="alert-message small-9 small-offset-3">
+          <%= notification %>
+        </div>
+      </div>
     <% end %>
 
     <%= f.input :title %>

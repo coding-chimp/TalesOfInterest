@@ -22,12 +22,12 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :error, wrap_with: { tag: :small, class: :error }
     b.wrapper tag: 'div', class: 'row' do |ba|
       ba.use :label, class: 'small-3 columns'
       ba.wrapper tag: 'div', class: 'small-9 columns' do |bc|
         bc.use :input
         bc.use :hint, wrap_with: { tag: :span, class: :hint }
+        bc.use :error, wrap_with: { tag: :small, class: :error }
       end
     end
   end

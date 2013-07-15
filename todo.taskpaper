@@ -1,6 +1,7 @@
 Inbox:
 Foundation:
-	- fix alert messages in forms
+	- fix alert messages in forms @done(2013-07-15)
+	- fix alert message on fields with hints
 	- responsive design?
 	- fix post metadata @done(2013-07-15)
 	- update about page

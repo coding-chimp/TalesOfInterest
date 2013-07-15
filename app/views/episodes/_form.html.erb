@@ -1,6 +1,10 @@
 <div class="large-8 large-offset-1">
   <% if notification = f.error_notification %>
-      <%= notification %>
+    <div class="row">
+      <div class="alert-message small-9 small-offset-3">
+        <%= notification %>
+      </div>
+    </div>
   <% end %>
 
   <%= f.association :podcast, prompt: "Select Podcast", input_html: { style: "display: none" } %>

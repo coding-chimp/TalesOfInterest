@@ -32,6 +32,7 @@ html, body {
 	@include alert-base;
 	@include alert-style(#F2DEDE);
 	color: #B94A48;
+	margin-bottom: 15px;
 }
 
 .success-message {

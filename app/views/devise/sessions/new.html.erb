@@ -4,8 +4,10 @@
   <%= simple_form_for(resource, as: resource_name, url: user_session_path) do |f| %>
   
     <% if alert %>
-      <div class="alert-message">
-        <%= alert %>
+      <div class="row">
+        <div class="alert-message small-9 small-offset-3">
+          <%= alert %>
+        </div>
       </div>
     <% end %>
   
