@@ -1,11 +1,9 @@
 Inbox:
 Foundation:
-	- fix alert messages in forms @done(2013-07-15)
-	- fix alert message on fields with hints
 	- responsive design?
-	- fix post metadata @done(2013-07-15)
 	- update about page
 Later:
+	- fix alert message on fields with hints
 	- update importer to support multiple audio files
 	- firtz ansehen
 		- http://podcast.firtz.org/firtz/show
@@ -15,15 +13,13 @@ Later:
 	- start analytics graph on publish date 
 	- group data in analytics graph on larger date ranges
 	- markdown preview
-		- https://github.com/joshmcarthur/showdown-rails
-		- https://github.com/samwillis/pagedown-bootstrap
 	- add exporter
 	- add proper validation for nested forms
-	- add rack-timout?
-		- https://github.com/kch/rack-timeout
 	- implement paged feeds
 		- http://podlove.org/2013/06/22/paged-feeds-for-podcasts/
 Archive:
+	- fix alert messages in forms @done(2013-07-15) @project(Foundation)
+	- fix post metadata @done(2013-07-15) @project(Foundation)
 	- validate format for file url @na @done(2013-07-14) @project(Foundation)
 	- set audio file type automatically @na @done(2013-07-14) @project(Foundation)
 	- move subscriber charts in remote modal @done(2013-07-11) @project(Foundation)
