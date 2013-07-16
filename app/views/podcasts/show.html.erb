@@ -14,12 +14,8 @@
 	<% end %>
 
 	<% content_for :banner_alt do %>
-	<ul class="thumbnails">
-		<li class="span4">
-			<h2><%= podcast_presenter.name %></h2>
-			<p><%= podcast_presenter.description %></p>
-		</li><!-- /span -->
-	</ul><!-- /thumbnails -->
+		<h2><%= podcast_presenter.name %></h2>
+		<p><%= podcast_presenter.description %></p>
 	<% end %>
 
 	<%= render @episodes %>

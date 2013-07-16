@@ -1,6 +1,9 @@
 Inbox:
 Foundation:
-	- responsive design?
+	- fixed mobile-navigation @done(2013-07-16)
+	- fix overall layout @done(2013-07-16)
+	- fix header
+	- fix banner
 	- update about page
 Later:
 	- fix alert message on fields with hints

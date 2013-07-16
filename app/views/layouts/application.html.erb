@@ -148,11 +148,11 @@
 
       <div class="row">
         <% if content_for?(:banner) %>
-          <div id="banner" class="large-10">
+          <div id="banner" class="large-10 hide-for-small">
             <%= yield(:banner) %>
           </div><!-- /banner -->
           <% if content_for?(:banner_alt) %>
-            <div id="banner_alt">
+            <div id="banner_alt" class="show-for-small">
               <%= yield(:banner_alt) %>
             </div><!-- /banner_alt -->
           <% end %>
@@ -160,12 +160,12 @@
       </div>
 
       <div class="row" id="content">
-        <%= @sidebar ? raw("<div class=\"large-7 small-11 columns\" id=\"episodes\">") : raw("<div class=\"small-11 columns\" id=\"admin\">") %>
+        <%= @sidebar ? raw("<div class=\"large-7 small-12 columns\" id=\"episodes\">") : raw("<div class=\"small-11 columns\" id=\"admin\">") %>
           <%= yield %>
         </div><!-- /small -->
 
         <% if @sidebar %>
-          <aside class="large-4 columns">
+          <aside class="large-4 columns hide-for-small">
             <%= render @sidebar %>
           </aside><!-- /small-4 -->
         <% end %>
