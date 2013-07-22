@@ -1,9 +1,9 @@
 Inbox:
-Foundation:
+Foundation: @done(2013-07-22)
 	- fix header @done(2013-07-22)
 	- fix banner @na @done(2013-07-22)
 	- fix tables @na @done(2013-07-22)
-	- update about page
+	- update about page @done(2013-07-22)
 Later:
 	- fix alert message on fields with hints
 	- update importer to support multiple audio files
