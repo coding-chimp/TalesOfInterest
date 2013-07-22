@@ -454,7 +454,10 @@ table { width: 100%; }
 	}
 }
 
-#banner_alt { display: none }
+#banner_alt {
+	margin-left: 20px;
+	margin-right: 20px;
+}
 
 #episodes { margin-left: 30px; }
 
@@ -538,11 +541,6 @@ aside {
 @media only screen and (max-width: 766px) {
 	#wrap { padding: 0 20px }
 	#episodes { margin-left: 0 }
-}
-
-@media only screen and (max-width: 480px) {
-	#banner { display: none }
-	#banner_alt { display: block }
 }
 
 @media only screen and (max-width: 760px),

@@ -14,8 +14,8 @@
 	<% end %>
 
 	<% content_for :banner_alt do %>
-		<h2><%= podcast_presenter.name %></h2>
-		<p><%= podcast_presenter.description %></p>
+		<h1><%= podcast_presenter.name %></h1>
+		<%= podcast_presenter.description %>
 	<% end %>
 
 	<%= render @episodes %>
