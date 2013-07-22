@@ -545,38 +545,40 @@ aside {
 
 @media only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
-	table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
-	thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	.table tbody tr td { 
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 40%; 
-	}
-	td:before { 
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
+	table.responsive {
+		max-width: 100%;
+		thead, tbody, th, td, tr { 
+			display: block; 
+			box-sizing: content-box;
+			&::before { box-sizing: content-box }
+			&::after { box-sizing: content-box }
+		}
+		thead tr { 
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+		tbody tr td { 
+			border: none;
+			border-bottom: 1px solid #eee; 
+			position: relative;
+			padding-left: 40%; 
+			vertical-align: top;
+			display: block;
+		}
+		td:before { 
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			width: 45%; 
+			padding-right: 10px; 
+			white-space: nowrap;
+		}
 	}
 	#podcast_table {
 		td:nth-of-type(1):before { content: "Artwork"; }
-		td:nth-of-type(2):before { content: "Title"; }
-		td:nth-of-type(3):before { content: "Publish Date"; }
-		td:nth-of-type(4):before { content: ""; }
-	}
-	#episode_table {
-		td:nth-of-type(1):before { content: "#"; }
-		td:nth-of-type(2):before { content: "Title"; }
-		td:nth-of-type(3):before { content: "Publish Date"; }
+		td:nth-of-type(2):before { content: "Name"; }
+		td:nth-of-type(3):before { content: "# Episodes"; }
 		td:nth-of-type(4):before { content: ""; }
 	}
 	#blogroll_table {
