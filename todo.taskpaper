@@ -1,9 +1,8 @@
 Inbox:
 Foundation:
-	- fixed mobile-navigation @done(2013-07-16)
-	- fix overall layout @done(2013-07-16)
-	- fix header
-	- fix banner
+	- fix header @done(2013-07-22)
+	- fix banner @na
+	- fix tables @na
 	- update about page
 Later:
 	- fix alert message on fields with hints
@@ -21,6 +20,8 @@ Later:
 	- implement paged feeds
 		- http://podlove.org/2013/06/22/paged-feeds-for-podcasts/
 Archive:
+	- fixed mobile-navigation @done(2013-07-16) @project(Foundation)
+	- fix overall layout @done(2013-07-16) @project(Foundation)
 	- fix alert messages in forms @done(2013-07-15) @project(Foundation)
 	- fix post metadata @done(2013-07-15) @project(Foundation)
 	- validate format for file url @na @done(2013-07-14) @project(Foundation)

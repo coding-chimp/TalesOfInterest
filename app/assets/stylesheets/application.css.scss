@@ -103,14 +103,6 @@ textarea { height: auto; }
 	}
 }
 
-ul.main {
-	-webkit-margin-before: 1em;
-	-webkit-margin-after: 1em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-	-webkit-padding-start: 30px;
-}
-
 table { width: 100%; }
 
 .table-hover tbody tr:hover > td,
@@ -122,9 +114,8 @@ table { width: 100%; }
 	float: left;
 	margin-top: 10px;
 	@media screen and (max-width: 980px) {
-		float: none;
 		margin-left: 20px;
-		margin-top: 15px;
+		margin-top: 0;
 	}
 	> ul {
 		margin-top: 5px;
@@ -311,26 +302,23 @@ table { width: 100%; }
 }
 
 #sub-nav {
-	position: absolute;
-	top: 20px;
-	right: 0;
+	float: right;
+	margin-top: 10px;
 	@media screen and (max-width: 980px) {
-		top: 25px;
+		margin-top: 0;
 	}
 	@media screen and (max-width: 700px) {
 		display: none;
 	}
 	> ul {
-		margin-top: 15px;
-		@media screen and (max-width: 980px) {
-			margin-top: 50px;
-		}
 		@media screen and (max-width: 700px) {
 			display: none;
 		}
+		margin-top: 5px;
+		margin-bottom: 5px;
 		margin-right: 75px;
 		> li {
-			line-height: 20px;
+			line-height: 40px;
 			margin-left: 30px;
 			display: inline-block;
 			&:hover{
@@ -358,12 +346,9 @@ table { width: 100%; }
 	.search {
 		float: left;
 		margin-top: 10px;
+		margin-right: 20px;
 		position: relative;
 		width: 100px;
-		@media screen and (max-width: 980px) {
-			margin-top: 50px;
-			margin-bottom: 0px;
-		}
 		&:before {
 			content: "\f002";
 			color: #ccc;
