@@ -475,7 +475,7 @@ aside {
 		ul, dl {
 			margin: 0 0 0 5px;
 			font-size: 14px;
-			a { 
+			a {
 				margin-left: 5px;
 				display: inline-block;
 				&:hover { color: #005580; }
@@ -547,31 +547,31 @@ aside {
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 	table.responsive {
 		max-width: 100%;
-		thead, tbody, th, td, tr { 
-			display: block; 
+		thead, tbody, th, td, tr {
+			display: block;
 			box-sizing: content-box;
 			&::before { box-sizing: content-box }
 			&::after { box-sizing: content-box }
 		}
-		thead tr { 
+		thead tr {
 			position: absolute;
 			top: -9999px;
 			left: -9999px;
 		}
-		tbody tr td { 
+		tbody tr td {
 			border: none;
-			border-bottom: 1px solid #eee; 
+			border-bottom: 1px solid #eee;
 			position: relative;
-			padding-left: 40%; 
+			padding-left: 40%;
 			vertical-align: top;
 			display: block;
 		}
-		td:before { 
+		td:before {
 			position: absolute;
 			top: 6px;
 			left: 6px;
-			width: 45%; 
-			padding-right: 10px; 
+			width: 45%;
+			padding-right: 10px;
 			white-space: nowrap;
 		}
 	}

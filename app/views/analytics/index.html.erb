@@ -13,6 +13,8 @@
   </tbody>
 </table>
 
+<% if @episode.present? %>
+
 <div id="graph_title">
   <%= render "title" %>
 </div>
@@ -44,3 +46,5 @@
 <div id="graph">
   <%= render "graph" %>
 </div>
+
+<% end %>

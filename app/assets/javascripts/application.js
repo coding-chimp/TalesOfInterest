@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery-ui
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
