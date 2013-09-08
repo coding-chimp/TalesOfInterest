@@ -55,7 +55,7 @@
       </tbody>
     </table>
   </div>
-  
+
   <div class="small-offset-1">
     <h3>Show Notes</h3>
   </div>
@@ -91,7 +91,11 @@
         <label class="datetime optional inline right" for="episode_published_at">Publish Date</label>
       </div>
       <div class="small-9 columns">
-        <%= f.input_field :published_at, as: :string, value: @episode.published_at.strftime("%d.%m.%Y %H:%M") %>
+        <% if f.object.published_at.present? %>
+          <%= f.input_field :published_at, as: :string, value: @episode.published_at.strftime("%d.%m.%Y %H:%M") %>
+        <% else %>
+          <%= f.input_field :published_at, as: :string %>
+        <% end %>
       </div>
     </div>
   </div>

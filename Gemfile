@@ -42,7 +42,7 @@ gem 'friendly_id'
 
 # Markdown formatting
 gem 'redcarpet'
-gem 'html2markdown', :git => 'git@github.com:coding-chimp/html2markdown.git'
+gem 'html2markdown', github: 'coding-chimp/html2markdown'
 
 # Pretty Terminal output
 gem 'hirb'
