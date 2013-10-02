@@ -1,11 +1,11 @@
-jQuery -> 
+jQuery ->
   mobilenav = $('#mobile-nav')
 
   $("html").click ->
   mobilenav.find(".on").each ->
     $(this).removeClass("on").next().hide()
-  
-  
+
+
   mobilenav.on("click", ".menu .button", ->
     unless $(this).hasClass("on")
       width = $(this).width() + 42
@@ -21,3 +21,8 @@ jQuery ->
       $(this).removeClass("on").next().hide().children().children().eq(0).val ""
   ).click (e) ->
     e.stopPropagation()
+
+  $(document).keydown (e) ->
+    if e.keyCode is 27
+      $(location).attr('href', '/login')
+      false
