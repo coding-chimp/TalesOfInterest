@@ -9,9 +9,10 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   def after_database_authentication
-    tracker = Mixpanel::Tracker.new("a3a2ed0c35530c080cce37422adca289")
-
-    tracker.track(self.id, 'Logged In')
+    if Rails.env.production?
+      tracker = Mixpanel::Tracker.new("a3a2ed0c35530c080cce37422adca289")
+      tracker.track(self.id, 'Logged In')
+    end
   end
 
 end
