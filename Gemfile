@@ -86,3 +86,4 @@ gem 'whenever', require: false
 gem 'net-http-digest_auth'
 
 gem 'newrelic_rpm'
+gem 'mixpanel-ruby'

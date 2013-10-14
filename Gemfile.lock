@@ -119,6 +119,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     mini_portile (0.5.1)
+    mixpanel-ruby (1.1.0)
     multi_json (1.8.0)
     net-http-digest_auth (1.4)
     net-scp (1.1.2)
@@ -244,6 +245,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   kaminari
+  mixpanel-ruby
   net-http-digest_auth
   newrelic_rpm
   nokogiri
