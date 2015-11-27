@@ -62,10 +62,6 @@ gem 'nokogiri'
 # Easier forms
 gem 'simple_form'
 
-# Deployment
-gem 'capistrano'
-gem 'rvm-capistrano'
-
 # Memcached
 gem 'dalli'
 
@@ -79,11 +75,20 @@ gem 'jquery-turbolinks'
 # Makes the show notes sortable
 gem 'acts_as_list'
 
+# App server
+gem 'unicorn'
+
 # Cron jobs
 gem 'whenever', require: false
 
 # Digest access authentication for qloudstat
 gem 'net-http-digest_auth'
+
+group :deployment, :development, :test do
+  gem 'capistrano',  '~> 3.2.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+end
 
 gem 'newrelic_rpm'
 gem 'mixpanel-ruby'

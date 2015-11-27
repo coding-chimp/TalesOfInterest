@@ -1,0 +1,18 @@
+namespace :sidekiq do
+  %w(start stop).each do |task_name|
+    desc "#{task_name.capitalize} Sidekiq"
+    task task_name do
+      on roles(:app), in: :sequence, wait: 5 do
+        sudo "service sidekiq_#{fetch(:full_app_name)} #{task_name}"
+      end
+    end
+  end
+
+  desc "Restart Sidekiq"
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      invoke 'sidekiq:stop'
+      invoke 'sidekiq:start'
+    end
+  end
+end
