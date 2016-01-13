@@ -49,26 +49,6 @@
 <h2>Traffic</h2>
 
 <%= content_tag :div, "", id: "traffic_chart", data: { traffic: Traffic.graph } %>
-
 <% end %>
-
-<h2>Recent Commits</h2>
-
-<table id="dashboard_commit_table">
-  <thead>
-    <tr>
-      <th>Message</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for commit in @commits do %>
-      <tr>
-        <td><%= commit.message %></td>
-        <td><%= commit.committed_date.strftime("%d.%m.%y %H:%M") %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <div id="subscribers_modal" class="reveal-modal"></div>

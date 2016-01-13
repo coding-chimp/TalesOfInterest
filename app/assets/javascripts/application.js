@@ -15,7 +15,7 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap
+//= require dataTables/jquery.dataTables.bootstrap.js
 //= require foundation
 //= require foundation-datepicker
 //= require foundation-datetimepicker

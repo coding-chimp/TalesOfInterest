@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.14'
+gem 'rails', '3.2.22'
 
 gem 'pg'
 
@@ -18,8 +18,8 @@ group :assets do
   gem 'font-awesome-rails'
 
   # DataTables
-  gem 'jquery-ui-rails'
-  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails', '~> 4.1.2'
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails', tag: 'v1.12.0'
 end
 
 group :development do
@@ -28,8 +28,7 @@ group :development do
   gem 'rack-mini-profiler'
 end
 
-gem 'jquery-rails'
-
+gem 'jquery-rails', '~> 3.0.4'
 
 # Users
 gem 'devise'
@@ -50,9 +49,6 @@ gem 'hirb'
 # Attach files
 gem "paperclip", "~> 3.0"
 
-# Git history
-gem 'grit'
-
 # Pagination
 gem 'kaminari'
 
@@ -61,10 +57,6 @@ gem 'nokogiri'
 
 # Easier forms
 gem 'simple_form'
-
-# Deployment
-gem 'capistrano'
-gem 'rvm-capistrano'
 
 # Memcached
 gem 'dalli'
@@ -79,11 +71,19 @@ gem 'jquery-turbolinks'
 # Makes the show notes sortable
 gem 'acts_as_list'
 
+# App server
+gem 'unicorn'
+
 # Cron jobs
 gem 'whenever', require: false
 
 # Digest access authentication for qloudstat
 gem 'net-http-digest_auth'
 
-gem 'newrelic_rpm'
-gem 'mixpanel-ruby'
+group :deployment, :development, :test do
+  gem 'capistrano',  '~> 3.2.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+end
+
+gem 'test-unit', '~> 3.0'

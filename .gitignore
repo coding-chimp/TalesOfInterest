@@ -3,7 +3,5 @@
 /log/*.log
 /tmp
 /public/system/*
-config/database.yml
-config/deploy.rb
 config/recipes/*
 config/newrelic.yml

@@ -1,0 +1,69 @@
+upstream unicorn_<%= fetch(:full_app_name) %> {
+  server unix:/tmp/unicorn.<%= fetch(:full_app_name) %>.sock fail_timeout=0;
+}
+
+server {
+  server_name <%= fetch(:server_name) %>;
+  listen 80;
+  root <%= fetch(:deploy_to) %>/current/public;
+
+  access_log logs/<%= fetch(:full_app_name) %>.access.log;
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  try_files $uri/index.html $uri @unicorn_<%= fetch(:full_app_name) %>;
+  location @unicorn_<%= fetch(:full_app_name) %> {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_pass http://unicorn_<%= fetch(:full_app_name) %>;
+  }
+
+  error_page 500 502 503 504 /500.html;
+  client_max_body_size 4G;
+  keepalive_timeout 10;
+
+  if ($http_user_agent !~ (FeedValidator|FeedPress)) {
+    rewrite /celluloid/feed$ http://feedpress.me/celluloid redirect;
+    rewrite /recordcase/feed$ http://feedpress.me/recordcase redirect;
+    rewrite /tales/feed$ http://feedpress.me/tales redirect;
+    break;
+  }
+}
+
+<% if fetch(:enable_ssl) %>
+server {
+  server_name <%= fetch(:server_name) %>;
+  listen 443;
+  root <%= fetch(:deploy_to) %>/current/public;
+
+  access_log logs/<%= fetch(:full_app_name) %>.access.log;
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  try_files $uri/index.html $uri @unicorn_<%= fetch(:full_app_name) %>;
+  location @unicorn_<%= fetch(:full_app_name) %> {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header   X-Forwarded-Proto https;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_pass http://unicorn_<%= fetch(:full_app_name) %>;
+  }
+
+  error_page 500 502 503 504 /500.html;
+  client_max_body_size 4G;
+  keepalive_timeout 10;
+  ssl on;
+  ssl_certificate      certs/<%= fetch(:application) %>-chain.crt;
+  ssl_certificate_key  certs/<%= fetch(:application) %>.key;
+  ssl_protocols TLSv1.2 TLSv1.1 TLSv1;  # don’t use SSLv3 ref: POODLE
+}
+<% end %>
