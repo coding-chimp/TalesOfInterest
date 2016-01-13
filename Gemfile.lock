@@ -104,7 +104,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
     ffi (1.9.10)
@@ -112,10 +111,6 @@ GEM
       railties (>= 3.2, < 5.0)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
-    grit (2.5.0)
-      diff-lcs (~> 1.1)
-      mime-types (~> 1.15)
-      posix-spawn (~> 0.3.6)
     hike (1.2.3)
     hirb (0.7.3)
     i18n (0.7.0)
@@ -160,7 +155,7 @@ GEM
     polyamorous (1.3.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
-    posix-spawn (0.3.11)
+    power_assert (0.2.2)
     rack (1.4.7)
     rack-cache (1.5.1)
       rack (>= 0.4)
@@ -224,6 +219,8 @@ GEM
     sshkit (1.8.1)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    test-unit (3.0.8)
+      power_assert
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -266,7 +263,6 @@ DEPENDENCIES
   devise
   font-awesome-rails
   friendly_id
-  grit
   hirb
   html2markdown!
   jquery-datatables-rails!
@@ -288,6 +284,7 @@ DEPENDENCIES
   redcarpet
   sass-rails (~> 3.2.3)
   simple_form
+  test-unit (~> 3.0)
   therubyracer
   turbolinks
   uglifier (>= 1.0.3)

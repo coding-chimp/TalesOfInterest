@@ -30,7 +30,6 @@ end
 
 gem 'jquery-rails'
 
-
 # Users
 gem 'devise'
 
@@ -49,9 +48,6 @@ gem 'hirb'
 
 # Attach files
 gem "paperclip", "~> 3.0"
-
-# Git history
-gem 'grit'
 
 # Pagination
 gem 'kaminari'
@@ -92,3 +88,4 @@ end
 
 gem 'newrelic_rpm'
 gem 'mixpanel-ruby'
+gem 'test-unit', '~> 3.0'
