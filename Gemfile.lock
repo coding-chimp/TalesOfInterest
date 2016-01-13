@@ -7,13 +7,11 @@ GIT
 
 GIT
   remote: git://github.com/rweng/jquery-datatables-rails.git
-  revision: 9eee0a1975b5a22e50bdc73fcca7db7f8a12c143
+  revision: ed5307f1846ab8f0571b14f3117ecc588be5054d
+  tag: v1.12.0
   specs:
-    jquery-datatables-rails (3.3.0)
-      actionpack (>= 3.1)
+    jquery-datatables-rails (1.12.0)
       jquery-rails
-      railties (>= 3.1)
-      sass-rails
 
 GEM
   remote: https://rubygems.org/
@@ -115,14 +113,14 @@ GEM
     hirb (0.7.3)
     i18n (0.7.0)
     journey (1.0.4)
-    jquery-rails (3.1.4)
+    jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    jquery-ui-rails (5.0.5)
-      railties (>= 3.2.16)
+    jquery-ui-rails (4.1.2)
+      railties (>= 3.1.0)
     json (1.8.3)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -134,13 +132,11 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     mini_portile2 (2.0.0)
-    mixpanel-ruby (2.2.0)
     multi_json (1.11.2)
     net-http-digest_auth (1.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
-    newrelic_rpm (3.14.1.311)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -266,13 +262,11 @@ DEPENDENCIES
   hirb
   html2markdown!
   jquery-datatables-rails!
-  jquery-rails
+  jquery-rails (~> 3.0.4)
   jquery-turbolinks
-  jquery-ui-rails
+  jquery-ui-rails (~> 4.1.2)
   kaminari
-  mixpanel-ruby
   net-http-digest_auth
-  newrelic_rpm
   nokogiri
   paperclip (~> 3.0)
   pg

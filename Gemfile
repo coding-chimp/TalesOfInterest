@@ -18,8 +18,8 @@ group :assets do
   gem 'font-awesome-rails'
 
   # DataTables
-  gem 'jquery-ui-rails'
-  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails', '~> 4.1.2'
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails', tag: 'v1.12.0'
 end
 
 group :development do
@@ -28,7 +28,7 @@ group :development do
   gem 'rack-mini-profiler'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.0.4'
 
 # Users
 gem 'devise'
@@ -86,6 +86,4 @@ group :deployment, :development, :test do
   gem 'capistrano-rbenv', '~> 2.0'
 end
 
-gem 'newrelic_rpm'
-gem 'mixpanel-ruby'
 gem 'test-unit', '~> 3.0'
